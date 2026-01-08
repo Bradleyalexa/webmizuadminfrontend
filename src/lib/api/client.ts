@@ -1,182 +1,57 @@
-// API Client - Placeholder functions for backend integration
-// All API calls should go through this client
+import { Session } from "@supabase/supabase-js";
 
-export const api = {
-  // Customer Management
-  customers: {
-    list: async (params?: { search?: string; page?: number; limit?: number }) => {
-      // Placeholder: await fetch('/api/customers', { params })
-      return { data: [], total: 0, page: 1, limit: 10 }
-    },
-    get: async (id: string) => {
-      // Placeholder: await fetch(`/api/customers/${id}`)
-      return { data: null }
-    },
-    create: async (data: unknown) => {
-      // Placeholder: await fetch('/api/customers', { method: 'POST', body: data })
-      return { success: true, data: null }
-    },
-    update: async (id: string, data: unknown) => {
-      // Placeholder: await fetch(`/api/customers/${id}`, { method: 'PUT', body: data })
-      return { success: true, data: null }
-    },
-    delete: async (id: string) => {
-      // Placeholder: await fetch(`/api/customers/${id}`, { method: 'DELETE' })
-      return { success: true }
-    },
-    getProducts: async (customerId: string) => {
-      // Placeholder: await fetch(`/api/customers/${customerId}/products`)
-      return { data: [] }
-    },
-  },
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3000/api/v1";
 
-  // Product Management
-  products: {
-    list: async (params?: { search?: string; page?: number; limit?: number }) => {
-      return { data: [], total: 0, page: 1, limit: 10 }
-    },
-    get: async (id: string) => {
-      return { data: null }
-    },
-    assignToCustomer: async (productId: string, customerId: string) => {
-      return { success: true, data: null }
-    },
-  },
+type ApiOptions = RequestInit & {
+  token?: string;
+};
 
-  // Customer Products
-  customerProducts: {
-    list: async (customerId?: string) => {
-      return { data: [] }
-    },
-    get: async (id: string) => {
-      return { data: null }
-    },
-  },
+async function fetchApi<T>(path: string, options: ApiOptions = {}): Promise<T> {
+  const { token, headers, ...init } = options;
+  
+  const reqHeaders = new Headers(headers);
+  reqHeaders.set("Content-Type", "application/json");
+  
+  if (token) {
+    reqHeaders.set("Authorization", `Bearer ${token}`);
+  }
 
-  // Contract Management
-  contracts: {
-    list: async (params?: { status?: string; customerId?: string }) => {
-      return { data: [], total: 0 }
-    },
-    get: async (id: string) => {
-      return { data: null }
-    },
-    create: async (data: unknown) => {
-      return { success: true, data: null }
-    },
-    getPdf: async (id: string) => {
-      return { url: "" }
-    },
-  },
+  const response = await fetch(`${BACKEND_URL}${path}`, {
+    ...init,
+    headers: reqHeaders,
+  });
 
-  // Service Management
-  services: {
-    list: async (params?: { status?: string; date?: string }) => {
-      return { data: [], total: 0 }
-    },
-    get: async (id: string) => {
-      return { data: null }
-    },
-    getScheduleExpected: async (params?: { date?: string }) => {
-      return { data: [] }
-    },
-    assignTechnician: async (serviceId: string, technicianId: string) => {
-      return { success: true }
-    },
-    uploadEvidence: async (serviceId: string, files: File[]) => {
-      return { success: true, urls: [] }
-    },
-    approveReschedule: async (serviceId: string) => {
-      return { success: true }
-    },
-    rejectReschedule: async (serviceId: string, reason: string) => {
-      return { success: true }
-    },
-    getLog: async (id: string) => {
-      return { data: null }
-    },
-  },
+  const data = await response.json();
+  
+  if (!response.ok) {
+    throw new Error(data.error?.message || "An API error occurred");
+  }
 
-  // Task Management
-  tasks: {
-    list: async (params?: { date?: string; technicianId?: string }) => {
-      return { data: [] }
-    },
-    get: async (id: string) => {
-      return { data: null }
-    },
-    create: async (data: unknown) => {
-      return { success: true, data: null }
-    },
-    update: async (id: string, data: unknown) => {
-      return { success: true, data: null }
-    },
-    updateStatus: async (id: string, status: string) => {
-      return { success: true }
-    },
-  },
-
-  // Technician Management
-  technicians: {
-    list: async () => {
-      return { data: [] }
-    },
-    get: async (id: string) => {
-      return { data: null }
-    },
-    getWeeklyPayout: async (technicianId: string, weekStart: string) => {
-      return { data: null }
-    },
-  },
-
-  // Invoice Management
-  invoices: {
-    list: async (params?: { status?: string; customerId?: string }) => {
-      return { data: [], total: 0 }
-    },
-    get: async (id: string) => {
-      return { data: null }
-    },
-    create: async (data: unknown) => {
-      return { success: true, data: null }
-    },
-    preview: async (data: unknown) => {
-      return { html: "" }
-    },
-    send: async (id: string) => {
-      return { success: true }
-    },
-    markPaid: async (id: string) => {
-      return { success: true }
-    },
-  },
-
-  // Reports
-  reports: {
-    getMonthlyServiceSummary: async (month: string) => {
-      return { data: null }
-    },
-    getMonthlyRevenue: async (year: string) => {
-      return { data: [] }
-    },
-    getTechnicianWeeklyPayout: async (weekStart: string) => {
-      return { data: [] }
-    },
-  },
-
-  // Chat / Support
-  chat: {
-    getConversations: async () => {
-      return { data: [] }
-    },
-    getMessages: async (conversationId: string) => {
-      return { data: [] }
-    },
-    sendMessage: async (conversationId: string, message: string, attachment?: File) => {
-      return { success: true, data: null }
-    },
-    getCustomerStatus: async (customerId: string) => {
-      return { online: false }
-    },
-  },
+  return data; // Assuming { success: true, data: T } is unwrapped by caller or we return full response?
+  // User spec: standard response envelope. Ideally we return the whole envelope or just data?
+  // Let's return the full envelope for now to match current return types if any.
 }
+
+// Factory to create a client bound to a session
+export const createApiClient = (session: Session | null) => {
+  const token = session?.access_token;
+
+  return {
+    auth: {
+      getMe: async () => {
+        return fetchApi("/auth/me", { token });
+      }
+    },
+    // Keep structure but throw error or require token for others
+    // For now, implementing just the auth one requested
+  };
+};
+
+// Deprecated static mock client - removing as requested
+// Or keeping a shell that throws errors to force migration
+export const api = {
+   // Legacy placeholders that warn
+   customers: {
+       list: () => { throw new Error("Use createApiClient(session).customers.list()") }
+   }
+};

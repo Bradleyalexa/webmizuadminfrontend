@@ -11,7 +11,10 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
-import { Eye, EyeOff, Loader2 } from "lucide-react"
+import { Eye, EyeOff, Loader2, AlertCircle } from "lucide-react"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { useSupabase } from "@/src/components/providers/supabase-provider"
+import { toast } from "sonner"
 
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -38,11 +41,77 @@ export function LoginPage() {
     },
   })
 
+
+  const [errorDetails, setErrorDetails] = useState<{ title: string; message: string } | null>(null)
+
+  const { supabase } = useSupabase()
+  
+  // Need to import createApiClient to use it directly
+  const createApiClient = (session: any) => {
+      // Inline simple fetch or duplicate logic? 
+      // Better to use the shared client factory if possible, but for simplicity here:
+      // We will rely on the SupabaseProvider to fetch profile, OR better:
+      // Let's manually fetch here to ensure we block the redirect.
+      const token = session.access_token;
+      return fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/me`, {
+          headers: { 
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json"
+          }
+      }).then(r => r.json());
+  };
+
   const onSubmit = async (data: LoginFormData) => {
-    console.log("Login data:", data)
-    // Simulate login
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    router.push("/admin")
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email: data.email,
+        password: data.password,
+      })
+
+      if (error) {
+        console.error("Supabase Auth Error Full Object:", JSON.stringify(error, null, 2));
+        setErrorDetails({ 
+          title: "Authentication Failed", 
+          message: error.message || "Could not verify credentials with Supabase." 
+        })
+        toast.error("Login failed")
+        return
+      }
+
+      // 2. Check Backend Role immediately
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+          try {
+            const res = await createApiClient(session);
+            if (!res.success || res.data.role !== 'admin') {
+                 throw new Error("Access Denied: You are not an admin.");
+            }
+          } catch (e: any) {
+              console.error("Role Check Failed", e);
+              await supabase.auth.signOut();
+              setErrorDetails({ 
+                title: "Access Denied", 
+                message: e.message || "Failed to verify admin privileges." 
+              })
+              toast.error("Access Denied")
+              return;
+          }
+      }
+
+      toast.success("Welcome back!", {
+        description: "You have successfully signed in.",
+      })
+      
+      router.push("/admin")
+      router.refresh()
+    } catch (err: any) {
+      setErrorDetails({ 
+        title: "Unexpected Error", 
+        message: err.message || "An unexpected error occurred during login." 
+      })
+      toast.error("An unexpected error occurred")
+      console.error(err)
+    }
   }
 
   return (
@@ -61,6 +130,15 @@ export function LoginPage() {
             <CardDescription className="text-sm">Enter your credentials to access your account</CardDescription>
           </CardHeader>
           <CardContent className="px-4 md:px-6">
+            {errorDetails && (
+              <Alert variant="destructive" className="mb-4">
+                <AlertCircle className="h-4 w-4" />
+                <AlertTitle>{errorDetails.title}</AlertTitle>
+                <AlertDescription>
+                  {errorDetails.message}
+                </AlertDescription>
+              </Alert>
+            )}
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="email" className="text-[#333333] text-sm">

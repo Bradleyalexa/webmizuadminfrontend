@@ -1,0 +1,43 @@
+[00:00:01.840] Server  LOG      ✓ Ready in 1216ms
+[00:00:07.572] Server  LOG      ○ Compiling / ...
+[00:00:11.983] Server  WARN     ⚠ Cross origin request detected from 192.168.56.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+[00:00:12.052] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:13.576] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:13.576] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
+[00:00:13.576] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://192.168.56.1:3000/login","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767881337107}
+[00:00:14.574] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:00:15.645] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:00:48.569] Browser ERROR   Supabase Auth Error Full Object: {
+  "__isAuthError": true,
+  "name": "AuthApiError",
+  "status": 400,
+  "code": "invalid_credentials"
+}
+[00:01:04.348] Browser ERROR   Failed to load backend profile {}
+[00:01:04.704] Browser ERROR   Role Check Failed {}
+[00:01:38.745] Browser ERROR   Supabase Auth Error Full Object: {
+  "__isAuthError": true,
+  "name": "AuthApiError",
+  "status": 400,
+  "code": "invalid_credentials"
+}
+[00:01:52.476] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:01:55.263] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://192.168.56.1:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767881439732}
+[00:02:52.776] Server  LOG      ✓ Compiled in 228ms
+[00:04:24.751] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:04:26.231] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://192.168.56.1:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767881590698}
+[00:04:36.202] Browser ERROR   Supabase Auth Error Full Object: {
+  "__isAuthError": true,
+  "name": "AuthApiError",
+  "status": 400,
+  "code": "invalid_credentials"
+}
+[00:04:50.651] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:04:51.616] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://192.168.56.1:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767881616084}
+[00:05:25.583] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:05:26.504] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://192.168.56.1:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767881650954}
+[00:05:38.035] Browser ERROR   Failed to load backend profile {}
+[00:05:38.472] Browser ERROR   Role Check Failed {}
+[00:06:39.704] Browser ERROR   Failed to load backend profile {}
+[00:06:40.103] Browser ERROR   Role Check Failed {}
