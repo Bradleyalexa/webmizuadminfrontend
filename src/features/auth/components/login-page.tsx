@@ -7,6 +7,7 @@ import { useForm, Controller } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
+import { LoadingButton } from "@/components/ui/loading-button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -197,20 +198,14 @@ export function LoginPage() {
                 )}
               />
 
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-[#00C49A] text-white hover:bg-[#00a883]"
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Signing in...
-                  </>
-                ) : (
-                  "Sign in"
-                )}
-              </Button>
+              <LoadingButton
+              type="submit"
+              className="w-full bg-[#00C49A] hover:bg-[#00A07D] text-white"
+              isLoading={isSubmitting}
+              loadingText="Signing in..."
+            >
+              Sign in
+            </LoadingButton>
             </form>
 
             <div className="mt-6 text-center text-xs md:text-sm">

@@ -38,6 +38,36 @@ const createApiClient = (session)=>{
                     token
                 });
             }
+        },
+        technicians: {
+            list: async (params)=>{
+                const searchParams = new URLSearchParams();
+                if (params?.page) searchParams.append("page", params.page.toString());
+                if (params?.limit) searchParams.append("limit", params.limit.toString());
+                if (params?.q) searchParams.append("q", params.q);
+                return fetchApi(`/technicians?${searchParams.toString()}`, {
+                    token
+                });
+            },
+            create: async (data)=>{
+                return fetchApi("/technicians", {
+                    token,
+                    method: "POST",
+                    body: JSON.stringify(data)
+                });
+            },
+            update: async (id, data)=>{
+                return fetchApi(`/technicians/${id}`, {
+                    token,
+                    method: "PATCH",
+                    body: JSON.stringify(data)
+                });
+            },
+            getOne: async (id)=>{
+                return fetchApi(`/technicians/${id}`, {
+                    token
+                });
+            }
         }
     };
 };

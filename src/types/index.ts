@@ -89,10 +89,10 @@ export interface Task {
 export interface Technician {
   id: string
   name: string
-  email: string
-  phone: string
-  specialization: string
-  isActive: boolean
+  phone?: string | null
+  photo_url?: string | null
+  notes?: string | null
+  created_at?: string | null
 }
 
 export interface Invoice {

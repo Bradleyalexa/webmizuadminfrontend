@@ -1,43 +1,1329 @@
-[00:00:01.840] Server  LOG      ✓ Ready in 1216ms
-[00:00:07.572] Server  LOG      ○ Compiling / ...
-[00:00:11.983] Server  WARN     ⚠ Cross origin request detected from 192.168.56.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+[00:00:01.544] Server  LOG      ✓ Ready in 1075ms
+[00:00:01.547] Server  WARN     ⚠ Cross origin request detected from 192.168.56.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[00:00:12.052] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:13.576] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:13.576] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
-[00:00:13.576] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://192.168.56.1:3000/login","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767881337107}
-[00:00:14.574] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:00:15.645] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:00:48.569] Browser ERROR   Supabase Auth Error Full Object: {
-  "__isAuthError": true,
-  "name": "AuthApiError",
-  "status": 400,
-  "code": "invalid_credentials"
-}
-[00:01:04.348] Browser ERROR   Failed to load backend profile {}
-[00:01:04.704] Browser ERROR   Role Check Failed {}
-[00:01:38.745] Browser ERROR   Supabase Auth Error Full Object: {
-  "__isAuthError": true,
-  "name": "AuthApiError",
-  "status": 400,
-  "code": "invalid_credentials"
-}
-[00:01:52.476] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:01:55.263] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://192.168.56.1:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767881439732}
-[00:02:52.776] Server  LOG      ✓ Compiled in 228ms
-[00:04:24.751] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:04:26.231] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://192.168.56.1:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767881590698}
-[00:04:36.202] Browser ERROR   Supabase Auth Error Full Object: {
-  "__isAuthError": true,
-  "name": "AuthApiError",
-  "status": 400,
-  "code": "invalid_credentials"
-}
-[00:04:50.651] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:04:51.616] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://192.168.56.1:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767881616084}
-[00:05:25.583] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:05:26.504] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://192.168.56.1:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767881650954}
-[00:05:38.035] Browser ERROR   Failed to load backend profile {}
-[00:05:38.472] Browser ERROR   Role Check Failed {}
-[00:06:39.704] Browser ERROR   Failed to load backend profile {}
-[00:06:40.103] Browser ERROR   Role Check Failed {}
+[00:00:04.616] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:05.481] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectErrorBoundary router={{...}}>
+      <InnerLayoutRouter url="/admin/pro..." tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+        <SegmentViewNode type="page" pagePath="/apps/admi...">
+          <SegmentTrieNode>
+          <ProductsPage>
+            <div>
+              <div>
+              <ProductList>
+                <div className="space-y-6">
+                  <div>
+                  <div className="grid gap-6...">
+                    <Card className="cursor-poi..." onClick={function onClick}>
+                      <div data-slot="card" className="text-card-..." onClick={function onClick}>
+                        <CardContent className="p-4">
+                          <div data-slot="card-content" className="p-4">
+                            <img>
+                            <div className="space-y-2">
+                              <span>
+                              <h3>
+                              <p>
+                              <p className="font-headi...">
++                               1,299
+-                               1.299
+                    ...
+        ...
+      ...
+
+[00:00:05.481] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:05.482] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/products","route":"/admin/products"}
+[00:00:05.482] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/products","route":"/admin/products"}
+[00:00:05.482] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products","o":"http://192.168.56.1:3000/admin/products","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767898330752}
+[00:00:05.482] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products","o":"http://192.168.56.1:3000/admin/products","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767898330752}
+[00:00:06.114] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:06.347] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:06.347] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
+[00:00:06.347] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://192.168.56.1:3000/login","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767898331926}
+[00:00:06.463] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:00:07.305] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:00:07.305] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:00:07.588] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:00:14.235] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:00:15.701] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://192.168.56.1:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767898341271}
+[00:00:18.100] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767898343682}
+[00:00:22.596] Server  ERROR    ⨯ ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Module not found: Can't resolve '@/components/ui/form'
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+Import map: aliased to relative './components/ui/form' inside of [project]/apps/adminFE
+
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:22.705] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Module not found: Can't resolve '@/components/ui/form'
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+Import map: aliased to relative './components/ui/form' inside of [project]/apps/adminFE
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:23.587] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Module not found: Can't resolve '@/components/ui/form'
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+Import map: aliased to relative './components/ui/form' inside of [project]/apps/adminFE
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:23.587] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Module not found: Can't resolve '@/components/ui/form'
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+Import map: aliased to relative './components/ui/form' inside of [project]/apps/adminFE
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:24.163] Server  ERROR    ⨯ ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Module not found: Can't resolve '@/components/ui/form'
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+Import map: aliased to relative './components/ui/form' inside of [project]/apps/adminFE
+
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:24.330] Browser ERROR   uncaughtError: Error: ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Module not found: Can't resolve '@/components/ui/form'
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+Import map: aliased to relative './components/ui/form' inside of [project]/apps/adminFE
+
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:24.509] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Module not found: Can't resolve '@/components/ui/form'
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+Import map: aliased to relative './components/ui/form' inside of [project]/apps/adminFE
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:24.509] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Module not found: Can't resolve '@/components/ui/form'
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+Import map: aliased to relative './components/ui/form' inside of [project]/apps/adminFE
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:37.053] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:37.235] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Module not found: Can't resolve '@/components/ui/form'
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+Import map: aliased to relative './components/ui/form' inside of [project]/apps/adminFE
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:37.235] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Module not found: Can't resolve '@/components/ui/form'
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+Import map: aliased to relative './components/ui/form' inside of [project]/apps/adminFE
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:37.235] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:37.235] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/technicians","route":"/admin/technicians"}
+[00:00:37.235] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767898362821}
+[00:00:37.967] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:00:40.460] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Module not found: Can't resolve '@/components/ui/form'
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+Import map: aliased to relative './components/ui/form' inside of [project]/apps/adminFE
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:40.898] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:00:42.683] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Module not found: Can't resolve '@/components/ui/form'
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+Import map: aliased to relative './components/ui/form' inside of [project]/apps/adminFE
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:42.684] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://192.168.56.1:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767898368253}
+[00:00:42.684] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Module not found: Can't resolve '@/components/ui/form'
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+Import map: aliased to relative './components/ui/form' inside of [project]/apps/adminFE
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:51.549] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Module not found: Can't resolve '@/components/ui/form'
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+Import map: aliased to relative './components/ui/form' inside of [project]/apps/adminFE
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:52.299] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:00:53.236] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:53.423] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Module not found: Can't resolve '@/components/ui/form'
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+Import map: aliased to relative './components/ui/form' inside of [project]/apps/adminFE
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:53.423] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Module not found: Can't resolve '@/components/ui/form'
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+Import map: aliased to relative './components/ui/form' inside of [project]/apps/adminFE
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:53.423] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:53.423] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin","route":"/admin"}
+[00:00:53.423] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://192.168.56.1:3000/admin","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767898379001}
+[00:00:54.763] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:00:59.548] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Module not found: Can't resolve '@/components/ui/form'
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+Import map: aliased to relative './components/ui/form' inside of [project]/apps/adminFE
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:01:00.237] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:01:05.264] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Module not found: Can't resolve '@/components/ui/form'
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+Import map: aliased to relative './components/ui/form' inside of [project]/apps/adminFE
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:01:06.033] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:01:14.859] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Module not found: Can't resolve '@/components/ui/form'
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+Import map: aliased to relative './components/ui/form' inside of [project]/apps/adminFE
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:01:15.522] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:01:35.473] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Export Form doesn't exist in target module
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+The export Form was not found in module [project]/apps/adminFE/components/ui/form.tsx [app-client] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+[00:01:35.473] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Export Form doesn't exist in target module
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+The export Form was not found in module [project]/apps/adminFE/components/ui/form.tsx [app-ssr] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+[00:01:35.473] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Export FormControl doesn't exist in target module
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+The export FormControl was not found in module [project]/apps/adminFE/components/ui/form.tsx [app-client] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+[00:01:35.474] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Export FormControl doesn't exist in target module
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+The export FormControl was not found in module [project]/apps/adminFE/components/ui/form.tsx [app-ssr] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+[00:01:35.474] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Export FormField doesn't exist in target module
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+The export FormField was not found in module [project]/apps/adminFE/components/ui/form.tsx [app-client] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+[00:01:35.474] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Export FormField doesn't exist in target module
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+The export FormField was not found in module [project]/apps/adminFE/components/ui/form.tsx [app-ssr] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+[00:01:35.474] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Export FormItem doesn't exist in target module
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+The export FormItem was not found in module [project]/apps/adminFE/components/ui/form.tsx [app-client] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+[00:01:35.474] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Export FormItem doesn't exist in target module
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+The export FormItem was not found in module [project]/apps/adminFE/components/ui/form.tsx [app-ssr] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+[00:01:35.474] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Export FormLabel doesn't exist in target module
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+The export FormLabel was not found in module [project]/apps/adminFE/components/ui/form.tsx [app-client] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+[00:01:35.474] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Export FormLabel doesn't exist in target module
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+The export FormLabel was not found in module [project]/apps/adminFE/components/ui/form.tsx [app-ssr] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+[00:01:35.474] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Export FormMessage doesn't exist in target module
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+The export FormMessage was not found in module [project]/apps/adminFE/components/ui/form.tsx [app-client] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+[00:01:35.474] Browser ERROR   ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx:14:1
+Export FormMessage doesn't exist in target module
+  12 | import { Input } from "@/components/ui/input"
+  13 | import { Textarea } from "@/components/ui/textarea"
+> 14 | import {
+     | ^^^^^^^^
+> 15 |   Form,
+     | ^^^^^^^
+> 16 |   FormControl,
+     | ^^^^^^^
+> 17 |   FormField,
+     | ^^^^^^^
+> 18 |   FormItem,
+     | ^^^^^^^
+> 19 |   FormLabel,
+     | ^^^^^^^
+> 20 |   FormMessage,
+     | ^^^^^^^
+> 21 | } from "@/components/ui/form"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  22 | import { useSupabase } from "@/src/components/providers/supabase-provider"
+  23 | import { createApiClient } from "@/src/lib/api/client"
+  24 |
+
+The export FormMessage was not found in module [project]/apps/adminFE/components/ui/form.tsx [app-ssr] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/add-technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+[00:01:35.738] Server  LOG      ✓ Compiled in 116ms
+[00:02:04.548] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:02:05.583] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767898451168}
+[00:02:07.799] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/b7110675-07f9-4622-9303-9b547b6fd420 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/[id]","o":"http://192.168.56.1:3000/admin/technicians/b7110675-07f9-4622-9303-9b547b6fd420","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767898453385}
+[00:02:14.572] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767898460152}
+[00:02:31.527] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:02:32.273] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/new color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/new","o":"http://192.168.56.1:3000/admin/technicians/new","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767898477849}
+[00:03:27.445] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:03:35.729] Browser ERROR   Storage upload error: {"message":"new row violates row-level security policy","name":"StorageApiError","status":400,"statusCode":"403"}
+[00:03:48.448] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:04:00.383] Browser ERROR   Storage upload error: {"message":"new row violates row-level security policy","name":"StorageApiError","status":400,"statusCode":"403"}
+[00:04:42.411] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:04:47.777] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767898613349}
+[00:04:49.219] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/b7110675-07f9-4622-9303-9b547b6fd420 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/[id]","o":"http://192.168.56.1:3000/admin/technicians/b7110675-07f9-4622-9303-9b547b6fd420","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767898614803}
+[00:04:50.637] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767898616217}
+[00:04:54.321] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/b7110675-07f9-4622-9303-9b547b6fd420 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/[id]","o":"http://192.168.56.1:3000/admin/technicians/b7110675-07f9-4622-9303-9b547b6fd420","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767898619904}
+[00:04:55.489] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767898621061}
+[00:05:19.766] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:17:53.291] Server  LOG      ✓ Compiled in 77ms
+[00:17:55.345] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./apps/adminFE/src/lib/api/client.ts changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:17:55.751] Server  LOG      ✓ Compiled in 73ms
+[00:17:55.954] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:17:56.477] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:17:56.477] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/technicians","route":"/admin/technicians"}
+[00:17:56.477] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767899402032}
+[00:17:58.467] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:21:33.762] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:21:34.039] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:21:34.288] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:21:34.288] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/technicians","route":"/admin/technicians"}
+[00:21:34.288] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767899619869}
+[00:21:34.754] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:21:36.430] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/b7110675-07f9-4622-9303-9b547b6fd420 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/[id]","o":"http://192.168.56.1:3000/admin/technicians/b7110675-07f9-4622-9303-9b547b6fd420","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767899622009}
+[00:21:50.131] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/b7110675-07f9-4622-9303-9b547b6fd420/edit color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/[id]/edit","o":"http://192.168.56.1:3000/admin/technicians/b7110675-07f9-4622-9303-9b547b6fd420/edit","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767899635718}
+[00:22:01.481] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767899647061}
+[00:22:05.403] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:22:05.580] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:22:05.580] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/technicians","route":"/admin/technicians"}
+[00:22:05.580] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767899651149}
+[00:22:06.244] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:23:19.932] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:23:47.245] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:23:48.963] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:24:20.606] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:24:23.948] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/c60ab51e-5a21-43df-8829-9a8a30b6cd21 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/[id]","o":"http://192.168.56.1:3000/admin/technicians/c60ab51e-5a21-43df-8829-9a8a30b6cd21","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767899789519}
+[00:24:25.715] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/c60ab51e-5a21-43df-8829-9a8a30b6cd21/edit color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/[id]/edit","o":"http://192.168.56.1:3000/admin/technicians/c60ab51e-5a21-43df-8829-9a8a30b6cd21/edit","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767899791300}
+[00:24:33.445] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767899799021}
+[00:26:01.451] Server  LOG      ✓ Compiled in 139ms
+[00:26:02.467] Browser ERROR   uncaughtError: ReferenceError: Calendar is not defined
+[00:26:31.669] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:26:32.187] Server  LOG      ✓ Compiled in 140ms
+[00:26:32.342] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:26:33.464] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <div className="min-h-scre...">
+      <AdminSidebar>
+      <div className="lg:ml-64 t...">
+        <AdminHeader onMenuClick={function AdminLayout.useCallback[handleOpenSidebar]}>
+          <header className="sticky top...">
+            <Button>
+            <div>
+            <div className="flex items...">
+              <Sheet>
+                <Dialog data-slot="sheet">
+                  <DialogProvider scope={undefined} triggerRef={{current:null}} contentRef={{current:null}} ...>
+                    <SheetTrigger asChild={true}>
+                      <DialogTrigger data-slot="sheet-trigger" asChild={true}>
+                        <Primitive.button type="button" aria-haspopup="dialog" aria-expanded={false} ...>
+                          <Primitive.button.Slot type="button" aria-haspopup="dialog" aria-expanded={false} ...>
+                            <Primitive.button.SlotClone type="button" aria-haspopup="dialog" aria-expanded={false} ...>
+                              <Button variant="ghost" size="icon" className="relative t..." type="button" ...>
+                                <button
+                                  data-slot="sheet-trigger"
+                                  className={"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded..."}
+                                  type="button"
+                                  aria-haspopup="dialog"
+                                  aria-expanded={false}
++                                 aria-controls="radix-_R_tkndlb_"
+-                                 aria-controls="radix-_R_3mkndlb_"
+                                  data-state="closed"
+                                  onClick={function handleEvent}
+                                  ref={function}
+                                >
+                    ...
+              ...
+                <MenuAnchor asChild={true} __scopeMenu={{Menu:[...], ...}}>
+                  <PopperAnchor __scopePopper={{Menu:[...], ...}} asChild={true} ref={null}>
+                    <Primitive.div asChild={true} ref={function}>
+                      <Primitive.div.Slot ref={function}>
+                        <Primitive.div.SlotClone ref={function}>
+                          <Primitive.button type="button" id="radix-_R_1..." aria-haspopup="menu" aria-expanded={false} ...>
+                            <Primitive.button.Slot type="button" id="radix-_R_1..." aria-haspopup="menu" ...>
+                              <Primitive.button.SlotClone type="button" id="radix-_R_1..." aria-haspopup="menu" ...>
+                                <Button variant="ghost" size="icon" className="text-[#333..." type="button" ...>
+                                  <button
+                                    data-slot="dropdown-menu-trigger"
+                                    className={"inline-flex items-center justify-center gap-2 whitespace-nowrap round..."}
+                                    type="button"
++                                   id="radix-_R_1dkndlb_"
+-                                   id="radix-_R_5mkndlb_"
+                                    aria-haspopup="menu"
+                                    aria-expanded={false}
+                                    aria-controls={undefined}
+                                    data-state="closed"
+                                    data-disabled={undefined}
+                                    disabled={false}
+                                    onPointerDown={function handleEvent}
+                                    onKeyDown={function handleEvent}
+                                    ref={function}
+                                  >
+        ...
+
+[00:26:33.464] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:26:33.464] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/technicians","route":"/admin/technicians"}
+[00:26:33.464] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767899918375}
+[00:26:33.465] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:27:03.223] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:27:05.384] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/c60ab51e-5a21-43df-8829-9a8a30b6cd21 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/[id]","o":"http://192.168.56.1:3000/admin/technicians/c60ab51e-5a21-43df-8829-9a8a30b6cd21","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767899950969}
+[00:27:07.916] Server  LOG      ✓ Compiled in 152ms
+[00:27:11.086] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767899956662}
+[00:27:12.762] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/b7110675-07f9-4622-9303-9b547b6fd420 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/[id]","o":"http://192.168.56.1:3000/admin/technicians/b7110675-07f9-4622-9303-9b547b6fd420","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767899958344}
+[00:27:15.476] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767899961052}
+[00:27:20.467] Browser ERROR   ./apps/adminFE/src/features/technicians/components/technician-form.tsx:64:3
+Parsing ecmascript source code failed
+  62 |       setImagePreview(initialData.photo_url || null)
+  63 |     }
+> 64 |   }, [initialData, form])
+     |   ^
+  65 |
+  66 |   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  67 |     const file = e.target.files?.[0]
+
+Expected ',', got '}'
+
+Import trace:
+  Server Component:
+    ./apps/adminFE/src/features/technicians/components/technician-form.tsx
+    ./apps/adminFE/app/admin/technicians/new/page.tsx
+[00:27:45.081] Server  LOG      ✓ Compiled in 70ms
+[00:28:14.274] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:28:16.835] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/b7110675-07f9-4622-9303-9b547b6fd420 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/[id]","o":"http://192.168.56.1:3000/admin/technicians/b7110675-07f9-4622-9303-9b547b6fd420","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900022415}
+[00:28:19.544] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900025121}
+[00:28:23.019] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/new color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/new","o":"http://192.168.56.1:3000/admin/technicians/new","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900028593}
+[00:28:40.480] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900045552}
+[00:28:42.466] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:28:43.176] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:28:46.392] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/new color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/new","o":"http://192.168.56.1:3000/admin/technicians/new","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900051969}
+[00:28:57.004] Server  LOG      ✓ Compiled in 166ms
+[00:29:53.915] Server  LOG      ✓ Compiled in 222ms
+[00:30:17.473] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900142610}
+[00:30:25.474] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:30:27.180] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/new color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/new","o":"http://192.168.56.1:3000/admin/technicians/new","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900152760}
+[00:31:26.542] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900212128}
+[00:31:50.881] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:31:51.379] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/new color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/new","o":"http://192.168.56.1:3000/admin/technicians/new","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900236963}
+[00:32:17.882] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900263453}
+[00:32:33.486] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/new color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/new","o":"http://192.168.56.1:3000/admin/technicians/new","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900279067}
+[00:32:59.471] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900304354}
+[00:33:55.170] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:34:04.617] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/c60ab51e-5a21-43df-8829-9a8a30b6cd21 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/[id]","o":"http://192.168.56.1:3000/admin/technicians/c60ab51e-5a21-43df-8829-9a8a30b6cd21","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900370200}
+[00:34:12.697] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900378270}
+[00:34:14.225] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/e016f69b-465b-4609-bd8f-eccf657201b7 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/[id]","o":"http://192.168.56.1:3000/admin/technicians/e016f69b-465b-4609-bd8f-eccf657201b7","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900379799}
+[00:34:16.394] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/e016f69b-465b-4609-bd8f-eccf657201b7/edit color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/[id]/edit","o":"http://192.168.56.1:3000/admin/technicians/e016f69b-465b-4609-bd8f-eccf657201b7/edit","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900381970}
+[00:34:19.175] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/e016f69b-465b-4609-bd8f-eccf657201b7 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/[id]","o":"http://192.168.56.1:3000/admin/technicians/e016f69b-465b-4609-bd8f-eccf657201b7","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900384745}
+[00:34:23.979] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900389559}
+[00:34:27.013] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:34:27.013] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:35:01.187] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:35:07.476] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/services color: rgb(120, 120, 120) color: inherit {"dp":"/admin/services","o":"http://192.168.56.1:3000/admin/services","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900433044}
+[00:35:10.725] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://192.168.56.1:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900436297}
+[00:35:20.546] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:35:21.505] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://192.168.56.1:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900447082}
+[00:35:23.719] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900449305}
+[00:35:26.556] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://192.168.56.1:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900452136}
+[00:35:27.213] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900452790}
+[00:35:28.064] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products","o":"http://192.168.56.1:3000/admin/products","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900453643}
+[00:35:29.479] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/contracts color: rgb(120, 120, 120) color: inherit {"dp":"/admin/contracts","o":"http://192.168.56.1:3000/admin/contracts","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900455053}
+[00:35:33.862] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/contracts/c2 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/contracts/[id]","o":"http://192.168.56.1:3000/admin/contracts/c2","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900459447}
+[00:35:38.389] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/contracts color: rgb(120, 120, 120) color: inherit {"dp":"/admin/contracts","o":"http://192.168.56.1:3000/admin/contracts","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900463959}
+[00:35:42.572] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/contracts/c3 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/contracts/[id]","o":"http://192.168.56.1:3000/admin/contracts/c3","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900468158}
+[00:35:46.592] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/contracts color: rgb(120, 120, 120) color: inherit {"dp":"/admin/contracts","o":"http://192.168.56.1:3000/admin/contracts","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900472159}
+[00:44:09.007] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:44:09.827] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:44:10.113] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <SegmentViewNode type="page" pagePath="/apps/admi...">
+      <SegmentTrieNode>
+      <ContractsPage>
+        <div>
+          <div>
+          ...
+            <DataTable columns={[...]} data={[...]} onRowClick={function onRowClick}>
+              <div className="rounded-xl...">
+                <div className="overflow-x...">
+                  <Table>
+                    <div data-slot="table-cont..." className="relative w...">
+                      <table data-slot="table" className="w-full cap...">
+                        <TableHeader>
+                        <TableBody>
+                          <tbody data-slot="table-body" className={"[&_tr:la..."}>
+                            <TableRow onClick={function onClick} className="transition...">
+                              <tr data-slot="table-row" className="data-[stat..." onClick={function onClick}>
+                                <TableCell>
+                                <TableCell>
+                                <TableCell>
+                                <TableCell>
+                                <TableCell className="text-xs md...">
+                                  <td
+                                    data-slot="table-cell"
+                                    className={"p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[..."}
+                                  >
++                                   1/15/2025
+-                                   15/01/2025
+                                ...
+                            ...
+
+[00:44:10.113] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:44:10.113] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/contracts","route":"/admin/contracts"}
+[00:44:10.113] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/contracts","route":"/admin/contracts"}
+[00:44:10.113] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/contracts color: rgb(120, 120, 120) color: inherit {"dp":"/admin/contracts","o":"http://192.168.56.1:3000/admin/contracts","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900975695}
+[00:44:10.113] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/contracts color: rgb(120, 120, 120) color: inherit {"dp":"/admin/contracts","o":"http://192.168.56.1:3000/admin/contracts","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900975696}
+[00:44:10.553] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:44:11.035] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:44:17.672] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900983257}
+[00:44:19.487] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/e016f69b-465b-4609-bd8f-eccf657201b7 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/[id]","o":"http://192.168.56.1:3000/admin/technicians/e016f69b-465b-4609-bd8f-eccf657201b7","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900985062}
+[00:44:21.071] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/e016f69b-465b-4609-bd8f-eccf657201b7/edit color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/[id]/edit","o":"http://192.168.56.1:3000/admin/technicians/e016f69b-465b-4609-bd8f-eccf657201b7/edit","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900986650}
+[00:44:24.304] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians/e016f69b-465b-4609-bd8f-eccf657201b7 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians/[id]","o":"http://192.168.56.1:3000/admin/technicians/e016f69b-465b-4609-bd8f-eccf657201b7","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1767900989887}
+[00:44:39.362] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:44:42.474] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:45:39.424] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
