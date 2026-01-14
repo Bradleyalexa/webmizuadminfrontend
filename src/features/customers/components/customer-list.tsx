@@ -1,83 +1,80 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { Search, Plus, Filter } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { DataTable } from "@/src/components/ui/data-table"
 import type { Customer } from "@/src/types"
-
-// Mock data
-const mockCustomers: Customer[] = [
-  {
-    id: "1",
-    name: "John Smith",
-    email: "john.smith@email.com",
-    phone: "+1 (555) 123-4567",
-    address: "123 Main St, New York, NY 10001",
-    createdAt: "2024-01-15",
-    updatedAt: "2024-03-10",
-  },
-  {
-    id: "2",
-    name: "Sarah Johnson",
-    email: "sarah.j@email.com",
-    phone: "+1 (555) 234-5678",
-    address: "456 Oak Ave, Los Angeles, CA 90001",
-    createdAt: "2024-02-20",
-    updatedAt: "2024-03-08",
-  },
-  {
-    id: "3",
-    name: "Mike Davis",
-    email: "mike.davis@email.com",
-    phone: "+1 (555) 345-6789",
-    address: "789 Pine Rd, Chicago, IL 60601",
-    createdAt: "2024-01-05",
-    updatedAt: "2024-03-12",
-  },
-  {
-    id: "4",
-    name: "Emily Brown",
-    email: "emily.b@email.com",
-    phone: "+1 (555) 456-7890",
-    address: "321 Elm St, Houston, TX 77001",
-    createdAt: "2024-03-01",
-    updatedAt: "2024-03-15",
-  },
-  {
-    id: "5",
-    name: "David Wilson",
-    email: "david.w@email.com",
-    phone: "+1 (555) 567-8901",
-    address: "654 Maple Dr, Phoenix, AZ 85001",
-    createdAt: "2024-02-10",
-    updatedAt: "2024-03-11",
-  },
-]
-
-const columns = [
-  { key: "name", header: "Name" },
-  { key: "email", header: "Email", hideOnMobile: true },
-  { key: "phone", header: "Phone", hideOnMobile: true },
-  {
-    key: "createdAt",
-    header: "Joined",
-    render: (customer: Customer) => new Date(customer.createdAt).toLocaleDateString(),
-  },
-]
+import { createApiClient } from "@/src/lib/api/client"
+import { useSupabase } from "@/src/components/providers/supabase-provider"
+import { Session } from "@supabase/supabase-js"
 
 export function CustomerList() {
   const router = useRouter()
+  const { supabase } = useSupabase()
+  const [session, setSession] = useState<Session | null>(null)
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session)
+    })
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session)
+    })
+
+    return () => subscription.unsubscribe()
+  }, [supabase])
+
+  const api = createApiClient(session)
   const [searchQuery, setSearchQuery] = useState("")
   const [page, setPage] = useState(1)
+  const [data, setData] = useState<{ items: Customer[]; total: number }>({ items: [], total: 0 })
+  const [loading, setLoading] = useState(true)
 
-  const filteredCustomers = mockCustomers.filter(
-    (customer) =>
-      customer.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      customer.email.toLowerCase().includes(searchQuery.toLowerCase()),
-  )
+  const fetchCustomers = async () => {
+    try {
+      setLoading(true)
+      const res = await api.customers.list({ page, limit: 10, search: searchQuery })
+      // Backend returns { success: true, data: items, pagination: { total } }
+      // Client wrapper returns full response? No, fetchApi returns `data`. 
+      // Checking ProductController... it returns { success: true, data: result } where result is { items, total }.
+      // Checking CustomerController... it returns { success: true, data: result.data, pagination: { total } }
+      // Wait, CustomerController logic:
+      // res.json({ success: true, data: result.data, pagination: { ... } })
+      // fetchApi returns the JSON body.
+      // So res.data is the array, res.pagination.total is the count.
+      
+      const response = res as any
+      if (response.success) {
+        setData({ items: response.data, total: response.pagination.total })
+      }
+    } catch (error) {
+      console.error("Failed to fetch customers", error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchCustomers()
+  }, [page, searchQuery, session]) // Re-fetch on params change
+
+  const columns = [
+    { key: "name", header: "Name" },
+    { key: "email", header: "Email", hideOnMobile: true },
+    { key: "phone", header: "Phone", hideOnMobile: true },
+    { key: "status", header: "Status", render: (c: Customer) => c.status },
+    {
+      key: "createdAt",
+      header: "Joined",
+      render: (customer: Customer) => new Date(customer.createdAt).toLocaleDateString(),
+    },
+  ]
 
   return (
     <div className="space-y-4 md:space-y-6">
@@ -88,7 +85,7 @@ export function CustomerList() {
             type="search"
             placeholder="Search customers..."
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e) => { setSearchQuery(e.target.value); setPage(1); }} // Reset page on search
             className="pl-9 bg-white border-border focus:border-[#00C49A] focus:ring-[#00C499]"
           />
         </div>
@@ -113,9 +110,9 @@ export function CustomerList() {
 
       <DataTable
         columns={columns}
-        data={filteredCustomers}
+        data={data.items}
         page={page}
-        totalPages={Math.ceil(filteredCustomers.length / 10)}
+        totalPages={Math.ceil(data.total / 10)}
         onPageChange={setPage}
         onRowClick={(customer) => router.push(`/admin/customers/${customer.id}`)}
       />

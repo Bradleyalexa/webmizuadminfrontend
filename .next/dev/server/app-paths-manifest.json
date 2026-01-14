@@ -1,14 +1,10 @@
 {
-  "/admin/contracts/[id]/page": "app/admin/contracts/[id]/page.js",
   "/admin/contracts/page": "app/admin/contracts/page.js",
+  "/admin/customers/[id]/page": "app/admin/customers/[id]/page.js",
+  "/admin/customers/new/page": "app/admin/customers/new/page.js",
   "/admin/customers/page": "app/admin/customers/page.js",
-  "/admin/page": "app/admin/page.js",
+  "/admin/products/new/page": "app/admin/products/new/page.js",
   "/admin/products/page": "app/admin/products/page.js",
   "/admin/services/page": "app/admin/services/page.js",
-  "/admin/technicians/[id]/edit/page": "app/admin/technicians/[id]/edit/page.js",
-  "/admin/technicians/[id]/page": "app/admin/technicians/[id]/page.js",
-  "/admin/technicians/new/page": "app/admin/technicians/new/page.js",
-  "/admin/technicians/page": "app/admin/technicians/page.js",
-  "/login/page": "app/login/page.js",
-  "/page": "app/page.js"
+  "/admin/technicians/page": "app/admin/technicians/page.js"
 }

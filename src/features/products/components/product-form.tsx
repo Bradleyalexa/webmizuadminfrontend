@@ -1,159 +1,336 @@
 "use client"
 
+import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useRouter } from "next/navigation"
-import { z } from "zod"
+import * as z from "zod"
+import { Loader2, Upload, X } from "lucide-react"
+import { toast } from "sonner"
+
 import { Button } from "@/components/ui/button"
+import { LoadingButton } from "@/components/ui/loading-button"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import type { Product } from "@/src/types"
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { useSupabase } from "@/src/components/providers/supabase-provider"
+import { createApiClient } from "@/src/lib/api/client"
+import { Product, Category } from "@/src/types"
 
 const productSchema = z.object({
-  name: z.string().min(2, "Product name must be at least 2 characters"),
-  description: z.string().min(10, "Description must be at least 10 characters"),
-  category: z.string().min(1, "Please select a category"),
-  price: z.coerce.number().min(0, "Price must be a positive number"),
-  imageUrl: z.string().optional(),
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  model: z.string().optional(),
+  price: z.coerce.number().min(0, "Price must be positive").optional(),
+  description: z.string().optional(),
+  categoryId: z.string().optional(),
 })
 
-type ProductFormData = z.infer<typeof productSchema>
+type ProductFormValues = z.infer<typeof productSchema>
 
 interface ProductFormProps {
-  product?: Product
-  mode: "create" | "edit"
+  initialData?: Product
 }
 
-export function ProductForm({ product, mode }: ProductFormProps) {
+export function ProductForm({ initialData }: ProductFormProps) {
   const router = useRouter()
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    watch,
-    formState: { errors, isSubmitting },
-  } = useForm<ProductFormData>({
+  const { supabase, session } = useSupabase()
+  const [isLoading, setIsLoading] = useState(false)
+  const [categories, setCategories] = useState<Category[]>([])
+  const [imageFile, setImageFile] = useState<File | null>(null)
+  const [imagePreview, setImagePreview] = useState<string | null>(initialData?.imageUrl || null)
+  const isEditing = !!initialData
+
+  const form = useForm<ProductFormValues>({
     resolver: zodResolver(productSchema),
-    defaultValues: product
-      ? {
-          name: product.name,
-          description: product.description,
-          category: product.category,
-          price: product.price,
-          imageUrl: product.imageUrl,
-        }
-      : undefined,
+    defaultValues: {
+      name: initialData?.name || "",
+      model: initialData?.model || "",
+      price: initialData?.price || 0,
+      description: initialData?.description || "",
+      categoryId: initialData?.categoryId || "",
+    },
   })
 
-  const selectedCategory = watch("category")
+  useEffect(() => {
+    const fetchCategories = async () => {
+      if (!session) return
+      try {
+        const api = createApiClient(session)
+        const res: any = await api.categories.list()
+        if (res.success) {
+          setCategories(res.data)
+        }
+      } catch (err) {
+        console.error("Failed to fetch categories", err)
+      }
+    }
+    fetchCategories()
+  }, [session])
 
-  const onSubmit = async (data: ProductFormData) => {
-    console.log("Product form data:", data)
-    router.push("/admin/products")
+  useEffect(() => {
+    if (initialData) {
+      form.reset({
+        name: initialData.name,
+        model: initialData.model || "",
+        price: initialData.price || 0,
+        description: initialData.description || "",
+        categoryId: initialData.categoryId || "",
+      })
+      setImagePreview(initialData.imageUrl || null)
+    }
+  }, [initialData, form])
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        toast.error("Image too large", { description: "Max file size is 5MB" })
+        return
+      }
+      setImageFile(file)
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setImagePreview(reader.result as string)
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  const removeImage = () => {
+    setImageFile(null)
+    setImagePreview(null)
+  }
+
+  const uploadImage = async (file: File, name: string): Promise<string | null> => {
+    try {
+      const sanitizedName = name.replace(/[^a-z0-9]/gi, '-').toLowerCase()
+      const timestamp = Date.now()
+      const filePath = `${sanitizedName}-${timestamp}`
+      
+      const { data, error } = await supabase.storage
+        .from("product-catalog")
+        .upload(filePath, file)
+
+      if (error) throw error
+
+      const { data: publicUrlData } = supabase.storage
+        .from("product-catalog")
+        .getPublicUrl(filePath)
+
+      return publicUrlData.publicUrl
+    } catch (error: any) {
+      console.error("Storage upload error:", error)
+      toast.error("Failed to upload image", { description: error.message })
+      return null
+    }
+  }
+
+  async function onSubmit(data: ProductFormValues) {
+    if (!session) return
+    setIsLoading(true)
+
+    try {
+      let imageUrl: string | undefined = initialData?.imageUrl || undefined
+
+      if (imageFile) {
+        const url = await uploadImage(imageFile, data.name)
+        if (url) imageUrl = url
+        else {
+           setIsLoading(false)
+           return
+        }
+      } else if (imagePreview === null) {
+        imageUrl = "" 
+      }
+
+      const api = createApiClient(session)
+      
+      const payload = {
+        ...data,
+        imageUrl: imageUrl || undefined,
+        categoryId: data.categoryId || undefined, // Ensure empty string becomes undefined if backend expects optional
+      }
+
+      if (isEditing && initialData) {
+        await api.products.update(initialData.id, payload)
+        toast.success("Product updated")
+      } else {
+        await api.products.create(payload)
+        toast.success("Product created")
+      }
+
+      router.push("/admin/products")
+      router.refresh()
+    } catch (error: any) {
+      console.error(error)
+      toast.error(`Failed to ${isEditing ? 'update' : 'create'} product`, { description: error.message })
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
-    <Card className="bg-white shadow-sm">
-      <CardHeader>
-        <CardTitle className="font-heading text-xl font-semibold text-[#0A2540]">
-          {mode === "create" ? "Product Information" : "Edit Product"}
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid gap-6 sm:grid-cols-2">
-            <div className="space-y-2">
-              <Label htmlFor="name" className="text-[#333333]">
-                Product Name
-              </Label>
-              <Input
-                id="name"
-                {...register("name")}
-                placeholder="Air Conditioner Pro 5000"
-                className="border-border bg-white focus:border-[#00C49A] focus:ring-[#00C49A]"
-              />
-              {errors.name && <p className="text-sm text-destructive">{errors.name.message}</p>}
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="category" className="text-[#333333]">
-                Category
-              </Label>
-              <Select value={selectedCategory} onValueChange={(value) => setValue("category", value)}>
-                <SelectTrigger className="border-border bg-white focus:border-[#00C49A] focus:ring-[#00C49A]">
-                  <SelectValue placeholder="Select category" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="HVAC">HVAC</SelectItem>
-                  <SelectItem value="Smart Home">Smart Home</SelectItem>
-                  <SelectItem value="Air Quality">Air Quality</SelectItem>
-                  <SelectItem value="Heating">Heating</SelectItem>
-                  <SelectItem value="Cooling">Cooling</SelectItem>
-                </SelectContent>
-              </Select>
-              {errors.category && <p className="text-sm text-destructive">{errors.category.message}</p>}
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="price" className="text-[#333333]">
-                Price ($)
-              </Label>
-              <Input
-                id="price"
-                type="number"
-                step="0.01"
-                {...register("price")}
-                placeholder="1299.00"
-                className="border-border bg-white focus:border-[#00C49A] focus:ring-[#00C49A]"
-              />
-              {errors.price && <p className="text-sm text-destructive">{errors.price.message}</p>}
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="imageUrl" className="text-[#333333]">
-                Image URL (optional)
-              </Label>
-              <Input
-                id="imageUrl"
-                {...register("imageUrl")}
-                placeholder="https://example.com/image.jpg"
-                className="border-border bg-white focus:border-[#00C49A] focus:ring-[#00C49A]"
-              />
-            </div>
-
-            <div className="space-y-2 sm:col-span-2">
-              <Label htmlFor="description" className="text-[#333333]">
-                Description
-              </Label>
-              <Textarea
-                id="description"
-                {...register("description")}
-                placeholder="Enter product description..."
-                rows={4}
-                className="border-border bg-white focus:border-[#00C49A] focus:ring-[#00C49A]"
-              />
-              {errors.description && <p className="text-sm text-destructive">{errors.description.message}</p>}
+    <div className="max-w-2xl mx-auto">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          
+          {/* Image Upload */}
+          <div className="space-y-4">
+            <FormLabel>Product Image</FormLabel>
+            <div className="flex items-center gap-6">
+              <div className="relative h-40 w-40 rounded-lg border-2 border-dashed border-gray-300 flex items-center justify-center overflow-hidden bg-gray-50">
+                {imagePreview ? (
+                  <>
+                    <img src={imagePreview} alt="Preview" className="h-full w-full object-cover" />
+                    <button
+                      type="button"
+                      onClick={removeImage}
+                      className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity"
+                    >
+                      <X className="h-8 w-8 text-white" />
+                    </button>
+                  </>
+                ) : (
+                  <Upload className="h-8 w-8 text-gray-400" />
+                )}
+              </div>
+              <div className="space-y-2">
+                <Input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  className="max-w-xs"
+                />
+                <p className="text-xs text-muted-foreground">
+                  Recommended: Square or landscape, max 5MB.
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className="flex items-center justify-end gap-3 pt-4">
+          <div className="grid gap-6 md:grid-cols-2">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Product Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="e.g. Water Filter Pro" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="model"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Model / SKU</FormLabel>
+                  <FormControl>
+                    <Input placeholder="e.g. WF-2024-X" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            <FormField
+              control={form.control}
+              name="price"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Price (IDR)</FormLabel>
+                  <FormControl>
+                    <Input type="number" placeholder="0" {...field} onChange={e => field.onChange(e.target.value)} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="categoryId"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Category</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a category" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {categories.map((cat) => (
+                        <SelectItem key={cat.id} value={cat.id}>
+                          {cat.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          <FormField
+            control={form.control}
+            name="description"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Description</FormLabel>
+                <FormControl>
+                  <Textarea
+                    placeholder="Product details, specs, etc..."
+                    className="min-h-[100px]"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <div className="flex justify-end gap-4">
             <Button
               type="button"
               variant="outline"
               onClick={() => router.back()}
-              className="border-[#0A2540] text-[#0A2540] hover:bg-[#0A2540] hover:text-white bg-transparent"
+              disabled={isLoading}
             >
               Cancel
             </Button>
-            <Button type="submit" disabled={isSubmitting} className="bg-[#00C49A] text-white hover:bg-[#00a883]">
-              {isSubmitting ? "Saving..." : mode === "create" ? "Add Product" : "Save Changes"}
-            </Button>
+            <LoadingButton 
+              type="submit" 
+              isLoading={isLoading} 
+              loadingText={isEditing ? "Updating..." : "Creating..."}
+              className="bg-[#00C49A] hover:bg-[#00A07D] text-white"
+            >
+              {isEditing ? "Update Product" : "Create Product"}
+            </LoadingButton>
           </div>
         </form>
-      </CardContent>
-    </Card>
+      </Form>
+    </div>
   )
 }

@@ -1,180 +1,212 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { Search, Filter, Grid, List, Plus } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Search, Plus, Package, Edit, Trash2 } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
-import { DataTable } from "@/src/components/ui/data-table"
-import type { Product } from "@/src/types"
-
-const mockProducts: Product[] = [
-  {
-    id: "p1",
-    name: "Air Conditioner Pro 5000",
-    description: "High-efficiency split-type air conditioner with inverter technology",
-    category: "HVAC",
-    price: 1299,
-    imageUrl: "/home-air-conditioner.png",
-  },
-  {
-    id: "p2",
-    name: "Smart Thermostat X",
-    description: "WiFi-enabled programmable thermostat with voice control",
-    category: "Smart Home",
-    price: 249,
-    imageUrl: "/smart-thermostat.png",
-  },
-  {
-    id: "p3",
-    name: "Central Heating Unit",
-    description: "Energy-efficient central heating system for large homes",
-    category: "HVAC",
-    price: 2499,
-    imageUrl: "/heating-unit.jpg",
-  },
-  {
-    id: "p4",
-    name: "Air Purifier Max",
-    description: "HEPA air purifier with UV-C sanitization",
-    category: "Air Quality",
-    price: 499,
-    imageUrl: "/modern-air-purifier.png",
-  },
-  {
-    id: "p5",
-    name: "Ductless Mini Split",
-    description: "Compact ductless cooling and heating system",
-    category: "HVAC",
-    price: 899,
-    imageUrl: "/mini-split-ac.jpg",
-  },
-  {
-    id: "p6",
-    name: "Smart Air Quality Monitor",
-    description: "Real-time air quality monitoring with app connectivity",
-    category: "Smart Home",
-    price: 149,
-    imageUrl: "/air-quality-monitor.jpg",
-  },
-]
-
-const columns = [
-  {
-    key: "name",
-    header: "Product Name",
-    render: (product: Product) => (
-      <div className="flex items-center gap-3">
-        <img
-          src={product.imageUrl || "/placeholder.svg?height=40&width=40&query=product"}
-          alt={product.name}
-          className="h-10 w-10 rounded-lg object-cover"
-        />
-        <span className="font-medium">{product.name}</span>
-      </div>
-    ),
-  },
-  { key: "category", header: "Category" },
-  {
-    key: "price",
-    header: "Price",
-    render: (product: Product) => `$${product.price.toLocaleString()}`,
-  },
-]
+import { Button } from "@/components/ui/button"
+import type { Product, Category } from "@/src/types"
+import { useSupabase } from "@/src/components/providers/supabase-provider"
+import { createApiClient } from "@/src/lib/api/client"
+import { toast } from "sonner"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 export function ProductList() {
   const router = useRouter()
+  const { session } = useSupabase()
   const [searchQuery, setSearchQuery] = useState("")
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
+  const [selectedCategory, setSelectedCategory] = useState<string>("all")
+  const [products, setProducts] = useState<Product[]>([])
+  const [categories, setCategories] = useState<Category[]>([])
+  const [loading, setLoading] = useState(true)
+  const [deletingId, setDeletingId] = useState<string | null>(null)
 
-  const filteredProducts = mockProducts.filter(
-    (product) =>
-      product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      product.category.toLowerCase().includes(searchQuery.toLowerCase()),
-  )
+  useEffect(() => {
+    const fetchCategories = async () => {
+      if (!session) return
+      try {
+        const api = createApiClient(session)
+        const res: any = await api.categories.list()
+        if (res.success) {
+          setCategories(res.data)
+        }
+      } catch (err) {
+        console.error("Failed to fetch categories", err)
+      }
+    }
+    fetchCategories()
+  }, [session])
+
+  const fetchProducts = async () => {
+    if (!session) return
+    try {
+      setLoading(true)
+      const api = createApiClient(session)
+      const res: any = await api.products.list({ 
+        limit: 50, 
+        q: searchQuery,
+        categoryId: selectedCategory !== "all" ? selectedCategory : undefined
+      })
+      if (res.success) {
+        setProducts(res.data.items)
+      }
+    } catch (err) {
+      console.error(err)
+      toast.error("Failed to load products")
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchProducts()
+  }, [session, searchQuery, selectedCategory])
+
+  const handleDelete = async (id: string) => {
+    if (!session) return
+    try {
+      const api = createApiClient(session)
+      await api.products.delete(id)
+      toast.success("Product deleted")
+      fetchProducts()
+    } catch (error: any) {
+      toast.error("Failed to delete product")
+    } finally {
+      setDeletingId(null)
+    }
+  }
 
   return (
-    <div className="space-y-6">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div className="relative w-full sm:w-80">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input
-            type="search"
-            placeholder="Search products..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-9 bg-white border-border focus:border-[#00C49A] focus:ring-[#00C49A]"
-          />
-        </div>
-        <div className="flex items-center gap-3">
-          <Button
-            onClick={() => router.push("/admin/products/new")}
-            className="bg-[#00C49A] text-white hover:bg-[#00a883]"
-          >
-            <Plus className="mr-2 h-4 w-4" />
-            Add Product
-          </Button>
-          <Button
-            variant="outline"
-            className="border-[#0A2540] text-[#0A2540] hover:bg-[#0A2540] hover:text-white bg-transparent"
-          >
-            <Filter className="mr-2 h-4 w-4" />
-            Filter
-          </Button>
-          <div className="flex items-center rounded-lg border border-border bg-white p-1">
-            <Button
-              variant={viewMode === "grid" ? "default" : "ghost"}
-              size="sm"
-              onClick={() => setViewMode("grid")}
-              className={viewMode === "grid" ? "bg-[#00C49A] text-white hover:bg-[#00a883]" : "text-[#333333]"}
-            >
-              <Grid className="h-4 w-4" />
-            </Button>
-            <Button
-              variant={viewMode === "list" ? "default" : "ghost"}
-              size="sm"
-              onClick={() => setViewMode("list")}
-              className={viewMode === "list" ? "bg-[#00C49A] text-white hover:bg-[#00a883]" : "text-[#333333]"}
-            >
-              <List className="h-4 w-4" />
-            </Button>
+    <div className="space-y-4 md:space-y-6">
+      <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
+        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto flex-1">
+          <div className="relative w-full sm:w-80">
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              type="search"
+              placeholder="Search products..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-9 bg-white border-border focus:border-[#00C49A] focus:ring-[#00C49A]"
+            />
           </div>
+          
+          <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+            <SelectTrigger className="w-full sm:w-[200px] bg-white">
+              <SelectValue placeholder="All Categories" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Categories</SelectItem>
+              {categories.map((cat) => (
+                <SelectItem key={cat.id} value={cat.id}>
+                  {cat.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
+
+        <Button 
+          onClick={() => router.push("/admin/products/new")}
+          className="bg-[#00C49A] hover:bg-[#00A07D] text-white w-full sm:w-auto"
+        >
+          <Plus className="h-4 w-4 mr-2" />
+          Add Product
+        </Button>
       </div>
 
-      {viewMode === "grid" ? (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {filteredProducts.map((product) => (
+      {loading ? (
+        <div className="text-center py-10">Loading...</div>
+      ) : products.length === 0 ? (
+        <div className="text-center py-10 text-muted-foreground">No products found.</div>
+      ) : (
+        <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {products.map((product) => (
             <Card
               key={product.id}
-              className="cursor-pointer bg-white shadow-sm transition-all duration-200 ease-out hover:shadow-md hover:border-[#00C49A]/30"
-              onClick={() => router.push(`/admin/products/${product.id}`)}
+              className="bg-white shadow-sm transition-all duration-200 ease-out hover:shadow-md hover:border-[#00C49A]/30 group flex flex-col h-full"
             >
-              <CardContent className="p-4">
-                <img
-                  src={product.imageUrl || "/placeholder.svg?height=200&width=200&query=product"}
-                  alt={product.name}
-                  className="mb-4 h-40 w-full rounded-lg object-cover bg-[#F6F9FC]"
-                />
-                <div className="space-y-2">
-                  <span className="inline-block rounded-full bg-[#00C49A]/10 px-2.5 py-0.5 text-xs font-medium text-[#00C49A]">
-                    {product.category}
-                  </span>
-                  <h3 className="font-heading font-semibold text-[#0A2540]">{product.name}</h3>
-                  <p className="text-sm text-muted-foreground line-clamp-2">{product.description}</p>
-                  <p className="font-heading text-lg font-bold text-[#0A2540]">${product.price.toLocaleString()}</p>
+              <div className="relative aspect-square w-full overflow-hidden rounded-t-lg bg-gray-100">
+                {product.imageUrl ? (
+                  <img src={product.imageUrl} alt={product.name} className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                ) : (
+                  <div className="flex h-full items-center justify-center text-gray-300">
+                    <Package className="h-12 w-12" />
+                  </div>
+                )}
+                {product.category && (
+                  <div className="absolute top-2 right-2 bg-black/60 text-white text-[10px] px-2 py-1 rounded-full backdrop-blur-sm">
+                    {product.category.name}
+                  </div>
+                )}
+              </div>
+              
+              <CardContent className="p-4 flex flex-col flex-grow">
+                <div className="flex-grow">
+                  <h3 className="font-heading font-semibold text-[#0A2540] text-base group-hover:text-[#00C49A] transition-colors line-clamp-1" title={product.name}>
+                    {product.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mt-1 line-clamp-1">{product.model || "No Model"}</p>
+                  <p className="mt-2 font-bold text-[#00C49A]">
+                    {product.price ? new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(product.price) : "Rp 0"}
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2 mt-4 pt-4 border-t border-gray-100">
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    className="flex-1 h-8 text-muted-foreground hover:text-[#00C49A]"
+                    onClick={() => router.push(`/admin/products/${product.id}/edit`)}
+                  >
+                    <Edit className="h-3.5 w-3.5 mr-2" />
+                    Edit
+                  </Button>
+                  
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      <Button variant="ghost" size="sm" className="h-8 text-muted-foreground hover:text-red-500 px-2">
+                        <Trash2 className="h-3.5 w-3.5" />
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>Delete Product?</AlertDialogTitle>
+                        <AlertDialogDescription>
+                          Are you sure you want to delete "{product.name}"? This action cannot be undone.
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction onClick={() => handleDelete(product.id)} className="bg-red-500 hover:bg-red-600">
+                          Delete
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
-      ) : (
-        <DataTable
-          columns={columns}
-          data={filteredProducts}
-          onRowClick={(product) => router.push(`/admin/products/${product.id}`)}
-        />
       )}
     </div>
   )

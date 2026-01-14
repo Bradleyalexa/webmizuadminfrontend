@@ -1,22 +1,59 @@
 // Core Types for Admin Panel
 
+
+export interface Category {
+  id: string
+  name: string
+  description?: string
+  createdAt: string
+}
+
 export interface Customer {
   id: string
   name: string
   email: string
   phone: string
   address: string
+  addressType?: "apartment" | "rumah" | "company"
+  status: "active" | "inactive" | "blacklisted"
   createdAt: string
-  updatedAt: string
+  updatedAt?: string // Backend might not return this always if it's not setup
 }
+
+export interface CreateCustomerDTO {
+  name: string
+  email: string
+  phone: string
+  address: string
+  addressType?: "apartment" | "rumah" | "company"
+  status?: "active" | "inactive" | "blacklisted"
+  password?: string
+}
+
+export interface UpdateCustomerDTO extends Partial<CreateCustomerDTO> {}
 
 export interface Product {
   id: string
   name: string
-  description: string
-  category: string
-  price: number
+  description?: string | null
+  price?: number | null
+  model?: string | null
+  imageUrl?: string | null
+  categoryId?: string | null
+  category?: {
+    id: string
+    name: string
+  } | null
+  createdAt?: string | null
+}
+
+export interface CreateProductDTO {
+  name: string
+  description?: string
+  price?: number
+  model?: string
   imageUrl?: string
+  categoryId?: string
 }
 
 export interface CustomerProduct {

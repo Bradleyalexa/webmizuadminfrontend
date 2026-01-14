@@ -68,6 +68,86 @@ const createApiClient = (session)=>{
                     token
                 });
             }
+        },
+        categories: {
+            list: async ()=>{
+                return fetchApi("/categories", {
+                    token
+                });
+            }
+        },
+        products: {
+            list: async (params)=>{
+                const searchParams = new URLSearchParams();
+                if (params?.page) searchParams.append("page", params.page.toString());
+                if (params?.limit) searchParams.append("limit", params.limit.toString());
+                if (params?.q) searchParams.append("q", params.q);
+                if (params?.categoryId) searchParams.append("categoryId", params.categoryId);
+                return fetchApi(`/products?${searchParams.toString()}`, {
+                    token
+                });
+            },
+            create: async (data)=>{
+                return fetchApi("/products", {
+                    token,
+                    method: "POST",
+                    body: JSON.stringify(data)
+                });
+            },
+            update: async (id, data)=>{
+                return fetchApi(`/products/${id}`, {
+                    token,
+                    method: "PUT",
+                    body: JSON.stringify(data)
+                });
+            },
+            getOne: async (id)=>{
+                return fetchApi(`/products/${id}`, {
+                    token
+                });
+            },
+            delete: async (id)=>{
+                return fetchApi(`/products/${id}`, {
+                    token,
+                    method: "DELETE"
+                });
+            }
+        },
+        customers: {
+            list: async (params)=>{
+                const searchParams = new URLSearchParams();
+                if (params?.page) searchParams.append("page", params.page.toString());
+                if (params?.limit) searchParams.append("limit", params.limit.toString());
+                if (params?.search) searchParams.append("search", params.search);
+                return fetchApi(`/customers?${searchParams.toString()}`, {
+                    token
+                });
+            },
+            create: async (data)=>{
+                return fetchApi("/customers", {
+                    token,
+                    method: "POST",
+                    body: JSON.stringify(data)
+                });
+            },
+            update: async (id, data)=>{
+                return fetchApi(`/customers/${id}`, {
+                    token,
+                    method: "PUT",
+                    body: JSON.stringify(data)
+                });
+            },
+            getOne: async (id)=>{
+                return fetchApi(`/customers/${id}`, {
+                    token
+                });
+            },
+            delete: async (id)=>{
+                return fetchApi(`/customers/${id}`, {
+                    token,
+                    method: "DELETE"
+                });
+            }
         }
     };
 };

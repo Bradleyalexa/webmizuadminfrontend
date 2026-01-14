@@ -13,6 +13,9 @@ type ApiOptions = RequestInit & {
   token?: string;
 };
 
+// We can rely on Types from @/src/types, but here we define DTOs if needed for generics
+import { CreateProductDTO, CreateCustomerDTO, UpdateCustomerDTO } from "@/src/types";
+
 async function fetchApi<T>(path: string, options: ApiOptions = {}): Promise<T> {
   const { token, headers, ...init } = options;
   
@@ -73,6 +76,76 @@ export const createApiClient = (session: Session | null) => {
       },
       getOne: async (id: string) => {
         return fetchApi(`/technicians/${id}`, { token });
+      }
+    },
+    categories: {
+      list: async () => {
+        return fetchApi("/categories", { token });
+      }
+    },
+    products: {
+      list: async (params?: { page?: number; limit?: number; q?: string; categoryId?: string }) => {
+        const searchParams = new URLSearchParams();
+        if (params?.page) searchParams.append("page", params.page.toString());
+        if (params?.limit) searchParams.append("limit", params.limit.toString());
+        if (params?.q) searchParams.append("q", params.q);
+        if (params?.categoryId) searchParams.append("categoryId", params.categoryId);
+        return fetchApi(`/products?${searchParams.toString()}`, { token });
+      },
+      create: async (data: CreateProductDTO) => {
+        return fetchApi("/products", {
+          token,
+          method: "POST",
+          body: JSON.stringify(data),
+        });
+      },
+      update: async (id: string, data: Partial<CreateProductDTO>) => {
+        return fetchApi(`/products/${id}`, {
+          token,
+          method: "PUT",
+          body: JSON.stringify(data),
+        });
+      },
+      getOne: async (id: string) => {
+        return fetchApi(`/products/${id}`, { token });
+      },
+      delete: async (id: string) => {
+        return fetchApi(`/products/${id}`, {
+          token,
+          method: "DELETE"
+        });
+      }
+    },
+    customers: {
+      list: async (params?: { page?: number; limit?: number; search?: string }) => {
+        const searchParams = new URLSearchParams();
+        if (params?.page) searchParams.append("page", params.page.toString());
+        if (params?.limit) searchParams.append("limit", params.limit.toString());
+        if (params?.search) searchParams.append("search", params.search);
+        return fetchApi(`/customers?${searchParams.toString()}`, { token });
+      },
+      create: async (data: CreateCustomerDTO) => {
+        return fetchApi("/customers", {
+          token,
+          method: "POST",
+          body: JSON.stringify(data),
+        });
+      },
+      update: async (id: string, data: UpdateCustomerDTO) => {
+        return fetchApi(`/customers/${id}`, {
+          token,
+          method: "PUT",
+          body: JSON.stringify(data),
+        });
+      },
+      getOne: async (id: string) => {
+        return fetchApi(`/customers/${id}`, { token });
+      },
+      delete: async (id: string) => {
+        return fetchApi(`/customers/${id}`, {
+          token,
+          method: "DELETE"
+        });
       }
     },
     // Keep structure but throw error or require token for others

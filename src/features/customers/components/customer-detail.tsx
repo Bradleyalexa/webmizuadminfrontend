@@ -1,50 +1,17 @@
 "use client"
 
 import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { useRouter, useParams } from "next/navigation"
 import { ArrowLeft, Edit, Trash2, Package } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { DataTable } from "@/src/components/ui/data-table"
 import { StatusBadge } from "@/src/components/ui/status-badge"
 import type { Customer, CustomerProduct } from "@/src/types"
-
-interface CustomerDetailProps {
-  customer: Customer
-  products: CustomerProduct[]
-}
-
-// Mock data
-const mockCustomer: Customer = {
-  id: "1",
-  name: "John Smith",
-  email: "john.smith@email.com",
-  phone: "+1 (555) 123-4567",
-  address: "123 Main St, New York, NY 10001",
-  createdAt: "2024-01-15",
-  updatedAt: "2024-03-10",
-}
-
-const mockProducts: CustomerProduct[] = [
-  {
-    id: "cp1",
-    customerId: "1",
-    productId: "p1",
-    product: { id: "p1", name: "Air Conditioner Pro 5000", description: "", category: "HVAC", price: 1299 },
-    purchaseDate: "2024-01-15",
-    warrantyExpiry: "2026-01-15",
-    serialNumber: "AC-2024-001234",
-  },
-  {
-    id: "cp2",
-    customerId: "1",
-    productId: "p2",
-    product: { id: "p2", name: "Smart Thermostat X", description: "", category: "Smart Home", price: 249 },
-    purchaseDate: "2024-02-20",
-    warrantyExpiry: "2025-02-20",
-    serialNumber: "ST-2024-005678",
-  },
-]
+import { useEffect, useState } from "react"
+import { useSupabase } from "@/src/components/providers/supabase-provider"
+import { createApiClient } from "@/src/lib/api/client"
+import { toast } from "sonner"
 
 const productColumns = [
   {
@@ -71,8 +38,58 @@ const productColumns = [
 
 export function CustomerDetail() {
   const router = useRouter()
-  const customer = mockCustomer
-  const products = mockProducts
+  const params = useParams()
+  const id = params?.id as string
+
+  const { supabase } = useSupabase()
+  const [customer, setCustomer] = useState<Customer | null>(null)
+  const [products, setProducts] = useState<CustomerProduct[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function fetchData() {
+      if (!id) return
+      
+      try {
+        const { data: sessionData } = await supabase.auth.getSession()
+        const api = createApiClient(sessionData.session)
+        
+        // Fetch Customer
+        const customerRes = await api.customers.getOne(id)
+        if ((customerRes as any).success) {
+          setCustomer((customerRes as any).data)
+        }
+
+        // Fetch Products (TODO: Implement customer_products endpoint)
+        // For now, empty list
+        setProducts([]) 
+        
+      } catch (error: any) {
+        console.error("Failed to fetch customer details", error)
+        toast.error("Failed to load customer details")
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchData()
+  }, [id, supabase])
+
+  if (loading) return <div>Loading...</div>
+  if (!customer) return <div>Customer not found</div>
+
+  const handleDelete = async () => {
+    if (!confirm("Are you sure you want to deactivate this customer?")) return
+    try {
+      const { data: sessionData } = await supabase.auth.getSession()
+      const api = createApiClient(sessionData.session)
+      await api.customers.delete(customer.id)
+      toast.success("Customer deactivated successfully")
+      router.push("/admin/customers")
+    } catch (error: any) {
+      toast.error(error.message || "Failed to delete customer")
+    }
+  }
 
   return (
     <div className="space-y-6">
@@ -97,6 +114,7 @@ export function CustomerDetail() {
           </Button>
           <Button
             variant="outline"
+            onClick={handleDelete}
             className="border-destructive text-destructive hover:bg-destructive hover:text-white bg-transparent"
           >
             <Trash2 className="mr-2 h-4 w-4" />
@@ -113,19 +131,19 @@ export function CustomerDetail() {
           <CardContent className="space-y-4">
             <div>
               <p className="text-sm font-medium text-muted-foreground">Email</p>
-              <p className="text-[#333333]">{customer.email}</p>
+              <p className="text-[#333333]">{customer.email || "N/A"}</p>
             </div>
             <div>
               <p className="text-sm font-medium text-muted-foreground">Phone</p>
-              <p className="text-[#333333]">{customer.phone}</p>
+              <p className="text-[#333333]">{customer.phone || "N/A"}</p>
             </div>
             <div>
               <p className="text-sm font-medium text-muted-foreground">Address</p>
-              <p className="text-[#333333]">{customer.address}</p>
+              <p className="text-[#333333]">{customer.address || "N/A"}</p>
             </div>
             <div>
               <p className="text-sm font-medium text-muted-foreground">Last Updated</p>
-              <p className="text-[#333333]">{new Date(customer.updatedAt).toLocaleDateString()}</p>
+              <p className="text-[#333333]">{customer.updatedAt ? new Date(customer.updatedAt).toLocaleDateString() : "N/A"}</p>
             </div>
           </CardContent>
         </Card>

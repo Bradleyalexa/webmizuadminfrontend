@@ -381,6 +381,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modu
 var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/components/ui/button.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/components/ui/input.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$components$2f$ui$2f$data$2d$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/src/components/ui/data-table.tsx [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/src/lib/api/client.ts [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$components$2f$providers$2f$supabase$2d$provider$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/src/components/providers/supabase-provider.tsx [app-ssr] (ecmascript)");
 "use client";
 ;
 ;
@@ -389,80 +391,93 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$co
 ;
 ;
 ;
-// Mock data
-const mockCustomers = [
-    {
-        id: "1",
-        name: "John Smith",
-        email: "john.smith@email.com",
-        phone: "+1 (555) 123-4567",
-        address: "123 Main St, New York, NY 10001",
-        createdAt: "2024-01-15",
-        updatedAt: "2024-03-10"
-    },
-    {
-        id: "2",
-        name: "Sarah Johnson",
-        email: "sarah.j@email.com",
-        phone: "+1 (555) 234-5678",
-        address: "456 Oak Ave, Los Angeles, CA 90001",
-        createdAt: "2024-02-20",
-        updatedAt: "2024-03-08"
-    },
-    {
-        id: "3",
-        name: "Mike Davis",
-        email: "mike.davis@email.com",
-        phone: "+1 (555) 345-6789",
-        address: "789 Pine Rd, Chicago, IL 60601",
-        createdAt: "2024-01-05",
-        updatedAt: "2024-03-12"
-    },
-    {
-        id: "4",
-        name: "Emily Brown",
-        email: "emily.b@email.com",
-        phone: "+1 (555) 456-7890",
-        address: "321 Elm St, Houston, TX 77001",
-        createdAt: "2024-03-01",
-        updatedAt: "2024-03-15"
-    },
-    {
-        id: "5",
-        name: "David Wilson",
-        email: "david.w@email.com",
-        phone: "+1 (555) 567-8901",
-        address: "654 Maple Dr, Phoenix, AZ 85001",
-        createdAt: "2024-02-10",
-        updatedAt: "2024-03-11"
-    }
-];
-const columns = [
-    {
-        key: "name",
-        header: "Name"
-    },
-    {
-        key: "email",
-        header: "Email",
-        hideOnMobile: true
-    },
-    {
-        key: "phone",
-        header: "Phone",
-        hideOnMobile: true
-    },
-    {
-        key: "createdAt",
-        header: "Joined",
-        render: (customer)=>new Date(customer.createdAt).toLocaleDateString()
-    }
-];
+;
+;
 function CustomerList() {
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
+    const { supabase } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$components$2f$providers$2f$supabase$2d$provider$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSupabase"])();
+    const [session, setSession] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        supabase.auth.getSession().then(({ data: { session } })=>{
+            setSession(session);
+        });
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session)=>{
+            setSession(session);
+        });
+        return ()=>subscription.unsubscribe();
+    }, [
+        supabase
+    ]);
+    const api = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createApiClient"])(session);
     const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
     const [page, setPage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(1);
-    const filteredCustomers = mockCustomers.filter((customer)=>customer.name.toLowerCase().includes(searchQuery.toLowerCase()) || customer.email.toLowerCase().includes(searchQuery.toLowerCase()));
+    const [data, setData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({
+        items: [],
+        total: 0
+    });
+    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
+    const fetchCustomers = async ()=>{
+        try {
+            setLoading(true);
+            const res = await api.customers.list({
+                page,
+                limit: 10,
+                search: searchQuery
+            });
+            // Backend returns { success: true, data: items, pagination: { total } }
+            // Client wrapper returns full response? No, fetchApi returns `data`. 
+            // Checking ProductController... it returns { success: true, data: result } where result is { items, total }.
+            // Checking CustomerController... it returns { success: true, data: result.data, pagination: { total } }
+            // Wait, CustomerController logic:
+            // res.json({ success: true, data: result.data, pagination: { ... } })
+            // fetchApi returns the JSON body.
+            // So res.data is the array, res.pagination.total is the count.
+            const response = res;
+            if (response.success) {
+                setData({
+                    items: response.data,
+                    total: response.pagination.total
+                });
+            }
+        } catch (error) {
+            console.error("Failed to fetch customers", error);
+        } finally{
+            setLoading(false);
+        }
+    };
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        fetchCustomers();
+    }, [
+        page,
+        searchQuery,
+        session
+    ]); // Re-fetch on params change
+    const columns = [
+        {
+            key: "name",
+            header: "Name"
+        },
+        {
+            key: "email",
+            header: "Email",
+            hideOnMobile: true
+        },
+        {
+            key: "phone",
+            header: "Phone",
+            hideOnMobile: true
+        },
+        {
+            key: "status",
+            header: "Status",
+            render: (c)=>c.status
+        },
+        {
+            key: "createdAt",
+            header: "Joined",
+            render: (customer)=>new Date(customer.createdAt).toLocaleDateString()
+        }
+    ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "space-y-4 md:space-y-6",
         children: [
@@ -476,24 +491,27 @@ function CustomerList() {
                                 className: "absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
                             }, void 0, false, {
                                 fileName: "[project]/apps/adminFE/src/features/customers/components/customer-list.tsx",
-                                lineNumber: 86,
+                                lineNumber: 83,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
                                 type: "search",
                                 placeholder: "Search customers...",
                                 value: searchQuery,
-                                onChange: (e)=>setSearchQuery(e.target.value),
+                                onChange: (e)=>{
+                                    setSearchQuery(e.target.value);
+                                    setPage(1);
+                                },
                                 className: "pl-9 bg-white border-border focus:border-[#00C49A] focus:ring-[#00C499]"
                             }, void 0, false, {
                                 fileName: "[project]/apps/adminFE/src/features/customers/components/customer-list.tsx",
-                                lineNumber: 87,
+                                lineNumber: 84,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/apps/adminFE/src/features/customers/components/customer-list.tsx",
-                        lineNumber: 85,
+                        lineNumber: 82,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -507,7 +525,7 @@ function CustomerList() {
                                         className: "mr-2 h-4 w-4"
                                     }, void 0, false, {
                                         fileName: "[project]/apps/adminFE/src/features/customers/components/customer-list.tsx",
-                                        lineNumber: 100,
+                                        lineNumber: 97,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -515,13 +533,13 @@ function CustomerList() {
                                         children: "Filter"
                                     }, void 0, false, {
                                         fileName: "[project]/apps/adminFE/src/features/customers/components/customer-list.tsx",
-                                        lineNumber: 101,
+                                        lineNumber: 98,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/apps/adminFE/src/features/customers/components/customer-list.tsx",
-                                lineNumber: 96,
+                                lineNumber: 93,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -532,7 +550,7 @@ function CustomerList() {
                                         className: "mr-2 h-4 w-4"
                                     }, void 0, false, {
                                         fileName: "[project]/apps/adminFE/src/features/customers/components/customer-list.tsx",
-                                        lineNumber: 107,
+                                        lineNumber: 104,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -540,7 +558,7 @@ function CustomerList() {
                                         children: "Add Customer"
                                     }, void 0, false, {
                                         fileName: "[project]/apps/adminFE/src/features/customers/components/customer-list.tsx",
-                                        lineNumber: 108,
+                                        lineNumber: 105,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -548,43 +566,43 @@ function CustomerList() {
                                         children: "Add"
                                     }, void 0, false, {
                                         fileName: "[project]/apps/adminFE/src/features/customers/components/customer-list.tsx",
-                                        lineNumber: 109,
+                                        lineNumber: 106,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/apps/adminFE/src/features/customers/components/customer-list.tsx",
-                                lineNumber: 103,
+                                lineNumber: 100,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/apps/adminFE/src/features/customers/components/customer-list.tsx",
-                        lineNumber: 95,
+                        lineNumber: 92,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/apps/adminFE/src/features/customers/components/customer-list.tsx",
-                lineNumber: 84,
+                lineNumber: 81,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$components$2f$ui$2f$data$2d$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DataTable"], {
                 columns: columns,
-                data: filteredCustomers,
+                data: data.items,
                 page: page,
-                totalPages: Math.ceil(filteredCustomers.length / 10),
+                totalPages: Math.ceil(data.total / 10),
                 onPageChange: setPage,
                 onRowClick: (customer)=>router.push(`/admin/customers/${customer.id}`)
             }, void 0, false, {
                 fileName: "[project]/apps/adminFE/src/features/customers/components/customer-list.tsx",
-                lineNumber: 114,
+                lineNumber: 111,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/apps/adminFE/src/features/customers/components/customer-list.tsx",
-        lineNumber: 83,
+        lineNumber: 80,
         columnNumber: 5
     }, this);
 }
