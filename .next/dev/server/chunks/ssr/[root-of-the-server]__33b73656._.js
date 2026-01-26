@@ -171,6 +171,32 @@ const createApiClient = (session)=>{
                     method: "DELETE"
                 });
             }
+        },
+        customerProducts: {
+            getByCustomer: async (customerId)=>{
+                return fetchApi(`/customer-products/customer/${customerId}`, {
+                    token
+                });
+            },
+            create: async (data)=>{
+                return fetchApi("/customer-products", {
+                    token,
+                    method: "POST",
+                    body: JSON.stringify(data)
+                });
+            },
+            update: async (id, data)=>{
+                return fetchApi(`/customer-products/${id}`, {
+                    token,
+                    method: "PATCH",
+                    body: JSON.stringify(data)
+                });
+            },
+            getOne: async (id)=>{
+                return fetchApi(`/customer-products/${id}`, {
+                    token
+                });
+            }
         }
     };
 };

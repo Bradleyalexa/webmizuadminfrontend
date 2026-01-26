@@ -1,80 +1,770 @@
-[00:00:01.184] Server  LOG      ✓ Ready in 767ms
-[00:00:02.040] Server  WARN     ⚠ Cross origin request detected from 192.168.56.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+[00:00:01.961] Server  LOG      ✓ Ready in 1321ms
+[00:00:16.986] Server  LOG      ○ Compiling / ...
+[00:00:19.255] Server  WARN     ⚠ Cross origin request detected from 192.168.56.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[00:00:05.410] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:00:05.567] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:05.786] Browser ERROR   Failed to fetch customers {}
-[00:00:05.786] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:05.786] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/customers","route":"/admin/customers"}
-[00:00:05.786] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768421780814}
-[00:00:06.227] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:00:16.109] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/d9b382f7-44e8-4038-88c7-2502496b192a color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/d9b382f7-44e8-4038-88c7-2502496b192a","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768421791126}
-[00:00:21.943] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/contracts?customerId=d9b382f7-44e8-4038-88c7-2502496b192a color: rgb(120, 120, 120) color: inherit {"dp":"/admin/contracts","o":"http://192.168.56.1:3000/admin/contracts?customerId=d9b382f7-44e8-4038-88c7-2502496b192a","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768421796948}
-[00:00:26.460] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/d9b382f7-44e8-4038-88c7-2502496b192a color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/d9b382f7-44e8-4038-88c7-2502496b192a","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768421801477}
-[00:00:32.642] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/services?customerId=d9b382f7-44e8-4038-88c7-2502496b192a color: rgb(120, 120, 120) color: inherit {"dp":"/admin/services","o":"http://192.168.56.1:3000/admin/services?customerId=d9b382f7-44e8-4038-88c7-2502496b192a","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768421807642}
-[00:00:34.323] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/d9b382f7-44e8-4038-88c7-2502496b192a color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/d9b382f7-44e8-4038-88c7-2502496b192a","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768421809349}
-[00:00:40.864] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768421815858}
-[00:00:40.864] Browser ERROR   Failed to fetch customers {}
-[00:00:40.864] Browser ERROR   Failed to fetch customers {}
-[00:00:44.812] Browser ERROR   Failed to fetch customers {}
-[00:00:44.909] Browser ERROR   Failed to fetch customers {}
-[00:00:45.144] Browser ERROR   Failed to fetch customers {}
-[00:00:45.144] Browser ERROR   Failed to fetch customers {}
-[00:00:47.543] Browser ERROR   Failed to fetch customers {}
-[00:00:56.632] Browser ERROR   Failed to fetch customers {}
-[00:00:56.881] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:01:11.976] Browser ERROR   Failed to fetch customers {}
-[00:01:11.976] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:01:32.044] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/contracts color: rgb(120, 120, 120) color: inherit {"dp":"/admin/contracts","o":"http://192.168.56.1:3000/admin/contracts","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768421867052}
-[00:02:20.036] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:03:10.312] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:05:34.551] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:05:35.081] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768422110083}
-[00:05:35.081] Browser ERROR   Failed to fetch customers {}
-[00:05:35.081] Browser ERROR   Failed to fetch customers {}
-[00:05:35.549] Browser ERROR   Failed to fetch customers {}
-[00:05:38.740] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:05:38.982] Browser ERROR   Failed to fetch customers {}
-[00:05:38.982] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:05:38.982] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/customers","route":"/admin/customers"}
-[00:05:38.982] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768422114009}
-[00:05:39.465] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:05:39.465] Browser ERROR   Failed to fetch customers {}
-[00:06:10.079] Browser ERROR   Failed to fetch customers {}
-[00:06:10.079] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:06:11.246] Browser ERROR   Failed to fetch customers {}
-[00:06:11.416] Browser ERROR   Failed to fetch customers {}
-[00:06:11.589] Browser ERROR   Failed to fetch customers {}
-[00:06:11.792] Browser ERROR   Failed to fetch customers {}
-[00:07:33.841] Browser ERROR   Failed to fetch customers {}
-[00:07:33.841] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:10:18.526] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:10:18.863] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:10:19.105] Browser ERROR   Failed to fetch customers {}
-[00:10:19.105] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:10:19.105] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/customers","route":"/admin/customers"}
-[00:10:19.105] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768422394128}
-[00:10:19.507] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:10:21.403] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/f6e52442-1577-4626-bfc6-c023c089ba2d color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/f6e52442-1577-4626-bfc6-c023c089ba2d","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768422396421}
-[00:10:23.968] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768422398973}
-[00:10:23.968] Browser ERROR   Failed to fetch customers {}
-[00:10:23.968] Browser ERROR   Failed to fetch customers {}
-[00:10:39.388] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/new color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/new","o":"http://192.168.56.1:3000/admin/customers/new","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768422414386}
-[00:11:22.628] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768422457624}
-[00:11:22.628] Browser ERROR   Failed to fetch customers {}
-[00:11:22.628] Browser ERROR   Failed to fetch customers {}
-[00:11:51.888] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:11:53.496] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products","o":"http://192.168.56.1:3000/admin/products","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768422488509}
-[00:11:57.204] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/new color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/new","o":"http://192.168.56.1:3000/admin/products/new","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768422492224}
-[00:12:04.325] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:12:05.606] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768422500629}
-[00:12:25.144] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:13:53.094] Server  LOG      ✓ Compiled in 172ms
-[00:15:52.134] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:15:53.072] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768422728072}
-[00:15:53.072] Browser ERROR   Failed to fetch customers {}
-[00:15:53.072] Browser ERROR   Failed to fetch customers {}
-[00:15:55.395] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/new color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/new","o":"http://192.168.56.1:3000/admin/customers/new","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768422730392}
-[00:16:24.727] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1768422759740}
-[00:16:25.176] Browser ERROR   Failed to fetch customers {}
-[00:16:25.176] Browser ERROR   Failed to fetch customers {}
+[00:00:19.276] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:19.481] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:19.481] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
+[00:00:19.481] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://192.168.56.1:3000/login","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769444510190}
+[00:00:21.941] Browser ERROR   Failed to load backend profile {}
+[00:00:29.131] Browser ERROR   Failed to load backend profile {}
+[00:00:29.432] Browser ERROR   Role Check Failed {}
+[00:01:03.064] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:01:05.099] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://192.168.56.1:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769444555807}
+[00:01:09.239] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769444559930}
+[00:01:09.239] Browser ERROR   Failed to fetch customers {}
+[00:01:09.239] Browser ERROR   Failed to fetch customers {}
+[00:01:13.916] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products","o":"http://192.168.56.1:3000/admin/products","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769444564607}
+[00:01:16.934] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/contracts color: rgb(120, 120, 120) color: inherit {"dp":"/admin/contracts","o":"http://192.168.56.1:3000/admin/contracts","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769444567626}
+[00:01:23.260] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/contracts/c1 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/contracts/[id]","o":"http://192.168.56.1:3000/admin/contracts/c1","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769444573971}
+[00:02:06.200] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:02:25.528] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products","o":"http://192.168.56.1:3000/admin/products","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769444636234}
+[00:02:26.987] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/services color: rgb(120, 120, 120) color: inherit {"dp":"/admin/services","o":"http://192.168.56.1:3000/admin/services","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769444637686}
+[00:02:29.987] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/tasks color: rgb(120, 120, 120) color: inherit {"dp":"/admin/tasks","o":"http://192.168.56.1:3000/admin/tasks","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769444640687}
+[00:02:36.754] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/tasks/task4 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/tasks/[id]","o":"http://192.168.56.1:3000/admin/tasks/task4","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769444647452}
+[00:02:37.920] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/tasks color: rgb(120, 120, 120) color: inherit {"dp":"/admin/tasks","o":"http://192.168.56.1:3000/admin/tasks","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769444648613}
+[00:02:42.853] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/technicians color: rgb(120, 120, 120) color: inherit {"dp":"/admin/technicians","o":"http://192.168.56.1:3000/admin/technicians","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769444653563}
+[00:02:44.105] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices","o":"http://192.168.56.1:3000/admin/invoices","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769444654789}
+[00:02:48.175] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:02:48.175] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:02:48.175] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:02:48.175] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+[00:02:48.175] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/reports color: rgb(120, 120, 120) color: inherit {"dp":"/admin/reports","o":"http://192.168.56.1:3000/admin/reports","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769444658651}
+[00:02:48.175] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769444658867}
+[00:02:48.175] Browser ERROR   Failed to fetch customers {}
+[00:02:48.175] Browser ERROR   Failed to fetch customers {}
+[00:02:52.411] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769444663119}
+[00:04:05.603] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:05:59.940] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:06:01.729] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:07:37.053] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:11:11.242] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:11:13.801] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769445164500}
+[00:11:13.801] Browser ERROR   Failed to fetch customers {}
+[00:11:13.801] Browser ERROR   Failed to fetch customers {}
+[00:12:28.295] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769445239005}
+[00:18:05.637] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:47:07.557] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./apps/adminFE/src/lib/api/client.ts changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:47:07.580] Server  LOG      ✓ Compiled in 85ms
+[00:47:08.074] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:47:08.954] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:47:08.954] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","route":"/admin/customers/[id]"}
+[00:47:08.954] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769447319274}
+[00:47:10.952] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:48:47.095] Server  LOG      ✓ Compiled in 97ms
+[00:49:30.360] Server  LOG      ✓ Compiled in 104ms
+[00:51:29.858] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:51:30.587] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769447581281}
+[00:51:30.587] Browser ERROR   Failed to fetch customers {}
+[00:51:30.587] Browser ERROR   Failed to fetch customers {}
+[00:51:31.908] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://192.168.56.1:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769447582613}
+[00:51:33.087] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769447583774}
+[00:51:33.087] Browser ERROR   Failed to fetch customers {}
+[00:51:33.087] Browser ERROR   Failed to fetch customers {}
+[00:51:34.507] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769447585213}
+[00:51:42.523] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8/edit color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]/edit","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8/edit","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769447593216}
+[00:51:48.137] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769447598837}
+[00:52:49.249] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:52:52.790] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/0923d6c5-a36e-476b-92ec-5adcee0f2047 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/0923d6c5-a36e-476b-92ec-5adcee0f2047","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769447663499}
+[00:54:32.323] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:55:41.186] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:57:19.631] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:57:23.848] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769447934552}
+[00:58:15.011] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:58:54.864] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:58:56.940] Browser ERROR   {}
+[00:59:08.485] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:59:10.018] Browser ERROR   {}
+[00:59:15.650] Browser ERROR   {}
+[00:59:18.831] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:59:19.052] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:59:19.052] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","route":"/admin/customers/[id]"}
+[00:59:19.052] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448049751}
+[00:59:19.502] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:59:35.182] Browser ERROR   {}
+[01:00:09.838] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:00:12.940] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448103635}
+[01:00:12.940] Browser ERROR   Failed to fetch customers {}
+[01:00:12.940] Browser ERROR   Failed to fetch customers {}
+[01:00:14.777] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/f6e52442-1577-4626-bfc6-c023c089ba2d color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/f6e52442-1577-4626-bfc6-c023c089ba2d","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448105479}
+[01:00:30.759] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448121437}
+[01:00:30.759] Browser ERROR   Failed to fetch customers {}
+[01:00:30.760] Browser ERROR   Failed to fetch customers {}
+[01:00:33.573] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/d9b382f7-44e8-4038-88c7-2502496b192a color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/d9b382f7-44e8-4038-88c7-2502496b192a","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448124284}
+[01:00:36.586] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448127263}
+[01:00:36.586] Browser ERROR   Failed to fetch customers {}
+[01:00:36.586] Browser ERROR   Failed to fetch customers {}
+[01:00:58.116] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448148824}
+[01:01:10.149] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/5567d58c-5329-4522-95af-0c0e561c3eec color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/5567d58c-5329-4522-95af-0c0e561c3eec","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448160856}
+[01:01:17.269] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448167978}
+[01:01:24.990] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:01:27.282] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:01:28.441] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:01:29.953] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:01:30.788] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:01:37.069] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/5567d58c-5329-4522-95af-0c0e561c3eec color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/5567d58c-5329-4522-95af-0c0e561c3eec","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448187770}
+[01:01:41.786] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448192495}
+[01:01:44.569] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/services color: rgb(120, 120, 120) color: inherit {"dp":"/admin/services","o":"http://192.168.56.1:3000/admin/services","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448195269}
+[01:01:45.920] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products","o":"http://192.168.56.1:3000/admin/products","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448196625}
+[01:01:46.186] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448196876}
+[01:01:46.186] Browser ERROR   Failed to fetch customers {}
+[01:01:46.186] Browser ERROR   Failed to fetch customers {}
+[01:01:49.271] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448199980}
+[01:01:55.015] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8/edit color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]/edit","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8/edit","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448205702}
+[01:01:56.291] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448206999}
+[01:01:58.581] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448209272}
+[01:01:58.581] Browser ERROR   Failed to fetch customers {}
+[01:01:58.581] Browser ERROR   Failed to fetch customers {}
+[01:02:01.190] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/d9b382f7-44e8-4038-88c7-2502496b192a color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/d9b382f7-44e8-4038-88c7-2502496b192a","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448211888}
+[01:02:06.787] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448217487}
+[01:02:06.787] Browser ERROR   Failed to fetch customers {}
+[01:02:06.787] Browser ERROR   Failed to fetch customers {}
+[01:02:11.736] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:02:11.957] Browser ERROR   Failed to fetch customers {}
+[01:02:11.957] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:02:11.957] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/customers","route":"/admin/customers"}
+[01:02:11.957] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448222663}
+[01:02:12.501] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:02:35.092] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:02:35.682] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/d9b382f7-44e8-4038-88c7-2502496b192a color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/d9b382f7-44e8-4038-88c7-2502496b192a","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448246382}
+[01:02:45.946] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448256638}
+[01:02:45.946] Browser ERROR   Failed to fetch customers {}
+[01:02:45.946] Browser ERROR   Failed to fetch customers {}
+[01:04:24.997] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:04:25.571] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448356270}
+[01:04:30.989] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/5567d58c-5329-4522-95af-0c0e561c3eec color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/5567d58c-5329-4522-95af-0c0e561c3eec","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448361700}
+[01:04:56.039] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:04:56.974] Server  LOG      ✓ Compiled in 129ms
+[01:05:02.680] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:05:03.856] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448394560}
+[01:05:07.390] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/5567d58c-5329-4522-95af-0c0e561c3eec color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/5567d58c-5329-4522-95af-0c0e561c3eec","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448398097}
+[01:05:11.047] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448401752}
+[01:05:39.574] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:05:41.535] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:05:41.759] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:05:41.759] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","route":"/admin/customers/[id]"}
+[01:05:41.759] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448432462}
+[01:05:42.226] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:05:44.675] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:05:44.841] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <div className="min-h-scre...">
+      <AdminSidebar>
+      <div className="lg:ml-64 t...">
+        <AdminHeader onMenuClick={function AdminLayout.useCallback[handleOpenSidebar]}>
+          <header className="sticky top...">
+            <Button>
+            <div>
+            <div className="flex items...">
+              <Sheet>
+                <Dialog data-slot="sheet">
+                  <DialogProvider scope={undefined} triggerRef={{current:null}} contentRef={{current:null}} ...>
+                    <SheetTrigger asChild={true}>
+                      <DialogTrigger data-slot="sheet-trigger" asChild={true}>
+                        <Primitive.button type="button" aria-haspopup="dialog" aria-expanded={false} ...>
+                          <Primitive.button.Slot type="button" aria-haspopup="dialog" aria-expanded={false} ...>
+                            <Primitive.button.SlotClone type="button" aria-haspopup="dialog" aria-expanded={false} ...>
+                              <Button variant="ghost" size="icon" className="relative t..." type="button" ...>
+                                <button
+                                  data-slot="sheet-trigger"
+                                  className={"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded..."}
+                                  type="button"
+                                  aria-haspopup="dialog"
+                                  aria-expanded={false}
++                                 aria-controls="radix-_R_tkndlb_"
+-                                 aria-controls="radix-_R_3mkndlb_"
+                                  data-state="closed"
+                                  onClick={function handleEvent}
+                                  ref={function}
+                                >
+                    ...
+              ...
+                <MenuAnchor asChild={true} __scopeMenu={{Menu:[...], ...}}>
+                  <PopperAnchor __scopePopper={{Menu:[...], ...}} asChild={true} ref={null}>
+                    <Primitive.div asChild={true} ref={function}>
+                      <Primitive.div.Slot ref={function}>
+                        <Primitive.div.SlotClone ref={function}>
+                          <Primitive.button type="button" id="radix-_R_1..." aria-haspopup="menu" aria-expanded={false} ...>
+                            <Primitive.button.Slot type="button" id="radix-_R_1..." aria-haspopup="menu" ...>
+                              <Primitive.button.SlotClone type="button" id="radix-_R_1..." aria-haspopup="menu" ...>
+                                <Button variant="ghost" size="icon" className="text-[#333..." type="button" ...>
+                                  <button
+                                    data-slot="dropdown-menu-trigger"
+                                    className={"inline-flex items-center justify-center gap-2 whitespace-nowrap round..."}
+                                    type="button"
++                                   id="radix-_R_1dkndlb_"
+-                                   id="radix-_R_5mkndlb_"
+                                    aria-haspopup="menu"
+                                    aria-expanded={false}
+                                    aria-controls={undefined}
+                                    data-state="closed"
+                                    data-disabled={undefined}
+                                    disabled={false}
+                                    onPointerDown={function handleEvent}
+                                    onKeyDown={function handleEvent}
+                                    ref={function}
+                                  >
+        ...
+
+[01:05:44.841] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:05:44.842] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","route":"/admin/customers/[id]"}
+[01:05:44.842] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448435553}
+[01:05:45.264] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:06:03.184] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:06:04.142] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:06:04.227] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <div className="min-h-scre...">
+      <AdminSidebar>
+      <div className="lg:ml-64 t...">
+        <AdminHeader onMenuClick={function AdminLayout.useCallback[handleOpenSidebar]}>
+          <header className="sticky top...">
+            <Button>
+            <div>
+            <div className="flex items...">
+              <Sheet>
+                <Dialog data-slot="sheet">
+                  <DialogProvider scope={undefined} triggerRef={{current:null}} contentRef={{current:null}} ...>
+                    <SheetTrigger asChild={true}>
+                      <DialogTrigger data-slot="sheet-trigger" asChild={true}>
+                        <Primitive.button type="button" aria-haspopup="dialog" aria-expanded={false} ...>
+                          <Primitive.button.Slot type="button" aria-haspopup="dialog" aria-expanded={false} ...>
+                            <Primitive.button.SlotClone type="button" aria-haspopup="dialog" aria-expanded={false} ...>
+                              <Button variant="ghost" size="icon" className="relative t..." type="button" ...>
+                                <button
+                                  data-slot="sheet-trigger"
+                                  className={"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded..."}
+                                  type="button"
+                                  aria-haspopup="dialog"
+                                  aria-expanded={false}
++                                 aria-controls="radix-_R_tkndlb_"
+-                                 aria-controls="radix-_R_3mkndlb_"
+                                  data-state="closed"
+                                  onClick={function handleEvent}
+                                  ref={function}
+                                >
+                    ...
+              ...
+                <MenuAnchor asChild={true} __scopeMenu={{Menu:[...], ...}}>
+                  <PopperAnchor __scopePopper={{Menu:[...], ...}} asChild={true} ref={null}>
+                    <Primitive.div asChild={true} ref={function}>
+                      <Primitive.div.Slot ref={function}>
+                        <Primitive.div.SlotClone ref={function}>
+                          <Primitive.button type="button" id="radix-_R_1..." aria-haspopup="menu" aria-expanded={false} ...>
+                            <Primitive.button.Slot type="button" id="radix-_R_1..." aria-haspopup="menu" ...>
+                              <Primitive.button.SlotClone type="button" id="radix-_R_1..." aria-haspopup="menu" ...>
+                                <Button variant="ghost" size="icon" className="text-[#333..." type="button" ...>
+                                  <button
+                                    data-slot="dropdown-menu-trigger"
+                                    className={"inline-flex items-center justify-center gap-2 whitespace-nowrap round..."}
+                                    type="button"
++                                   id="radix-_R_1dkndlb_"
+-                                   id="radix-_R_5mkndlb_"
+                                    aria-haspopup="menu"
+                                    aria-expanded={false}
+                                    aria-controls={undefined}
+                                    data-state="closed"
+                                    data-disabled={undefined}
+                                    disabled={false}
+                                    onPointerDown={function handleEvent}
+                                    onKeyDown={function handleEvent}
+                                    ref={function}
+                                  >
+        ...
+
+[01:06:04.227] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:06:04.227] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","route":"/admin/customers/[id]"}
+[01:06:04.227] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448455014}
+[01:06:04.408] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:06:04.568] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:06:04.568] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","route":"/admin/customers/[id]"}
+[01:06:04.568] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448455274}
+[01:06:05.077] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:06:36.288] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:06:50.616] Browser ERROR   {}
+[01:07:03.808] Browser ERROR   {}
+[01:07:48.304] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:08:14.244] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:08:15.226] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448585914}
+[01:08:15.226] Browser ERROR   Failed to fetch customers {}
+[01:08:15.226] Browser ERROR   Failed to fetch customers {}
+[01:08:17.517] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products","o":"http://192.168.56.1:3000/admin/products","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448588219}
+[01:08:25.243] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448595926}
+[01:08:25.243] Browser ERROR   Failed to fetch customers {}
+[01:08:25.243] Browser ERROR   Failed to fetch customers {}
+[01:08:27.919] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448598626}
+[01:08:29.310] Server  LOG      ✓ Compiled in 133ms
+[01:08:29.413] Browser ERROR   ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx:56:41
+Parsing ecmascript source code failed
+  54 |               <FormLabel>Product <span className="text-destructive">*</span></FormLabel>
+  55 | // ...
+> 56 |                 <FormLabel>Installation Date <span className="text-destructive">*</span></FormLabel>
+     |                                         ^^^^
+  57 | // ...
+  58 |               <FormLabel>Installation Location <span className="text-destructive">*</span></FormLabel>
+  59 | // ...
+
+Expected ';', '}' or <eof>
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+[01:08:31.151] Server  ERROR    ⨯ ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx:56:41
+Parsing ecmascript source code failed
+  54 |               <FormLabel>Product <span className="text-destructive">*</span></FormLabel>
+  55 | // ...
+> 56 |                 <FormLabel>Installation Date <span className="text-destructive">*</span></FormLabel>
+     |                                         ^^^^
+  57 | // ...
+  58 |               <FormLabel>Installation Location <span className="text-destructive">*</span></FormLabel>
+  59 | // ...
+
+Expected ';', '}' or <eof>
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+
+
+[01:08:31.296] Browser ERROR   ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx:56:41
+Parsing ecmascript source code failed
+  54 |               <FormLabel>Product <span className="text-destructive">*</span></FormLabel>
+  55 | // ...
+> 56 |                 <FormLabel>Installation Date <span className="text-destructive">*</span></FormLabel>
+     |                                         ^^^^
+  57 | // ...
+  58 |               <FormLabel>Installation Location <span className="text-destructive">*</span></FormLabel>
+  59 | // ...
+
+Expected ';', '}' or <eof>
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+[01:08:32.143] Browser ERROR   ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx:56:41
+Parsing ecmascript source code failed
+  54 |               <FormLabel>Product <span className="text-destructive">*</span></FormLabel>
+  55 | // ...
+> 56 |                 <FormLabel>Installation Date <span className="text-destructive">*</span></FormLabel>
+     |                                         ^^^^
+  57 | // ...
+  58 |               <FormLabel>Installation Location <span className="text-destructive">*</span></FormLabel>
+  59 | // ...
+
+Expected ';', '}' or <eof>
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+[01:08:32.276] Browser ERROR   ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx:56:41
+Parsing ecmascript source code failed
+  54 |               <FormLabel>Product <span className="text-destructive">*</span></FormLabel>
+  55 | // ...
+> 56 |                 <FormLabel>Installation Date <span className="text-destructive">*</span></FormLabel>
+     |                                         ^^^^
+  57 | // ...
+  58 |               <FormLabel>Installation Location <span className="text-destructive">*</span></FormLabel>
+  59 | // ...
+
+Expected ';', '}' or <eof>
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+[01:08:33.057] Browser ERROR   uncaughtError: Error: ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx:56:41
+Parsing ecmascript source code failed
+  54 |               <FormLabel>Product <span className="text-destructive">*</span></FormLabel>
+  55 | // ...
+> 56 |                 <FormLabel>Installation Date <span className="text-destructive">*</span></FormLabel>
+     |                                         ^^^^
+  57 | // ...
+  58 |               <FormLabel>Installation Location <span className="text-destructive">*</span></FormLabel>
+  59 | // ...
+
+Expected ';', '}' or <eof>
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+
+
+[01:08:33.942] Browser ERROR   ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx:56:41
+Parsing ecmascript source code failed
+  54 |               <FormLabel>Product <span className="text-destructive">*</span></FormLabel>
+  55 | // ...
+> 56 |                 <FormLabel>Installation Date <span className="text-destructive">*</span></FormLabel>
+     |                                         ^^^^
+  57 | // ...
+  58 |               <FormLabel>Installation Location <span className="text-destructive">*</span></FormLabel>
+  59 | // ...
+
+Expected ';', '}' or <eof>
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+[01:08:33.942] Browser ERROR   ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx:56:41
+Parsing ecmascript source code failed
+  54 |               <FormLabel>Product <span className="text-destructive">*</span></FormLabel>
+  55 | // ...
+> 56 |                 <FormLabel>Installation Date <span className="text-destructive">*</span></FormLabel>
+     |                                         ^^^^
+  57 | // ...
+  58 |               <FormLabel>Installation Location <span className="text-destructive">*</span></FormLabel>
+  59 | // ...
+
+Expected ';', '}' or <eof>
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customer-products/components/customer-product-detail.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customer-products/components/customer-product-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/products/customer-products/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customer-products/components/customer-product-detail.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customer-products/components/customer-product-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/products/customer-products/[id]/page.tsx [Server Component]
+[01:08:33.942] Browser ERROR   ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx:56:41
+Parsing ecmascript source code failed
+  54 |               <FormLabel>Product <span className="text-destructive">*</span></FormLabel>
+  55 | // ...
+> 56 |                 <FormLabel>Installation Date <span className="text-destructive">*</span></FormLabel>
+     |                                         ^^^^
+  57 | // ...
+  58 |               <FormLabel>Installation Location <span className="text-destructive">*</span></FormLabel>
+  59 | // ...
+
+Expected ';', '}' or <eof>
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+[01:09:40.795] Server  LOG      ✓ Compiled in 66ms
+[01:09:41.324] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:09:41.959] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:09:41.959] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","route":"/admin/customers/[id]"}
+[01:09:41.959] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769448672477}
+[01:09:42.955] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:10:11.965] Server  LOG      ✓ Compiled in 72ms
+[01:11:45.991] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:12:02.676] Browser ERROR   {}
+[01:13:54.627] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:14:07.361] Browser ERROR   {}
+[01:14:11.198] Browser ERROR   {}
+[01:16:15.331] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:16:49.941] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:16:56.219] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:18:06.479] Server  LOG      ✓ Compiled in 66ms
+[01:18:06.945] Browser ERROR   ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx:29:29
+Parsing ecmascript source code failed
+  27 |
+  28 |   product_catalog_id: z.string().min(1, "Product is required"),
+> 29 |   installation_technician_id: z.string().min(1, "Technician is required"),
+     |                             ^
+  30 |   installation_date: z.string().min(1, "Installation date is required"),
+  31 |   installation_location: z.string().optional(),
+  32 |   cust_product_price: z.coerce.number().min(0, "Price is required"),
+
+Expected ';', '}' or <eof>
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+[01:18:34.333] Server  LOG      ✓ Compiled in 62ms
+[01:18:34.948] Browser ERROR   ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx:301:9
+Parsing ecmascript source code failed
+  299 |         </div>
+  300 |
+> 301 |         <FormField
+      |         ^
+  302 |           control={form.control}
+  303 |           name="installation_technician_id"
+  304 |           render={({ field }) => (
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+[01:18:34.948] Browser ERROR   ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx:298:14
+Parsing ecmascript source code failed
+  296 |                 </FormItem>
+  297 |             )}
+> 298 |             />
+      |              ^
+  299 |         </div>
+  300 |
+  301 |         <FormField
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+[01:18:34.948] Browser ERROR   ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx:297:14
+Parsing ecmascript source code failed
+  295 |                 <FormMessage />
+  296 |                 </FormItem>
+> 297 |             )}
+      |              ^
+  298 |             />
+  299 |         </div>
+  300 |
+
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component Browser]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/src/features/customer-products/components/customer-product-form.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Client Component SSR]
+    ./apps/adminFE/src/features/customers/components/customer-detail.tsx [Server Component]
+    ./apps/adminFE/app/admin/customers/[id]/page.tsx [Server Component]
+[01:20:00.333] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:20:16.396] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:20:16.625] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:20:16.625] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","route":"/admin/customers/[id]"}
+[01:20:16.625] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769449307328}
+[01:20:22.590] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:20:22.761] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:20:22.761] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","route":"/admin/customers/[id]"}
+[01:20:22.761] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769449313462}
+[01:20:29.687] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:20:29.860] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:20:29.860] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","route":"/admin/customers/[id]"}
+[01:20:29.860] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769449320561}
+[01:20:30.324] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769449321011}
+[01:20:30.324] Browser ERROR   Failed to fetch customers {}
+[01:20:30.324] Browser ERROR   Failed to fetch customers {}
+[01:20:31.191] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products","o":"http://192.168.56.1:3000/admin/products","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769449321885}
+[01:20:33.903] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:20:37.865] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:20:39.170] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769449329859}
+[01:20:39.171] Browser ERROR   Failed to fetch customers {}
+[01:20:39.171] Browser ERROR   Failed to fetch customers {}
+[01:20:40.557] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769449331268}
+[01:21:26.543] Browser ERROR   Storage upload error: {"message":"Bucket not found","name":"StorageApiError","status":400,"statusCode":"404"}
+[01:21:40.209] Browser ERROR   Storage upload error: {"message":"Bucket not found","name":"StorageApiError","status":400,"statusCode":"404"}
+[01:21:48.220] Browser ERROR   Storage upload error: {"message":"Bucket not found","name":"StorageApiError","status":400,"statusCode":"404"}
+[01:21:52.126] Browser ERROR   Storage upload error: {"message":"Bucket not found","name":"StorageApiError","status":400,"statusCode":"404"}
+[01:22:00.518] Browser ERROR   Storage upload error: {"message":"Bucket not found","name":"StorageApiError","status":400,"statusCode":"404"}
+[01:22:36.510] Browser ERROR   Storage upload error: {"message":"Bucket not found","name":"StorageApiError","status":400,"statusCode":"404"}
+[01:22:41.260] Browser ERROR   Storage upload error: {"message":"Bucket not found","name":"StorageApiError","status":400,"statusCode":"404"}
+[01:22:52.760] Browser ERROR   Storage upload error: {"message":"Bucket not found","name":"StorageApiError","status":400,"statusCode":"404"}
+[01:23:00.875] Browser ERROR   Storage upload error: {"message":"Bucket not found","name":"StorageApiError","status":400,"statusCode":"404"}
+[01:25:26.695] Server  LOG      ✓ Compiled in 71ms
+[01:26:03.177] Server  LOG      ✓ Compiled in 93ms
+[01:27:25.665] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:27:53.332] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/3276b869-0dba-4578-b354-e55fff03be57 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/3276b869-0dba-4578-b354-e55fff03be57","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769449764039}
+[01:27:55.931] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769449766631}
+[01:28:10.191] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:29:01.204] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:29:16.922] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:30:20.455] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:30:28.068] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/3276b869-0dba-4578-b354-e55fff03be57 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/3276b869-0dba-4578-b354-e55fff03be57","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769449918776}
+[01:30:30.936] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769449921636}
+[01:30:33.189] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/b87a4d66-5184-47ef-ad07-49b7d40a1d45 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/b87a4d66-5184-47ef-ad07-49b7d40a1d45","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769449923900}
+[01:30:35.301] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769449926003}
+[01:30:37.367] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/965aa347-30d5-48ef-ac58-087965e30718 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/965aa347-30d5-48ef-ac58-087965e30718","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769449928076}
+[01:30:39.220] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769449929930}
+[01:30:40.551] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/2ca64eac-4f4c-4557-b7a3-cc98159dfc1b color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/2ca64eac-4f4c-4557-b7a3-cc98159dfc1b","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769449931259}
+[01:30:42.900] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769449933606}
+[01:30:58.519] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:31:00.201] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/b87a4d66-5184-47ef-ad07-49b7d40a1d45 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/b87a4d66-5184-47ef-ad07-49b7d40a1d45","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769449950906}
+[01:31:47.051] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:33:32.958] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:34:17.140] Server  LOG      ✓ Compiled in 152ms
+[01:36:22.355] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:36:24.974] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products","o":"http://192.168.56.1:3000/admin/products","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769450275673}
+[01:36:26.626] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769450277319}
+[01:36:26.626] Browser ERROR   Failed to fetch customers {}
+[01:36:26.626] Browser ERROR   Failed to fetch customers {}
+[01:36:27.875] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769450278583}
+[01:36:30.276] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/b87a4d66-5184-47ef-ad07-49b7d40a1d45 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/b87a4d66-5184-47ef-ad07-49b7d40a1d45","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769450280986}
+[01:37:03.759] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769450314469}
+[01:37:05.826] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/b87a4d66-5184-47ef-ad07-49b7d40a1d45 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/b87a4d66-5184-47ef-ad07-49b7d40a1d45","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769450316532}
+[01:37:07.010] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769450317709}
+[01:37:08.425] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/3276b869-0dba-4578-b354-e55fff03be57 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/3276b869-0dba-4578-b354-e55fff03be57","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769450319128}
+[01:37:10.327] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769450321024}
+[01:37:11.693] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/2ca64eac-4f4c-4557-b7a3-cc98159dfc1b color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/2ca64eac-4f4c-4557-b7a3-cc98159dfc1b","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769450322400}
+[01:37:13.190] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769450323901}
+[01:37:38.376] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/3a5ddada-3202-48f1-8086-08edfab2659a color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/3a5ddada-3202-48f1-8086-08edfab2659a","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769450349082}
+[01:37:43.507] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769450354208}
+[01:37:45.260] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/b87a4d66-5184-47ef-ad07-49b7d40a1d45 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/b87a4d66-5184-47ef-ad07-49b7d40a1d45","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769450355968}
+[01:37:59.776] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:37:59.776] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/products/customer-products/b87a4d66-5184-47ef-ad07-49b7d40a1d45","route":"/admin/products/customer-products/[id]"}
+[01:37:59.776] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/b87a4d66-5184-47ef-ad07-49b7d40a1d45 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/b87a4d66-5184-47ef-ad07-49b7d40a1d45","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769450370485}
+[01:38:00.290] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:38:09.908] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:38:09.908] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/products/customer-products/b87a4d66-5184-47ef-ad07-49b7d40a1d45","route":"/admin/products/customer-products/[id]"}
+[01:38:09.909] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/b87a4d66-5184-47ef-ad07-49b7d40a1d45 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/b87a4d66-5184-47ef-ad07-49b7d40a1d45","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769450380608}
+[01:38:10.695] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:38:25.044] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:38:25.044] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/products/customer-products/b87a4d66-5184-47ef-ad07-49b7d40a1d45","route":"/admin/products/customer-products/[id]"}
+[01:38:25.044] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/b87a4d66-5184-47ef-ad07-49b7d40a1d45 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/b87a4d66-5184-47ef-ad07-49b7d40a1d45","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769450395754}
+[01:38:25.541] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:39:55.750] Server  LOG      ✓ Compiled in 92ms
+[01:41:18.150] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:41:20.147] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769450570853}
+[01:41:22.914] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/3a5ddada-3202-48f1-8086-08edfab2659a color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/3a5ddada-3202-48f1-8086-08edfab2659a","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769450573620}
+[01:43:52.138] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:44:23.251] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:48:35.010] Server  LOG      ✓ Compiled in 93ms
+[01:49:24.013] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:49:25.140] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769451055820}
+[01:49:25.140] Browser ERROR   Failed to fetch customers {}
+[01:49:25.140] Browser ERROR   Failed to fetch customers {}
+[01:49:26.972] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769451057683}
+[01:49:28.857] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/3a5ddada-3202-48f1-8086-08edfab2659a color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/3a5ddada-3202-48f1-8086-08edfab2659a","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769451059567}
+[01:51:17.458] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:51:24.722] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:51:24.722] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/products/customer-products/3a5ddada-3202-48f1-8086-08edfab2659a","route":"/admin/products/customer-products/[id]"}
+[01:51:24.722] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/3a5ddada-3202-48f1-8086-08edfab2659a color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/3a5ddada-3202-48f1-8086-08edfab2659a","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769451175432}
+[01:51:25.237] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:51:44.421] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769451195124}
+[01:51:48.376] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/products/customer-products/3a5ddada-3202-48f1-8086-08edfab2659a color: rgb(120, 120, 120) color: inherit {"dp":"/admin/products/customer-products/[id]","o":"http://192.168.56.1:3000/admin/products/customer-products/3a5ddada-3202-48f1-8086-08edfab2659a","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769451199083}
+[01:52:05.010] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers/[id]","o":"http://192.168.56.1:3000/admin/customers/a3ec8ba7-2f97-4c60-8795-3dbfe9743ed8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769451215719}
+[01:52:25.527] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/customers color: rgb(120, 120, 120) color: inherit {"dp":"/admin/customers","o":"http://192.168.56.1:3000/admin/customers","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769451236202}
+[01:52:25.527] Browser ERROR   Failed to fetch customers {}
+[01:52:25.527] Browser ERROR   Failed to fetch customers {}

@@ -148,6 +148,28 @@ export const createApiClient = (session: Session | null) => {
         });
       }
     },
+    customerProducts: {
+        getByCustomer: async (customerId: string) => {
+            return fetchApi(`/customer-products/customer/${customerId}`, { token });
+        },
+        create: async (data: any) => {
+            return fetchApi("/customer-products", {
+                token,
+                method: "POST",
+                body: JSON.stringify(data)
+            });
+        },
+        update: async (id: string, data: any) => {
+            return fetchApi(`/customer-products/${id}`, {
+                token,
+                method: "PATCH",
+                body: JSON.stringify(data)
+            });
+        },
+        getOne: async (id: string) => {
+            return fetchApi(`/customer-products/${id}`, { token });
+        }
+    }
     // Keep structure but throw error or require token for others
     // For now, implementing just the auth one requested
   };

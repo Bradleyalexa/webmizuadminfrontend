@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useRouter, useParams } from "next/navigation"
-import { ArrowLeft, Edit, Trash2, Package } from "lucide-react"
+import { ArrowLeft, Edit, Trash2, Package, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { DataTable } from "@/src/components/ui/data-table"
@@ -12,27 +12,51 @@ import { useEffect, useState } from "react"
 import { useSupabase } from "@/src/components/providers/supabase-provider"
 import { createApiClient } from "@/src/lib/api/client"
 import { toast } from "sonner"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { CustomerProductForm } from "@/src/features/customer-products/components/customer-product-form"
 
 const productColumns = [
   {
     key: "product",
     header: "Product",
-    render: (item: CustomerProduct) => item.product?.name ?? "-",
+    render: (item: CustomerProduct) => (
+        <div className="flex flex-col">
+            <span className="font-medium text-[#0A2540]">{item.product_name || "Unknown Product"}</span>
+            <span className="text-xs text-muted-foreground">{item.product_model}</span>
+        </div>
+    ),
   },
-  { key: "serialNumber", header: "Serial Number" },
   {
     key: "purchaseDate",
     header: "Purchase Date",
-    render: (item: CustomerProduct) => new Date(item.purchaseDate).toLocaleDateString(),
+    render: (item: CustomerProduct) => item.installation_date ? new Date(item.installation_date).toLocaleDateString() : "-",
   },
   {
-    key: "warrantyExpiry",
-    header: "Warranty",
-    render: (item: CustomerProduct) => {
-      if (!item.warrantyExpiry) return "-"
-      const isExpired = new Date(item.warrantyExpiry) < new Date()
-      return <StatusBadge status={isExpired ? "Expired" : "Active"} variant={isExpired ? "error" : "success"} />
-    },
+    key: "price",
+    header: "Price",
+    render: (item: CustomerProduct) => item.cust_product_price ? new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(item.cust_product_price) : "-",
+  },
+  {
+    key: "technician",
+    header: "Installer",
+    render: (item: CustomerProduct) => item.technician_name || "-",
+  },
+  {
+    key: "contractStatus",
+    header: "Contract",
+    render: (item: CustomerProduct) => (
+        <StatusBadge 
+            status={item.contract_status || "No Contract"} 
+            variant={item.contract_status === 'Active' ? 'success' : (item.contract_status === 'Expired' ? 'error' : 'default')} 
+        />
+    ),
   },
 ]
 
@@ -45,33 +69,36 @@ export function CustomerDetail() {
   const [customer, setCustomer] = useState<Customer | null>(null)
   const [products, setProducts] = useState<CustomerProduct[]>([])
   const [loading, setLoading] = useState(true)
+  const [isAssignOpen, setIsAssignOpen] = useState(false)
+
+  const fetchData = async () => {
+    if (!id) return
+    
+    try {
+      const { data: sessionData } = await supabase.auth.getSession()
+      const api = createApiClient(sessionData.session)
+      
+      // Fetch Customer
+      const customerRes = await api.customers.getOne(id)
+      if ((customerRes as any).success) {
+        setCustomer((customerRes as any).data)
+      }
+
+      // Fetch Products
+      const productsRes = await api.customerProducts.getByCustomer(id)
+        if ((productsRes as any).success) {
+            setProducts((productsRes as any).data)
+        }
+      
+    } catch (error: any) {
+      console.error("Failed to fetch customer details", error)
+      toast.error("Failed to load customer details")
+    } finally {
+      setLoading(false)
+    }
+  }
 
   useEffect(() => {
-    async function fetchData() {
-      if (!id) return
-      
-      try {
-        const { data: sessionData } = await supabase.auth.getSession()
-        const api = createApiClient(sessionData.session)
-        
-        // Fetch Customer
-        const customerRes = await api.customers.getOne(id)
-        if ((customerRes as any).success) {
-          setCustomer((customerRes as any).data)
-        }
-
-        // Fetch Products (TODO: Implement customer_products endpoint)
-        // For now, empty list
-        setProducts([]) 
-        
-      } catch (error: any) {
-        console.error("Failed to fetch customer details", error)
-        toast.error("Failed to load customer details")
-      } finally {
-        setLoading(false)
-      }
-    }
-
     fetchData()
   }, [id, supabase])
 
@@ -151,10 +178,31 @@ export function CustomerDetail() {
         <Card className="bg-white shadow-sm lg:col-span-2">
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle className="font-heading text-lg font-semibold text-[#0A2540]">Owned Products</CardTitle>
-            <Button size="sm" className="bg-[#00C49A] text-white hover:bg-[#00a883]">
-              <Package className="mr-2 h-4 w-4" />
-              Assign Product
-            </Button>
+            
+            <Dialog open={isAssignOpen} onOpenChange={setIsAssignOpen}>
+                <DialogTrigger asChild>
+                    <Button size="sm" className="bg-[#00C49A] text-white hover:bg-[#00a883]">
+                        <Package className="mr-2 h-4 w-4" />
+                        Assign Product
+                    </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+                    <DialogHeader>
+                        <DialogTitle>Assign Product to Customer</DialogTitle>
+                        <DialogDescription>
+                            Fill in the details below to assign a new product.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <CustomerProductForm 
+                        customerId={customer.id} 
+                        onSuccess={() => {
+                            setIsAssignOpen(false)
+                            fetchData() // Refresh list
+                        }} 
+                    />
+                </DialogContent>
+            </Dialog>
+
           </CardHeader>
           <CardContent>
             <DataTable
