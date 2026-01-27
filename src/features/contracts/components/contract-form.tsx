@@ -1,33 +1,62 @@
 "use client"
 
+import { useState, useEffect, useRef } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useRouter } from "next/navigation"
+import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { LoadingButton } from "@/components/ui/loading-button"
 import { contractSchema, type ContractFormData } from "@/src/lib/validations/contract"
+import { useSupabase } from "@/src/components/providers/supabase-provider"
+import { createApiClient } from "@/src/lib/api/client"
+import { Contract, Customer, CustomerProduct } from "@/src/types"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { FileUploadButton } from "@/components/ui/file-upload-button"
 
-const contractTypes = [
-  { value: "annual-maintenance", label: "Annual Maintenance" },
-  { value: "extended-warranty", label: "Extended Warranty" },
-  { value: "premium-service", label: "Premium Service" },
-  { value: "basic-support", label: "Basic Support" },
-]
+interface ContractFormProps {
+  customerProductId?: string
+  contract?: Contract
+  onSuccess?: () => void
+  onCancel?: () => void
+}
 
-// Mock customer products for selection
-const mockCustomerProducts = [
-  { id: "cp1", label: "John Smith - Air Conditioner Pro 5000 (AC-2024-001234)" },
-  { id: "cp2", label: "Sarah Johnson - Smart Thermostat X (ST-2024-005678)" },
-  { id: "cp3", label: "Mike Davis - Central Heating Unit (CH-2024-009876)" },
-]
-
-export function ContractForm() {
+export function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onCancel }: ContractFormProps) {
   const router = useRouter()
-  const searchParams = useSearchParams()
-  const preselectedCustomerProductId = searchParams.get("customerProductId")
+  const { session, supabase } = useSupabase()
+  const [file, setFile] = useState<File | null>(null)
+  const [isUploading, setIsUploading] = useState(false)
+  
+  // Selection Logic for global create
+  const [customers, setCustomers] = useState<Customer[]>([])
+  const [selectedCustomerId, setSelectedCustomerId] = useState<string>("")
+  const [customerProducts, setCustomerProducts] = useState<CustomerProduct[]>([])
+  
+  const isGlobalCreate = !initialCpid && !contract
+
+  const defaultValues = contract ? {
+    start_date: contract.startDate,
+    end_date: contract.endDate,
+    interval_months: contract.intervalMonths,
+    total_service: contract.totalService,
+    contract_url: contract.contractUrl || "",
+    notes: contract.notes || "",
+    price: contract.contractValue || 0,
+    customer_product_id: contract.customerProductId,
+  } : {
+    start_date: new Date().toISOString().split('T')[0],
+    end_date: "",
+    interval_months: 3,
+    total_service: 4,
+    contract_url: "",
+    notes: "",
+    price: 0,
+    customer_product_id: initialCpid || "",
+  }
 
   const {
     register,
@@ -37,118 +66,258 @@ export function ContractForm() {
     formState: { errors, isSubmitting },
   } = useForm<ContractFormData>({
     resolver: zodResolver(contractSchema),
-    defaultValues: {
-      customerProductId: preselectedCustomerProductId || "",
-      value: 0,
-    },
+    defaultValues,
   })
 
-  const onSubmit = async (data: ContractFormData) => {
-    // Placeholder: await api.contracts.create(data)
-    console.log("Contract data:", data)
-    router.push("/admin/contracts")
+  // Fetch customers if global create
+  useEffect(() => {
+    if (isGlobalCreate && session) {
+       const fetchCustomers = async () => {
+         const api = createApiClient(session)
+         try {
+           const res = await api.customers.list({ limit: 100 })
+           if ((res as any).success) {
+              setCustomers((res as any).data)
+           }
+         } catch (e) {
+           console.error("Failed to load customers", e)
+         }
+       }
+       fetchCustomers()
+    }
+  }, [isGlobalCreate, session])
+
+  // Fetch products when customer selected
+  useEffect(() => {
+      if (selectedCustomerId && session) {
+          const fetchProducts = async () => {
+             const api = createApiClient(session)
+             try {
+                 const res = await api.customerProducts.getByCustomer(selectedCustomerId)
+                 if ((res as any).success) {
+                     setCustomerProducts((res as any).data)
+                 }
+             } catch (e) {
+                 console.error("Failed to load customer products", e)
+             }
+          }
+          fetchProducts()
+      } else {
+        setCustomerProducts([])
+      }
+  }, [selectedCustomerId, session])
+
+
+
+  const uploadFile = async (fileToUpload: File): Promise<string> => {
+    const fileExt = fileToUpload.name.split('.').pop()
+    const fileName = `${Math.random()}.${fileExt}`
+    const filePath = `contracts/${fileName}`
+
+    const { error: uploadError } = await supabase.storage
+      .from('documents') 
+      .upload(filePath, fileToUpload)
+
+    if (uploadError) {
+      throw uploadError
+    }
+
+    // Return the relative path, NOT the public URL
+    return filePath
   }
 
+  const onSubmit = async (data: ContractFormData) => {
+    if (!session) return
+
+    try {
+      let documentPath: string | undefined = undefined
+
+      if (file) {
+        setIsUploading(true)
+        documentPath = await uploadFile(file)
+        setIsUploading(false)
+      }
+
+      const api = createApiClient(session)
+      
+      // Explicitly construct payload to ensure types and exclude secure fields
+      const payload: any = {
+          start_date: new Date(data.start_date).toISOString(),
+          end_date: data.end_date ? new Date(data.end_date).toISOString() : null,
+          interval_months: Number(data.interval_months),
+          total_service: Number(data.total_service),
+          notes: data.notes || "",
+          price: Number(data.price || 0), // Fix for price update failure
+          customer_product_id: data.customer_product_id
+      }
+      
+      // Handle Contract URL securely
+      if (documentPath) {
+          // If we have a NEW file, we update the URL (store path)
+          payload.contract_url = documentPath
+      } else if (!isEdit) {
+          // If creating new and no file, ensure it's empty string/null if required
+          payload.contract_url = "" 
+      }
+      // If Editing and NO new file, we OMIT contract_url so we don't overwrite DB with potentially signed URL
+
+      if (isEdit) {
+         await api.contracts.update(contract!.id, payload)
+         toast.success("Contract updated successfully")
+      } else {
+         if (!payload.customer_product_id) {
+             toast.error("Please select a product first")
+             return
+         }
+         await api.contracts.create(payload)
+         toast.success("Contract created successfully")
+      }
+      
+      router.refresh()
+      onSuccess?.()
+    } catch (error: any) {
+      setIsUploading(false)
+      console.error(error)
+      toast.error(error.message || "Failed to save contract")
+    }
+  }
+
+  const isEdit = !!contract
+
   return (
-    <Card className="bg-white shadow-sm">
-      <CardHeader>
-        <CardTitle className="font-heading text-xl font-semibold text-[#0A2540]">Contract Details</CardTitle>
+    <Card className="w-full border-0 shadow-none">
+       {/* Remove Card wrapper to fit in Dialog better, or keep it clean */}
+      <CardHeader className="px-0 pt-0">
+        <CardTitle>{isEdit ? "Edit Contract" : "Create New Contract"}</CardTitle>
       </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid gap-6 sm:grid-cols-2">
-            <div className="space-y-2 sm:col-span-2">
-              <Label className="text-[#333333]">Customer Product</Label>
-              <Select
-                value={watch("customerProductId")}
-                onValueChange={(value) => setValue("customerProductId", value)}
-              >
-                <SelectTrigger className="bg-white">
-                  <SelectValue placeholder="Select a customer product" />
-                </SelectTrigger>
-                <SelectContent>
-                  {mockCustomerProducts.map((cp) => (
-                    <SelectItem key={cp.id} value={cp.id}>
-                      {cp.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              {errors.customerProductId && (
-                <p className="text-sm text-destructive">{errors.customerProductId.message}</p>
-              )}
-            </div>
+      <CardContent className="px-0">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          
+          {/* Customer & Product Selection for Global Create */}
+          {isGlobalCreate && (
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-muted/20 p-4 rounded-lg">
+                <div className="space-y-2">
+                   <Label>Customer</Label>
+                   <Select onValueChange={(val) => setSelectedCustomerId(val)}>
+                      <SelectTrigger>
+                         <SelectValue placeholder="Select Customer" />
+                      </SelectTrigger>
+                      <SelectContent>
+                         {customers.map(c => (
+                             <SelectItem key={c.id} value={c.id}>{c.name}</SelectItem>
+                         ))}
+                      </SelectContent>
+                   </Select>
+                </div>
+                <div className="space-y-2">
+                   <Label>Product</Label>
+                   <Select 
+                      disabled={!selectedCustomerId}
+                      onValueChange={(val) => setValue("customer_product_id", val)}
+                   >
+                      <SelectTrigger>
+                         <SelectValue placeholder="Select Product" />
+                      </SelectTrigger>
+                      <SelectContent>
+                          {customerProducts.map(cp => (
+                              <SelectItem key={cp.id} value={cp.id}>
+                                {cp.product_name} ({cp.product_model})
+                              </SelectItem>
+                          ))}
+                      </SelectContent>
+                   </Select>
+                   {errors.customer_product_id && <p className="text-sm text-destructive">Product is required</p>}
+                </div>
+             </div>
+          )}
 
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label className="text-[#333333]">Contract Type</Label>
-              <Select onValueChange={(value) => setValue("type", value)}>
-                <SelectTrigger className="bg-white">
-                  <SelectValue placeholder="Select type" />
-                </SelectTrigger>
-                <SelectContent>
-                  {contractTypes.map((type) => (
-                    <SelectItem key={type.value} value={type.value}>
-                      {type.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              {errors.type && <p className="text-sm text-destructive">{errors.type.message}</p>}
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="value" className="text-[#333333]">
-                Contract Value ($)
-              </Label>
+              <Label htmlFor="start_date">Start Date</Label>
               <Input
-                id="value"
+                id="start_date"
+                type="date"
+                {...register("start_date")}
+              />
+              {errors.start_date && <p className="text-sm text-destructive">{errors.start_date.message}</p>}
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="end_date">End Date</Label>
+              <Input
+                id="end_date"
+                type="date"
+                {...register("end_date")}
+              />
+              {errors.end_date && <p className="text-sm text-destructive">{errors.end_date.message}</p>}
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="interval_months">Interval (Months)</Label>
+              <Input
+                id="interval_months"
                 type="number"
-                {...register("value", { valueAsNumber: true })}
-                placeholder="299"
-                className="border-border bg-white focus:border-[#00C49A] focus:ring-[#00C49A]"
+                min={1}
+                {...register("interval_months")}
               />
-              {errors.value && <p className="text-sm text-destructive">{errors.value.message}</p>}
+              {errors.interval_months && <p className="text-sm text-destructive">{errors.interval_months.message}</p>}
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="startDate" className="text-[#333333]">
-                Start Date
-              </Label>
+              <Label htmlFor="total_service">Total Services</Label>
               <Input
-                id="startDate"
-                type="date"
-                {...register("startDate")}
-                className="border-border bg-white focus:border-[#00C49A] focus:ring-[#00C49A]"
+                id="total_service"
+                type="number"
+                min={1}
+                {...register("total_service")}
               />
-              {errors.startDate && <p className="text-sm text-destructive">{errors.startDate.message}</p>}
+              {errors.total_service && <p className="text-sm text-destructive">{errors.total_service.message}</p>}
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="endDate" className="text-[#333333]">
-                End Date
-              </Label>
+              <Label htmlFor="price">Contract Value (IDR)</Label>
               <Input
-                id="endDate"
-                type="date"
-                {...register("endDate")}
-                className="border-border bg-white focus:border-[#00C49A] focus:ring-[#00C49A]"
+                id="price"
+                type="number"
+                min={0}
+                {...register("price", { valueAsNumber: true })}
               />
-              {errors.endDate && <p className="text-sm text-destructive">{errors.endDate.message}</p>}
+              {errors.price && <p className="text-sm text-destructive">{errors.price.message}</p>}
             </div>
           </div>
+          
+          <div className="space-y-2">
+            <FileUploadButton 
+               label="Contract Document (PDF/Image)"
+               onFileSelect={(f: File | null) => setFile(f)}
+               currentFileUrl={contract?.contractUrl}
+            />
+          </div>
 
-          <div className="flex items-center justify-end gap-3 pt-4">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => router.back()}
-              className="border-[#0A2540] text-[#0A2540] hover:bg-[#0A2540] hover:text-white"
+          <div className="space-y-2">
+            <Label htmlFor="notes">Notes</Label>
+            <Textarea
+              id="notes"
+              placeholder="Additional notes..."
+              {...register("notes")}
+            />
+            {errors.notes && <p className="text-sm text-destructive">{errors.notes.message}</p>}
+          </div>
+
+          <div className="flex justify-end gap-3 pt-4">
+            {onCancel && (
+              <Button type="button" variant="outline" onClick={onCancel} disabled={isSubmitting || isUploading}>
+                Cancel
+              </Button>
+            )}
+            <LoadingButton 
+              type="submit" 
+              isLoading={isSubmitting || isUploading} 
+              loadingText={isUploading ? "Uploading..." : (isEdit ? "Saving..." : "Creating...")}
+              className="bg-[#00C49A] hover:bg-[#00A07D]"
             >
-              Cancel
-            </Button>
-            <Button type="submit" disabled={isSubmitting} className="bg-[#00C49A] text-white hover:bg-[#00a883]">
-              {isSubmitting ? "Creating..." : "Create Contract"}
-            </Button>
+              {isEdit ? "Save Changes" : "Create Contract"}
+            </LoadingButton>
           </div>
         </form>
       </CardContent>

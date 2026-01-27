@@ -5,8 +5,9 @@ import { useRouter } from "next/navigation"
 import { useForm, FieldErrors } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
-import { Loader2, Upload, X } from "lucide-react"
+import { Loader2, X } from "lucide-react"
 import { toast } from "sonner"
+import { FileUploadButton } from "@/components/ui/file-upload-button"
 
 import { Button } from "@/components/ui/button"
 import { LoadingButton } from "@/components/ui/loading-button"
@@ -356,46 +357,18 @@ export function CustomerProductForm({ initialData, customerId, onSuccess }: Cust
 
 
         {/* Image Upload Section */}
+        {/* Image Upload Section */}
         <div className="space-y-4">
-            <FormLabel>Product Photo</FormLabel>
-            <div className="flex items-center gap-6">
-                <div className="relative h-32 w-32 rounded-lg border-2 border-dashed border-gray-300 flex items-center justify-center overflow-hidden bg-gray-50">
-                {imagePreview ? (
-                    <>
-                    <img src={imagePreview} alt="Preview" className="h-full w-full object-cover" />
-                    <button
-                        type="button"
-                        onClick={removeImage}
-                        className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity"
-                    >
-                        <X className="h-8 w-8 text-white" />
-                    </button>
-                    </>
-                ) : (
-                    <Upload className="h-8 w-8 text-gray-400" />
-                )}
-                </div>
-                <div className="space-y-2 flex flex-col items-start">
-                    <Button 
-                        type="button" 
-                        variant="secondary"
-                        className="bg-blue-600 hover:bg-blue-700 text-white"
-                        onClick={() => fileInputRef.current?.click()}
-                    >
-                        Choose File
-                    </Button>
-                    <Input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleImageChange}
-                        className="hidden"
-                        ref={fileInputRef}
-                    />
-                    <p className="text-xs text-muted-foreground">
-                        Recommended: Max 5MB.
-                    </p>
-                </div>
-            </div>
+            <FileUploadButton 
+                label="Product Photo"
+                accept="image/*"
+                onFileSelect={(f: File | null) => setImageFile(f)}
+                selectedFile={imageFile}
+                currentFileUrl={initialData?.photo_url}
+             />
+             <p className="text-xs text-muted-foreground">
+                Recommended: Max 5MB.
+             </p>
         </div>
 
         <div className="flex justify-end gap-3">

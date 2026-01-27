@@ -34,7 +34,9 @@ async function fetchApi<T>(path: string, options: ApiOptions = {}): Promise<T> {
   const data = await response.json();
   
   if (!response.ok) {
-    throw new Error(data.error?.message || "An API error occurred");
+    // Check for message in various locations: data.message, data.error.message, data.error
+    const msg = data.message || data.error?.message || (typeof data.error === 'string' ? data.error : "An API error occurred");
+    throw new Error(msg);
   }
 
   return data; // Assuming { success: true, data: T } is unwrapped by caller or we return full response?
@@ -117,11 +119,12 @@ export const createApiClient = (session: Session | null) => {
       }
     },
     customers: {
-      list: async (params?: { page?: number; limit?: number; search?: string }) => {
+      list: async (params?: { page?: number; limit?: number; search?: string; addressType?: string }) => {
         const searchParams = new URLSearchParams();
         if (params?.page) searchParams.append("page", params.page.toString());
         if (params?.limit) searchParams.append("limit", params.limit.toString());
         if (params?.search) searchParams.append("search", params.search);
+        if (params?.addressType && params.addressType !== "all") searchParams.append("addressType", params.addressType);
         return fetchApi(`/customers?${searchParams.toString()}`, { token });
       },
       create: async (data: CreateCustomerDTO) => {
@@ -168,6 +171,37 @@ export const createApiClient = (session: Session | null) => {
         },
         getOne: async (id: string) => {
             return fetchApi(`/customer-products/${id}`, { token });
+        }
+    },
+    contracts: {
+        list: async (params?: { status?: string, productName?: string }) => {
+            const searchParams = new URLSearchParams();
+            if (params?.status) searchParams.append("status", params.status);
+            if (params?.productName) searchParams.append("productName", params.productName);
+            return fetchApi<any[]>(`/contracts?${searchParams.toString()}`, { token });
+        },
+        getOne: async (id: string) => {
+            return fetchApi<any>(`/contracts/${id}`, { token });
+        },
+        create: async (data: any) => {
+            return fetchApi("/contracts", {
+                token,
+                method: "POST",
+                body: JSON.stringify(data)
+            });
+        },
+        update: async (id: string, data: any) => {
+             return fetchApi(`/contracts/${id}`, {
+                token,
+                method: "PATCH",
+                body: JSON.stringify(data)
+            });
+        },
+        delete: async (id: string) => {
+            return fetchApi(`/contracts/${id}`, {
+                token,
+                method: "DELETE"
+            });
         }
     }
     // Keep structure but throw error or require token for others

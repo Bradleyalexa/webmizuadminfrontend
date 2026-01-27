@@ -58,7 +58,7 @@ export function DataTable<T extends { id: string }>({
           </TableHeader>
           <TableBody>
             {isLoading ? (
-              <TableRow>
+              <TableRow key="loading">
                 <TableCell colSpan={columns.length} className="h-32 text-center">
                   <div className="flex items-center justify-center">
                     <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#00C49A] border-t-transparent" />
@@ -66,7 +66,7 @@ export function DataTable<T extends { id: string }>({
                 </TableCell>
               </TableRow>
             ) : data.length === 0 ? (
-              <TableRow>
+              <TableRow key="empty">
                 <TableCell colSpan={columns.length} className="h-32 text-center text-muted-foreground">
                   {emptyMessage}
                 </TableCell>

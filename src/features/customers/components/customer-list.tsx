@@ -32,23 +32,22 @@ export function CustomerList() {
 
   const api = createApiClient(session)
   const [searchQuery, setSearchQuery] = useState("")
+  const [addressTypeFilter, setAddressTypeFilter] = useState("all")
   const [page, setPage] = useState(1)
   const [data, setData] = useState<{ items: Customer[]; total: number }>({ items: [], total: 0 })
   const [loading, setLoading] = useState(true)
 
   const fetchCustomers = async () => {
+    if (!session) return
+
     try {
       setLoading(true)
-      const res = await api.customers.list({ page, limit: 10, search: searchQuery })
-      // Backend returns { success: true, data: items, pagination: { total } }
-      // Client wrapper returns full response? No, fetchApi returns `data`. 
-      // Checking ProductController... it returns { success: true, data: result } where result is { items, total }.
-      // Checking CustomerController... it returns { success: true, data: result.data, pagination: { total } }
-      // Wait, CustomerController logic:
-      // res.json({ success: true, data: result.data, pagination: { ... } })
-      // fetchApi returns the JSON body.
-      // So res.data is the array, res.pagination.total is the count.
-      
+      const res = await api.customers.list({ 
+        page, 
+        limit: 10, 
+        search: searchQuery,
+        addressType: addressTypeFilter 
+      })
       const response = res as any
       if (response.success) {
         setData({ items: response.data, total: response.pagination.total })
@@ -62,13 +61,30 @@ export function CustomerList() {
 
   useEffect(() => {
     fetchCustomers()
-  }, [page, searchQuery, session]) // Re-fetch on params change
+  }, [page, searchQuery, addressTypeFilter, session])
 
   const columns = [
     { key: "name", header: "Name" },
     { key: "email", header: "Email", hideOnMobile: true },
     { key: "phone", header: "Phone", hideOnMobile: true },
-    { key: "status", header: "Status", render: (c: Customer) => c.status },
+    { 
+      key: "addressType", 
+      header: "Type", 
+      render: (c: Customer) => (
+        <span className="capitalize text-xs font-medium px-2 py-1 rounded bg-slate-100 text-slate-700">
+          {c.addressType || "Rumah"}
+        </span>
+      )
+    },
+    { key: "status", header: "Status", render: (c: Customer) => (
+       <span className={`capitalize text-xs font-medium px-2 py-1 rounded ${
+           c.status === 'active' ? 'bg-green-100 text-green-700' :
+           c.status === 'inactive' ? 'bg-gray-100 text-gray-700' :
+           'bg-red-100 text-red-700'
+       }`}>
+           {c.status}
+       </span>
+    )},
     {
       key: "createdAt",
       header: "Joined",
@@ -79,24 +95,31 @@ export function CustomerList() {
   return (
     <div className="space-y-4 md:space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div className="relative w-full sm:w-80">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input
-            type="search"
-            placeholder="Search customers..."
-            value={searchQuery}
-            onChange={(e) => { setSearchQuery(e.target.value); setPage(1); }} // Reset page on search
-            className="pl-9 bg-white border-border focus:border-[#00C49A] focus:ring-[#00C499]"
-          />
+        <div className="flex flex-1 items-center gap-2">
+            <div className="relative w-full sm:w-80">
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Input
+                type="search"
+                placeholder="Search customers..."
+                value={searchQuery}
+                onChange={(e) => { setSearchQuery(e.target.value); setPage(1); }}
+                className="pl-9 bg-white border-border focus:border-[#00C49A] focus:ring-[#00C499]"
+              />
+            </div>
+             {/* Filter Dropdown */}
+             <select 
+               className="h-10 rounded-md border border-input bg-white px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+               value={addressTypeFilter}
+               onChange={(e) => { setAddressTypeFilter(e.target.value); setPage(1); }}
+             >
+                <option value="all">All Types</option>
+                <option value="rumah">Rumah</option>
+                <option value="apartment">Apartment</option>
+                <option value="company">Company</option>
+             </select>
         </div>
+
         <div className="flex items-center gap-2 sm:gap-3">
-          <Button
-            variant="outline"
-            className="border-[#0A2540] text-[#0A2540] hover:bg-[#0A2540] hover:text-white bg-transparent flex-1 sm:flex-none"
-          >
-            <Filter className="mr-2 h-4 w-4" />
-            <span className="hidden sm:inline">Filter</span>
-          </Button>
           <Button
             onClick={() => router.push("/admin/customers/new")}
             className="bg-[#00C499] text-white hover:bg-[#00a883] flex-1 sm:flex-none"

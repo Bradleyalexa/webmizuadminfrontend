@@ -19,6 +19,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { CustomerProductForm } from "./customer-product-form"
+import { ContractForm } from "@/src/features/contracts/components/contract-form"
+import { FileText } from "lucide-react"
 
 export function CustomerProductDetail() {
   const router = useRouter()
@@ -77,7 +79,7 @@ export function CustomerProductDetail() {
                     Edit
                 </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+            <DialogContent className="w-[95vw] sm:w-full max-w-2xl max-h-[90vh] overflow-y-auto">
                 <DialogHeader>
                     <DialogTitle>Edit Customer Product</DialogTitle>
                     <DialogDescription>
@@ -94,6 +96,27 @@ export function CustomerProductDetail() {
                 />
             </DialogContent>
         </Dialog>
+
+        <Dialog>
+             <DialogTrigger asChild>
+                 <Button className="bg-[#00C49A] hover:bg-[#00A07D] text-white">
+                     <FileText className="mr-2 h-4 w-4" />
+                     Add Contract
+                 </Button>
+             </DialogTrigger>
+             <DialogContent className="w-[95vw] sm:w-full max-w-xl">
+                 <DialogHeader>
+                     <DialogTitle>Create New Contract</DialogTitle>
+                 </DialogHeader>
+                 <ContractForm 
+                     customerProductId={product.id}
+                     onSuccess={() => {
+                         fetchData()
+                         // Optionally toast or redirect
+                     }}
+                 />
+             </DialogContent>
+         </Dialog>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
@@ -122,7 +145,7 @@ export function CustomerProductDetail() {
             </CardHeader>
             <CardContent className="space-y-6">
                 
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <p className="text-sm font-medium text-muted-foreground">Installation Date</p>
                         <p className="text-[#333333] font-medium text-lg">

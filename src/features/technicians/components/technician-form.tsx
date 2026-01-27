@@ -5,8 +5,9 @@ import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
-import { Loader2, Upload, X } from "lucide-react"
+import { Loader2, X } from "lucide-react"
 import { toast } from "sonner"
+import { FileUploadButton } from "@/components/ui/file-upload-button"
 
 import { Button } from "@/components/ui/button"
 import { LoadingButton } from "@/components/ui/loading-button"
@@ -167,37 +168,18 @@ export function TechnicianForm({ initialData }: TechnicianFormProps) {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           
           {/* Image Upload Section */}
+          {/* Image Upload Section */}
           <div className="space-y-4">
-            <FormLabel>Profile Photo</FormLabel>
-            <div className="flex items-center gap-6">
-              <div className="relative h-32 w-32 rounded-full border-2 border-dashed border-gray-300 flex items-center justify-center overflow-hidden bg-gray-50">
-                {imagePreview ? (
-                  <>
-                    <img src={imagePreview} alt="Preview" className="h-full w-full object-cover" />
-                    <button
-                      type="button"
-                      onClick={removeImage}
-                      className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity"
-                    >
-                      <X className="h-8 w-8 text-white" />
-                    </button>
-                  </>
-                ) : (
-                  <Upload className="h-8 w-8 text-gray-400" />
-                )}
-              </div>
-              <div className="space-y-2">
-                <Input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                  className="max-w-xs"
-                />
-                <p className="text-xs text-muted-foreground">
-                  Recommended: Square image, max 5MB.
-                </p>
-              </div>
-            </div>
+            <FileUploadButton 
+                label="Profile Photo"
+                accept="image/*"
+                onFileSelect={(f: File | null) => setImageFile(f)}
+                selectedFile={imageFile}
+                currentFileUrl={initialData?.photo_url}
+             />
+            <p className="text-xs text-muted-foreground">
+               Recommended: Square image, max 5MB.
+            </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">

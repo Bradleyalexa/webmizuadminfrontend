@@ -98,13 +98,37 @@ export interface UpdateCustomerProductDTO extends Partial<CreateCustomerProductD
 export interface Contract {
   id: string
   customerProductId: string
-  customerProduct?: CustomerProduct
   startDate: string
   endDate: string
-  status: "active" | "expired" | "pending"
-  type: string
-  value: number
-  pdfUrl?: string
+  intervalMonths: number
+  totalService: number
+  servicesUsed: number
+  status: "active" | "expired"
+  contractUrl: string | null
+  notes: string | null
+  createdAt: string
+  contractValue?: number
+
+  // Relations
+  customerName?: string
+  productName?: string
+  installationLocation?: string
+  schedules?: {
+      id: string
+      expected_date: string
+      status: string
+      source_type: string
+  }[]
+}
+
+export interface ContractFormData {
+  customer_product_id: string
+  start_date: string
+  end_date: string
+  interval_months: number
+  total_service: number
+  contract_url?: string
+  notes?: string
 }
 
 export interface ServiceRequest {
