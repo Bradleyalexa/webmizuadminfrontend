@@ -453,7 +453,7 @@ function DataTable({ columns, data, page = 1, totalPages = 1, onPageChange, onRo
                                     lineNumber: 62,
                                     columnNumber: 17
                                 }, this)
-                            }, void 0, false, {
+                            }, "loading", false, {
                                 fileName: "[project]/apps/adminFE/src/components/ui/data-table.tsx",
                                 lineNumber: 61,
                                 columnNumber: 15
@@ -467,7 +467,7 @@ function DataTable({ columns, data, page = 1, totalPages = 1, onPageChange, onRo
                                     lineNumber: 70,
                                     columnNumber: 17
                                 }, this)
-                            }, void 0, false, {
+                            }, "empty", false, {
                                 fileName: "[project]/apps/adminFE/src/components/ui/data-table.tsx",
                                 lineNumber: 69,
                                 columnNumber: 15

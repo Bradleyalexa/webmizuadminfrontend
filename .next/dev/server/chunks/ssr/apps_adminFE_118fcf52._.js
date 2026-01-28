@@ -1908,28 +1908,43 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
     const uploadFile = async (fileToUpload)=>{
         const fileExt = fileToUpload.name.split('.').pop();
         const fileName = `${Math.random()}.${fileExt}`;
-        const filePath = `${fileName}`;
-        const { error: uploadError } = await supabase.storage.from('documents').upload(`contracts/${filePath}`, fileToUpload);
+        const filePath = `contracts/${fileName}`;
+        const { error: uploadError } = await supabase.storage.from('documents').upload(filePath, fileToUpload);
         if (uploadError) {
             throw uploadError;
         }
-        const { data } = supabase.storage.from('documents').getPublicUrl(`contracts/${filePath}`);
-        return data.publicUrl;
+        // Return the relative path, NOT the public URL
+        return filePath;
     };
     const onSubmit = async (data)=>{
         if (!session) return;
         try {
-            let documentUrl = data.contract_url;
+            let documentPath = undefined;
             if (file) {
                 setIsUploading(true);
-                documentUrl = await uploadFile(file);
+                documentPath = await uploadFile(file);
                 setIsUploading(false);
             }
             const api = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createApiClient"])(session);
+            // Explicitly construct payload to ensure types and exclude secure fields
             const payload = {
-                ...data,
-                contract_url: documentUrl
+                start_date: new Date(data.start_date).toISOString(),
+                end_date: data.end_date ? new Date(data.end_date).toISOString() : null,
+                interval_months: Number(data.interval_months),
+                total_service: Number(data.total_service),
+                notes: data.notes || "",
+                price: Number(data.price || 0),
+                customer_product_id: data.customer_product_id
             };
+            // Handle Contract URL securely
+            if (documentPath) {
+                // If we have a NEW file, we update the URL (store path)
+                payload.contract_url = documentPath;
+            } else if (!isEdit) {
+                // If creating new and no file, ensure it's empty string/null if required
+                payload.contract_url = "";
+            }
+            // If Editing and NO new file, we OMIT contract_url so we don't overwrite DB with potentially signed URL
             if (isEdit) {
                 await api.contracts.update(contract.id, payload);
                 __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].success("Contract updated successfully");
@@ -1959,12 +1974,12 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                     children: isEdit ? "Edit Contract" : "Create New Contract"
                 }, void 0, false, {
                     fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                    lineNumber: 175,
+                    lineNumber: 191,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                lineNumber: 174,
+                lineNumber: 190,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1983,7 +1998,7 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                             children: "Customer"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                            lineNumber: 184,
+                                            lineNumber: 200,
                                             columnNumber: 20
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -1994,12 +2009,12 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                                         placeholder: "Select Customer"
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                                        lineNumber: 187,
+                                                        lineNumber: 203,
                                                         columnNumber: 26
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                                    lineNumber: 186,
+                                                    lineNumber: 202,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -2008,24 +2023,24 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                                             children: c.name
                                                         }, c.id, false, {
                                                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                                            lineNumber: 191,
+                                                            lineNumber: 207,
                                                             columnNumber: 30
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                                    lineNumber: 189,
+                                                    lineNumber: 205,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                            lineNumber: 185,
+                                            lineNumber: 201,
                                             columnNumber: 20
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                    lineNumber: 183,
+                                    lineNumber: 199,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2035,7 +2050,7 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                             children: "Product"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                            lineNumber: 197,
+                                            lineNumber: 213,
                                             columnNumber: 20
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -2047,12 +2062,12 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                                         placeholder: "Select Product"
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                                        lineNumber: 203,
+                                                        lineNumber: 219,
                                                         columnNumber: 26
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                                    lineNumber: 202,
+                                                    lineNumber: 218,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -2066,18 +2081,18 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                                             ]
                                                         }, cp.id, true, {
                                                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                                            lineNumber: 207,
+                                                            lineNumber: 223,
                                                             columnNumber: 31
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                                    lineNumber: 205,
+                                                    lineNumber: 221,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                            lineNumber: 198,
+                                            lineNumber: 214,
                                             columnNumber: 20
                                         }, this),
                                         errors.customer_product_id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2085,19 +2100,19 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                             children: "Product is required"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                            lineNumber: 213,
+                                            lineNumber: 229,
                                             columnNumber: 51
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                    lineNumber: 196,
+                                    lineNumber: 212,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                            lineNumber: 182,
+                            lineNumber: 198,
                             columnNumber: 14
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2111,7 +2126,7 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                             children: "Start Date"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                            lineNumber: 220,
+                                            lineNumber: 236,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -2120,7 +2135,7 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                             ...register("start_date")
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                            lineNumber: 221,
+                                            lineNumber: 237,
                                             columnNumber: 15
                                         }, this),
                                         errors.start_date && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2128,13 +2143,13 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                             children: errors.start_date.message
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                            lineNumber: 226,
+                                            lineNumber: 242,
                                             columnNumber: 37
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                    lineNumber: 219,
+                                    lineNumber: 235,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2145,7 +2160,7 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                             children: "End Date"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                            lineNumber: 230,
+                                            lineNumber: 246,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -2154,7 +2169,7 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                             ...register("end_date")
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                            lineNumber: 231,
+                                            lineNumber: 247,
                                             columnNumber: 15
                                         }, this),
                                         errors.end_date && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2162,13 +2177,13 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                             children: errors.end_date.message
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                            lineNumber: 236,
+                                            lineNumber: 252,
                                             columnNumber: 35
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                    lineNumber: 229,
+                                    lineNumber: 245,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2179,7 +2194,7 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                             children: "Interval (Months)"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                            lineNumber: 240,
+                                            lineNumber: 256,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -2189,7 +2204,7 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                             ...register("interval_months")
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                            lineNumber: 241,
+                                            lineNumber: 257,
                                             columnNumber: 15
                                         }, this),
                                         errors.interval_months && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2197,13 +2212,13 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                             children: errors.interval_months.message
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                            lineNumber: 247,
+                                            lineNumber: 263,
                                             columnNumber: 42
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                    lineNumber: 239,
+                                    lineNumber: 255,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2214,7 +2229,7 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                             children: "Total Services"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                            lineNumber: 251,
+                                            lineNumber: 267,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -2224,7 +2239,7 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                             ...register("total_service")
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                            lineNumber: 252,
+                                            lineNumber: 268,
                                             columnNumber: 15
                                         }, this),
                                         errors.total_service && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2232,13 +2247,13 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                             children: errors.total_service.message
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                            lineNumber: 258,
+                                            lineNumber: 274,
                                             columnNumber: 40
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                    lineNumber: 250,
+                                    lineNumber: 266,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2249,17 +2264,19 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                             children: "Contract Value (IDR)"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                            lineNumber: 262,
+                                            lineNumber: 278,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
                                             id: "price",
                                             type: "number",
                                             min: 0,
-                                            ...register("price")
+                                            ...register("price", {
+                                                valueAsNumber: true
+                                            })
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                            lineNumber: 263,
+                                            lineNumber: 279,
                                             columnNumber: 15
                                         }, this),
                                         errors.price && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2267,19 +2284,19 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                             children: errors.price.message
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                            lineNumber: 269,
+                                            lineNumber: 285,
                                             columnNumber: 32
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                    lineNumber: 261,
+                                    lineNumber: 277,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                            lineNumber: 218,
+                            lineNumber: 234,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2290,12 +2307,12 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                 currentFileUrl: contract?.contractUrl
                             }, void 0, false, {
                                 fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                lineNumber: 274,
+                                lineNumber: 290,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                            lineNumber: 273,
+                            lineNumber: 289,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2306,7 +2323,7 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                     children: "Notes"
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                    lineNumber: 282,
+                                    lineNumber: 298,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$textarea$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Textarea"], {
@@ -2315,7 +2332,7 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                     ...register("notes")
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                    lineNumber: 283,
+                                    lineNumber: 299,
                                     columnNumber: 13
                                 }, this),
                                 errors.notes && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2323,13 +2340,13 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                     children: errors.notes.message
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                    lineNumber: 288,
+                                    lineNumber: 304,
                                     columnNumber: 30
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                            lineNumber: 281,
+                            lineNumber: 297,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2343,7 +2360,7 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                     children: "Cancel"
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                    lineNumber: 293,
+                                    lineNumber: 309,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$loading$2d$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LoadingButton"], {
@@ -2354,30 +2371,30 @@ function ContractForm({ customerProductId: initialCpid, contract, onSuccess, onC
                                     children: isEdit ? "Save Changes" : "Create Contract"
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                                    lineNumber: 297,
+                                    lineNumber: 313,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                            lineNumber: 291,
+                            lineNumber: 307,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                    lineNumber: 178,
+                    lineNumber: 194,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-                lineNumber: 177,
+                lineNumber: 193,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/apps/adminFE/src/features/contracts/components/contract-form.tsx",
-        lineNumber: 172,
+        lineNumber: 188,
         columnNumber: 5
     }, this);
 }

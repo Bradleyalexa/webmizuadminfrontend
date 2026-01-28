@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react"
 import { useParams, useRouter } from "next/navigation"
-import { ArrowLeft, Edit, Package } from "lucide-react" // Package icon used to represent product
+import { ProductTasksModal } from "./product-tasks-modal"
+import { ArrowLeft, Edit, Package, History, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { StatusBadge } from "@/src/components/ui/status-badge"
@@ -20,7 +21,6 @@ import {
 } from "@/components/ui/dialog"
 import { CustomerProductForm } from "./customer-product-form"
 import { ContractForm } from "@/src/features/contracts/components/contract-form"
-import { FileText } from "lucide-react"
 
 export function CustomerProductDetail() {
   const router = useRouter()
@@ -31,8 +31,10 @@ export function CustomerProductDetail() {
   const [product, setProduct] = useState<CustomerProduct | null>(null)
   const [loading, setLoading] = useState(true)
   const [isEditOpen, setIsEditOpen] = useState(false)
+  const [isTasksModalOpen, setIsTasksModalOpen] = useState(false)
 
   const fetchData = async () => {
+    // ... existing code
     if (!id) return
     try {
       const { data: sessionData } = await supabase.auth.getSession()
@@ -59,68 +61,81 @@ export function CustomerProductDetail() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center gap-4">
-        <Button variant="ghost" size="icon" onClick={() => router.back()} className="text-[#0A2540] hover:bg-[#F6F9FC]">
-          <ArrowLeft className="h-5 w-5" />
-        </Button>
-        <div className="flex-1">
-          <h1 className="font-heading text-2xl font-bold text-[#0A2540]">
-            {product.product_name}
-          </h1>
-          <p className="text-sm text-muted-foreground">
-            {product.product_model}
-          </p>
+      <div className="flex flex-col md:flex-row md:items-center gap-4">
+        <div className="flex items-center gap-4 w-full md:w-auto">
+             <Button variant="ghost" size="icon" onClick={() => router.back()} className="text-[#0A2540] hover:bg-[#F6F9FC] shrink-0">
+                <ArrowLeft className="h-5 w-5" />
+             </Button>
+             <div className="flex-1">
+                <h1 className="font-heading text-xl md:text-2xl font-bold text-[#0A2540]">
+                  {product.product_name}
+                </h1>
+                <p className="text-sm text-muted-foreground">
+                  {product.product_model}
+                </p>
+             </div>
         </div>
         
-        <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
-            <DialogTrigger asChild>
-                <Button variant="outline" className="border-[#0A2540] text-[#0A2540] hover:bg-[#0A2540] hover:text-white">
-                    <Edit className="mr-2 h-4 w-4" />
-                    Edit
-                </Button>
-            </DialogTrigger>
-            <DialogContent className="w-[95vw] sm:w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-                <DialogHeader>
-                    <DialogTitle>Edit Customer Product</DialogTitle>
-                    <DialogDescription>
-                        Update the product details below.
-                    </DialogDescription>
-                </DialogHeader>
-                <CustomerProductForm 
-                    initialData={product}
-                    customerId={product.customer_id}
-                    onSuccess={() => {
-                        setIsEditOpen(false)
-                        fetchData()
-                    }} 
-                />
-            </DialogContent>
-        </Dialog>
+        <div className="flex flex-wrap md:flex-nowrap items-center gap-2 w-full md:w-auto md:ml-auto">
+            <Button 
+                variant="outline" 
+                className="border-[#0A2540] text-[#0A2540] hover:bg-[#0A2540] hover:text-white flex-1 md:flex-none whitespace-nowrap"
+                onClick={() => setIsTasksModalOpen(true)}
+            >
+                <History className="mr-2 h-4 w-4" />
+                Service History
+            </Button>
 
-        <Dialog>
-             <DialogTrigger asChild>
-                 <Button className="bg-[#00C49A] hover:bg-[#00A07D] text-white">
-                     <FileText className="mr-2 h-4 w-4" />
-                     Add Contract
-                 </Button>
-             </DialogTrigger>
-             <DialogContent className="w-[95vw] sm:w-full max-w-xl">
-                 <DialogHeader>
-                     <DialogTitle>Create New Contract</DialogTitle>
-                 </DialogHeader>
-                 <ContractForm 
-                     customerProductId={product.id}
-                     onSuccess={() => {
-                         fetchData()
-                         // Optionally toast or redirect
-                     }}
-                 />
-             </DialogContent>
-         </Dialog>
+            <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
+                <DialogTrigger asChild>
+                    <Button variant="outline" className="border-[#0A2540] text-[#0A2540] hover:bg-[#0A2540] hover:text-white flex-1 md:flex-none whitespace-nowrap">
+                        <Edit className="mr-2 h-4 w-4" />
+                        Edit
+                    </Button>
+                </DialogTrigger>
+                <DialogContent className="w-[95vw] sm:w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+                    <DialogHeader>
+                        <DialogTitle>Edit Customer Product</DialogTitle>
+                        <DialogDescription>
+                            Update the product details below.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <CustomerProductForm 
+                        initialData={product}
+                        customerId={product.customer_id}
+                        onSuccess={() => {
+                            setIsEditOpen(false)
+                            fetchData()
+                        }} 
+                    />
+                </DialogContent>
+            </Dialog>
+
+            <Dialog>
+                <DialogTrigger asChild>
+                    <Button className="bg-[#00C49A] hover:bg-[#00A07D] text-white flex-1 md:flex-none whitespace-nowrap">
+                        <FileText className="mr-2 h-4 w-4" />
+                        Add Contract
+                    </Button>
+                </DialogTrigger>
+                <DialogContent className="w-[95vw] sm:w-full max-w-xl">
+                    <DialogHeader>
+                        <DialogTitle>Create New Contract</DialogTitle>
+                    </DialogHeader>
+                    <ContractForm 
+                        customerProductId={product.id}
+                        onSuccess={() => {
+                            fetchData()
+                            // Optionally toast or redirect
+                        }}
+                    />
+                </DialogContent>
+            </Dialog>
+        </div>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
-        {/* Photo Card - Full Width on Mobile, Side on Desktop or Top */}
+        {/* ... existing content ... */}
         {product.photo_url && (
              <Card className="bg-white shadow-sm lg:col-span-3">
                 <CardHeader>
@@ -229,6 +244,12 @@ export function CustomerProductDetail() {
            </Card>
        )}
 
+       <ProductTasksModal
+          isOpen={isTasksModalOpen}
+          onClose={() => setIsTasksModalOpen(false)}
+          customerProductId={product.id}
+          productName={product.product_name}
+       />
     </div>
   )
 }

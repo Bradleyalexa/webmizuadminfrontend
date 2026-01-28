@@ -1901,19 +1901,19 @@ function ContractDetailPage() {
             className: "h-8 w-8 text-[#00C49A]"
         }, void 0, false, {
             fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-            lineNumber: 81,
+            lineNumber: 83,
             columnNumber: 80
         }, this)
     }, void 0, false, {
         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-        lineNumber: 81,
+        lineNumber: 83,
         columnNumber: 25
     }, this);
     if (!contract) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         children: "Contract not found"
     }, void 0, false, {
         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-        lineNumber: 82,
+        lineNumber: 84,
         columnNumber: 25
     }, this);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1929,7 +1929,7 @@ function ContractDetailPage() {
                                 children: "Contract Details"
                             }, void 0, false, {
                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                lineNumber: 88,
+                                lineNumber: 90,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1944,19 +1944,19 @@ function ContractDetailPage() {
                                         children: contract.status
                                     }, void 0, false, {
                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                        lineNumber: 91,
+                                        lineNumber: 93,
                                         columnNumber: 14
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                lineNumber: 89,
+                                lineNumber: 91,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                        lineNumber: 87,
+                        lineNumber: 89,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1975,35 +1975,35 @@ function ContractDetailPage() {
                                                     className: "mr-2 h-4 w-4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                    lineNumber: 99,
+                                                    lineNumber: 101,
                                                     columnNumber: 42
                                                 }, this),
                                                 " Edit"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                            lineNumber: 99,
+                                            lineNumber: 101,
                                             columnNumber: 16
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                        lineNumber: 98,
+                                        lineNumber: 100,
                                         columnNumber: 14
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogContent"], {
                                         className: "max-w-xl",
                                         children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(DialogHeader, {
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(DialogTitle, {
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogHeader"], {
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogTitle"], {
                                                     children: "Edit Contract"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                    lineNumber: 103,
+                                                    lineNumber: 105,
                                                     columnNumber: 18
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                lineNumber: 102,
+                                                lineNumber: 104,
                                                 columnNumber: 16
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$features$2f$contracts$2f$components$2f$contract$2d$form$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ContractForm"], {
@@ -2015,19 +2015,19 @@ function ContractDetailPage() {
                                                 onCancel: ()=>setIsEditOpen(false)
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                lineNumber: 105,
+                                                lineNumber: 107,
                                                 columnNumber: 16
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                        lineNumber: 101,
+                                        lineNumber: 103,
                                         columnNumber: 14
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                lineNumber: 97,
+                                lineNumber: 99,
                                 columnNumber: 12
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$alert$2d$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDialog"], {
@@ -2041,19 +2041,19 @@ function ContractDetailPage() {
                                                     className: "mr-2 h-4 w-4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                    lineNumber: 118,
+                                                    lineNumber: 120,
                                                     columnNumber: 46
                                                 }, this),
                                                 " Delete"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                            lineNumber: 118,
+                                            lineNumber: 120,
                                             columnNumber: 16
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                        lineNumber: 117,
+                                        lineNumber: 119,
                                         columnNumber: 14
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$alert$2d$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDialogContent"], {
@@ -2064,20 +2064,20 @@ function ContractDetailPage() {
                                                         children: "Are you absolutely sure?"
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                        lineNumber: 122,
+                                                        lineNumber: 124,
                                                         columnNumber: 18
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$alert$2d$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDialogDescription"], {
                                                         children: "This action cannot be undone. This will permanently delete the contract and associated schedules."
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                        lineNumber: 123,
+                                                        lineNumber: 125,
                                                         columnNumber: 18
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                lineNumber: 121,
+                                                lineNumber: 123,
                                                 columnNumber: 16
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$alert$2d$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDialogFooter"], {
@@ -2086,7 +2086,7 @@ function ContractDetailPage() {
                                                         children: "Cancel"
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                        lineNumber: 128,
+                                                        lineNumber: 130,
                                                         columnNumber: 18
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$alert$2d$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDialogAction"], {
@@ -2095,37 +2095,37 @@ function ContractDetailPage() {
                                                         children: "Delete"
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                        lineNumber: 129,
+                                                        lineNumber: 131,
                                                         columnNumber: 18
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                lineNumber: 127,
+                                                lineNumber: 129,
                                                 columnNumber: 16
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                        lineNumber: 120,
+                                        lineNumber: 122,
                                         columnNumber: 14
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                lineNumber: 116,
+                                lineNumber: 118,
                                 columnNumber: 12
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                        lineNumber: 96,
+                        lineNumber: 98,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                lineNumber: 86,
+                lineNumber: 88,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2143,19 +2143,19 @@ function ContractDetailPage() {
                                             className: "h-5 w-5 text-[#00C49A]"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                            lineNumber: 141,
+                                            lineNumber: 143,
                                             columnNumber: 15
                                         }, this),
                                         "Contract Information"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                    lineNumber: 140,
+                                    lineNumber: 142,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                lineNumber: 139,
+                                lineNumber: 141,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -2171,7 +2171,7 @@ function ContractDetailPage() {
                                                         children: "Start Date"
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                        lineNumber: 148,
+                                                        lineNumber: 150,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2179,13 +2179,13 @@ function ContractDetailPage() {
                                                         children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$date$2d$fns$2f$format$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["format"])(new Date(contract.startDate), "dd MMM yyyy")
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                        lineNumber: 149,
+                                                        lineNumber: 151,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                lineNumber: 147,
+                                                lineNumber: 149,
                                                 columnNumber: 16
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2195,7 +2195,7 @@ function ContractDetailPage() {
                                                         children: "End Date"
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                        lineNumber: 152,
+                                                        lineNumber: 154,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2203,13 +2203,13 @@ function ContractDetailPage() {
                                                         children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$date$2d$fns$2f$format$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["format"])(new Date(contract.endDate), "dd MMM yyyy")
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                        lineNumber: 153,
+                                                        lineNumber: 155,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                lineNumber: 151,
+                                                lineNumber: 153,
                                                 columnNumber: 16
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2219,7 +2219,7 @@ function ContractDetailPage() {
                                                         children: "Interval"
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                        lineNumber: 156,
+                                                        lineNumber: 158,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2230,13 +2230,13 @@ function ContractDetailPage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                        lineNumber: 157,
+                                                        lineNumber: 159,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                lineNumber: 155,
+                                                lineNumber: 157,
                                                 columnNumber: 16
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2246,7 +2246,7 @@ function ContractDetailPage() {
                                                         children: "Total Services"
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                        lineNumber: 160,
+                                                        lineNumber: 162,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2254,13 +2254,13 @@ function ContractDetailPage() {
                                                         children: contract.totalService
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                        lineNumber: 161,
+                                                        lineNumber: 163,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                lineNumber: 159,
+                                                lineNumber: 161,
                                                 columnNumber: 16
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2275,7 +2275,7 @@ function ContractDetailPage() {
                                                                     children: "Contract Value"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                                    lineNumber: 166,
+                                                                    lineNumber: 168,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2286,13 +2286,13 @@ function ContractDetailPage() {
                                                                     }).format(contract.contractValue || 0)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                                    lineNumber: 167,
+                                                                    lineNumber: 169,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                            lineNumber: 165,
+                                                            lineNumber: 167,
                                                             columnNumber: 22
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2303,7 +2303,7 @@ function ContractDetailPage() {
                                                                     children: "Services Used"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                                    lineNumber: 172,
+                                                                    lineNumber: 174,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2314,7 +2314,7 @@ function ContractDetailPage() {
                                                                             children: contract.servicesUsed
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                                            lineNumber: 174,
+                                                                            lineNumber: 176,
                                                                             columnNumber: 28
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2325,36 +2325,36 @@ function ContractDetailPage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                                            lineNumber: 175,
+                                                                            lineNumber: 177,
                                                                             columnNumber: 28
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                                    lineNumber: 173,
+                                                                    lineNumber: 175,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                            lineNumber: 171,
+                                                            lineNumber: 173,
                                                             columnNumber: 22
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                    lineNumber: 164,
+                                                    lineNumber: 166,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                lineNumber: 163,
+                                                lineNumber: 165,
                                                 columnNumber: 16
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                        lineNumber: 146,
+                                        lineNumber: 148,
                                         columnNumber: 13
                                     }, this),
                                     contract.notes && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2364,7 +2364,7 @@ function ContractDetailPage() {
                                                 children: "Notes"
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                lineNumber: 183,
+                                                lineNumber: 185,
                                                 columnNumber: 20
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2372,25 +2372,25 @@ function ContractDetailPage() {
                                                 children: contract.notes
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                lineNumber: 184,
+                                                lineNumber: 186,
                                                 columnNumber: 20
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                        lineNumber: 182,
+                                        lineNumber: 184,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                lineNumber: 145,
+                                lineNumber: 147,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                        lineNumber: 138,
+                        lineNumber: 140,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -2405,19 +2405,19 @@ function ContractDetailPage() {
                                             className: "h-5 w-5 text-[#0A2540]"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                            lineNumber: 194,
+                                            lineNumber: 196,
                                             columnNumber: 15
                                         }, this),
                                         "Customer & Product"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                    lineNumber: 193,
+                                    lineNumber: 195,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                lineNumber: 192,
+                                lineNumber: 194,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -2433,14 +2433,14 @@ function ContractDetailPage() {
                                                         className: "h-3 w-3"
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                        lineNumber: 200,
+                                                        lineNumber: 202,
                                                         columnNumber: 85
                                                     }, this),
                                                     " Customer"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                lineNumber: 200,
+                                                lineNumber: 202,
                                                 columnNumber: 16
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2451,7 +2451,7 @@ function ContractDetailPage() {
                                                         children: contract.customerName
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                        lineNumber: 202,
+                                                        lineNumber: 204,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -2462,24 +2462,24 @@ function ContractDetailPage() {
                                                         children: "View"
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                        lineNumber: 209,
+                                                        lineNumber: 211,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                lineNumber: 201,
+                                                lineNumber: 203,
                                                 columnNumber: 16
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                        lineNumber: 199,
+                                        lineNumber: 201,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$separator$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Separator"], {}, void 0, false, {
                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                        lineNumber: 212,
+                                        lineNumber: 214,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2492,14 +2492,14 @@ function ContractDetailPage() {
                                                         className: "h-3 w-3"
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                        lineNumber: 214,
+                                                        lineNumber: 216,
                                                         columnNumber: 85
                                                     }, this),
                                                     " Product"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                lineNumber: 214,
+                                                lineNumber: 216,
                                                 columnNumber: 16
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2507,7 +2507,7 @@ function ContractDetailPage() {
                                                 children: contract.productName
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                lineNumber: 215,
+                                                lineNumber: 217,
                                                 columnNumber: 16
                                             }, this),
                                             contract.installationLocation && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2515,25 +2515,25 @@ function ContractDetailPage() {
                                                 children: contract.installationLocation
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                lineNumber: 217,
+                                                lineNumber: 219,
                                                 columnNumber: 20
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                        lineNumber: 213,
+                                        lineNumber: 215,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                lineNumber: 198,
+                                lineNumber: 200,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                        lineNumber: 191,
+                        lineNumber: 193,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -2548,19 +2548,19 @@ function ContractDetailPage() {
                                             className: "h-5 w-5 text-orange-500"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                            lineNumber: 227,
+                                            lineNumber: 229,
                                             columnNumber: 16
                                         }, this),
                                         "Documents"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                    lineNumber: 226,
+                                    lineNumber: 228,
                                     columnNumber: 14
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                lineNumber: 225,
+                                lineNumber: 227,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -2576,12 +2576,12 @@ function ContractDetailPage() {
                                                 className: "h-5 w-5 text-red-600"
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                lineNumber: 235,
+                                                lineNumber: 237,
                                                 columnNumber: 24
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                            lineNumber: 234,
+                                            lineNumber: 236,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2592,7 +2592,7 @@ function ContractDetailPage() {
                                                     children: "Contract Document"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                    lineNumber: 238,
+                                                    lineNumber: 240,
                                                     columnNumber: 24
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2603,43 +2603,43 @@ function ContractDetailPage() {
                                                             className: "h-3 w-3"
                                                         }, void 0, false, {
                                                             fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                            lineNumber: 239,
+                                                            lineNumber: 241,
                                                             columnNumber: 107
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                    lineNumber: 239,
+                                                    lineNumber: 241,
                                                     columnNumber: 24
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                            lineNumber: 237,
+                                            lineNumber: 239,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                    lineNumber: 233,
+                                    lineNumber: 235,
                                     columnNumber: 18
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "text-center py-6 text-muted-foreground text-sm border-2 border-dashed rounded-lg",
                                     children: "No document attached"
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                    lineNumber: 243,
+                                    lineNumber: 245,
                                     columnNumber: 18
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                lineNumber: 231,
+                                lineNumber: 233,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                        lineNumber: 224,
+                        lineNumber: 226,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -2653,19 +2653,19 @@ function ContractDetailPage() {
                                             className: "h-5 w-5 text-blue-500"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                            lineNumber: 254,
+                                            lineNumber: 256,
                                             columnNumber: 18
                                         }, this),
                                         "Service Schedule"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                    lineNumber: 253,
+                                    lineNumber: 255,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                lineNumber: 252,
+                                lineNumber: 254,
                                 columnNumber: 12
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -2685,7 +2685,7 @@ function ContractDetailPage() {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                            lineNumber: 264,
+                                                            lineNumber: 266,
                                                             columnNumber: 30
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -2694,13 +2694,13 @@ function ContractDetailPage() {
                                                             children: schedule.status
                                                         }, void 0, false, {
                                                             fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                            lineNumber: 265,
+                                                            lineNumber: 267,
                                                             columnNumber: 30
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                    lineNumber: 263,
+                                                    lineNumber: 265,
                                                     columnNumber: 27
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2710,7 +2710,7 @@ function ContractDetailPage() {
                                                             className: "h-4 w-4 text-muted-foreground"
                                                         }, void 0, false, {
                                                             fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                            lineNumber: 268,
+                                                            lineNumber: 270,
                                                             columnNumber: 30
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2718,54 +2718,54 @@ function ContractDetailPage() {
                                                             children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$date$2d$fns$2f$format$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["format"])(new Date(schedule.expected_date), "dd MMM yyyy")
                                                         }, void 0, false, {
                                                             fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                            lineNumber: 269,
+                                                            lineNumber: 271,
                                                             columnNumber: 30
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                                    lineNumber: 267,
+                                                    lineNumber: 269,
                                                     columnNumber: 27
                                                 }, this)
                                             ]
                                         }, schedule.id, true, {
                                             fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                            lineNumber: 262,
+                                            lineNumber: 264,
                                             columnNumber: 24
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                    lineNumber: 260,
+                                    lineNumber: 262,
                                     columnNumber: 18
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "text-muted-foreground",
                                     children: "No schedules generated."
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                    lineNumber: 275,
+                                    lineNumber: 277,
                                     columnNumber: 18
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                                lineNumber: 258,
+                                lineNumber: 260,
                                 columnNumber: 12
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                        lineNumber: 251,
+                        lineNumber: 253,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-                lineNumber: 136,
+                lineNumber: 138,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/apps/adminFE/app/admin/contracts/[id]/page.tsx",
-        lineNumber: 85,
+        lineNumber: 87,
         columnNumber: 5
     }, this);
 }

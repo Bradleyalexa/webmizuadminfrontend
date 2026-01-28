@@ -235,6 +235,119 @@ const createApiClient = (session)=>{
                     method: "DELETE"
                 });
             }
+        },
+        jobs: {
+            list: async (params)=>{
+                const searchParams = new URLSearchParams();
+                if (params?.page) searchParams.append("page", params.page.toString());
+                if (params?.limit) searchParams.append("limit", params.limit.toString());
+                if (params?.search) searchParams.append("search", params.search);
+                return fetchApi(`/jobs?${searchParams.toString()}`, {
+                    token
+                });
+            },
+            create: async (data)=>{
+                return fetchApi("/jobs", {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    token
+                });
+            },
+            getOne: async (id)=>{
+                return fetchApi(`/jobs/${id}`, {
+                    token
+                });
+            },
+            update: async (id, data)=>{
+                return fetchApi(`/jobs/${id}`, {
+                    method: "PUT",
+                    body: JSON.stringify(data),
+                    token
+                });
+            },
+            delete: async (id)=>{
+                return fetchApi(`/jobs/${id}`, {
+                    method: "DELETE",
+                    token
+                });
+            }
+        },
+        schedules: {
+            list: async (params)=>{
+                const searchParams = new URLSearchParams();
+                if (params?.page) searchParams.append("page", params.page.toString());
+                if (params?.limit) searchParams.append("limit", params.limit.toString());
+                if (params?.startDate) searchParams.append("startDate", params.startDate);
+                if (params?.endDate) searchParams.append("endDate", params.endDate);
+                if (params?.status) searchParams.append("status", params.status);
+                return fetchApi(`/schedules?${searchParams.toString()}`, {
+                    token
+                });
+            },
+            create: async (data)=>{
+                return fetchApi("/schedules", {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    token
+                });
+            },
+            getOne: async (id)=>{
+                return fetchApi(`/schedules/${id}`, {
+                    token
+                });
+            },
+            update: async (id, data)=>{
+                return fetchApi(`/schedules/${id}`, {
+                    method: "PUT",
+                    body: JSON.stringify(data),
+                    token
+                });
+            },
+            delete: async (id)=>{
+                return fetchApi(`/schedules/${id}`, {
+                    method: "DELETE",
+                    token
+                });
+            } // Removed the comma here
+        },
+        // Keep structure but throw error or require token for others
+        // For now, implementing just the auth one requested
+        tasks: {
+            list: async (params)=>{
+                const searchParams = new URLSearchParams();
+                if (params?.page) searchParams.append("page", params.page.toString());
+                if (params?.limit) searchParams.append("limit", params.limit.toString());
+                if (params?.status) searchParams.append("status", params.status);
+                if (params?.customerProductId) searchParams.append("customerProductId", params.customerProductId);
+                return fetchApi(`/tasks?${searchParams.toString()}`, {
+                    token
+                });
+            },
+            create: async (data)=>{
+                return fetchApi("/tasks", {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    token
+                });
+            },
+            getOne: async (id)=>{
+                return fetchApi(`/tasks/${id}`, {
+                    token
+                });
+            },
+            update: async (id, data)=>{
+                return fetchApi(`/tasks/${id}`, {
+                    method: "PUT",
+                    body: JSON.stringify(data),
+                    token
+                });
+            },
+            delete: async (id)=>{
+                return fetchApi(`/tasks/${id}`, {
+                    method: "DELETE",
+                    token
+                });
+            }
         }
     };
 };

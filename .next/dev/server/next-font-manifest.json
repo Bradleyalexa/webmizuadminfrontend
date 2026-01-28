@@ -8,14 +8,6 @@
       "static/media/8e451580e5e95631-s.p.0e564e6e.woff2",
       "static/media/345c85a432359eed-s.p.eead68dd.woff2"
     ],
-    "[project]/apps/adminFE/app/admin/contracts/new/page": [
-      "static/media/a218039a3287bcfd-s.p.4a23d71b.woff2",
-      "static/media/8e6fa89aa22d24ec-s.p.3aec397d.woff2",
-      "static/media/e2334d715941921e-s.p.d82a9aff.woff2",
-      "static/media/47fe1b7cd6e6ed85-s.p.855a563b.woff2",
-      "static/media/8e451580e5e95631-s.p.0e564e6e.woff2",
-      "static/media/345c85a432359eed-s.p.eead68dd.woff2"
-    ],
     "[project]/apps/adminFE/app/admin/contracts/page": [
       "static/media/a218039a3287bcfd-s.p.4a23d71b.woff2",
       "static/media/8e6fa89aa22d24ec-s.p.3aec397d.woff2",
@@ -56,6 +48,14 @@
       "static/media/8e451580e5e95631-s.p.0e564e6e.woff2",
       "static/media/345c85a432359eed-s.p.eead68dd.woff2"
     ],
+    "[project]/apps/adminFE/app/admin/jobs/page": [
+      "static/media/a218039a3287bcfd-s.p.4a23d71b.woff2",
+      "static/media/8e6fa89aa22d24ec-s.p.3aec397d.woff2",
+      "static/media/e2334d715941921e-s.p.d82a9aff.woff2",
+      "static/media/47fe1b7cd6e6ed85-s.p.855a563b.woff2",
+      "static/media/8e451580e5e95631-s.p.0e564e6e.woff2",
+      "static/media/345c85a432359eed-s.p.eead68dd.woff2"
+    ],
     "[project]/apps/adminFE/app/admin/page": [
       "static/media/a218039a3287bcfd-s.p.4a23d71b.woff2",
       "static/media/8e6fa89aa22d24ec-s.p.3aec397d.woff2",
@@ -65,14 +65,6 @@
       "static/media/345c85a432359eed-s.p.eead68dd.woff2"
     ],
     "[project]/apps/adminFE/app/admin/products/customer-products/[id]/page": [
-      "static/media/a218039a3287bcfd-s.p.4a23d71b.woff2",
-      "static/media/8e6fa89aa22d24ec-s.p.3aec397d.woff2",
-      "static/media/e2334d715941921e-s.p.d82a9aff.woff2",
-      "static/media/47fe1b7cd6e6ed85-s.p.855a563b.woff2",
-      "static/media/8e451580e5e95631-s.p.0e564e6e.woff2",
-      "static/media/345c85a432359eed-s.p.eead68dd.woff2"
-    ],
-    "[project]/apps/adminFE/app/admin/products/new/page": [
       "static/media/a218039a3287bcfd-s.p.4a23d71b.woff2",
       "static/media/8e6fa89aa22d24ec-s.p.3aec397d.woff2",
       "static/media/e2334d715941921e-s.p.d82a9aff.woff2",
@@ -96,6 +88,14 @@
       "static/media/8e451580e5e95631-s.p.0e564e6e.woff2",
       "static/media/345c85a432359eed-s.p.eead68dd.woff2"
     ],
+    "[project]/apps/adminFE/app/admin/schedules/[id]/page": [
+      "static/media/a218039a3287bcfd-s.p.4a23d71b.woff2",
+      "static/media/8e6fa89aa22d24ec-s.p.3aec397d.woff2",
+      "static/media/e2334d715941921e-s.p.d82a9aff.woff2",
+      "static/media/47fe1b7cd6e6ed85-s.p.855a563b.woff2",
+      "static/media/8e451580e5e95631-s.p.0e564e6e.woff2",
+      "static/media/345c85a432359eed-s.p.eead68dd.woff2"
+    ],
     "[project]/apps/adminFE/app/admin/services/[id]/page": [
       "static/media/a218039a3287bcfd-s.p.4a23d71b.woff2",
       "static/media/8e6fa89aa22d24ec-s.p.3aec397d.woff2",
@@ -112,7 +112,7 @@
       "static/media/8e451580e5e95631-s.p.0e564e6e.woff2",
       "static/media/345c85a432359eed-s.p.eead68dd.woff2"
     ],
-    "[project]/apps/adminFE/app/admin/tasks/page": [
+    "[project]/apps/adminFE/app/admin/tasks/[id]/edit/page": [
       "static/media/a218039a3287bcfd-s.p.4a23d71b.woff2",
       "static/media/8e6fa89aa22d24ec-s.p.3aec397d.woff2",
       "static/media/e2334d715941921e-s.p.d82a9aff.woff2",
@@ -120,7 +120,23 @@
       "static/media/8e451580e5e95631-s.p.0e564e6e.woff2",
       "static/media/345c85a432359eed-s.p.eead68dd.woff2"
     ],
-    "[project]/apps/adminFE/app/admin/technicians/new/page": [
+    "[project]/apps/adminFE/app/admin/tasks/[id]/page": [
+      "static/media/a218039a3287bcfd-s.p.4a23d71b.woff2",
+      "static/media/8e6fa89aa22d24ec-s.p.3aec397d.woff2",
+      "static/media/e2334d715941921e-s.p.d82a9aff.woff2",
+      "static/media/47fe1b7cd6e6ed85-s.p.855a563b.woff2",
+      "static/media/8e451580e5e95631-s.p.0e564e6e.woff2",
+      "static/media/345c85a432359eed-s.p.eead68dd.woff2"
+    ],
+    "[project]/apps/adminFE/app/admin/tasks/new/page": [
+      "static/media/a218039a3287bcfd-s.p.4a23d71b.woff2",
+      "static/media/8e6fa89aa22d24ec-s.p.3aec397d.woff2",
+      "static/media/e2334d715941921e-s.p.d82a9aff.woff2",
+      "static/media/47fe1b7cd6e6ed85-s.p.855a563b.woff2",
+      "static/media/8e451580e5e95631-s.p.0e564e6e.woff2",
+      "static/media/345c85a432359eed-s.p.eead68dd.woff2"
+    ],
+    "[project]/apps/adminFE/app/admin/tasks/page": [
       "static/media/a218039a3287bcfd-s.p.4a23d71b.woff2",
       "static/media/8e6fa89aa22d24ec-s.p.3aec397d.woff2",
       "static/media/e2334d715941921e-s.p.d82a9aff.woff2",

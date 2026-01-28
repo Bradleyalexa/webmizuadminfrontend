@@ -8,6 +8,7 @@ import {
   Users,
   Package,
   FileText,
+  ClipboardList,
   Wrench,
   CalendarDays,
   UserCog,
@@ -17,6 +18,7 @@ import {
   ChevronLeft,
   ChevronRight,
   X,
+  Briefcase,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -28,6 +30,7 @@ const navItems = [
   { label: "Customers", href: "/admin/customers", icon: Users },
   { label: "Products", href: "/admin/products", icon: Package },
   { label: "Contracts", href: "/admin/contracts", icon: FileText },
+  { label: "Jobs", href: "/admin/jobs", icon: Briefcase },
   { label: "Services", href: "/admin/services", icon: Wrench },
   { label: "Tasks", href: "/admin/tasks", icon: CalendarDays },
   { label: "Technicians", href: "/admin/technicians", icon: UserCog },
