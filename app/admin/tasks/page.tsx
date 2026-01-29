@@ -77,6 +77,19 @@ export default function TasksPage() {
              onEditClick={(task) => {
                  router.push(`/admin/tasks/${task.id}`)
              }}
+             onTaskDrop={async (taskId, newDate) => {
+                try {
+                    const api = createApiClient(session) as any
+                    // Set time to noon to avoid timezone shifts when converting to UTC/Date-only
+                    const safeDate = new Date(newDate);
+                    safeDate.setHours(12, 0, 0, 0);
+                    await api.tasks.update(taskId, { task_date: safeDate.toISOString() })
+                    await fetchTasks() // Refresh
+                } catch (e) {
+                    console.error("Failed to move task", e)
+                    // Optionally show toast error
+                }
+             }}
           />
       </div>
 

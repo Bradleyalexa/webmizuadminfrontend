@@ -39,11 +39,12 @@ interface TaskCalendarProps {
   onEditClick: (task: Task) => void
   currentMonth: Date
   onMonthChange: (date: Date) => void
+  onTaskDrop?: (taskId: string, newDate: Date) => Promise<void>
 }
 
 type ViewMode = 'monthly' | 'weekly'
 
-export function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthChange }: TaskCalendarProps) {
+export function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthChange, onTaskDrop }: TaskCalendarProps) {
   const [viewMode, setViewMode] = useState<ViewMode>('weekly')
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
   
@@ -104,6 +105,22 @@ export function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onM
       case "completed": return "success"
       case "canceled": return "default" // Using default/neutral for canceled
       default: return "warning" // pending
+    }
+  }
+
+  const handleDragStart = (e: React.DragEvent, taskId: string) => {
+    e.dataTransfer.setData("taskId", taskId);
+  }
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+  }
+
+  const handleDrop = async (e: React.DragEvent, date: Date) => {
+    e.preventDefault();
+    const taskId = e.dataTransfer.getData("taskId");
+    if (taskId && onTaskDrop) {
+        await onTaskDrop(taskId, date);
     }
   }
 
@@ -180,6 +197,8 @@ export function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onM
                         <div 
                             key={index} 
                             onClick={() => setSelectedDate(date)}
+                            onDragOver={handleDragOver}
+                            onDrop={(e) => handleDrop(e, date)}
                             className={cn(
                             "bg-white p-2 min-h-[100px] cursor-pointer hover:bg-gray-50 transition-colors flex flex-col gap-1",
                             _isToday && "bg-blue-50/30"
@@ -196,7 +215,13 @@ export function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onM
                             </div>
                             <div className="flex-1 flex flex-col gap-1 overflow-hidden">
                                 {dayTasks.slice(0, 3).map(task => (
-                                    <div key={task.id} className="text-[10px] bg-gray-100 rounded px-1 py-0.5 truncate text-[#0A2540]">
+                                    <div 
+                                        key={task.id} 
+                                        draggable
+                                        onDragStart={(e) => handleDragStart(e, task.id)}
+                                        onClick={(e) => { e.stopPropagation(); onEditClick(task); }}
+                                        className="text-[10px] bg-gray-100 rounded px-1 py-0.5 truncate text-[#0A2540] cursor-grab active:cursor-grabbing hover:bg-gray-200"
+                                    >
                                         {task.title}
                                     </div>
                                 ))}
@@ -219,14 +244,19 @@ export function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onM
                     
                     return (
                         <div 
-                            key={index} 
+                            key={index}
+                            onDragOver={handleDragOver}
+                            onDrop={(e) => handleDrop(e, date)} 
                             className={cn(
                                 "flex flex-col md:h-full bg-white rounded-xl md:rounded-[24px] border transition-all overflow-hidden shadow-sm shrink-0 min-h-[180px] md:min-h-0",
                                 _isToday ? "border-[#00C49A] border-2 shadow-md relative z-10" : "border-transparent shadow-none"
                             )}
                         >
                             {/* Day Header */}
-                            <div className="p-3 md:p-4 md:text-center shrink-0 flex items-center md:block justify-between border-b md:border-none border-gray-50 bg-gray-50/50 md:bg-transparent">
+                            <div 
+                                onClick={() => setSelectedDate(date)}
+                                className="p-3 md:p-4 md:text-center shrink-0 flex items-center md:block justify-between border-b md:border-none border-gray-50 bg-gray-50/50 md:bg-transparent cursor-pointer hover:bg-gray-100 transition-colors"
+                            >
                                 <div className="flex items-baseline gap-2 md:block">
                                     <div className="text-xs font-bold text-gray-400 md:mb-1 uppercase tracking-wider">{format(date, "EEE")}</div>
                                     <div className={cn(
@@ -249,8 +279,10 @@ export function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onM
                                     dayTasks.map(task => (
                                         <div 
                                             key={task.id} 
+                                            draggable
+                                            onDragStart={(e) => handleDragStart(e, task.id)}
                                             onClick={() => onEditClick(task)}
-                                            className="bg-white p-3 rounded-xl border border-gray-100 shadow-sm cursor-pointer hover:shadow-md transition-shadow group shrink-0"
+                                            className="bg-white p-3 rounded-xl border border-gray-100 shadow-sm cursor-grab active:cursor-grabbing hover:shadow-md transition-shadow group shrink-0"
                                         >
                                             <div className="flex justify-between items-start mb-2">
                                                 <h4 className="font-semibold text-sm text-[#0A2540] leading-tight line-clamp-2 group-hover:text-[#00C49A] transition-colors">

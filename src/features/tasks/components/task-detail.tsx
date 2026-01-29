@@ -11,6 +11,8 @@ import { useSupabase } from "@/src/components/providers/supabase-provider"
 import { createApiClient } from "@/src/lib/api/client"
 import { TaskForm } from "./task-form"
 import { toast } from "sonner"
+import { ServiceLogForm, ServiceLogFormValues } from "../../service-logs/components/service-log-form"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 
 const getStatusVariant = (status: string) => {
   switch (status) {
@@ -21,7 +23,7 @@ const getStatusVariant = (status: string) => {
     case "pending":
       return "default"
     case "cancelled":
-      return "error" // Corrected from canceled to cancelled/error if needed, but badge usually uses error for red
+      return "error"
     case "canceled":
       return "error"
     default:
@@ -38,6 +40,7 @@ export function TaskDetail() {
   const [task, setTask] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [isEditOpen, setIsEditOpen] = useState(false)
+  const [isCompleteOpen, setIsCompleteOpen] = useState(false)
 
   const fetchTask = async () => {
       if (!session || !taskId) return
@@ -49,6 +52,23 @@ export function TaskDetail() {
       } catch (error) {
           console.error("Failed to fetch task", error)
           toast.error("Failed to load task details")
+      } finally {
+          setLoading(false)
+      }
+  }
+
+  const handleCompleteTask = async (data: ServiceLogFormValues) => {
+      if (!session || !taskId) return
+      setLoading(true)
+      try {
+          const api = createApiClient(session) as any
+          await api.tasks.complete(taskId, data)
+          toast.success("Task completed and Service Log created!")
+          setIsCompleteOpen(false)
+          fetchTask() // Refresh to show updated status
+      } catch (error: any) {
+          console.error("Failed to complete task", error)
+          toast.error(error.message || "Failed to complete task")
       } finally {
           setLoading(false)
       }
@@ -124,23 +144,46 @@ export function TaskDetail() {
              <span className="rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-medium text-blue-700 border border-blue-200 uppercase">
                 {task.taskType || "General"}
              </span>
+             
+             {task.status !== 'completed' && task.status !== 'canceled' && (
+                 <Button 
+                    size="sm" 
+                    className="ml-2 bg-green-600 hover:bg-green-700 text-white"
+                    onClick={() => setIsCompleteOpen(true)}
+                 >
+                    <CheckCircle className="mr-2 h-4 w-4" />
+                    Complete
+                 </Button>
+             )}
           </div>
           <p className="text-sm text-muted-foreground mt-1">
             Job: {task.jobName} | Scheduled: {new Date(task.taskDate).toLocaleDateString()} {new Date(task.taskDate).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
           </p>
         </div>
-        <Button
-          variant="outline"
-          onClick={() => setIsEditOpen(true)}
-          className="border-[#0A2540] text-[#0A2540] hover:bg-[#0A2540] hover:text-white bg-transparent"
-        >
-          <Edit className="mr-2 h-4 w-4" />
-          Edit Task
-        </Button>
+        {task.source === 'schedule' ? (
+            <Button
+                variant="default" // Primary color for "Create"
+                onClick={() => setIsEditOpen(true)}
+                className="bg-[#0A2540] text-white hover:bg-[#0A2540]/90"
+            >
+                <Edit className="mr-2 h-4 w-4" />
+                Create Task
+            </Button>
+        ) : (
+            <Button
+                variant="outline"
+                onClick={() => setIsEditOpen(true)}
+                className="border-[#0A2540] text-[#0A2540] hover:bg-[#0A2540] hover:text-white bg-transparent"
+            >
+                <Edit className="mr-2 h-4 w-4" />
+                Edit Task
+            </Button>
+        )}
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
         <Card className="bg-white shadow-sm lg:col-span-2">
+          {/* ... existing content ... */}
           <CardHeader>
             <CardTitle className="font-heading text-lg font-semibold text-[#0A2540]">Task Details</CardTitle>
           </CardHeader>
@@ -190,6 +233,14 @@ export function TaskDetail() {
                   <p className="text-sm font-medium">{task.expectedId}</p>
                </div>
             )}
+            
+            {/* Show Source for debugging/info */}
+            {task.source === 'schedule' && (
+               <div className="p-3 bg-amber-50 rounded-md border border-amber-100 text-amber-800 text-sm">
+                  This detail view is a preview of a <strong>Planned Schedule</strong>. 
+                  Click "Create Task" to assign a technician and activate it.
+               </div>
+            )}
           </CardContent>
         </Card>
 
@@ -218,10 +269,44 @@ export function TaskDetail() {
           <TaskForm
             isOpen={isEditOpen}
             onClose={() => setIsEditOpen(false)}
-            initialData={task}
-            onSuccess={fetchTask}
+            initialData={task.source === 'schedule' ? {
+                ...task,
+                id: undefined, // Clear ID so it creates
+                expectedId: task.id, // Map Schedule ID to expectedId
+                title: task.description ? `Task for ${task.productName}` : "New Service Task" // Auto-title
+            } : task}
+            onSuccess={(newId) => {
+                if (task.source === 'schedule' && newId) {
+                    // Redirect to the new task
+                    toast.success("Schedule promoted to Task! Redirecting...")
+                    router.push(`/admin/tasks/${newId}`)
+                } else {
+                    fetchTask()
+                }
+            }}
           />
       )}
+
+      <Dialog open={isCompleteOpen} onOpenChange={setIsCompleteOpen}>
+        <DialogContent className="max-w-3xl">
+          <DialogHeader>
+            <DialogTitle>Complete Task</DialogTitle>
+          </DialogHeader>
+          <ServiceLogForm
+            defaultValues={{
+                technician_id: task.technicianId || "",
+                customer_product_id: task.customerProductId || "",
+                job_id: task.jobId,
+                expected_id: task.expectedId, // Link if exists
+                pekerjaan: task.description || task.title, // Default job desc
+                service_date: new Date(),
+                service_type: "perpanggil", 
+            }}
+            onSubmit={handleCompleteTask}
+            isLoading={loading}
+          />
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }

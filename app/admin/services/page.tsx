@@ -7,7 +7,7 @@ import { createApiClient } from "@/src/lib/api/client"
 import { DataTable } from "@/src/features/schedules/components/schedules-table"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Plus, Filter, Calendar as CalendarIcon } from "lucide-react"
+import { Plus, Filter, Calendar as CalendarIcon, Search } from "lucide-react"
 import { ColumnDef } from "@tanstack/react-table"
 import { Badge } from "@/components/ui/badge"
 import { format } from "date-fns"
@@ -19,7 +19,7 @@ interface Schedule {
   productName?: string;
   productModel?: string;
   expectedDate: string;
-  status: 'pending' | 'done' | 'canceled'
+  status: 'pending' | 'scheduled' | 'done' | 'canceled'
   address: string
   source?: 'schedule' | 'task' | 'log'
 }
@@ -34,6 +34,19 @@ export default function ServicesPage() {
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
   const [statusFilter, setStatusFilter] = useState<string | undefined>(undefined)
+  const [totalItems, setTotalItems] = useState(0)
+
+  const [search, setSearch] = useState("")
+  const [debouncedSearch, setDebouncedSearch] = useState("")
+
+  // Debounce search
+  useEffect(() => {
+    const timer = setTimeout(() => {
+        setDebouncedSearch(search)
+        setPage(1) // Reset to page 1 on search
+    }, 500)
+    return () => clearTimeout(timer)
+  }, [search])
 
   const fetchSchedules = async () => {
     if (!session) return
@@ -44,10 +57,12 @@ export default function ServicesPage() {
       const res = await (api as any).schedules.list({ 
           page, 
           limit: 10, 
-          status: statusFilter 
+          status: statusFilter,
+          search: debouncedSearch
       })
       setData(res.data)
       const total = res.meta?.total || 0
+      setTotalItems(total)
       setTotalPages(Math.ceil(total / 10))
     } catch (err: any) {
       console.error(err)
@@ -59,7 +74,7 @@ export default function ServicesPage() {
 
   useEffect(() => {
     fetchSchedules()
-  }, [session, page, statusFilter])
+  }, [session, page, statusFilter, debouncedSearch])
 
   const columns: ColumnDef<Schedule>[] = [
     {
@@ -107,6 +122,7 @@ export default function ServicesPage() {
           const status = row.original.status
           const colors: Record<string, string> = {
               pending: "bg-yellow-100 text-yellow-800",
+              scheduled: "bg-blue-100 text-blue-800",
               done: "bg-green-100 text-green-800",
               canceled: "bg-gray-100 text-gray-800"
           }
@@ -138,14 +154,25 @@ export default function ServicesPage() {
 
   return (
     <div className="p-6 space-y-6">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-            <h1 className="text-2xl font-bold tracking-tight text-[#0A2540]">Services</h1>
+            <h1 className="text-2xl font-bold tracking-tight text-[#0A2540]">
+                Services
+                {!loading && <span className="ml-2 text-lg font-normal text-muted-foreground">({totalItems})</span>}
+            </h1>
             <p className="text-muted-foreground">Manage and track all service schedules.</p>
         </div>
-        <div className="flex gap-2">
-            {/* Filter Toggle could go here */}
-            {/* <Button variant="outline"><Filter className="mr-2 h-4 w-4"/> Filter</Button> */}
+        <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
+            <div className="relative w-full sm:w-64">
+                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                <Input
+                    placeholder="Search customer, product..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    className="pl-8 bg-white"
+                />
+            </div>
+            
             <Button className="bg-[#0A2540] hover:bg-[#0A2540]/90">
                 <Plus className="mr-2 h-4 w-4" /> New Service
             </Button>
@@ -153,7 +180,7 @@ export default function ServicesPage() {
       </div>
 
       <div className="flex items-center gap-2 overflow-x-auto pb-2">
-         {['pending', 'done', 'canceled'].map(s => (
+         {['pending', 'scheduled', 'done', 'canceled'].map(s => (
              <Button 
                 key={s} 
                 variant={statusFilter === s ? "default" : "outline"} 

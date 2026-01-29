@@ -280,6 +280,7 @@ const createApiClient = (session)=>{
                 if (params?.startDate) searchParams.append("startDate", params.startDate);
                 if (params?.endDate) searchParams.append("endDate", params.endDate);
                 if (params?.status) searchParams.append("status", params.status);
+                if (params?.search) searchParams.append("search", params.search);
                 return fetchApi(`/schedules?${searchParams.toString()}`, {
                     token
                 });
@@ -345,6 +346,13 @@ const createApiClient = (session)=>{
             delete: async (id)=>{
                 return fetchApi(`/tasks/${id}`, {
                     method: "DELETE",
+                    token
+                });
+            },
+            complete: async (id, data)=>{
+                return fetchApi(`/tasks/${id}/complete`, {
+                    method: "POST",
+                    body: JSON.stringify(data),
                     token
                 });
             }

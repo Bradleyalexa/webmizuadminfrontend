@@ -244,6 +244,7 @@ export const createApiClient = (session: Session | null) => {
             if (params?.startDate) searchParams.append("startDate", params.startDate);
             if (params?.endDate) searchParams.append("endDate", params.endDate);
             if (params?.status) searchParams.append("status", params.status);
+            if ((params as any)?.search) searchParams.append("search", (params as any).search);
             return fetchApi<{ data: any[]; meta: any }>(`/schedules?${searchParams.toString()}`, { token });
         },
         create: async (data: any) => {
@@ -304,6 +305,13 @@ export const createApiClient = (session: Session | null) => {
                 token,
             });
         },
+        complete: async (id: string, data: any) => {
+             return fetchApi<any>(`/tasks/${id}/complete`, {
+                method: "POST",
+                body: JSON.stringify(data),
+                token,
+            });
+        }
     }
   };
 };

@@ -402,7 +402,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthChange }) {
+function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthChange, onTaskDrop }) {
     _s();
     const [viewMode, setViewMode] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('weekly');
     const [selectedDate, setSelectedDate] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
@@ -481,6 +481,19 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                 ;
         }
     };
+    const handleDragStart = (e, taskId)=>{
+        e.dataTransfer.setData("taskId", taskId);
+    };
+    const handleDragOver = (e)=>{
+        e.preventDefault();
+    };
+    const handleDrop = async (e, date)=>{
+        e.preventDefault();
+        const taskId = e.dataTransfer.getData("taskId");
+        if (taskId && onTaskDrop) {
+            await onTaskDrop(taskId, date);
+        }
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -504,12 +517,12 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                     className: "h-4 w-4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                    lineNumber: 117,
+                                                    lineNumber: 134,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                lineNumber: 116,
+                                                lineNumber: 133,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -519,7 +532,7 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                 children: "Today"
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                lineNumber: 119,
+                                                lineNumber: 136,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -531,18 +544,18 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                     className: "h-4 w-4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                    lineNumber: 123,
+                                                    lineNumber: 140,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                lineNumber: 122,
+                                                lineNumber: 139,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                        lineNumber: 115,
+                                        lineNumber: 132,
                                         columnNumber: 14
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -550,13 +563,13 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                         children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$date$2d$fns$2f$format$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["format"])(currentMonth, "MMMM yyyy")
                                     }, void 0, false, {
                                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                        lineNumber: 126,
+                                        lineNumber: 143,
                                         columnNumber: 14
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                lineNumber: 114,
+                                lineNumber: 131,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -575,14 +588,14 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                         className: "h-3 w-3 mr-2"
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                        lineNumber: 142,
+                                                        lineNumber: 159,
                                                         columnNumber: 21
                                                     }, this),
                                                     " Weekly"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                lineNumber: 133,
+                                                lineNumber: 150,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -595,20 +608,20 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                         className: "h-3 w-3 mr-2"
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                        lineNumber: 153,
+                                                        lineNumber: 170,
                                                         columnNumber: 21
                                                     }, this),
                                                     " Monthly"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                lineNumber: 144,
+                                                lineNumber: 161,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                        lineNumber: 132,
+                                        lineNumber: 149,
                                         columnNumber: 14
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -619,26 +632,26 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                 className: "h-4 w-4 mr-2"
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                lineNumber: 158,
+                                                lineNumber: 175,
                                                 columnNumber: 17
                                             }, this),
                                             " Create Task"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                        lineNumber: 157,
+                                        lineNumber: 174,
                                         columnNumber: 14
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                lineNumber: 131,
+                                lineNumber: 148,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                        lineNumber: 113,
+                        lineNumber: 130,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -654,14 +667,14 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                             children: day
                                         }, day, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                            lineNumber: 169,
+                                            lineNumber: 186,
                                             columnNumber: 21
                                         }, this)),
                                     prefix.map((_, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "bg-white min-h-[100px]"
                                         }, `blank-${i}`, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                            lineNumber: 174,
+                                            lineNumber: 191,
                                             columnNumber: 25
                                         }, this)),
                                     days.map((date, index)=>{
@@ -669,6 +682,8 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                         const _isToday = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$date$2d$fns$2f$isToday$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["isToday"])(date);
                                         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             onClick: ()=>setSelectedDate(date),
+                                            onDragOver: handleDragOver,
+                                            onDrop: (e)=>handleDrop(e, date),
                                             className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$lib$2f$utils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["cn"])("bg-white p-2 min-h-[100px] cursor-pointer hover:bg-gray-50 transition-colors flex flex-col gap-1", _isToday && "bg-blue-50/30"),
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -679,7 +694,7 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                             children: date.getDate()
                                                         }, void 0, false, {
                                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                            lineNumber: 189,
+                                                            lineNumber: 208,
                                                             columnNumber: 29
                                                         }, this),
                                                         dayTasks.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -690,24 +705,30 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                            lineNumber: 195,
+                                                            lineNumber: 214,
                                                             columnNumber: 53
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                    lineNumber: 188,
+                                                    lineNumber: 207,
                                                     columnNumber: 29
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "flex-1 flex flex-col gap-1 overflow-hidden",
                                                     children: [
                                                         dayTasks.slice(0, 3).map((task)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: "text-[10px] bg-gray-100 rounded px-1 py-0.5 truncate text-[#0A2540]",
+                                                                draggable: true,
+                                                                onDragStart: (e)=>handleDragStart(e, task.id),
+                                                                onClick: (e)=>{
+                                                                    e.stopPropagation();
+                                                                    onEditClick(task);
+                                                                },
+                                                                className: "text-[10px] bg-gray-100 rounded px-1 py-0.5 truncate text-[#0A2540] cursor-grab active:cursor-grabbing hover:bg-gray-200",
                                                                 children: task.title
                                                             }, task.id, false, {
                                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                                lineNumber: 199,
+                                                                lineNumber: 218,
                                                                 columnNumber: 37
                                                             }, this)),
                                                         dayTasks.length > 3 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -719,31 +740,31 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                            lineNumber: 204,
+                                                            lineNumber: 229,
                                                             columnNumber: 37
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                    lineNumber: 197,
+                                                    lineNumber: 216,
                                                     columnNumber: 29
                                                 }, this)
                                             ]
                                         }, index, true, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                            lineNumber: 180,
+                                            lineNumber: 197,
                                             columnNumber: 25
                                         }, this);
                                     })
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                lineNumber: 167,
+                                lineNumber: 184,
                                 columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                            lineNumber: 166,
+                            lineNumber: 183,
                             columnNumber: 14
                         }, this) : // Weekly View (Cards)
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -754,10 +775,13 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                     const dayTasks = getTasksForDate(date);
                                     const _isToday = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$date$2d$fns$2f$isToday$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["isToday"])(date);
                                     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        onDragOver: handleDragOver,
+                                        onDrop: (e)=>handleDrop(e, date),
                                         className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$lib$2f$utils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["cn"])("flex flex-col md:h-full bg-white rounded-xl md:rounded-[24px] border transition-all overflow-hidden shadow-sm shrink-0 min-h-[180px] md:min-h-0", _isToday ? "border-[#00C49A] border-2 shadow-md relative z-10" : "border-transparent shadow-none"),
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "p-3 md:p-4 md:text-center shrink-0 flex items-center md:block justify-between border-b md:border-none border-gray-50 bg-gray-50/50 md:bg-transparent",
+                                                onClick: ()=>setSelectedDate(date),
+                                                className: "p-3 md:p-4 md:text-center shrink-0 flex items-center md:block justify-between border-b md:border-none border-gray-50 bg-gray-50/50 md:bg-transparent cursor-pointer hover:bg-gray-100 transition-colors",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "flex items-baseline gap-2 md:block",
                                                     children: [
@@ -766,7 +790,7 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                             children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$date$2d$fns$2f$format$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["format"])(date, "EEE")
                                                         }, void 0, false, {
                                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                            lineNumber: 231,
+                                                            lineNumber: 261,
                                                             columnNumber: 37
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -774,18 +798,18 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                             children: date.getDate()
                                                         }, void 0, false, {
                                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                            lineNumber: 232,
+                                                            lineNumber: 262,
                                                             columnNumber: 37
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                    lineNumber: 230,
+                                                    lineNumber: 260,
                                                     columnNumber: 33
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                lineNumber: 229,
+                                                lineNumber: 256,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -795,11 +819,13 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                     children: "No tasks"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                    lineNumber: 245,
+                                                    lineNumber: 275,
                                                     columnNumber: 37
                                                 }, this) : dayTasks.map((task)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        draggable: true,
+                                                        onDragStart: (e)=>handleDragStart(e, task.id),
                                                         onClick: ()=>onEditClick(task),
-                                                        className: "bg-white p-3 rounded-xl border border-gray-100 shadow-sm cursor-pointer hover:shadow-md transition-shadow group shrink-0",
+                                                        className: "bg-white p-3 rounded-xl border border-gray-100 shadow-sm cursor-grab active:cursor-grabbing hover:shadow-md transition-shadow group shrink-0",
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "flex justify-between items-start mb-2",
@@ -808,12 +834,12 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                                     children: task.title
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                                    lineNumber: 256,
+                                                                    lineNumber: 288,
                                                                     columnNumber: 49
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                                lineNumber: 255,
+                                                                lineNumber: 287,
                                                                 columnNumber: 45
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -827,7 +853,7 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                                                 children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$date$2d$fns$2f$format$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["format"])(new Date(task.taskDate), "HH:mm")
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                                                lineNumber: 263,
+                                                                                lineNumber: 295,
                                                                                 columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$components$2f$ui$2f$status$2d$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["StatusBadge"], {
@@ -836,13 +862,13 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                                                 className: "text-[10px] h-5 px-1.5"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                                                lineNumber: 266,
+                                                                                lineNumber: 298,
                                                                                 columnNumber: 53
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                                        lineNumber: 262,
+                                                                        lineNumber: 294,
                                                                         columnNumber: 49
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -853,7 +879,7 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                                                 children: task.technicianName?.charAt(0) || "?"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                                                lineNumber: 270,
+                                                                                lineNumber: 302,
                                                                                 columnNumber: 53
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -861,58 +887,58 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                                                 children: task.technicianName || "Unassigned"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                                                lineNumber: 273,
+                                                                                lineNumber: 305,
                                                                                 columnNumber: 53
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                                        lineNumber: 269,
+                                                                        lineNumber: 301,
                                                                         columnNumber: 49
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                                lineNumber: 261,
+                                                                lineNumber: 293,
                                                                 columnNumber: 45
                                                             }, this)
                                                         ]
                                                     }, task.id, true, {
                                                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                        lineNumber: 250,
+                                                        lineNumber: 280,
                                                         columnNumber: 41
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                lineNumber: 243,
+                                                lineNumber: 273,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, index, true, {
                                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                        lineNumber: 221,
+                                        lineNumber: 246,
                                         columnNumber: 25
                                     }, this);
                                 })
                             }, void 0, false, {
                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                lineNumber: 215,
+                                lineNumber: 240,
                                 columnNumber: 18
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                            lineNumber: 214,
+                            lineNumber: 239,
                             columnNumber: 14
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                        lineNumber: 163,
+                        lineNumber: 180,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                lineNumber: 112,
+                lineNumber: 129,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Dialog"], {
@@ -931,20 +957,20 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                    lineNumber: 292,
+                                    lineNumber: 324,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogDescription"], {
                                     children: selectedDate ? `${getTasksForDate(selectedDate).length} tasks scheduled` : ""
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                    lineNumber: 295,
+                                    lineNumber: 327,
                                     columnNumber: 14
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                            lineNumber: 291,
+                            lineNumber: 323,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -967,7 +993,7 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                             children: task.title
                                                         }, void 0, false, {
                                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                            lineNumber: 309,
+                                                            lineNumber: 341,
                                                             columnNumber: 30
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -975,7 +1001,7 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                             children: task.jobName
                                                         }, void 0, false, {
                                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                            lineNumber: 310,
+                                                            lineNumber: 342,
                                                             columnNumber: 30
                                                         }, this),
                                                         task.description && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -983,13 +1009,13 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                             children: task.description
                                                         }, void 0, false, {
                                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                            lineNumber: 311,
+                                                            lineNumber: 343,
                                                             columnNumber: 51
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                    lineNumber: 308,
+                                                    lineNumber: 340,
                                                     columnNumber: 26
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$components$2f$ui$2f$status$2d$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["StatusBadge"], {
@@ -997,13 +1023,13 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                     variant: getStatusVariant(task.status)
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                    lineNumber: 313,
+                                                    lineNumber: 345,
                                                     columnNumber: 26
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                            lineNumber: 307,
+                                            lineNumber: 339,
                                             columnNumber: 22
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1017,7 +1043,7 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                             children: "Technician: "
                                                         }, void 0, false, {
                                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                            lineNumber: 317,
+                                                            lineNumber: 349,
                                                             columnNumber: 30
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1025,13 +1051,13 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                             children: task.technicianName || "Unassigned"
                                                         }, void 0, false, {
                                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                            lineNumber: 318,
+                                                            lineNumber: 350,
                                                             columnNumber: 30
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                    lineNumber: 316,
+                                                    lineNumber: 348,
                                                     columnNumber: 26
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1039,19 +1065,19 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                                     children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$date$2d$fns$2f$format$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["format"])(new Date(task.taskDate), "p")
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                                    lineNumber: 320,
+                                                    lineNumber: 352,
                                                     columnNumber: 26
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                            lineNumber: 315,
+                                            lineNumber: 347,
                                             columnNumber: 22
                                         }, this)
                                     ]
                                 }, task.id, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                    lineNumber: 302,
+                                    lineNumber: 334,
                                     columnNumber: 18
                                 }, this)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "text-center py-8",
@@ -1061,7 +1087,7 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                         children: "No tasks for this day."
                                     }, void 0, false, {
                                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                        lineNumber: 328,
+                                        lineNumber: 360,
                                         columnNumber: 22
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1073,29 +1099,29 @@ function TaskCalendar({ tasks, onAddClick, onEditClick, currentMonth, onMonthCha
                                         children: "Create one?"
                                     }, void 0, false, {
                                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                        lineNumber: 329,
+                                        lineNumber: 361,
                                         columnNumber: 22
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                                lineNumber: 327,
+                                lineNumber: 359,
                                 columnNumber: 18
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                            lineNumber: 299,
+                            lineNumber: 331,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                    lineNumber: 290,
+                    lineNumber: 322,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-calendar.tsx",
-                lineNumber: 289,
+                lineNumber: 321,
                 columnNumber: 7
             }, this)
         ]
@@ -1581,11 +1607,7 @@ const taskSchema = __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$admin
     task_type: __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$zod$2f$v3$2f$external$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__z$3e$__["z"].string().optional(),
     technician_id: __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$zod$2f$v3$2f$external$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__z$3e$__["z"].string().uuid().optional(),
     task_date: __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$zod$2f$v3$2f$external$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__z$3e$__["z"].string().min(1, "Date and time is required"),
-    status: __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$zod$2f$v3$2f$external$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__z$3e$__["z"].enum([
-        "pending",
-        "completed",
-        "canceled"
-    ]).default("pending")
+    expected_id: __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$zod$2f$v3$2f$external$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__z$3e$__["z"].string().optional()
 });
 function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
     _s();
@@ -1602,7 +1624,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
             description: initialData?.description || "",
             customer_id: initialData?.customerId || "",
             customer_product_id: initialData?.customerProductId || "",
-            customer_product_id: initialData?.customerProductId || "",
+            expected_id: initialData?.expectedId || "",
             job_id: initialData?.jobId || "",
             task_type: initialData?.taskType || "general",
             technician_id: initialData?.technicianId || undefined,
@@ -1682,11 +1704,12 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
             if (initialData?.id) {
                 await api.tasks.update(initialData.id, payload);
                 __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].success("Task updated");
+                onSuccess(initialData.id);
             } else {
-                await api.tasks.create(payload);
+                const res = await api.tasks.create(payload);
                 __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].success("Task created");
+                onSuccess(res.data ? res.data.id : res.id); // check return type
             }
-            onSuccess();
             onClose();
         } catch (error) {
             __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].error(error.message || "Failed to save task");
@@ -1705,12 +1728,12 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                         children: initialData ? "Edit Task" : "Create New Task"
                     }, void 0, false, {
                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                        lineNumber: 144,
+                        lineNumber: 145,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                    lineNumber: 143,
+                    lineNumber: 144,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -1729,13 +1752,13 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                             children: "*"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 149,
+                                            lineNumber: 150,
                                             columnNumber: 49
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 149,
+                                    lineNumber: 150,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -1745,7 +1768,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     className: errors.title ? "border-red-500" : ""
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 150,
+                                    lineNumber: 151,
                                     columnNumber: 15
                                 }, this),
                                 errors.title && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1753,13 +1776,13 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     children: errors.title.message
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 151,
+                                    lineNumber: 152,
                                     columnNumber: 32
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 148,
+                            lineNumber: 149,
                             columnNumber: 12
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1777,13 +1800,13 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                     children: "*"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 156,
+                                                    lineNumber: 157,
                                                     columnNumber: 57
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 156,
+                                            lineNumber: 157,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
@@ -1799,12 +1822,12 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                         placeholder: "Select Customer"
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                        lineNumber: 162,
+                                                        lineNumber: 163,
                                                         columnNumber: 27
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 161,
+                                                    lineNumber: 162,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -1813,18 +1836,18 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                             children: c.name || c.profiles?.name || c.id
                                                         }, c.id, false, {
                                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                            lineNumber: 166,
+                                                            lineNumber: 167,
                                                             columnNumber: 31
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 164,
+                                                    lineNumber: 165,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 157,
+                                            lineNumber: 158,
                                             columnNumber: 19
                                         }, this),
                                         errors.customer_id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1832,13 +1855,13 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                             children: errors.customer_id.message
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 170,
+                                            lineNumber: 171,
                                             columnNumber: 42
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 155,
+                                    lineNumber: 156,
                                     columnNumber: 16
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1853,13 +1876,13 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                     children: "*"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 174,
+                                                    lineNumber: 175,
                                                     columnNumber: 64
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 174,
+                                            lineNumber: 175,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
@@ -1873,12 +1896,12 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                         placeholder: selectedCustomerId ? "Select Product" : "Select Customer First"
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                        lineNumber: 177,
+                                                        lineNumber: 178,
                                                         columnNumber: 27
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 176,
+                                                    lineNumber: 177,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -1892,7 +1915,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                                         children: cp.product_name || "Unknown Product"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                                        lineNumber: 183,
+                                                                        lineNumber: 184,
                                                                         columnNumber: 39
                                                                     }, this),
                                                                     cp.product_model && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1900,29 +1923,29 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                                         children: cp.product_model
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                                        lineNumber: 184,
+                                                                        lineNumber: 185,
                                                                         columnNumber: 60
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                                lineNumber: 182,
+                                                                lineNumber: 183,
                                                                 columnNumber: 35
                                                             }, this)
                                                         }, cp.id, false, {
                                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                            lineNumber: 181,
+                                                            lineNumber: 182,
                                                             columnNumber: 31
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 179,
+                                                    lineNumber: 180,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 175,
+                                            lineNumber: 176,
                                             columnNumber: 19
                                         }, this),
                                         errors.customer_product_id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1930,19 +1953,19 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                             children: errors.customer_product_id.message
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 190,
+                                            lineNumber: 191,
                                             columnNumber: 50
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 173,
+                                    lineNumber: 174,
                                     columnNumber: 16
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 154,
+                            lineNumber: 155,
                             columnNumber: 12
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1957,13 +1980,13 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                             children: "*"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 195,
+                                            lineNumber: 196,
                                             columnNumber: 48
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 195,
+                                    lineNumber: 196,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
@@ -1976,12 +1999,12 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                 placeholder: "Select Job Type"
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                lineNumber: 198,
+                                                lineNumber: 199,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 197,
+                                            lineNumber: 198,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -1990,18 +2013,18 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                     children: job.name
                                                 }, job.id, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 202,
+                                                    lineNumber: 203,
                                                     columnNumber: 27
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 200,
+                                            lineNumber: 201,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 196,
+                                    lineNumber: 197,
                                     columnNumber: 15
                                 }, this),
                                 errors.job_id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2009,13 +2032,13 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     children: errors.job_id.message
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 206,
+                                    lineNumber: 207,
                                     columnNumber: 33
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 194,
+                            lineNumber: 195,
                             columnNumber: 12
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2033,13 +2056,13 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                     children: "*"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 211,
+                                                    lineNumber: 212,
                                                     columnNumber: 58
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 211,
+                                            lineNumber: 212,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -2049,7 +2072,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                             className: errors.task_date ? "border-red-500" : ""
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 212,
+                                            lineNumber: 213,
                                             columnNumber: 19
                                         }, this),
                                         errors.task_date && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2057,13 +2080,13 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                             children: errors.task_date.message
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 218,
+                                            lineNumber: 219,
                                             columnNumber: 40
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 210,
+                                    lineNumber: 211,
                                     columnNumber: 16
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2074,7 +2097,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                             children: "Assign Technician"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 222,
+                                            lineNumber: 223,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
@@ -2086,12 +2109,12 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                         placeholder: "Select Technician"
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                        lineNumber: 225,
+                                                        lineNumber: 226,
                                                         columnNumber: 27
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 224,
+                                                    lineNumber: 225,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -2101,7 +2124,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                             children: "Unassigned"
                                                         }, void 0, false, {
                                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                            lineNumber: 228,
+                                                            lineNumber: 229,
                                                             columnNumber: 27
                                                         }, this),
                                                         technicians.map((tech)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -2109,31 +2132,31 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                                 children: tech.name
                                                             }, tech.id, false, {
                                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                                lineNumber: 230,
+                                                                lineNumber: 231,
                                                                 columnNumber: 31
                                                             }, this))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 227,
+                                                    lineNumber: 228,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 223,
+                                            lineNumber: 224,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 221,
+                                    lineNumber: 222,
                                     columnNumber: 16
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 209,
+                            lineNumber: 210,
                             columnNumber: 12
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2144,7 +2167,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     children: "Description"
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 238,
+                                    lineNumber: 239,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$textarea$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Textarea"], {
@@ -2153,13 +2176,13 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     placeholder: "Additional notes..."
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 239,
+                                    lineNumber: 240,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 237,
+                            lineNumber: 238,
                             columnNumber: 12
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2170,7 +2193,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     children: "Task Type"
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 243,
+                                    lineNumber: 244,
                                     columnNumber: 16
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
@@ -2182,12 +2205,12 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                 placeholder: "Select Type"
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                lineNumber: 246,
+                                                lineNumber: 247,
                                                 columnNumber: 24
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 245,
+                                            lineNumber: 246,
                                             columnNumber: 20
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -2197,7 +2220,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                     children: "General"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 249,
+                                                    lineNumber: 250,
                                                     columnNumber: 24
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -2205,25 +2228,25 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                     children: "Service"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 250,
+                                                    lineNumber: 251,
                                                     columnNumber: 24
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 248,
+                                            lineNumber: 249,
                                             columnNumber: 20
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 244,
+                                    lineNumber: 245,
                                     columnNumber: 16
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 242,
+                            lineNumber: 243,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2234,7 +2257,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     children: "Status"
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 256,
+                                    lineNumber: 257,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
@@ -2246,12 +2269,12 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                 placeholder: "Status"
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                lineNumber: 259,
+                                                lineNumber: 260,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 258,
+                                            lineNumber: 259,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -2261,7 +2284,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                     children: "Pending"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 262,
+                                                    lineNumber: 263,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -2269,7 +2292,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                     children: "Completed"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 263,
+                                                    lineNumber: 264,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -2277,25 +2300,25 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                     children: "Canceled"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 264,
+                                                    lineNumber: 265,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 261,
+                                            lineNumber: 262,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 257,
+                                    lineNumber: 258,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 255,
+                            lineNumber: 256,
                             columnNumber: 12
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogFooter"], {
@@ -2309,7 +2332,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     children: "Cancel"
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 270,
+                                    lineNumber: 271,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$loading$2d$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["LoadingButton"], {
@@ -2319,30 +2342,30 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     children: initialData ? "Save Changes" : "Create Task"
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 271,
+                                    lineNumber: 272,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 269,
+                            lineNumber: 270,
                             columnNumber: 12
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                    lineNumber: 146,
+                    lineNumber: 147,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-            lineNumber: 142,
+            lineNumber: 143,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-        lineNumber: 141,
+        lineNumber: 142,
         columnNumber: 5
     }, this);
 }
@@ -2461,6 +2484,21 @@ function TasksPage() {
                     onAddClick: handleCreate,
                     onEditClick: (task)=>{
                         router.push(`/admin/tasks/${task.id}`);
+                    },
+                    onTaskDrop: async (taskId, newDate)=>{
+                        try {
+                            const api = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createApiClient"])(session);
+                            // Set time to noon to avoid timezone shifts when converting to UTC/Date-only
+                            const safeDate = new Date(newDate);
+                            safeDate.setHours(12, 0, 0, 0);
+                            await api.tasks.update(taskId, {
+                                task_date: safeDate.toISOString()
+                            });
+                            await fetchTasks(); // Refresh
+                        } catch (e) {
+                            console.error("Failed to move task", e);
+                        // Optionally show toast error
+                        }
                     }
                 }, void 0, false, {
                     fileName: "[project]/apps/adminFE/app/admin/tasks/page.tsx",
@@ -2479,7 +2517,7 @@ function TasksPage() {
                 initialData: editingTask
             }, void 0, false, {
                 fileName: "[project]/apps/adminFE/app/admin/tasks/page.tsx",
-                lineNumber: 84,
+                lineNumber: 97,
                 columnNumber: 11
             }, this)
         ]

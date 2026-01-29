@@ -25,7 +25,7 @@ const taskSchema = z.object({
   task_type: z.string().optional(),
   technician_id: z.string().uuid().optional(),
   task_date: z.string().min(1, "Date and time is required"),
-  status: z.enum(["pending", "completed", "canceled"]).default("pending"),
+  expected_id: z.string().optional(),
 })
 
 type TaskFormData = z.infer<typeof taskSchema>
@@ -34,7 +34,7 @@ interface TaskFormProps {
   initialData?: any 
   isOpen: boolean
   onClose: () => void
-  onSuccess: () => void
+  onSuccess: (newTaskId?: string) => void
 }
 
 export function TaskForm({ initialData, isOpen, onClose, onSuccess }: TaskFormProps) {
@@ -58,7 +58,7 @@ export function TaskForm({ initialData, isOpen, onClose, onSuccess }: TaskFormPr
       description: initialData?.description || "",
       customer_id: initialData?.customerId || "",
       customer_product_id: initialData?.customerProductId || "",
-      customer_product_id: initialData?.customerProductId || "",
+      expected_id: initialData?.expectedId || "",
       job_id: initialData?.jobId || "",
       task_type: initialData?.taskType || "general",
       technician_id: initialData?.technicianId || undefined,
@@ -124,11 +124,12 @@ export function TaskForm({ initialData, isOpen, onClose, onSuccess }: TaskFormPr
         if (initialData?.id) {
             await api.tasks.update(initialData.id, payload)
             toast.success("Task updated")
+            onSuccess(initialData.id)
         } else {
-            await api.tasks.create(payload)
+            const res = await api.tasks.create(payload)
             toast.success("Task created")
+            onSuccess(res.data ? res.data.id : res.id) // check return type
         }
-        onSuccess()
         onClose()
     } catch (error: any) {
         toast.error(error.message || "Failed to save task")

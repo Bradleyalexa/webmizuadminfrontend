@@ -729,11 +729,7 @@ const taskSchema = __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$admin
     task_type: __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$zod$2f$v3$2f$external$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__z$3e$__["z"].string().optional(),
     technician_id: __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$zod$2f$v3$2f$external$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__z$3e$__["z"].string().uuid().optional(),
     task_date: __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$zod$2f$v3$2f$external$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__z$3e$__["z"].string().min(1, "Date and time is required"),
-    status: __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$zod$2f$v3$2f$external$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__z$3e$__["z"].enum([
-        "pending",
-        "completed",
-        "canceled"
-    ]).default("pending")
+    expected_id: __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$zod$2f$v3$2f$external$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__z$3e$__["z"].string().optional()
 });
 function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
     const { session } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$components$2f$providers$2f$supabase$2d$provider$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSupabase"])();
@@ -749,7 +745,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
             description: initialData?.description || "",
             customer_id: initialData?.customerId || "",
             customer_product_id: initialData?.customerProductId || "",
-            customer_product_id: initialData?.customerProductId || "",
+            expected_id: initialData?.expectedId || "",
             job_id: initialData?.jobId || "",
             task_type: initialData?.taskType || "general",
             technician_id: initialData?.technicianId || undefined,
@@ -821,11 +817,12 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
             if (initialData?.id) {
                 await api.tasks.update(initialData.id, payload);
                 __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].success("Task updated");
+                onSuccess(initialData.id);
             } else {
-                await api.tasks.create(payload);
+                const res = await api.tasks.create(payload);
                 __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].success("Task created");
+                onSuccess(res.data ? res.data.id : res.id); // check return type
             }
-            onSuccess();
             onClose();
         } catch (error) {
             __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].error(error.message || "Failed to save task");
@@ -844,12 +841,12 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                         children: initialData ? "Edit Task" : "Create New Task"
                     }, void 0, false, {
                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                        lineNumber: 144,
+                        lineNumber: 145,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                    lineNumber: 143,
+                    lineNumber: 144,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -868,13 +865,13 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                             children: "*"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 149,
+                                            lineNumber: 150,
                                             columnNumber: 49
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 149,
+                                    lineNumber: 150,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -884,7 +881,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     className: errors.title ? "border-red-500" : ""
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 150,
+                                    lineNumber: 151,
                                     columnNumber: 15
                                 }, this),
                                 errors.title && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -892,13 +889,13 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     children: errors.title.message
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 151,
+                                    lineNumber: 152,
                                     columnNumber: 32
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 148,
+                            lineNumber: 149,
                             columnNumber: 12
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -916,13 +913,13 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                     children: "*"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 156,
+                                                    lineNumber: 157,
                                                     columnNumber: 57
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 156,
+                                            lineNumber: 157,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -938,12 +935,12 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                         placeholder: "Select Customer"
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                        lineNumber: 162,
+                                                        lineNumber: 163,
                                                         columnNumber: 27
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 161,
+                                                    lineNumber: 162,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -952,18 +949,18 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                             children: c.name || c.profiles?.name || c.id
                                                         }, c.id, false, {
                                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                            lineNumber: 166,
+                                                            lineNumber: 167,
                                                             columnNumber: 31
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 164,
+                                                    lineNumber: 165,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 157,
+                                            lineNumber: 158,
                                             columnNumber: 19
                                         }, this),
                                         errors.customer_id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -971,13 +968,13 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                             children: errors.customer_id.message
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 170,
+                                            lineNumber: 171,
                                             columnNumber: 42
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 155,
+                                    lineNumber: 156,
                                     columnNumber: 16
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -992,13 +989,13 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                     children: "*"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 174,
+                                                    lineNumber: 175,
                                                     columnNumber: 64
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 174,
+                                            lineNumber: 175,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -1012,12 +1009,12 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                         placeholder: selectedCustomerId ? "Select Product" : "Select Customer First"
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                        lineNumber: 177,
+                                                        lineNumber: 178,
                                                         columnNumber: 27
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 176,
+                                                    lineNumber: 177,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -1031,7 +1028,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                                         children: cp.product_name || "Unknown Product"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                                        lineNumber: 183,
+                                                                        lineNumber: 184,
                                                                         columnNumber: 39
                                                                     }, this),
                                                                     cp.product_model && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1039,29 +1036,29 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                                         children: cp.product_model
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                                        lineNumber: 184,
+                                                                        lineNumber: 185,
                                                                         columnNumber: 60
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                                lineNumber: 182,
+                                                                lineNumber: 183,
                                                                 columnNumber: 35
                                                             }, this)
                                                         }, cp.id, false, {
                                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                            lineNumber: 181,
+                                                            lineNumber: 182,
                                                             columnNumber: 31
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 179,
+                                                    lineNumber: 180,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 175,
+                                            lineNumber: 176,
                                             columnNumber: 19
                                         }, this),
                                         errors.customer_product_id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1069,19 +1066,19 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                             children: errors.customer_product_id.message
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 190,
+                                            lineNumber: 191,
                                             columnNumber: 50
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 173,
+                                    lineNumber: 174,
                                     columnNumber: 16
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 154,
+                            lineNumber: 155,
                             columnNumber: 12
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1096,13 +1093,13 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                             children: "*"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 195,
+                                            lineNumber: 196,
                                             columnNumber: 48
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 195,
+                                    lineNumber: 196,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -1115,12 +1112,12 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                 placeholder: "Select Job Type"
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                lineNumber: 198,
+                                                lineNumber: 199,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 197,
+                                            lineNumber: 198,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -1129,18 +1126,18 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                     children: job.name
                                                 }, job.id, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 202,
+                                                    lineNumber: 203,
                                                     columnNumber: 27
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 200,
+                                            lineNumber: 201,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 196,
+                                    lineNumber: 197,
                                     columnNumber: 15
                                 }, this),
                                 errors.job_id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1148,13 +1145,13 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     children: errors.job_id.message
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 206,
+                                    lineNumber: 207,
                                     columnNumber: 33
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 194,
+                            lineNumber: 195,
                             columnNumber: 12
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1172,13 +1169,13 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                     children: "*"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 211,
+                                                    lineNumber: 212,
                                                     columnNumber: 58
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 211,
+                                            lineNumber: 212,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
@@ -1188,7 +1185,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                             className: errors.task_date ? "border-red-500" : ""
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 212,
+                                            lineNumber: 213,
                                             columnNumber: 19
                                         }, this),
                                         errors.task_date && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1196,13 +1193,13 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                             children: errors.task_date.message
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 218,
+                                            lineNumber: 219,
                                             columnNumber: 40
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 210,
+                                    lineNumber: 211,
                                     columnNumber: 16
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1213,7 +1210,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                             children: "Assign Technician"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 222,
+                                            lineNumber: 223,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -1225,12 +1222,12 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                         placeholder: "Select Technician"
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                        lineNumber: 225,
+                                                        lineNumber: 226,
                                                         columnNumber: 27
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 224,
+                                                    lineNumber: 225,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -1240,7 +1237,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                             children: "Unassigned"
                                                         }, void 0, false, {
                                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                            lineNumber: 228,
+                                                            lineNumber: 229,
                                                             columnNumber: 27
                                                         }, this),
                                                         technicians.map((tech)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1248,31 +1245,31 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                                 children: tech.name
                                                             }, tech.id, false, {
                                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                                lineNumber: 230,
+                                                                lineNumber: 231,
                                                                 columnNumber: 31
                                                             }, this))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 227,
+                                                    lineNumber: 228,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 223,
+                                            lineNumber: 224,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 221,
+                                    lineNumber: 222,
                                     columnNumber: 16
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 209,
+                            lineNumber: 210,
                             columnNumber: 12
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1283,7 +1280,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     children: "Description"
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 238,
+                                    lineNumber: 239,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$textarea$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Textarea"], {
@@ -1292,13 +1289,13 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     placeholder: "Additional notes..."
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 239,
+                                    lineNumber: 240,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 237,
+                            lineNumber: 238,
                             columnNumber: 12
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1309,7 +1306,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     children: "Task Type"
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 243,
+                                    lineNumber: 244,
                                     columnNumber: 16
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -1321,12 +1318,12 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                 placeholder: "Select Type"
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                lineNumber: 246,
+                                                lineNumber: 247,
                                                 columnNumber: 24
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 245,
+                                            lineNumber: 246,
                                             columnNumber: 20
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -1336,7 +1333,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                     children: "General"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 249,
+                                                    lineNumber: 250,
                                                     columnNumber: 24
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1344,25 +1341,25 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                     children: "Service"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 250,
+                                                    lineNumber: 251,
                                                     columnNumber: 24
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 248,
+                                            lineNumber: 249,
                                             columnNumber: 20
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 244,
+                                    lineNumber: 245,
                                     columnNumber: 16
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 242,
+                            lineNumber: 243,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1373,7 +1370,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     children: "Status"
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 256,
+                                    lineNumber: 257,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -1385,12 +1382,12 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                 placeholder: "Status"
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                lineNumber: 259,
+                                                lineNumber: 260,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 258,
+                                            lineNumber: 259,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -1400,7 +1397,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                     children: "Pending"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 262,
+                                                    lineNumber: 263,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1408,7 +1405,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                     children: "Completed"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 263,
+                                                    lineNumber: 264,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1416,25 +1413,25 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                     children: "Canceled"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 264,
+                                                    lineNumber: 265,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 261,
+                                            lineNumber: 262,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 257,
+                                    lineNumber: 258,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 255,
+                            lineNumber: 256,
                             columnNumber: 12
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DialogFooter"], {
@@ -1448,7 +1445,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     children: "Cancel"
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 270,
+                                    lineNumber: 271,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$loading$2d$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LoadingButton"], {
@@ -1458,724 +1455,39 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     children: initialData ? "Save Changes" : "Create Task"
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 271,
+                                    lineNumber: 272,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 269,
+                            lineNumber: 270,
                             columnNumber: 12
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                    lineNumber: 146,
+                    lineNumber: 147,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-            lineNumber: 142,
+            lineNumber: 143,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-        lineNumber: 141,
+        lineNumber: 142,
         columnNumber: 5
     }, this);
 }
 }),
-"[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
+"[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx [app-ssr] (ecmascript)", ((__turbopack_context__, module, exports) => {
 
-__turbopack_context__.s([
-    "TaskDetail",
-    ()=>TaskDetail
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/node_modules/next/navigation.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$left$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowLeft$3e$__ = __turbopack_context__.i("[project]/apps/adminFE/node_modules/lucide-react/dist/esm/icons/arrow-left.js [app-ssr] (ecmascript) <export default as ArrowLeft>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$square$2d$pen$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Edit$3e$__ = __turbopack_context__.i("[project]/apps/adminFE/node_modules/lucide-react/dist/esm/icons/square-pen.js [app-ssr] (ecmascript) <export default as Edit>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/components/ui/button.tsx [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/components/ui/card.tsx [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/components/ui/select.tsx [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$components$2f$ui$2f$status$2d$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/src/components/ui/status-badge.tsx [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$components$2f$providers$2f$supabase$2d$provider$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/src/components/providers/supabase-provider.tsx [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/src/lib/api/client.ts [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$features$2f$tasks$2f$components$2f$task$2d$form$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/src/features/tasks/components/task-form.tsx [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/node_modules/sonner/dist/index.mjs [app-ssr] (ecmascript)");
-"use client";
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-const getStatusVariant = (status)=>{
-    switch(status){
-        case "completed":
-            return "success";
-        case "in-progress":
-            return "info";
-        case "pending":
-            return "default";
-        case "cancelled":
-            return "error" // Corrected from canceled to cancelled/error if needed, but badge usually uses error for red
-            ;
-        case "canceled":
-            return "error";
-        default:
-            return "default";
-    }
-};
-function TaskDetail() {
-    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
-    const params = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useParams"])();
-    const taskId = params.id;
-    const { session } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$components$2f$providers$2f$supabase$2d$provider$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSupabase"])();
-    const [task, setTask] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
-    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
-    const [isEditOpen, setIsEditOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
-    const fetchTask = async ()=>{
-        if (!session || !taskId) return;
-        setLoading(true);
-        try {
-            const api = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createApiClient"])(session);
-            const res = await api.tasks.getOne(taskId);
-            setTask(res.data);
-        } catch (error) {
-            console.error("Failed to fetch task", error);
-            __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].error("Failed to load task details");
-        } finally{
-            setLoading(false);
-        }
-    };
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        fetchTask();
-    }, [
-        session,
-        taskId
-    ]);
-    const handleStatusChange = async (newStatus)=>{
-        if (!session || !taskId) return;
-        try {
-            const api = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createApiClient"])(session);
-            await api.tasks.update(taskId, {
-                status: newStatus
-            });
-            setTask((prev)=>({
-                    ...prev,
-                    status: newStatus
-                }));
-            __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].success("Task status updated");
-        } catch (error) {
-            console.error("Failed to update status", error);
-            __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].error("Failed to update status");
-        }
-    };
-    if (loading) {
-        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "p-8 text-center",
-            children: "Loading task details..."
-        }, void 0, false, {
-            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-            lineNumber: 75,
-            columnNumber: 14
-        }, this);
-    }
-    if (!task) {
-        // ... (unchanged)
-        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "space-y-6",
-            children: [
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "flex items-center gap-4",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
-                            variant: "ghost",
-                            size: "icon",
-                            onClick: ()=>router.back(),
-                            className: "text-[#0A2540] hover:bg-[#F6F9FC]",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$left$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowLeft$3e$__["ArrowLeft"], {
-                                className: "h-5 w-5"
-                            }, void 0, false, {
-                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                lineNumber: 84,
-                                columnNumber: 13
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                            lineNumber: 83,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                            className: "font-heading text-2xl font-bold text-[#0A2540]",
-                            children: "Task Not Found"
-                        }, void 0, false, {
-                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                            lineNumber: 86,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                    lineNumber: 82,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
-                    className: "bg-white shadow-sm",
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
-                        className: "py-12 text-center",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-muted-foreground",
-                                children: "The requested task could not be found."
-                            }, void 0, false, {
-                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                lineNumber: 90,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
-                                onClick: ()=>router.back(),
-                                className: "mt-4 bg-[#0A2540] text-white hover:bg-[#0A2540]/90",
-                                children: "Go Back"
-                            }, void 0, false, {
-                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                lineNumber: 91,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                        lineNumber: 89,
-                        columnNumber: 11
-                    }, this)
-                }, void 0, false, {
-                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                    lineNumber: 88,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true, {
-            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-            lineNumber: 81,
-            columnNumber: 7
-        }, this);
-    }
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "space-y-6 max-w-5xl mx-auto p-6",
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex items-center gap-4",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
-                        variant: "ghost",
-                        size: "icon",
-                        onClick: ()=>router.back(),
-                        className: "text-[#0A2540] hover:bg-[#F6F9FC]",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$left$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowLeft$3e$__["ArrowLeft"], {
-                            className: "h-5 w-5"
-                        }, void 0, false, {
-                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                            lineNumber: 104,
-                            columnNumber: 11
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                        lineNumber: 103,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex-1",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex items-center gap-3",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                        className: "font-heading text-2xl font-bold text-[#0A2540]",
-                                        children: task.title
-                                    }, void 0, false, {
-                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                        lineNumber: 108,
-                                        columnNumber: 14
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
-                                        value: task.status,
-                                        onValueChange: handleStatusChange,
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectTrigger"], {
-                                                className: "w-[140px] h-8",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "flex items-center gap-2",
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$components$2f$ui$2f$status$2d$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["StatusBadge"], {
-                                                        status: task.status,
-                                                        variant: getStatusVariant(task.status)
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                        lineNumber: 114,
-                                                        columnNumber: 25
-                                                    }, this)
-                                                }, void 0, false, {
-                                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                    lineNumber: 113,
-                                                    columnNumber: 21
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                lineNumber: 112,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                        value: "pending",
-                                                        children: "Pending"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                        lineNumber: 118,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                        value: "completed",
-                                                        children: "Completed"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                        lineNumber: 119,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                        value: "canceled",
-                                                        children: "Canceled"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                        lineNumber: 120,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                lineNumber: 117,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                        lineNumber: 111,
-                                        columnNumber: 14
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-medium text-blue-700 border border-blue-200 uppercase",
-                                        children: task.taskType || "General"
-                                    }, void 0, false, {
-                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                        lineNumber: 124,
-                                        columnNumber: 14
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                lineNumber: 107,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-sm text-muted-foreground mt-1",
-                                children: [
-                                    "Job: ",
-                                    task.jobName,
-                                    " | Scheduled: ",
-                                    new Date(task.taskDate).toLocaleDateString(),
-                                    " ",
-                                    new Date(task.taskDate).toLocaleTimeString([], {
-                                        hour: '2-digit',
-                                        minute: '2-digit'
-                                    })
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                lineNumber: 128,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                        lineNumber: 106,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
-                        variant: "outline",
-                        onClick: ()=>setIsEditOpen(true),
-                        className: "border-[#0A2540] text-[#0A2540] hover:bg-[#0A2540] hover:text-white bg-transparent",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$square$2d$pen$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Edit$3e$__["Edit"], {
-                                className: "mr-2 h-4 w-4"
-                            }, void 0, false, {
-                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                lineNumber: 137,
-                                columnNumber: 11
-                            }, this),
-                            "Edit Task"
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                        lineNumber: 132,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                lineNumber: 102,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "grid gap-6 lg:grid-cols-3",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
-                        className: "bg-white shadow-sm lg:col-span-2",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardHeader"], {
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardTitle"], {
-                                    className: "font-heading text-lg font-semibold text-[#0A2540]",
-                                    children: "Task Details"
-                                }, void 0, false, {
-                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                    lineNumber: 145,
-                                    columnNumber: 13
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                lineNumber: 144,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
-                                className: "space-y-6",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-sm font-medium text-muted-foreground mb-1",
-                                                children: "Description"
-                                            }, void 0, false, {
-                                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                lineNumber: 149,
-                                                columnNumber: 15
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-[#333333] whitespace-pre-wrap",
-                                                children: task.description || "No description provided."
-                                            }, void 0, false, {
-                                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                lineNumber: 150,
-                                                columnNumber: 15
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                        lineNumber: 148,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "grid grid-cols-2 gap-6",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-sm font-medium text-muted-foreground mb-1",
-                                                        children: "Customer"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                        lineNumber: 155,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "font-medium text-[#0A2540]",
-                                                        children: task.customerName
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                        lineNumber: 156,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                lineNumber: 154,
-                                                columnNumber: 16
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-sm font-medium text-muted-foreground mb-1",
-                                                        children: "Location / Address"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                        lineNumber: 159,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-[#333333]",
-                                                        children: task.address || "N/A"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                        lineNumber: 160,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                lineNumber: 158,
-                                                columnNumber: 16
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                        lineNumber: 153,
-                                        columnNumber: 13
-                                    }, this),
-                                    (task.productName || task.customerProductId) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "pt-4 border-t border-gray-100",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                className: "text-sm font-semibold text-[#0A2540] mb-3",
-                                                children: "Customer Product"
-                                            }, void 0, false, {
-                                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                lineNumber: 167,
-                                                columnNumber: 21
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "grid grid-cols-2 gap-4 bg-gray-50 p-4 rounded-lg border border-gray-100",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                className: "text-xs text-muted-foreground",
-                                                                children: "Product Name"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                                lineNumber: 170,
-                                                                columnNumber: 29
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                className: "text-sm font-medium text-[#0A2540]",
-                                                                children: task.productName || "Unknown Product"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                                lineNumber: 171,
-                                                                columnNumber: 29
-                                                            }, this)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                        lineNumber: 169,
-                                                        columnNumber: 25
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                className: "text-xs text-muted-foreground",
-                                                                children: "Model"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                                lineNumber: 174,
-                                                                columnNumber: 29
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                className: "text-sm text-[#333333]",
-                                                                children: task.productModel || "N/A"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                                lineNumber: 175,
-                                                                columnNumber: 29
-                                                            }, this)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                        lineNumber: 173,
-                                                        columnNumber: 25
-                                                    }, this),
-                                                    task.customerProductId && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "col-span-2",
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                className: "text-xs text-muted-foreground",
-                                                                children: "System ID"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                                lineNumber: 179,
-                                                                columnNumber: 29
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                className: "text-xs font-mono text-gray-500",
-                                                                children: task.customerProductId
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                                lineNumber: 180,
-                                                                columnNumber: 29
-                                                            }, this)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                        lineNumber: 178,
-                                                        columnNumber: 26
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                lineNumber: 168,
-                                                columnNumber: 21
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                        lineNumber: 166,
-                                        columnNumber: 17
-                                    }, this),
-                                    task.expectedId && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "p-3 bg-gray-50 rounded-md border border-gray-100",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-xs text-muted-foreground",
-                                                children: "Linked to Contract Schedule"
-                                            }, void 0, false, {
-                                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                lineNumber: 189,
-                                                columnNumber: 19
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-sm font-medium",
-                                                children: task.expectedId
-                                            }, void 0, false, {
-                                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                lineNumber: 190,
-                                                columnNumber: 19
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                        lineNumber: 188,
-                                        columnNumber: 16
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                lineNumber: 147,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                        lineNumber: 143,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "space-y-6",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
-                            className: "bg-white shadow-sm",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardHeader"], {
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardTitle"], {
-                                        className: "font-heading text-lg font-semibold text-[#0A2540]",
-                                        children: "Assigned Technician"
-                                    }, void 0, false, {
-                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                        lineNumber: 199,
-                                        columnNumber: 15
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                    lineNumber: 198,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
-                                    className: "space-y-3",
-                                    children: task.technicianId && task.technicianName ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "rounded-lg border border-border p-4 bg-gray-50/50",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "font-medium text-[#0A2540]",
-                                                children: task.technicianName
-                                            }, void 0, false, {
-                                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                lineNumber: 204,
-                                                columnNumber: 19
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-xs text-muted-foreground",
-                                                children: [
-                                                    "ID: ",
-                                                    task.technicianId
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                                lineNumber: 205,
-                                                columnNumber: 19
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                        lineNumber: 203,
-                                        columnNumber: 17
-                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "text-center py-4 bg-gray-50 rounded-lg border border-dashed",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "text-muted-foreground text-sm",
-                                            children: "No technician assigned"
-                                        }, void 0, false, {
-                                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                            lineNumber: 209,
-                                            columnNumber: 21
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                        lineNumber: 208,
-                                        columnNumber: 17
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                                    lineNumber: 201,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                            lineNumber: 197,
-                            columnNumber: 11
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                        lineNumber: 196,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                lineNumber: 142,
-                columnNumber: 7
-            }, this),
-            isEditOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$features$2f$tasks$2f$components$2f$task$2d$form$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TaskForm"], {
-                isOpen: isEditOpen,
-                onClose: ()=>setIsEditOpen(false),
-                initialData: task,
-                onSuccess: fetchTask
-            }, void 0, false, {
-                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-                lineNumber: 218,
-                columnNumber: 11
-            }, this)
-        ]
-    }, void 0, true, {
-        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx",
-        lineNumber: 101,
-        columnNumber: 5
-    }, this);
-}
+const e = new Error("Could not parse module '[project]/apps/adminFE/src/features/tasks/components/task-detail.tsx'\n\nExpression expected");
+e.code = 'MODULE_UNPARSABLE';
+throw e;
 }),
 ];
 
