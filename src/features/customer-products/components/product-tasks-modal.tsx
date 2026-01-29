@@ -8,7 +8,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { StatusBadge } from "@/src/components/ui/status-badge"
 import { format } from "date-fns"
-import { Loader2, Calendar, User } from "lucide-react"
+import { Loader2, Calendar, User, ExternalLink, ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 interface ProductTasksModalProps {
   isOpen: boolean
@@ -81,29 +82,38 @@ export function ProductTasksModal({ isOpen, onClose, customerProductId, productN
              ) : (
                  <div className="space-y-3">
                      {filteredTasks.map(task => (
-                         <div key={task.id} className="p-4 rounded-lg border bg-white shadow-sm hover:border-blue-200 transition-colors">
-                             <div className="flex justify-between items-start mb-2">
-                                 <div>
-                                     <h4 className="font-medium text-[#0A2540]">{task.title || "Untitled Task"}</h4>
-                                     <div className="flex items-center gap-2 text-xs text-muted-foreground mt-1">
-                                         <Calendar className="h-3 w-3" />
-                                         {format(new Date(task.taskDate), "PP p")}
+                         <Link key={task.id} href={`/admin/tasks/${task.id}`} className="block group">
+                             <div className="p-4 rounded-lg border bg-white shadow-sm group-hover:border-blue-300 group-hover:shadow-md transition-all duration-200">
+                                 <div className="flex justify-between items-start mb-2">
+                                     <div>
+                                         <div className="flex items-center gap-2">
+                                            <h4 className="font-medium text-[#0A2540] group-hover:text-blue-600 transition-colors">{task.title || "Untitled Task"}</h4>
+                                            <ExternalLink className="h-3 w-3 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                                         </div>
+                                         <div className="flex items-center gap-2 text-xs text-muted-foreground mt-1">
+                                             <Calendar className="h-3 w-3" />
+                                             {format(new Date(task.taskDate), "PP p")}
+                                         </div>
                                      </div>
+                                     <StatusBadge status={task.status} />
                                  </div>
-                                 <StatusBadge status={task.status} />
-                             </div>
-                             
-                             <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
-                                <User className="h-4 w-4 text-gray-400" />
-                                {task.technicianName || "Unassigned"}
-                             </div>
+                                 
+                                 <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
+                                    <User className="h-4 w-4 text-gray-400" />
+                                    {task.technicianName || "Unassigned"}
+                                 </div>
 
-                             {task.description && (
-                                 <p className="text-sm text-gray-600 bg-gray-50 p-2 rounded line-clamp-2">
-                                     {task.description}
-                                 </p>
-                             )}
-                         </div>
+                                 {task.description && (
+                                     <p className="text-sm text-gray-600 bg-gray-50 p-2 rounded line-clamp-2">
+                                         {task.description}
+                                     </p>
+                                 )}
+                                 
+                                 <div className="mt-2 text-xs text-blue-600 font-medium opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+                                     View Details <ArrowRight className="h-3 w-3" />
+                                 </div>
+                             </div>
+                         </Link>
                      ))}
                  </div>
              )}

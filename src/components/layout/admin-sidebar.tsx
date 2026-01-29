@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import {
   LayoutDashboard,
@@ -19,6 +20,7 @@ import {
   ChevronRight,
   X,
   Briefcase,
+  Droplets,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -86,8 +88,23 @@ export function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
       >
         <div className="flex h-16 items-center justify-between border-b border-white/10 px-4">
           {!collapsed && (
-            <Link href="/admin" className="font-heading text-xl font-bold text-white">
-              Admin Panel
+            <Link href="/admin" className="flex items-center gap-3 group">
+               <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-xl bg-white p-0.5 shadow-lg group-hover:scale-105 transition-transform duration-200">
+                 <Image 
+                    src="/logo.jpg" 
+                    alt="Mizu Firuta" 
+                    fill
+                    className="object-contain" // The white bg of jpg will blend with bg-white container
+                 />
+               </div>
+               <div className="flex flex-col">
+                   <span className="font-heading text-lg font-bold bg-gradient-to-r from-cyan-100 via-white to-cyan-100 bg-clip-text text-transparent filter drop-shadow-sm leading-none">
+                     Mizu Firuta
+                   </span>
+                   <span className="text-[10px] text-cyan-200/70 font-medium tracking-wider uppercase">
+                     Admin Panel
+                   </span>
+               </div>
             </Link>
           )}
           <Button

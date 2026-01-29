@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { useParams, useRouter } from "next/navigation"
+import Link from "next/link"
 import { format } from "date-fns"
 import { 
   FileText, Calendar, User, Box, Trash, Edit, 
@@ -88,12 +89,12 @@ export default function ContractDetailPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="font-heading text-2xl font-bold text-[#0A2540]">Contract Details</h1>
-          <p className="text-muted-foreground flex items-center gap-2">
+           <div className="text-muted-foreground flex items-center gap-2">
              ID: {contract.id.slice(0, 8)}...
              <Badge variant={contract.status === "active" ? "default" : "secondary"} className={contract.status === "active" ? "bg-[#00C49A]" : ""}>
                {contract.status}
              </Badge>
-          </p>
+           </div>
         </div>
         <div className="flex gap-2">
            <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
@@ -260,18 +261,32 @@ export default function ContractDetailPage() {
            <CardContent>
               {contract.schedules && contract.schedules.length > 0 ? (
                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    {contract.schedules.map((schedule, idx) => (
-                       <div key={schedule.id} className="border border-border rounded-lg p-3 bg-white flex flex-col gap-2">
-                          <div className="flex justify-between items-center">
-                             <span className="text-xs font-bold text-muted-foreground">Service #{idx + 1}</span>
-                             <Badge variant="outline" className="text-xs capitalize">{schedule.status}</Badge>
-                          </div>
-                          <div className="flex items-center gap-2 text-[#0A2540]">
-                             <Clock className="h-4 w-4 text-muted-foreground" />
-                             <span className="font-medium">{format(new Date(schedule.expected_date), "dd MMM yyyy")}</span>
-                          </div>
-                       </div>
-                    ))}
+                     {contract.schedules.map((schedule, idx) => {
+                       const targetId = (schedule as any).taskId || schedule.id;
+
+                       return (
+                           <Link key={schedule.id} href={`/admin/tasks/${targetId}`} className="block group">
+                              <div className="border border-border rounded-lg p-3 bg-white flex flex-col gap-2 transition-all hover:border-blue-400 hover:shadow-md cursor-pointer">
+                                  <div className="flex justify-between items-center">
+                                     <span className="text-xs font-bold text-muted-foreground flex items-center gap-1">
+                                        Service #{idx + 1}
+                                        <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity text-blue-500" />
+                                     </span>
+                                     <Badge variant="outline" className={`text-xs capitalize ${schedule.status === 'done' ? 'bg-green-50 text-green-700 border-green-200' : ''}`}>
+                                         {schedule.status}
+                                     </Badge>
+                                  </div>
+                                  <div className="flex items-center gap-2 text-[#0A2540]">
+                                     <Clock className="h-4 w-4 text-muted-foreground" />
+                                     <span className="font-medium">{format(new Date(schedule.expected_date), "dd MMM yyyy")}</span>
+                                  </div>
+                                  <p className="text-[10px] text-blue-600 font-medium mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                      {(schedule as any).taskId ? "View Result" : "Plan Service"} &rarr;
+                                  </p>
+                              </div>
+                           </Link>
+                       );
+                     })}
                  </div>
               ) : (
                  <p className="text-muted-foreground">No schedules generated.</p>
