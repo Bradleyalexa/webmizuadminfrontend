@@ -312,6 +312,15 @@ export const createApiClient = (session: Session | null) => {
                 token,
             });
         }
+    },
+    serviceLogs: {
+        update: async (id: string, data: any) => {
+            return fetchApi<any>(`/service-logs/${id}`, {
+                method: "PUT",
+                body: JSON.stringify(data),
+                token,
+            });
+        }
     }
   };
 };

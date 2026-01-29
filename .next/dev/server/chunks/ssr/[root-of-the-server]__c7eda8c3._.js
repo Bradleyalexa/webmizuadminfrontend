@@ -46,7 +46,9 @@ async function fetchApi(path, options = {}) {
     });
     const data = await response.json();
     if (!response.ok) {
-        throw new Error(data.error?.message || "An API error occurred");
+        // Check for message in various locations: data.message, data.error.message, data.error
+        const msg = data.message || data.error?.message || (typeof data.error === 'string' ? data.error : "An API error occurred");
+        throw new Error(msg);
     }
     return data; // Assuming { success: true, data: T } is unwrapped by caller or we return full response?
 // User spec: standard response envelope. Ideally we return the whole envelope or just data?
@@ -58,6 +60,308 @@ const createApiClient = (session)=>{
         auth: {
             getMe: async ()=>{
                 return fetchApi("/auth/me", {
+                    token
+                });
+            }
+        },
+        technicians: {
+            list: async (params)=>{
+                const searchParams = new URLSearchParams();
+                if (params?.page) searchParams.append("page", params.page.toString());
+                if (params?.limit) searchParams.append("limit", params.limit.toString());
+                if (params?.q) searchParams.append("q", params.q);
+                return fetchApi(`/technicians?${searchParams.toString()}`, {
+                    token
+                });
+            },
+            create: async (data)=>{
+                return fetchApi("/technicians", {
+                    token,
+                    method: "POST",
+                    body: JSON.stringify(data)
+                });
+            },
+            update: async (id, data)=>{
+                return fetchApi(`/technicians/${id}`, {
+                    token,
+                    method: "PATCH",
+                    body: JSON.stringify(data)
+                });
+            },
+            getOne: async (id)=>{
+                return fetchApi(`/technicians/${id}`, {
+                    token
+                });
+            }
+        },
+        categories: {
+            list: async ()=>{
+                return fetchApi("/categories", {
+                    token
+                });
+            }
+        },
+        products: {
+            list: async (params)=>{
+                const searchParams = new URLSearchParams();
+                if (params?.page) searchParams.append("page", params.page.toString());
+                if (params?.limit) searchParams.append("limit", params.limit.toString());
+                if (params?.q) searchParams.append("q", params.q);
+                if (params?.categoryId) searchParams.append("categoryId", params.categoryId);
+                return fetchApi(`/products?${searchParams.toString()}`, {
+                    token
+                });
+            },
+            create: async (data)=>{
+                return fetchApi("/products", {
+                    token,
+                    method: "POST",
+                    body: JSON.stringify(data)
+                });
+            },
+            update: async (id, data)=>{
+                return fetchApi(`/products/${id}`, {
+                    token,
+                    method: "PUT",
+                    body: JSON.stringify(data)
+                });
+            },
+            getOne: async (id)=>{
+                return fetchApi(`/products/${id}`, {
+                    token
+                });
+            },
+            delete: async (id)=>{
+                return fetchApi(`/products/${id}`, {
+                    token,
+                    method: "DELETE"
+                });
+            }
+        },
+        customers: {
+            list: async (params)=>{
+                const searchParams = new URLSearchParams();
+                if (params?.page) searchParams.append("page", params.page.toString());
+                if (params?.limit) searchParams.append("limit", params.limit.toString());
+                if (params?.search) searchParams.append("search", params.search);
+                if (params?.addressType && params.addressType !== "all") searchParams.append("addressType", params.addressType);
+                return fetchApi(`/customers?${searchParams.toString()}`, {
+                    token
+                });
+            },
+            create: async (data)=>{
+                return fetchApi("/customers", {
+                    token,
+                    method: "POST",
+                    body: JSON.stringify(data)
+                });
+            },
+            update: async (id, data)=>{
+                return fetchApi(`/customers/${id}`, {
+                    token,
+                    method: "PUT",
+                    body: JSON.stringify(data)
+                });
+            },
+            getOne: async (id)=>{
+                return fetchApi(`/customers/${id}`, {
+                    token
+                });
+            },
+            delete: async (id)=>{
+                return fetchApi(`/customers/${id}`, {
+                    token,
+                    method: "DELETE"
+                });
+            }
+        },
+        customerProducts: {
+            getByCustomer: async (customerId)=>{
+                return fetchApi(`/customer-products/customer/${customerId}`, {
+                    token
+                });
+            },
+            create: async (data)=>{
+                return fetchApi("/customer-products", {
+                    token,
+                    method: "POST",
+                    body: JSON.stringify(data)
+                });
+            },
+            update: async (id, data)=>{
+                return fetchApi(`/customer-products/${id}`, {
+                    token,
+                    method: "PATCH",
+                    body: JSON.stringify(data)
+                });
+            },
+            getOne: async (id)=>{
+                return fetchApi(`/customer-products/${id}`, {
+                    token
+                });
+            }
+        },
+        contracts: {
+            list: async (params)=>{
+                const searchParams = new URLSearchParams();
+                if (params?.status) searchParams.append("status", params.status);
+                if (params?.productName) searchParams.append("productName", params.productName);
+                return fetchApi(`/contracts?${searchParams.toString()}`, {
+                    token
+                });
+            },
+            getOne: async (id)=>{
+                return fetchApi(`/contracts/${id}`, {
+                    token
+                });
+            },
+            create: async (data)=>{
+                return fetchApi("/contracts", {
+                    token,
+                    method: "POST",
+                    body: JSON.stringify(data)
+                });
+            },
+            update: async (id, data)=>{
+                return fetchApi(`/contracts/${id}`, {
+                    token,
+                    method: "PATCH",
+                    body: JSON.stringify(data)
+                });
+            },
+            delete: async (id)=>{
+                return fetchApi(`/contracts/${id}`, {
+                    token,
+                    method: "DELETE"
+                });
+            }
+        },
+        jobs: {
+            list: async (params)=>{
+                const searchParams = new URLSearchParams();
+                if (params?.page) searchParams.append("page", params.page.toString());
+                if (params?.limit) searchParams.append("limit", params.limit.toString());
+                if (params?.search) searchParams.append("search", params.search);
+                return fetchApi(`/jobs?${searchParams.toString()}`, {
+                    token
+                });
+            },
+            create: async (data)=>{
+                return fetchApi("/jobs", {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    token
+                });
+            },
+            getOne: async (id)=>{
+                return fetchApi(`/jobs/${id}`, {
+                    token
+                });
+            },
+            update: async (id, data)=>{
+                return fetchApi(`/jobs/${id}`, {
+                    method: "PUT",
+                    body: JSON.stringify(data),
+                    token
+                });
+            },
+            delete: async (id)=>{
+                return fetchApi(`/jobs/${id}`, {
+                    method: "DELETE",
+                    token
+                });
+            }
+        },
+        schedules: {
+            list: async (params)=>{
+                const searchParams = new URLSearchParams();
+                if (params?.page) searchParams.append("page", params.page.toString());
+                if (params?.limit) searchParams.append("limit", params.limit.toString());
+                if (params?.startDate) searchParams.append("startDate", params.startDate);
+                if (params?.endDate) searchParams.append("endDate", params.endDate);
+                if (params?.status) searchParams.append("status", params.status);
+                if (params?.search) searchParams.append("search", params.search);
+                return fetchApi(`/schedules?${searchParams.toString()}`, {
+                    token
+                });
+            },
+            create: async (data)=>{
+                return fetchApi("/schedules", {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    token
+                });
+            },
+            getOne: async (id)=>{
+                return fetchApi(`/schedules/${id}`, {
+                    token
+                });
+            },
+            update: async (id, data)=>{
+                return fetchApi(`/schedules/${id}`, {
+                    method: "PUT",
+                    body: JSON.stringify(data),
+                    token
+                });
+            },
+            delete: async (id)=>{
+                return fetchApi(`/schedules/${id}`, {
+                    method: "DELETE",
+                    token
+                });
+            } // Removed the comma here
+        },
+        // Keep structure but throw error or require token for others
+        // For now, implementing just the auth one requested
+        tasks: {
+            list: async (params)=>{
+                const searchParams = new URLSearchParams();
+                if (params?.page) searchParams.append("page", params.page.toString());
+                if (params?.limit) searchParams.append("limit", params.limit.toString());
+                if (params?.status) searchParams.append("status", params.status);
+                if (params?.customerProductId) searchParams.append("customerProductId", params.customerProductId);
+                return fetchApi(`/tasks?${searchParams.toString()}`, {
+                    token
+                });
+            },
+            create: async (data)=>{
+                return fetchApi("/tasks", {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    token
+                });
+            },
+            getOne: async (id)=>{
+                return fetchApi(`/tasks/${id}`, {
+                    token
+                });
+            },
+            update: async (id, data)=>{
+                return fetchApi(`/tasks/${id}`, {
+                    method: "PUT",
+                    body: JSON.stringify(data),
+                    token
+                });
+            },
+            delete: async (id)=>{
+                return fetchApi(`/tasks/${id}`, {
+                    method: "DELETE",
+                    token
+                });
+            },
+            complete: async (id, data)=>{
+                return fetchApi(`/tasks/${id}/complete`, {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    token
+                });
+            }
+        },
+        serviceLogs: {
+            update: async (id, data)=>{
+                return fetchApi(`/service-logs/${id}`, {
+                    method: "PUT",
+                    body: JSON.stringify(data),
                     token
                 });
             }

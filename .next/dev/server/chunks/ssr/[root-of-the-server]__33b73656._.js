@@ -356,6 +356,15 @@ const createApiClient = (session)=>{
                     token
                 });
             }
+        },
+        serviceLogs: {
+            update: async (id, data)=>{
+                return fetchApi(`/service-logs/${id}`, {
+                    method: "PUT",
+                    body: JSON.stringify(data),
+                    token
+                });
+            }
         }
     };
 };

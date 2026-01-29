@@ -213,7 +213,7 @@ export default function ServicesPage() {
             if (row.source === 'task') {
                 router.push(`/admin/tasks/${row.id}`)
             } else if (row.source === 'schedule') {
-                router.push(`/admin/schedules/${row.id}`)
+                router.push(`/admin/tasks/${row.id}`)
             } else {
                  // For logs or fallback
                  router.push(`/admin/tasks/${row.id}`)

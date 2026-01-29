@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react"
 import { useRouter, useParams } from "next/navigation"
-import { ArrowLeft, Edit, CheckCircle, XCircle, Clock, Play } from "lucide-react"
+import Link from "next/link"
+import { ArrowLeft, Edit, CheckCircle, XCircle, Clock, Play, FileText, ExternalLink, User, MapPin, Box } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -13,17 +14,19 @@ import { TaskForm } from "./task-form"
 import { toast } from "sonner"
 import { ServiceLogForm, ServiceLogFormValues } from "../../service-logs/components/service-log-form"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { ServiceLogViewer } from "../../service-logs/components/service-log-viewer"
 
 const getStatusVariant = (status: string) => {
   switch (status) {
     case "completed":
+    case "done":
       return "success"
     case "in-progress":
       return "info"
     case "pending":
+    case "scheduled":
       return "default"
     case "cancelled":
-      return "error"
     case "canceled":
       return "error"
     default:
@@ -41,6 +44,7 @@ export function TaskDetail() {
   const [loading, setLoading] = useState(true)
   const [isEditOpen, setIsEditOpen] = useState(false)
   const [isCompleteOpen, setIsCompleteOpen] = useState(false)
+  const [isLogViewOpen, setIsLogViewOpen] = useState(false)
 
   const fetchTask = async () => {
       if (!session || !taskId) return
@@ -96,7 +100,6 @@ export function TaskDetail() {
   }
 
   if (!task) {
-    // ... (unchanged)
     return (
       <div className="space-y-6">
         <div className="flex items-center gap-4">
@@ -145,11 +148,32 @@ export function TaskDetail() {
                 {task.taskType || "General"}
              </span>
              
-             {task.status !== 'completed' && task.status !== 'canceled' && (
-                 <Button 
+             {/* View Service Log Button */}
+             {(task.status === 'completed' || task.status === 'done') && task.serviceLog && (
+                  <Button 
+                     size="sm" 
+                     variant="outline"
+                     className="ml-2 border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 hover:text-blue-800"
+                     onClick={() => setIsLogViewOpen(true)}
+                  >
+                     <FileText className="mr-2 h-4 w-4" />
+                     View Report
+                  </Button>
+             )}
+
+             {/* Complete Button */}
+             {task.status !== 'completed' && task.status !== 'canceled' && task.status !== 'done' && (
+                  <Button 
                     size="sm" 
                     className="ml-2 bg-green-600 hover:bg-green-700 text-white"
-                    onClick={() => setIsCompleteOpen(true)}
+                    disabled={!task.technicianId}
+                    onClick={() => {
+                        if (!task.technicianId) {
+                            toast.error("Please assign a technician/product first");
+                            return;
+                        }
+                        setIsCompleteOpen(true);
+                    }}
                  >
                     <CheckCircle className="mr-2 h-4 w-4" />
                     Complete
@@ -193,52 +217,147 @@ export function TaskDetail() {
               <p className="text-[#333333] whitespace-pre-wrap">{task.description || "No description provided."}</p>
             </div>
             
-            <div className="grid grid-cols-2 gap-6">
-               <div>
-                  <p className="text-sm font-medium text-muted-foreground mb-1">Customer</p>
-                  <p className="font-medium text-[#0A2540]">{task.customerName}</p>
-               </div>
-               <div>
-                  <p className="text-sm font-medium text-muted-foreground mb-1">Location / Address</p>
-                  <p className="text-[#333333]">{task.address || "N/A"}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+               {/* Customer Card */}
+               {task.customerId ? (
+                   <Link href={`/admin/customers/${task.customerId}`} className="block group">
+                       <div className="h-full p-4 border rounded-xl hover:border-blue-300 hover:shadow-md hover:bg-blue-50/30 transition-all duration-200 cursor-pointer bg-white">
+                           <div className="flex items-start justify-between">
+                               <div className="flex items-start gap-3">
+                                   <div className="p-2.5 bg-blue-100 text-blue-600 rounded-lg group-hover:scale-110 transition-transform duration-200 shrink-0">
+                                       <User className="h-5 w-5" />
+                                   </div>
+                                   <div>
+                                       <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-0.5">Customer</p>
+                                       <p className="text-base font-bold text-[#0A2540] group-hover:text-blue-700 transition-colors line-clamp-1">
+                                           {task.customerName}
+                                       </p>
+                                   </div>
+                               </div>
+                               <ExternalLink className="h-4 w-4 text-gray-300 group-hover:text-blue-500 transition-colors" />
+                           </div>
+                       </div>
+                   </Link>
+               ) : (
+                   <div className="p-4 border rounded-xl bg-gray-50/50">
+                       <div className="flex items-center gap-3">
+                           <div className="p-2.5 bg-gray-200 text-gray-500 rounded-lg">
+                               <User className="h-5 w-5" />
+                           </div>
+                           <div>
+                               <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-0.5">Customer</p>
+                               <p className="text-base font-bold text-gray-700">{task.customerName}</p>
+                           </div>
+                       </div>
+                   </div>
+               )}
+
+               {/* Address Card (Non-clickable usually, or map link?) */}
+               <div className="p-4 border rounded-xl bg-white">
+                    <div className="flex items-start gap-3">
+                        <div className="p-2.5 bg-orange-100 text-orange-600 rounded-lg shrink-0">
+                            <MapPin className="h-5 w-5" />
+                        </div>
+                        <div>
+                            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-0.5">Location</p>
+                            <p className="text-sm text-[#333333] leading-relaxed font-medium">
+                                {task.address || "No address provided"}
+                            </p>
+                        </div>
+                    </div>
                </div>
             </div>
 
-            {/* Product Details Section */}
+            {/* Product Details Section - Re-styled as card */}
             {(task.productName || task.customerProductId) && (
-                <div className="pt-4 border-t border-gray-100">
-                    <h3 className="text-sm font-semibold text-[#0A2540] mb-3">Customer Product</h3>
-                    <div className="grid grid-cols-2 gap-4 bg-gray-50 p-4 rounded-lg border border-gray-100">
-                        <div>
-                            <p className="text-xs text-muted-foreground">Product Name</p>
-                            <p className="text-sm font-medium text-[#0A2540]">{task.productName || "Unknown Product"}</p>
+                <div className="pt-2"> 
+                    {task.customerProductId ? (
+                        <Link href={`/admin/products/customer-products/${task.customerProductId}`} className="block group">
+                            <div className="p-4 border rounded-xl hover:border-emerald-300 hover:shadow-md hover:bg-emerald-50/30 transition-all duration-200 bg-white">
+                                <div className="flex items-center justify-between">
+                                    <div className="flex items-center gap-3">
+                                        <div className="p-2.5 bg-emerald-100 text-emerald-600 rounded-lg group-hover:scale-110 transition-transform duration-200">
+                                            <Box className="h-5 w-5" />
+                                        </div>
+                                        <div>
+                                            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-0.5">Customer Product</p>
+                                            <div className="flex items-baseline gap-2">
+                                                <p className="text-base font-bold text-[#0A2540] group-hover:text-emerald-700 transition-colors">
+                                                    {task.productName || "Unknown Product"}
+                                                </p>
+                                                {task.productModel && (
+                                                    <span className="text-sm font-medium text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">
+                                                        {task.productModel}
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <p className="text-[10px] font-mono text-gray-400 mt-1">
+                                                SN: {task.customerProductId}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <ExternalLink className="h-4 w-4 text-gray-300 group-hover:text-emerald-500 transition-colors" />
+                                </div>
+                            </div>
+                        </Link>
+                    ) : (
+                        <div className="p-4 border rounded-xl bg-gray-50">
+                            <div className="flex items-center gap-3">
+                                <div className="p-2.5 bg-gray-200 text-gray-500 rounded-lg">
+                                    <Box className="h-5 w-5" />
+                                </div>
+                                <div>
+                                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-0.5">Customer Product</p>
+                                    <p className="text-base font-bold text-gray-700">{task.productName || "Unknown Product"}</p>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <p className="text-xs text-muted-foreground">Model</p>
-                            <p className="text-sm text-[#333333]">{task.productModel || "N/A"}</p>
-                        </div>
-                        {task.customerProductId && (
-                         <div className="col-span-2">
-                            <p className="text-xs text-muted-foreground">System ID</p>
-                            <p className="text-xs font-mono text-gray-500">{task.customerProductId}</p>
-                         </div>
-                        )}
-                    </div>
+                    )}
                 </div>
             )}
 
-            {task.expectedId && (
-               <div className="p-3 bg-gray-50 rounded-md border border-gray-100">
-                  <p className="text-xs text-muted-foreground">Linked to Contract Schedule</p>
-                  <p className="text-sm font-medium">{task.expectedId}</p>
+            {task.contractId && (
+               <Link 
+                    href={`/admin/contracts/${task.contractId}`}
+                    className="block group"
+               >
+                   <div className="p-4 bg-gradient-to-r from-indigo-50 to-white rounded-lg border border-indigo-100 hover:border-indigo-200 hover:shadow-sm transition-all">
+                      <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                              <div className="bg-indigo-100 p-2 rounded-md group-hover:bg-indigo-200 transition-colors">
+                                  <FileText className="h-4 w-4 text-indigo-600" />
+                              </div>
+                              <div>
+                                  <p className="text-xs font-semibold text-indigo-600 uppercase tracking-wide">Linked Contract</p>
+                                  <p className="text-sm font-medium text-slate-700 group-hover:text-indigo-900">View Contract Details</p>
+                              </div>
+                          </div>
+                          <ExternalLink className="h-4 w-4 text-indigo-400 group-hover:text-indigo-600 group-hover:translate-x-0.5 transition-all" />
+                      </div>
+                   </div>
+               </Link>
+            )}
+
+            {task.expectedId && !task.contractId && (
+               <div className="p-3 bg-gray-50 rounded-md border border-gray-100 flex items-center gap-3">
+                  <div className="bg-gray-200 p-1.5 rounded-full">
+                    <Clock className="h-3 w-3 text-gray-500" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground">Linked to Schedule</p>
+                    <p className="text-sm font-medium text-mono text-gray-700">{task.expectedId}</p>
+                  </div>
                </div>
             )}
             
             {/* Show Source for debugging/info */}
             {task.source === 'schedule' && (
-               <div className="p-3 bg-amber-50 rounded-md border border-amber-100 text-amber-800 text-sm">
-                  This detail view is a preview of a <strong>Planned Schedule</strong>. 
-                  Click "Create Task" to assign a technician and activate it.
+               <div className="p-3 bg-amber-50 rounded-md border border-amber-100 text-amber-800 text-sm flex items-start gap-2">
+                  <Play className="h-4 w-4 mt-0.5 shrink-0" />
+                  <span>
+                    This detail view is a preview of a <strong>Planned Schedule</strong>. 
+                    Click "Create Task" to assign a technician and activate it.
+                  </span>
                </div>
             )}
           </CardContent>
@@ -251,10 +370,30 @@ export function TaskDetail() {
             </CardHeader>
             <CardContent className="space-y-3">
               {task.technicianId && task.technicianName ? (
-                <div className="rounded-lg border border-border p-4 bg-gray-50/50">
-                  <p className="font-medium text-[#0A2540]">{task.technicianName}</p>
-                  <p className="text-xs text-muted-foreground">ID: {task.technicianId}</p>
-                </div>
+                <Link 
+                    href={`/admin/technicians/${task.technicianId}`}
+                    className="block group"
+                >
+                    <div className="rounded-lg border border-border p-4 bg-gray-50/50 hover:bg-white hover:shadow-md hover:border-blue-100 transition-all duration-200">
+                    <div className="flex justify-between items-start">
+                        <div className="flex items-center gap-3">
+                            <div className="h-10 w-10 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 group-hover:bg-blue-100 group-hover:text-blue-600 transition-colors">
+                                <span className="text-sm font-bold">{task.technicianName.charAt(0)}</span>
+                            </div>
+                            <div>
+                                <p className="font-medium text-[#0A2540] group-hover:text-blue-700 transition-colors flex items-center gap-1">
+                                    {task.technicianName}
+                                </p>
+                                <p className="text-xs text-muted-foreground mt-0.5 group-hover:text-slate-500">View Profile</p>
+                            </div>
+                        </div>
+                        <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-blue-500 opacity-0 group-hover:opacity-100 transition-all" />
+                    </div>
+                        <div className="mt-3 pt-3 border-t border-gray-100">
+                             <p className="text-[10px] text-muted-foreground font-mono">ID: {task.technicianId}</p>
+                        </div>
+                    </div>
+                </Link>
               ) : (
                 <div className="text-center py-4 bg-gray-50 rounded-lg border border-dashed">
                     <p className="text-muted-foreground text-sm">No technician assigned</p>
@@ -287,6 +426,7 @@ export function TaskDetail() {
           />
       )}
 
+      {/* Complete Task Dialog */}
       <Dialog open={isCompleteOpen} onOpenChange={setIsCompleteOpen}>
         <DialogContent className="max-w-3xl">
           <DialogHeader>
@@ -305,6 +445,16 @@ export function TaskDetail() {
             onSubmit={handleCompleteTask}
             isLoading={loading}
           />
+        </DialogContent>
+      </Dialog>
+      
+      {/* Service Log Viewer Dialog */}
+      <Dialog open={isLogViewOpen} onOpenChange={setIsLogViewOpen}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>Service Report</DialogTitle>
+          </DialogHeader>
+          <ServiceLogViewer log={task.serviceLog} />
         </DialogContent>
       </Dialog>
     </div>

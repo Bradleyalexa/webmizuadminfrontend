@@ -26,8 +26,8 @@ import { useSupabase } from "@/src/components/providers/supabase-provider";
 import { toast } from "sonner";
 
 const serviceLogSchema = z.object({
-  customer_product_id: z.string().uuid(),
-  technician_id: z.string().uuid(),
+  customer_product_id: z.string().uuid("Product ID invalid").min(1, "Product is required"),
+  technician_id: z.string().uuid("Technician ID invalid").min(1, "Technician is required"),
   service_date: z.date(),
   service_type: z.enum(["contract", "perpanggil"]),
   pekerjaan: z.string().min(1, "Job description is required"),
@@ -35,8 +35,8 @@ const serviceLogSchema = z.object({
   harga_service: z.coerce.number().min(0).default(0),
   teknisi_fee: z.coerce.number().min(0).default(0),
   job_evidence: z.array(z.string()).optional(),
-  expected_id: z.string().uuid().optional(),
-  job_id: z.string().uuid().optional(),
+  expected_id: z.string().uuid().nullish().or(z.literal("")),
+  job_id: z.string().uuid().nullish().or(z.literal("")),
 });
 
 export type ServiceLogFormValues = z.infer<typeof serviceLogSchema>;
@@ -47,7 +47,7 @@ interface ServiceLogFormProps {
   isLoading?: boolean;
 }
 
-export function ServiceLogForm({ defaultValues, onSubmit, isLoading }: ServiceLogFormProps) {
+export function ServiceLogForm({ defaultValues, onSubmit, isLoading, isEditing }: ServiceLogFormProps & { isEditing?: boolean }) {
   const { supabase, session } = useSupabase();
   const [files, setFiles] = useState<File[]>([]);
   const [isUploading, setIsUploading] = useState(false);
@@ -70,10 +70,11 @@ export function ServiceLogForm({ defaultValues, onSubmit, isLoading }: ServiceLo
       for (const file of filesToUpload) {
           const fileExt = file.name.split('.').pop();
           const fileName = `${timestamp}-${Math.random().toString(36).substring(7)}.${fileExt}`;
-          const filePath = `service-evidence/${fileName}`;
+          // Simplify path since we are in the specific bucket now
+          const filePath = `${fileName}`;
 
           const { error } = await supabase.storage
-              .from('documents') // Using general documents bucket
+              .from('service-evidence') 
               .upload(filePath, file);
 
           if (error) {
@@ -243,7 +244,7 @@ export function ServiceLogForm({ defaultValues, onSubmit, isLoading }: ServiceLo
 
         <div className="flex justify-end gap-2 pt-2">
             <Button type="submit" disabled={isLoading || isUploading}>
-                {isUploading ? "Uploading..." : (isLoading ? "Saving..." : "Complete Task")}
+                {isUploading ? "Uploading..." : (isLoading ? "Saving..." : (isEditing ? "Update Report" : "Complete Task"))}
             </Button>
         </div>
       </form>
