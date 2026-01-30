@@ -282,12 +282,16 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modu
 var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$user$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__User$3e$__ = __turbopack_context__.i("[project]/apps/adminFE/node_modules/lucide-react/dist/esm/icons/user.js [app-client] (ecmascript) <export default as User>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$calendar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Calendar$3e$__ = __turbopack_context__.i("[project]/apps/adminFE/node_modules/lucide-react/dist/esm/icons/calendar.js [app-client] (ecmascript) <export default as Calendar>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$map$2d$pin$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MapPin$3e$__ = __turbopack_context__.i("[project]/apps/adminFE/node_modules/lucide-react/dist/esm/icons/map-pin.js [app-client] (ecmascript) <export default as MapPin>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$download$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Download$3e$__ = __turbopack_context__.i("[project]/apps/adminFE/node_modules/lucide-react/dist/esm/icons/download.js [app-client] (ecmascript) <export default as Download>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$text$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FileText$3e$__ = __turbopack_context__.i("[project]/apps/adminFE/node_modules/lucide-react/dist/esm/icons/file-text.js [app-client] (ecmascript) <export default as FileText>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$jspdf$2f$dist$2f$jspdf$2e$es$2e$min$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/node_modules/jspdf/dist/jspdf.es.min.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$jspdf$2d$autotable$2f$dist$2f$jspdf$2e$plugin$2e$autotable$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$date$2d$fns$2f$format$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/apps/adminFE/node_modules/date-fns/format.js [app-client] (ecmascript) <locals>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/components/ui/table.tsx [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
+;
+;
 ;
 ;
 ;
@@ -341,7 +345,7 @@ function TechnicianPayoutDetail({ technicianId, startDate, endDate }) {
                             }["TechnicianPayoutDetail.useEffect.fetchData.rawIds"]);
                             const cpIds = Array.from(new Set(rawIds.filter(Boolean)));
                             if (cpIds.length > 0) {
-                                const { data: cpData, error: cpError } = await supabase.from('customer_products').select('id, description, product_catalog (name), customers (phone, address)').in('id', cpIds);
+                                const { data: cpData, error: cpError } = await supabase.from('customer_products').select('id, description, product_catalog (name, model), customers (phone, address)').in('id', cpIds);
                                 if (!cpError && cpData) {
                                     // Build Map
                                     const cpMap = {};
@@ -377,6 +381,80 @@ function TechnicianPayoutDetail({ technicianId, startDate, endDate }) {
         startDate,
         endDate
     ]);
+    const handleExportPDF = ()=>{
+        if (!technician || logs.length === 0) return;
+        const doc = new __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$jspdf$2f$dist$2f$jspdf$2e$es$2e$min$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsPDF"]();
+        // Header
+        doc.setFontSize(18);
+        doc.text(`Payout Report: ${technician.name}`, 14, 20);
+        doc.setFontSize(12);
+        doc.setTextColor(100);
+        doc.text(`Period: ${startDate} to ${endDate}`, 14, 30);
+        doc.text(`Technician Phone: ${technician.phone || '-'}`, 14, 36);
+        doc.text(`Total Fee: Rp ${totalFee.toLocaleString()}`, 14, 42);
+        // Table Data
+        const tableRows = logs.map((log)=>{
+            const fee = Number(log.teknisi_fee || 0);
+            // Lookup customer info from map
+            const cp = customerProducts[log.customer_product_id];
+            const customer = cp?.customers;
+            const catalog = cp?.product_catalog;
+            const productName = catalog ? `${catalog.name} ${catalog.model || ''}`.trim() : cp?.description || "-";
+            const jobName = log.pekerjaan || log.jobs?.name || "-";
+            return [
+                (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$date$2d$fns$2f$format$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["format"])(new Date(log.service_date), "dd MMM yyyy"),
+                customer?.phone || "Unknown",
+                customer?.address || "-",
+                productName,
+                jobName,
+                `Rp ${fee.toLocaleString()}`
+            ];
+        });
+        // AutoTable
+        (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$jspdf$2d$autotable$2f$dist$2f$jspdf$2e$plugin$2e$autotable$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(doc, {
+            startY: 50,
+            head: [
+                [
+                    'Date',
+                    'Customer (Phone)',
+                    'Address',
+                    'Product',
+                    'Job',
+                    'Fee'
+                ]
+            ],
+            body: tableRows,
+            foot: [
+                [
+                    '',
+                    '',
+                    '',
+                    '',
+                    'Total',
+                    `Rp ${totalFee.toLocaleString()}`
+                ]
+            ],
+            theme: 'grid',
+            headStyles: {
+                fillColor: [
+                    0,
+                    196,
+                    154
+                ]
+            },
+            footStyles: {
+                fillColor: [
+                    241,
+                    245,
+                    249
+                ],
+                textColor: 50,
+                fontStyle: 'bold'
+            } // Slate-100
+        });
+        const cleanName = (technician.name || 'technician').replace(/\s+/g, '-').toLowerCase();
+        doc.save(`payout-${cleanName}-${startDate}.pdf`);
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "space-y-6",
         children: [
@@ -389,14 +467,14 @@ function TechnicianPayoutDetail({ technicianId, startDate, endDate }) {
                         className: "mr-2 h-4 w-4"
                     }, void 0, false, {
                         fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                        lineNumber: 118,
+                        lineNumber: 173,
                         columnNumber: 9
                     }, this),
                     "Back to Reports"
                 ]
             }, void 0, true, {
                 fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                lineNumber: 113,
+                lineNumber: 168,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -417,18 +495,18 @@ function TechnicianPayoutDetail({ technicianId, startDate, endDate }) {
                                             className: "h-full w-full object-cover"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                            lineNumber: 129,
+                                            lineNumber: 184,
                                             columnNumber: 29
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$user$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__User$3e$__["User"], {
                                             className: "h-8 w-8 text-slate-400"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                            lineNumber: 131,
+                                            lineNumber: 186,
                                             columnNumber: 29
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                        lineNumber: 127,
+                                        lineNumber: 182,
                                         columnNumber: 21
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -438,7 +516,7 @@ function TechnicianPayoutDetail({ technicianId, startDate, endDate }) {
                                                 children: technician?.name || "Loading..."
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                                lineNumber: 135,
+                                                lineNumber: 190,
                                                 columnNumber: 25
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -451,7 +529,7 @@ function TechnicianPayoutDetail({ technicianId, startDate, endDate }) {
                                                                 className: "h-4 w-4"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                                                lineNumber: 137,
+                                                                lineNumber: 192,
                                                                 columnNumber: 71
                                                             }, this),
                                                             " ",
@@ -461,39 +539,39 @@ function TechnicianPayoutDetail({ technicianId, startDate, endDate }) {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                                        lineNumber: 137,
+                                                        lineNumber: 192,
                                                         columnNumber: 29
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         children: "|"
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                                        lineNumber: 138,
+                                                        lineNumber: 193,
                                                         columnNumber: 29
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         children: technician?.phone
                                                     }, void 0, false, {
                                                         fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                                        lineNumber: 139,
+                                                        lineNumber: 194,
                                                         columnNumber: 29
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                                lineNumber: 136,
+                                                lineNumber: 191,
                                                 columnNumber: 25
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                        lineNumber: 134,
+                                        lineNumber: 189,
                                         columnNumber: 21
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                lineNumber: 126,
+                                lineNumber: 181,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -504,7 +582,7 @@ function TechnicianPayoutDetail({ technicianId, startDate, endDate }) {
                                         children: "Total Payout"
                                     }, void 0, false, {
                                         fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                        lineNumber: 144,
+                                        lineNumber: 199,
                                         columnNumber: 21
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -515,7 +593,7 @@ function TechnicianPayoutDetail({ technicianId, startDate, endDate }) {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                        lineNumber: 145,
+                                        lineNumber: 200,
                                         columnNumber: 21
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -526,29 +604,29 @@ function TechnicianPayoutDetail({ technicianId, startDate, endDate }) {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                        lineNumber: 146,
+                                        lineNumber: 201,
                                         columnNumber: 21
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                lineNumber: 143,
+                                lineNumber: 198,
                                 columnNumber: 17
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                        lineNumber: 125,
+                        lineNumber: 180,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                    lineNumber: 124,
+                    lineNumber: 179,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                lineNumber: 123,
+                lineNumber: 178,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -561,31 +639,39 @@ function TechnicianPayoutDetail({ technicianId, startDate, endDate }) {
                                 children: "Service Logs"
                             }, void 0, false, {
                                 fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                lineNumber: 155,
+                                lineNumber: 210,
                                 columnNumber: 13
                             }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                variant: "outline",
-                                size: "sm",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$download$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Download$3e$__["Download"], {
-                                        className: "mr-2 h-4 w-4"
-                                    }, void 0, false, {
-                                        fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                        lineNumber: 157,
-                                        columnNumber: 17
-                                    }, this),
-                                    " Export CSV"
-                                ]
-                            }, void 0, true, {
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex items-center gap-2",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                    variant: "outline",
+                                    size: "sm",
+                                    onClick: handleExportPDF,
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$text$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FileText$3e$__["FileText"], {
+                                            className: "mr-2 h-4 w-4"
+                                        }, void 0, false, {
+                                            fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
+                                            lineNumber: 213,
+                                            columnNumber: 21
+                                        }, this),
+                                        " Export PDF"
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
+                                    lineNumber: 212,
+                                    columnNumber: 17
+                                }, this)
+                            }, void 0, false, {
                                 fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                lineNumber: 156,
+                                lineNumber: 211,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                        lineNumber: 154,
+                        lineNumber: 209,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -594,14 +680,14 @@ function TechnicianPayoutDetail({ technicianId, startDate, endDate }) {
                             children: "Loading data..."
                         }, void 0, false, {
                             fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                            lineNumber: 162,
+                            lineNumber: 219,
                             columnNumber: 17
                         }, this) : logs.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "p-8 text-center text-muted-foreground",
                             children: "No records found for this period."
                         }, void 0, false, {
                             fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                            lineNumber: 164,
+                            lineNumber: 221,
                             columnNumber: 17
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Table"], {
                             children: [
@@ -612,35 +698,35 @@ function TechnicianPayoutDetail({ technicianId, startDate, endDate }) {
                                                 children: "Date"
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                                lineNumber: 169,
+                                                lineNumber: 226,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
                                                 children: "Customer"
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                                lineNumber: 170,
+                                                lineNumber: 227,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
                                                 children: "Address"
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                                lineNumber: 171,
+                                                lineNumber: 228,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
                                                 children: "Product"
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                                lineNumber: 172,
+                                                lineNumber: 229,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
                                                 children: "Job / Pekerjaan"
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                                lineNumber: 173,
+                                                lineNumber: 230,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
@@ -648,18 +734,18 @@ function TechnicianPayoutDetail({ technicianId, startDate, endDate }) {
                                                 children: "Fee"
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                                lineNumber: 174,
+                                                lineNumber: 231,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                        lineNumber: 168,
+                                        lineNumber: 225,
                                         columnNumber: 25
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                    lineNumber: 167,
+                                    lineNumber: 224,
                                     columnNumber: 21
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableBody"], {
@@ -668,7 +754,8 @@ function TechnicianPayoutDetail({ technicianId, startDate, endDate }) {
                                         // Lookup customer info from map
                                         const cp = customerProducts[log.customer_product_id];
                                         const customer = cp?.customers;
-                                        const productName = cp?.product_catalog?.name || cp?.description || "-";
+                                        const catalog = cp?.product_catalog;
+                                        const productName = catalog ? `${catalog.name} ${catalog.model || ''}`.trim() : cp?.description || "-";
                                         const jobName = log.pekerjaan || log.jobs?.name || "-";
                                         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"], {
                                             children: [
@@ -676,7 +763,7 @@ function TechnicianPayoutDetail({ technicianId, startDate, endDate }) {
                                                     children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$date$2d$fns$2f$format$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["format"])(new Date(log.service_date), "dd MMM yyyy")
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                                    lineNumber: 190,
+                                                    lineNumber: 250,
                                                     columnNumber: 37
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -684,7 +771,7 @@ function TechnicianPayoutDetail({ technicianId, startDate, endDate }) {
                                                     children: customer?.phone || "Unknown"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                                    lineNumber: 193,
+                                                    lineNumber: 253,
                                                     columnNumber: 37
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -697,19 +784,19 @@ function TechnicianPayoutDetail({ technicianId, startDate, endDate }) {
                                                                 className: "h-3 w-3 text-muted-foreground"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                                                lineNumber: 198,
+                                                                lineNumber: 258,
                                                                 columnNumber: 45
                                                             }, this),
                                                             customer?.address || "-"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                                        lineNumber: 197,
+                                                        lineNumber: 257,
                                                         columnNumber: 41
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                                    lineNumber: 196,
+                                                    lineNumber: 256,
                                                     columnNumber: 37
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -718,14 +805,14 @@ function TechnicianPayoutDetail({ technicianId, startDate, endDate }) {
                                                     children: productName
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                                    lineNumber: 202,
+                                                    lineNumber: 262,
                                                     columnNumber: 37
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
                                                     children: jobName
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                                    lineNumber: 205,
+                                                    lineNumber: 265,
                                                     columnNumber: 37
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -736,42 +823,42 @@ function TechnicianPayoutDetail({ technicianId, startDate, endDate }) {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                                    lineNumber: 208,
+                                                    lineNumber: 268,
                                                     columnNumber: 37
                                                 }, this)
                                             ]
                                         }, log.id, true, {
                                             fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                            lineNumber: 189,
+                                            lineNumber: 249,
                                             columnNumber: 33
                                         }, this);
                                     })
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                                    lineNumber: 177,
+                                    lineNumber: 234,
                                     columnNumber: 21
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                            lineNumber: 166,
+                            lineNumber: 223,
                             columnNumber: 17
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                        lineNumber: 160,
+                        lineNumber: 217,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-                lineNumber: 153,
+                lineNumber: 208,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/apps/adminFE/src/features/reports/components/technician-payout-detail.tsx",
-        lineNumber: 112,
+        lineNumber: 167,
         columnNumber: 5
     }, this);
 }

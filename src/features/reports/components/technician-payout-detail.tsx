@@ -7,7 +7,9 @@ import { Button } from "@/components/ui/button"
 import { useSupabase } from "@/src/components/providers/supabase-provider"
 import { createApiClient } from "@/src/lib/api/client"
 import { toast } from "sonner"
-import { ArrowLeft, User, Calendar, MapPin, Download } from "lucide-react"
+import { ArrowLeft, User, Calendar, MapPin, Download, FileText } from "lucide-react"
+import { jsPDF } from "jspdf"
+import autoTable from "jspdf-autotable"
 import { format } from "date-fns"
 import {
   Table,
@@ -76,7 +78,7 @@ export function TechnicianPayoutDetail({ technicianId, startDate, endDate }: Tec
            if (cpIds.length > 0) {
                const { data: cpData, error: cpError } = await supabase
                 .from('customer_products')
-                .select('id, description, product_catalog (name), customers (phone, address)')
+                .select('id, description, product_catalog (name, model), customers (phone, address)')
                 .in('id', cpIds)
                
                if (!cpError && cpData) {
@@ -107,6 +109,59 @@ export function TechnicianPayoutDetail({ technicianId, startDate, endDate }: Tec
 
     fetchData()
   }, [session, technicianId, startDate, endDate])
+
+  const handleExportPDF = () => {
+    if (!technician || logs.length === 0) return
+
+    const doc = new jsPDF()
+
+    // Header
+    doc.setFontSize(18)
+    doc.text(`Payout Report: ${technician.name}`, 14, 20)
+    
+    doc.setFontSize(12)
+    doc.setTextColor(100)
+    doc.text(`Period: ${startDate} to ${endDate}`, 14, 30)
+    doc.text(`Technician Phone: ${technician.phone || '-'}`, 14, 36)
+    doc.text(`Total Fee: Rp ${totalFee.toLocaleString()}`, 14, 42)
+
+    // Table Data
+    const tableRows = logs.map((log) => {
+      const fee = Number(log.teknisi_fee || 0)
+      
+      // Lookup customer info from map
+      const cp = customerProducts[log.customer_product_id]
+      const customer = cp?.customers
+      const catalog = cp?.product_catalog
+      const productName = catalog 
+        ? `${catalog.name} ${catalog.model || ''}`.trim() 
+        : (cp?.description || "-")
+      const jobName = log.pekerjaan || log.jobs?.name || "-"
+
+      return [
+        format(new Date(log.service_date), "dd MMM yyyy"),
+        customer?.phone || "Unknown",
+        customer?.address || "-",
+        productName,
+        jobName,
+        `Rp ${fee.toLocaleString()}`
+      ]
+    })
+
+    // AutoTable
+    autoTable(doc, {
+      startY: 50,
+      head: [['Date', 'Customer (Phone)', 'Address', 'Product', 'Job', 'Fee']],
+      body: tableRows,
+      foot: [['', '', '', '', 'Total', `Rp ${totalFee.toLocaleString()}`]],
+      theme: 'grid',
+      headStyles: { fillColor: [0, 196, 154] }, // Brand color #00C49A
+      footStyles: { fillColor: [241, 245, 249], textColor: 50, fontStyle: 'bold' } // Slate-100
+    })
+
+    const cleanName = (technician.name || 'technician').replace(/\s+/g, '-').toLowerCase()
+    doc.save(`payout-${cleanName}-${startDate}.pdf`)
+  }
 
   return (
     <div className="space-y-6">
@@ -153,9 +208,11 @@ export function TechnicianPayoutDetail({ technicianId, startDate, endDate }: Tec
       <Card className="bg-white shadow-sm">
         <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle>Service Logs</CardTitle>
-            <Button variant="outline" size="sm">
-                <Download className="mr-2 h-4 w-4" /> Export CSV
-            </Button>
+            <div className="flex items-center gap-2">
+                <Button variant="outline" size="sm" onClick={handleExportPDF}>
+                    <FileText className="mr-2 h-4 w-4" /> Export PDF
+                </Button>
+            </div>
         </CardHeader>
         <CardContent>
             {loading ? (
@@ -181,7 +238,10 @@ export function TechnicianPayoutDetail({ technicianId, startDate, endDate }: Tec
                             // Lookup customer info from map
                             const cp = customerProducts[log.customer_product_id]
                             const customer = cp?.customers
-                            const productName = cp?.product_catalog?.name || cp?.description || "-"
+                            const catalog = cp?.product_catalog
+                            const productName = catalog 
+                                ? `${catalog.name} ${catalog.model || ''}`.trim() 
+                                : (cp?.description || "-")
                             
                             const jobName = log.pekerjaan || log.jobs?.name || "-"
                             
