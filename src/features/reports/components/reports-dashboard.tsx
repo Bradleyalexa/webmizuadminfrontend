@@ -1,238 +1,163 @@
 "use client"
 
-import { useState } from "react"
-import Link from "next/link"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
+import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Download, TrendingUp, Wrench, DollarSign, Users, ExternalLink } from "lucide-react"
-import { StatsCard } from "@/src/components/ui/stats-card"
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from "recharts"
-
-const monthlyRevenueData = [
-  { month: "Jan", revenue: 45000 },
-  { month: "Feb", revenue: 52000 },
-  { month: "Mar", revenue: 48000 },
-  { month: "Apr", revenue: 61000 },
-  { month: "May", revenue: 55000 },
-  { month: "Jun", revenue: 67000 },
-  { month: "Jul", revenue: 72000 },
-  { month: "Aug", revenue: 69000 },
-  { month: "Sep", revenue: 78000 },
-  { month: "Oct", revenue: 82000 },
-  { month: "Nov", revenue: 91000 },
-  { month: "Dec", revenue: 125430 },
-]
-
-const serviceData = [
-  { month: "Jan", completed: 45, pending: 12 },
-  { month: "Feb", completed: 52, pending: 8 },
-  { month: "Mar", completed: 48, pending: 15 },
-  { month: "Apr", completed: 61, pending: 10 },
-  { month: "May", completed: 55, pending: 7 },
-  { month: "Jun", completed: 67, pending: 9 },
-  { month: "Jul", completed: 72, pending: 11 },
-  { month: "Aug", completed: 69, pending: 13 },
-  { month: "Sep", completed: 78, pending: 6 },
-  { month: "Oct", completed: 82, pending: 8 },
-  { month: "Nov", completed: 91, pending: 5 },
-  { month: "Dec", completed: 85, pending: 12 },
-]
-
-const technicianPayouts = [
-  { name: "Tom Wilson", tasks: 28, payout: 4200 },
-  { name: "Jane Cooper", tasks: 24, payout: 3600 },
-  { name: "Alex Martinez", tasks: 22, payout: 3300 },
-  { name: "Chris Johnson", tasks: 18, payout: 2700 },
-]
+import { DatePickerWithRange } from "@/components/ui/date-range-picker"
+import { useSupabase } from "@/src/components/providers/supabase-provider"
+import { createApiClient } from "@/src/lib/api/client"
+import { toast } from "sonner"
+import { Loader2, User, ChevronRight, Calculator, Calendar } from "lucide-react"
+import { DateRange } from "react-day-picker"
+import { startOfMonth, endOfMonth, format } from "date-fns"
 
 export function ReportsDashboard() {
-  const [selectedMonth, setSelectedMonth] = useState("december")
-  const [selectedYear, setSelectedYear] = useState("2024")
+  const router = useRouter()
+  const { session, supabase } = useSupabase()
+  const [date, setDate] = useState<DateRange | undefined>(undefined)
+  const [technicians, setTechnicians] = useState<any[]>([])
+  const [stats, setStats] = useState<Record<string, { count: number, fee: number }>>({})
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!session) return
+
+      setLoading(true)
+      try {
+        // 1. Fetch Technicians (always fetch list)
+        const api = createApiClient(session)
+        const techRes: any = await api.technicians.list({ limit: 100 })
+        const techs = techRes.success ? techRes.data.items : []
+        setTechnicians(techs)
+
+        // 2. Fetch Service Logs ONLY if date range is complete
+        if (date?.from && date?.to) {
+            const fromStr = format(date.from, 'yyyy-MM-dd')
+            const toStr = format(date.to, 'yyyy-MM-dd')
+    
+            const { data: logs, error } = await supabase
+              .from('service_log')
+              .select('technician_id, teknisi_fee')
+              .gte('service_date', fromStr)
+              .lte('service_date', toStr)
+    
+            if (error) {
+                console.error("Supabase Error:", error)
+                throw error
+            }
+    
+            // 3. Aggregate Data
+            const newStats: Record<string, { count: number, fee: number }> = {}
+            logs?.forEach((log: any) => {
+                const tid = log.technician_id
+                if (!tid) return
+    
+                if (!newStats[tid]) {
+                    newStats[tid] = { count: 0, fee: 0 }
+                }
+                newStats[tid].count += 1
+                newStats[tid].fee += Number(log.teknisi_fee || 0)
+            })
+            setStats(newStats)
+        } else {
+            setStats({}) // Reset stats if no date
+        }
+
+      } catch (err) {
+        console.error(err)
+        toast.error("Failed to load report data")
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchData()
+  }, [session, date])
+
+  const handleTechnicianClick = (techId: string) => {
+      if (!date?.from || !date?.to) {
+          toast.error("Please select a date range first")
+          return
+      }
+      const fromStr = format(date.from, 'yyyy-MM-dd')
+      const toStr = format(date.to, 'yyyy-MM-dd')
+      router.push(`/admin/reports/${techId}?startDate=${fromStr}&endDate=${toStr}`)
+  }
 
   return (
-    <div className="space-y-4 md:space-y-6">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex items-center gap-2 md:gap-3">
-          <Select value={selectedMonth} onValueChange={setSelectedMonth}>
-            <SelectTrigger className="w-32 md:w-40 bg-white text-sm">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="january">January</SelectItem>
-              <SelectItem value="february">February</SelectItem>
-              <SelectItem value="march">March</SelectItem>
-              <SelectItem value="april">April</SelectItem>
-              <SelectItem value="may">May</SelectItem>
-              <SelectItem value="june">June</SelectItem>
-              <SelectItem value="july">July</SelectItem>
-              <SelectItem value="august">August</SelectItem>
-              <SelectItem value="september">September</SelectItem>
-              <SelectItem value="october">October</SelectItem>
-              <SelectItem value="november">November</SelectItem>
-              <SelectItem value="december">December</SelectItem>
-            </SelectContent>
-          </Select>
-          <Select value={selectedYear} onValueChange={setSelectedYear}>
-            <SelectTrigger className="w-24 md:w-28 bg-white text-sm">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="2024">2024</SelectItem>
-              <SelectItem value="2023">2023</SelectItem>
-            </SelectContent>
-          </Select>
+    <div className="space-y-6">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white p-4 rounded-lg shadow-sm border border-border">
+        <div className="flex items-center gap-2">
+            <div className="bg-[#00C49A]/10 p-2 rounded-md">
+                <Calendar className="h-5 w-5 text-[#00C49A]" />
+            </div>
+            <div>
+                <h2 className="font-semibold text-[#0A2540]">Date Range</h2>
+                <p className="text-xs text-muted-foreground">Select period to filter reports</p>
+            </div>
         </div>
-        <Button className="bg-[#00C49A] text-white hover:bg-[#00a883] w-full sm:w-auto">
-          <Download className="mr-2 h-4 w-4" />
-          Export Report
-        </Button>
+        <DatePickerWithRange date={date} setDate={setDate} />
       </div>
 
-      {/* Summary Stats */}
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-        <StatsCard title="Monthly Revenue" value="$125,430" icon={DollarSign} trend={{ value: 18, isPositive: true }} />
-        <StatsCard title="Services Completed" value="85" icon={Wrench} trend={{ value: 12, isPositive: true }} />
-        <StatsCard title="New Customers" value="23" icon={Users} trend={{ value: 8, isPositive: true }} />
-        <StatsCard
-          title="Avg. Completion Time"
-          value="2.3 days"
-          icon={TrendingUp}
-          trend={{ value: 5, isPositive: true }}
-        />
-      </div>
-
-      {/* Revenue Chart */}
-      <Card className="bg-white shadow-sm">
-        <CardHeader className="pb-2 md:pb-4">
-          <CardTitle className="font-heading text-base md:text-lg font-semibold text-[#0A2540]">
-            Monthly Revenue
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-2 md:p-6 pt-0 md:pt-0">
-          <div className="h-60 md:h-80">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={monthlyRevenueData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" />
-                <XAxis dataKey="month" tick={{ fill: "#64748B", fontSize: 10 }} />
-                <YAxis
-                  tick={{ fill: "#64748B", fontSize: 10 }}
-                  tickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`}
-                  width={45}
-                />
-                <Tooltip
-                  formatter={(value: number) => [`$${value.toLocaleString()}`, "Revenue"]}
-                  contentStyle={{
-                    backgroundColor: "#fff",
-                    border: "1px solid #E2E8F0",
-                    borderRadius: "8px",
-                    fontSize: "12px",
-                  }}
-                />
-                <Bar dataKey="revenue" fill="#00C49A" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </CardContent>
-      </Card>
-
-      <div className="grid gap-4 md:gap-6 lg:grid-cols-2">
-        {/* Service Summary Chart */}
-        <Card className="bg-white shadow-sm">
-          <CardHeader className="pb-2 md:pb-4">
-            <CardTitle className="font-heading text-base md:text-lg font-semibold text-[#0A2540]">
-              Monthly Service Summary
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="p-2 md:p-6 pt-0 md:pt-0">
-            <div className="h-48 md:h-64">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={serviceData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" />
-                  <XAxis dataKey="month" tick={{ fill: "#64748B", fontSize: 10 }} />
-                  <YAxis tick={{ fill: "#64748B", fontSize: 10 }} width={30} />
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: "#fff",
-                      border: "1px solid #E2E8F0",
-                      borderRadius: "8px",
-                      fontSize: "12px",
-                    }}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="completed"
-                    stroke="#00C49A"
-                    strokeWidth={2}
-                    dot={{ fill: "#00C49A", r: 3 }}
-                    name="Completed"
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="pending"
-                    stroke="#0A2540"
-                    strokeWidth={2}
-                    dot={{ fill: "#0A2540", r: 3 }}
-                    name="Pending"
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-            <div className="mt-3 md:mt-4 flex justify-center gap-4 md:gap-6">
-              <div className="flex items-center gap-2">
-                <div className="h-2 w-2 md:h-3 md:w-3 rounded-full bg-[#00C49A]" />
-                <span className="text-xs md:text-sm text-muted-foreground">Completed</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="h-2 w-2 md:h-3 md:w-3 rounded-full bg-[#0A2540]" />
-                <span className="text-xs md:text-sm text-muted-foreground">Pending</span>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Technician Payout Report */}
-        <Card className="bg-white shadow-sm">
-          <CardHeader className="pb-2 md:pb-4">
-            <CardTitle className="font-heading text-base md:text-lg font-semibold text-[#0A2540]">
-              Technician Weekly Payout
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="p-2 md:p-6 pt-0 md:pt-0">
-            <div className="space-y-3 md:space-y-4">
-              {technicianPayouts.map((tech, index) => (
-                <div
-                  key={tech.name}
-                  className="flex items-center justify-between rounded-lg border border-border p-3 md:p-4 transition-all duration-200 ease-out hover:border-[#00C49A]/30 hover:bg-[#F6F9FC]"
-                >
-                  <div className="flex items-center gap-2 md:gap-3">
-                    <div className="flex h-8 w-8 md:h-10 md:w-10 items-center justify-center rounded-full bg-[#00C49A]/10 font-bold text-[#00C49A] text-sm md:text-base">
-                      {index + 1}
+      {loading ? (
+        <div className="flex justify-center py-20">
+          <Loader2 className="h-8 w-8 animate-spin text-[#00C49A]" />
+        </div>
+      ) : technicians.length === 0 ? (
+        <div className="text-center py-20 bg-white rounded-lg border border-dashed">
+          <p className="text-muted-foreground">No technicians found.</p>
+        </div>
+      ) : (
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {technicians.map((tech) => {
+            const stat = stats[tech.id] || { count: 0, fee: 0 }
+            return (
+              <Card 
+                key={tech.id}
+                onClick={() => handleTechnicianClick(tech.id)}
+                className="cursor-pointer transition-all hover:shadow-md hover:border-[#00C49A]/50 group"
+              >
+                <CardContent className="p-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 overflow-hidden border border-slate-200">
+                      {tech.photo_url ? (
+                        <img src={tech.photo_url} alt={tech.name} className="h-full w-full object-cover" />
+                      ) : (
+                        <User className="h-6 w-6 text-slate-400" />
+                      )}
                     </div>
-                    <div>
-                      <p className="font-medium text-[#0A2540] text-sm md:text-base">{tech.name}</p>
-                      <p className="text-xs md:text-sm text-muted-foreground">{tech.tasks} tasks</p>
+                    <div className="bg-[#effcf9] text-[#00C49A] px-2 py-1 rounded text-xs font-medium">
+                        View Details
                     </div>
                   </div>
-                  <p className="font-heading text-base md:text-lg font-bold text-[#00C49A]">
-                    ${tech.payout.toLocaleString()}
+                  
+                  <h3 className="font-semibold text-[#0A2540] text-lg mb-1 group-hover:text-[#00C49A] transition-colors">
+                    {tech.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    {tech.phone || "No Phone"}
                   </p>
-                </div>
-              ))}
-            </div>
-            <Button
-              variant="outline"
-              className="mt-3 md:mt-4 w-full border-[#0A2540] text-[#0A2540] hover:bg-[#0A2540] hover:text-white bg-transparent text-sm"
-              asChild
-            >
-              <Link href="/admin/reports/payout">
-                View Full Payout Report
-                <ExternalLink className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
+
+                  <div className="grid grid-cols-2 gap-4 pt-4 border-t border-slate-100">
+                    <div>
+                        <p className="text-xs text-muted-foreground mb-1">Completed Tasks</p>
+                        <p className="font-bold text-[#0A2540] text-lg">{stat.count}</p>
+                    </div>
+                    <div className="text-right">
+                        <p className="text-xs text-muted-foreground mb-1">Total Fee</p>
+                        <p className="font-bold text-[#00C49A] text-lg">
+                            Rp {stat.fee.toLocaleString()}
+                        </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            )
+          })}
+        </div>
+      )}
     </div>
   )
 }
