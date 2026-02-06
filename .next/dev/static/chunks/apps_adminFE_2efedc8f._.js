@@ -649,6 +649,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$component
 var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$components$2f$providers$2f$supabase$2d$provider$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/src/components/providers/supabase-provider.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/src/lib/api/client.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/node_modules/sonner/dist/index.mjs [app-client] (ecmascript)");
+// ... imports
 var __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/apps/adminFE/components/ui/select.tsx [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
@@ -670,14 +671,13 @@ var _s = __turbopack_context__.k.signature();
 const taskSchema = __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$zod$2f$v3$2f$external$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__z$3e$__["z"].object({
     title: __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$zod$2f$v3$2f$external$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__z$3e$__["z"].string().min(1, "Title is required"),
     description: __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$zod$2f$v3$2f$external$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__z$3e$__["z"].string().optional(),
+    customer_id: __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$zod$2f$v3$2f$external$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__z$3e$__["z"].string().uuid("Customer is required"),
+    customer_product_id: __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$zod$2f$v3$2f$external$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__z$3e$__["z"].string().uuid("Product is required"),
     job_id: __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$zod$2f$v3$2f$external$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__z$3e$__["z"].string().uuid("Job type is required"),
+    task_type: __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$zod$2f$v3$2f$external$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__z$3e$__["z"].string().optional(),
     technician_id: __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$zod$2f$v3$2f$external$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__z$3e$__["z"].string().uuid().optional(),
     task_date: __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$zod$2f$v3$2f$external$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__z$3e$__["z"].string().min(1, "Date and time is required"),
-    status: __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$zod$2f$v3$2f$external$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__z$3e$__["z"].enum([
-        "pending",
-        "completed",
-        "canceled"
-    ]).default("pending")
+    expected_id: __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$zod$2f$v3$2f$external$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__z$3e$__["z"].string().optional()
 });
 function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
     _s();
@@ -685,17 +685,25 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
     const [isSubmitting, setIsSubmitting] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [jobs, setJobs] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [technicians, setTechnicians] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [customers, setCustomers] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [customerProducts, setCustomerProducts] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const { register, handleSubmit, setValue, watch, formState: { errors } } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$react$2d$hook$2d$form$2f$dist$2f$index$2e$esm$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useForm"])({
         resolver: (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f40$hookform$2f$resolvers$2f$zod$2f$dist$2f$zod$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["zodResolver"])(taskSchema),
         defaultValues: {
             title: initialData?.title || "",
             description: initialData?.description || "",
+            customer_id: initialData?.customerId || "",
+            customer_product_id: initialData?.customerProductId || "",
+            expected_id: initialData?.expectedId || "",
             job_id: initialData?.jobId || "",
+            task_type: initialData?.taskType || "general",
             technician_id: initialData?.technicianId || undefined,
             task_date: initialData?.taskDate ? new Date(initialData.taskDate).toISOString().slice(0, 16) : "",
             status: initialData?.status || "pending"
         }
     });
+    // Watch customer_id to fetch products
+    const selectedCustomerId = watch("customer_id");
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "TaskForm.useEffect": ()=>{
             const fetchData = {
@@ -703,16 +711,20 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                     if (!session) return;
                     const api = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createApiClient"])(session);
                     try {
-                        const [jobsRes, techsRes] = await Promise.all([
+                        const [jobsRes, techsRes, customersRes] = await Promise.all([
                             api.jobs.list({
                                 limit: 100
                             }),
                             api.technicians.list({
                                 limit: 100
+                            }),
+                            api.customers.list({
+                                limit: 100
                             })
                         ]);
                         setJobs(jobsRes.data || []);
-                        setTechnicians(techsRes.data || []); // Adjust based on tech API response structure
+                        setTechnicians(techsRes.data?.items || []);
+                        setCustomers(customersRes.data || []);
                     } catch (e) {
                         console.error("Failed to load options", e);
                     }
@@ -724,12 +736,36 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
         session,
         isOpen
     ]);
+    // Fetch customer products when customer changes
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "TaskForm.useEffect": ()=>{
+            const fetchProducts = {
+                "TaskForm.useEffect.fetchProducts": async ()=>{
+                    if (!session || !selectedCustomerId) {
+                        setCustomerProducts([]);
+                        return;
+                    }
+                    const api = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createApiClient"])(session);
+                    try {
+                        const res = await api.customerProducts.getByCustomer(selectedCustomerId);
+                        setCustomerProducts(res.data || []);
+                    } catch (e) {
+                        console.error("Failed to load customer products", e);
+                        setCustomerProducts([]);
+                    }
+                }
+            }["TaskForm.useEffect.fetchProducts"];
+            fetchProducts();
+        }
+    }["TaskForm.useEffect"], [
+        session,
+        selectedCustomerId
+    ]);
     const onSubmit = async (data)=>{
         if (!session) return;
         setIsSubmitting(true);
         try {
             const api = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createApiClient"])(session);
-            // Convert local datetime to ISO with timezone if possible, or just ISO
             const isoDate = new Date(data.task_date).toISOString();
             const payload = {
                 ...data,
@@ -738,11 +774,12 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
             if (initialData?.id) {
                 await api.tasks.update(initialData.id, payload);
                 __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].success("Task updated");
+                onSuccess(initialData.id);
             } else {
-                await api.tasks.create(payload);
+                const res = await api.tasks.create(payload);
                 __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].success("Task created");
+                onSuccess(res.data ? res.data.id : res.id); // check return type
             }
-            onSuccess();
             onClose();
         } catch (error) {
             __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].error(error.message || "Failed to save task");
@@ -761,12 +798,12 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                         children: initialData ? "Edit Task" : "Create New Task"
                     }, void 0, false, {
                         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                        lineNumber: 111,
+                        lineNumber: 145,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                    lineNumber: 110,
+                    lineNumber: 144,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -785,23 +822,23 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                             children: "*"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 116,
+                                            lineNumber: 150,
                                             columnNumber: 49
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 116,
+                                    lineNumber: 150,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
                                     id: "title",
                                     ...register("title"),
-                                    placeholder: "e.g. AC Maintenance at Cluster A",
+                                    placeholder: "e.g. AC Maintenance",
                                     className: errors.title ? "border-red-500" : ""
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 117,
+                                    lineNumber: 151,
                                     columnNumber: 15
                                 }, this),
                                 errors.title && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -809,13 +846,196 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     children: errors.title.message
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 118,
+                                    lineNumber: 152,
                                     columnNumber: 32
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 115,
+                            lineNumber: 149,
+                            columnNumber: 12
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "grid grid-cols-1 md:grid-cols-2 gap-4",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "space-y-2",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
+                                            htmlFor: "customer_id",
+                                            children: [
+                                                "Customer ",
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "text-red-500",
+                                                    children: "*"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                                    lineNumber: 157,
+                                                    columnNumber: 57
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                            lineNumber: 157,
+                                            columnNumber: 19
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
+                                            onValueChange: (val)=>{
+                                                setValue("customer_id", val);
+                                                setValue("customer_product_id", ""); // Reset product on customer change
+                                            },
+                                            defaultValue: watch("customer_id"),
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectTrigger"], {
+                                                    className: errors.customer_id ? "border-red-500" : "",
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectValue"], {
+                                                        placeholder: "Select Customer"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                                        lineNumber: 163,
+                                                        columnNumber: 27
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                                    lineNumber: 162,
+                                                    columnNumber: 23
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
+                                                    children: customers.map((c)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                            value: c.id,
+                                                            children: c.name || c.profiles?.name || c.id
+                                                        }, c.id, false, {
+                                                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                                            lineNumber: 167,
+                                                            columnNumber: 31
+                                                        }, this))
+                                                }, void 0, false, {
+                                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                                    lineNumber: 165,
+                                                    columnNumber: 23
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                            lineNumber: 158,
+                                            columnNumber: 19
+                                        }, this),
+                                        errors.customer_id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "text-sm text-red-500",
+                                            children: errors.customer_id.message
+                                        }, void 0, false, {
+                                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                            lineNumber: 171,
+                                            columnNumber: 42
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                    lineNumber: 156,
+                                    columnNumber: 16
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "space-y-2",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
+                                            htmlFor: "customer_product_id",
+                                            children: [
+                                                "Product ",
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "text-red-500",
+                                                    children: "*"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                                    lineNumber: 175,
+                                                    columnNumber: 64
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                            lineNumber: 175,
+                                            columnNumber: 19
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
+                                            onValueChange: (val)=>setValue("customer_product_id", val),
+                                            value: watch("customer_product_id"),
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectTrigger"], {
+                                                    className: errors.customer_product_id ? "border-red-500" : "",
+                                                    disabled: !selectedCustomerId,
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectValue"], {
+                                                        placeholder: selectedCustomerId ? "Select Product" : "Select Customer First"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                                        lineNumber: 178,
+                                                        columnNumber: 27
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                                    lineNumber: 177,
+                                                    columnNumber: 23
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
+                                                    children: customerProducts.map((cp)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                            value: cp.id,
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "flex flex-col items-start text-left",
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        className: "font-medium",
+                                                                        children: cp.product_name || "Unknown Product"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                                                        lineNumber: 184,
+                                                                        columnNumber: 39
+                                                                    }, this),
+                                                                    cp.product_model && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        className: "text-xs text-muted-foreground",
+                                                                        children: cp.product_model
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                                                        lineNumber: 185,
+                                                                        columnNumber: 60
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                                                lineNumber: 183,
+                                                                columnNumber: 35
+                                                            }, this)
+                                                        }, cp.id, false, {
+                                                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                                            lineNumber: 182,
+                                                            columnNumber: 31
+                                                        }, this))
+                                                }, void 0, false, {
+                                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                                    lineNumber: 180,
+                                                    columnNumber: 23
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                            lineNumber: 176,
+                                            columnNumber: 19
+                                        }, this),
+                                        errors.customer_product_id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "text-sm text-red-500",
+                                            children: errors.customer_product_id.message
+                                        }, void 0, false, {
+                                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                            lineNumber: 191,
+                                            columnNumber: 50
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                    lineNumber: 174,
+                                    columnNumber: 16
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                            lineNumber: 155,
                             columnNumber: 12
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -830,13 +1050,13 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                             children: "*"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 122,
+                                            lineNumber: 196,
                                             columnNumber: 48
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 122,
+                                    lineNumber: 196,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
@@ -849,12 +1069,12 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                 placeholder: "Select Job Type"
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                lineNumber: 125,
+                                                lineNumber: 199,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 124,
+                                            lineNumber: 198,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -863,18 +1083,18 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                     children: job.name
                                                 }, job.id, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 129,
+                                                    lineNumber: 203,
                                                     columnNumber: 27
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 127,
+                                            lineNumber: 201,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 123,
+                                    lineNumber: 197,
                                     columnNumber: 15
                                 }, this),
                                 errors.job_id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -882,122 +1102,131 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     children: errors.job_id.message
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 133,
+                                    lineNumber: 207,
                                     columnNumber: 33
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 121,
+                            lineNumber: 195,
                             columnNumber: 12
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "space-y-2",
+                            className: "grid grid-cols-1 md:grid-cols-2 gap-4",
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
-                                    htmlFor: "task_date",
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "space-y-2",
                                     children: [
-                                        "Date & Time ",
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                            className: "text-red-500",
-                                            children: "*"
-                                        }, void 0, false, {
-                                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 137,
-                                            columnNumber: 54
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 137,
-                                    columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
-                                    id: "task_date",
-                                    type: "datetime-local",
-                                    ...register("task_date"),
-                                    className: errors.task_date ? "border-red-500" : ""
-                                }, void 0, false, {
-                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 138,
-                                    columnNumber: 15
-                                }, this),
-                                errors.task_date && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "text-sm text-red-500",
-                                    children: errors.task_date.message
-                                }, void 0, false, {
-                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 144,
-                                    columnNumber: 36
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 136,
-                            columnNumber: 12
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "space-y-2",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
-                                    htmlFor: "technician_id",
-                                    children: "Assign Technician (Optional)"
-                                }, void 0, false, {
-                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 148,
-                                    columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
-                                    onValueChange: (val)=>setValue("technician_id", val),
-                                    defaultValue: watch("technician_id"),
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectTrigger"], {
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectValue"], {
-                                                placeholder: "Select Technician"
-                                            }, void 0, false, {
-                                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                lineNumber: 151,
-                                                columnNumber: 23
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 150,
-                                            columnNumber: 19
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
+                                            htmlFor: "task_date",
                                             children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                    value: "unassigned",
-                                                    children: "Unassigned"
+                                                "Date & Time ",
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "text-red-500",
+                                                    children: "*"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 154,
-                                                    columnNumber: 23
-                                                }, this),
-                                                technicians.map((tech)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                        value: tech.id,
-                                                        children: tech.name
-                                                    }, tech.id, false, {
-                                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                        lineNumber: 156,
-                                                        columnNumber: 27
-                                                    }, this))
+                                                    lineNumber: 212,
+                                                    columnNumber: 58
+                                                }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 153,
+                                            lineNumber: 212,
+                                            columnNumber: 19
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
+                                            id: "task_date",
+                                            type: "datetime-local",
+                                            ...register("task_date"),
+                                            className: errors.task_date ? "border-red-500" : ""
+                                        }, void 0, false, {
+                                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                            lineNumber: 213,
+                                            columnNumber: 19
+                                        }, this),
+                                        errors.task_date && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "text-sm text-red-500",
+                                            children: errors.task_date.message
+                                        }, void 0, false, {
+                                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                            lineNumber: 219,
+                                            columnNumber: 40
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                    lineNumber: 211,
+                                    columnNumber: 16
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "space-y-2",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
+                                            htmlFor: "technician_id",
+                                            children: "Assign Technician"
+                                        }, void 0, false, {
+                                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                            lineNumber: 223,
+                                            columnNumber: 19
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
+                                            onValueChange: (val)=>setValue("technician_id", val),
+                                            defaultValue: watch("technician_id"),
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectTrigger"], {
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectValue"], {
+                                                        placeholder: "Select Technician"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                                        lineNumber: 226,
+                                                        columnNumber: 27
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                                    lineNumber: 225,
+                                                    columnNumber: 23
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                            value: "unassigned",
+                                                            children: "Unassigned"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                                            lineNumber: 229,
+                                                            columnNumber: 27
+                                                        }, this),
+                                                        technicians.map((tech)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                value: tech.id,
+                                                                children: tech.name
+                                                            }, tech.id, false, {
+                                                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                                                lineNumber: 231,
+                                                                columnNumber: 31
+                                                            }, this))
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                                    lineNumber: 228,
+                                                    columnNumber: 23
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                            lineNumber: 224,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 149,
-                                    columnNumber: 15
+                                    lineNumber: 222,
+                                    columnNumber: 16
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 147,
+                            lineNumber: 210,
                             columnNumber: 12
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1008,7 +1237,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     children: "Description"
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 163,
+                                    lineNumber: 239,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$textarea$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Textarea"], {
@@ -1017,14 +1246,78 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     placeholder: "Additional notes..."
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 164,
+                                    lineNumber: 240,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 162,
+                            lineNumber: 238,
                             columnNumber: 12
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "space-y-2",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
+                                    htmlFor: "task_type",
+                                    children: "Task Type"
+                                }, void 0, false, {
+                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                    lineNumber: 244,
+                                    columnNumber: 16
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
+                                    onValueChange: (val)=>setValue("task_type", val),
+                                    defaultValue: watch("task_type") || "general",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectTrigger"], {
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectValue"], {
+                                                placeholder: "Select Type"
+                                            }, void 0, false, {
+                                                fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                                lineNumber: 247,
+                                                columnNumber: 24
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                            lineNumber: 246,
+                                            columnNumber: 20
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                    value: "general",
+                                                    children: "General"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                                    lineNumber: 250,
+                                                    columnNumber: 24
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                    value: "service",
+                                                    children: "Service"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                                    lineNumber: 251,
+                                                    columnNumber: 24
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                            lineNumber: 249,
+                                            columnNumber: 20
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                                    lineNumber: 245,
+                                    columnNumber: 16
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
+                            lineNumber: 243,
+                            columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "space-y-2",
@@ -1034,7 +1327,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     children: "Status"
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 168,
+                                    lineNumber: 257,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
@@ -1046,12 +1339,12 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                 placeholder: "Status"
                                             }, void 0, false, {
                                                 fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                lineNumber: 171,
+                                                lineNumber: 260,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 170,
+                                            lineNumber: 259,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -1061,7 +1354,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                     children: "Pending"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 174,
+                                                    lineNumber: 263,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1069,7 +1362,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                     children: "Completed"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 175,
+                                                    lineNumber: 264,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1077,25 +1370,25 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                                     children: "Canceled"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                                    lineNumber: 176,
+                                                    lineNumber: 265,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                            lineNumber: 173,
+                                            lineNumber: 262,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 169,
+                                    lineNumber: 258,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 167,
+                            lineNumber: 256,
                             columnNumber: 12
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogFooter"], {
@@ -1109,7 +1402,7 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     children: "Cancel"
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 182,
+                                    lineNumber: 271,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$loading$2d$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["LoadingButton"], {
@@ -1119,34 +1412,34 @@ function TaskForm({ initialData, isOpen, onClose, onSuccess }) {
                                     children: initialData ? "Save Changes" : "Create Task"
                                 }, void 0, false, {
                                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                                    lineNumber: 183,
+                                    lineNumber: 272,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                            lineNumber: 181,
+                            lineNumber: 270,
                             columnNumber: 12
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-                    lineNumber: 113,
+                    lineNumber: 147,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-            lineNumber: 109,
+            lineNumber: 143,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/apps/adminFE/src/features/tasks/components/task-form.tsx",
-        lineNumber: 108,
+        lineNumber: 142,
         columnNumber: 5
     }, this);
 }
-_s(TaskForm, "gaGKL++jk0RPo5b8jCm+jPA9lxg=", false, function() {
+_s(TaskForm, "OOipYDItQqs0lOV/IknYnE9JQuU=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$src$2f$components$2f$providers$2f$supabase$2d$provider$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSupabase"],
         __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$react$2d$hook$2d$form$2f$dist$2f$index$2e$esm$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useForm"]

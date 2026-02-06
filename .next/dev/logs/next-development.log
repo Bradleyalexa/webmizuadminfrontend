@@ -1,21 +1,2294 @@
-[00:00:01.212] Server  LOG      ✓ Ready in 768ms
-[00:02:29.160] Server  LOG      ○ Compiling /admin/reports/[technicianId] ...
-[00:02:32.300] Server  WARN     ⚠ Cross origin request detected from 192.168.56.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+[00:00:02.217] Server  LOG      ✓ Ready in 1475ms
+[00:00:11.502] Server  LOG      ○ Compiling /admin/invoices/mockup ...
+[00:00:16.417] Server  WARN     ⚠ Cross origin request detected from 192.168.56.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[00:02:32.330] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:32.599] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:02:32.599] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/reports/c60ab51e-5a21-43df-8829-9a8a30b6cd21","route":"/admin/reports/[technicianId]"}
-[00:02:32.599] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/reports/c60ab51e-5a21-43df-8829-9a8a30b6cd21?startDate=2026-01-28&endDate=2026-02-03 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/reports/[technicianId]","o":"http://192.168.56.1:3000/admin/reports/c60ab51e-5a21-43df-8829-9a8a30b6cd21?startDate=2026-01-28&endDate=2026-02-03","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769797857329}
-[00:02:34.187] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:03:17.270] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:04:53.393] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:05:16.256] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:05:18.762] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:05:18.947] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:05:18.947] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/reports/c60ab51e-5a21-43df-8829-9a8a30b6cd21","route":"/admin/reports/[technicianId]"}
-[00:05:18.947] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/reports/c60ab51e-5a21-43df-8829-9a8a30b6cd21?startDate=2026-01-28&endDate=2026-02-03 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/reports/[technicianId]","o":"http://192.168.56.1:3000/admin/reports/c60ab51e-5a21-43df-8829-9a8a30b6cd21?startDate=2026-01-28&endDate=2026-02-03","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1769798023692}
-[00:05:19.386] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:05:22.436] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:06:09.839] Server  LOG      ✓ Compiled in 116ms
-[00:07:01.479] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
-[00:07:29.453] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:00:16.493] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:17.304] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:17.304] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[00:00:17.304] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770390307249}
+[00:00:20.306] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:00:21.956] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:06:36.611] Server  LOG      ✓ Compiled in 211ms
+[00:06:39.122] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:06:42.348] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:06:42.581] Server  LOG      ✓ Compiled in 372ms
+[00:06:50.618] Server  LOG      ✓ Compiled in 199ms
+[00:06:53.159] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:06:55.349] Server  LOG      ✓ Compiled in 300ms
+[00:06:55.598] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:07:52.387] Server  LOG      ✓ Compiled in 181ms
+[00:07:54.297] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:07:57.127] Server  LOG      ✓ Compiled in 184ms
+[00:08:00.294] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:08:03.666] Server  LOG      ✓ Compiled in 141ms
+[00:08:04.628] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:08:07.567] Server  LOG      ✓ Compiled in 152ms
+[00:08:09.425] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:08:12.759] Server  LOG      ✓ Compiled in 186ms
+[00:08:13.298] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx:151:17
+Parsing ecmascript source code failed
+  149 |     #invoice-mockup-root .text-8 {
+  150 |       float: right;
+> 151 |       margin: 12\43px -2px 0 0;
+      |                 ^^
+  152 |       width: 404px;
+  153 |       color: #000000;
+  154 |       font-weight: bold;
+
+Legacy octal escape is not permitted in strict mode
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+[00:08:15.187] Server  LOG      ✓ Compiled in 351ms
+[00:08:15.594] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:08:18.482] Server  LOG      ✓ Compiled in 371ms
+[00:08:18.751] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:08:21.702] Server  LOG      ✓ Compiled in 304ms
+[00:08:21.882] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:08:23.879] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:08:56.306] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:11:15.087] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:11:35.155] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:16:26.618] Server  LOG      ✓ Compiled in 324ms
+[00:18:32.860] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:19:35.596] Server  LOG      ✓ Compiled in 139ms
+[00:19:38.644] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:19:53.364] Server  LOG      ✓ Compiled in 173ms
+[00:19:55.131] Server  LOG      ✓ Compiled in 189ms
+[00:19:56.407] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:20:10.347] Server  LOG      ✓ Compiled in 201ms
+[00:20:11.539] Server  LOG      ✓ Compiled in 204ms
+[00:20:12.414] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:20:16.622] Server  LOG      ✓ Compiled in 186ms
+[00:20:20.402] Server  LOG      ✓ Compiled in 179ms
+[00:20:21.533] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:20:31.118] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:21:59.749] Server  LOG      ✓ Compiled in 275ms
+[00:22:40.063] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:23:14.050] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.056] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.062] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.067] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.074] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.079] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.083] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.088] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.094] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.098] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.102] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.105] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.110] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.113] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.116] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.119] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.124] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.127] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.130] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.134] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.138] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.142] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.145] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.147] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.151] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.155] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.158] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.160] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.165] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.167] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.170] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.174] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:14.177] Server  LOG      ✓ Compiled in 149ms
+[00:23:14.291] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:23:47.504] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:47.643] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:23:48.449] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:23:48.828] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:23:48.982] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:23:50.102] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:23:50.136] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:50.579] Browser ERROR   uncaughtError: Error: ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:23:50.692] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:23:50.794] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:24:05.241] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:24:05.506] Browser ERROR   uncaughtError: Error: ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:24:05.675] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:24:05.675] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:24:08.050] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:24:08.321] Browser ERROR   uncaughtError: Error: ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:24:08.485] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:24:08.485] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:24:08.607] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:24:08.891] Browser ERROR   uncaughtError: Error: ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:24:09.038] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:24:09.038] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:24:16.824] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:24:17.077] Browser ERROR   uncaughtError: Error: ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:24:17.232] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:24:17.232] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:24:26.160] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:24:26.285] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:24:26.285] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:24:26.521] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/admin/inv..." notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="/apps/admi...">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="poppins_fa7ae995-module__PLyDCq__variable lato_96207d39-module__-eb_Uq__variabl..."
+-                           style={{padding-right:"23px",overflow-x:"hidden",overflow-y:"hidden"}}
+                          >
+                  ...
+
+[00:24:26.522] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:24:26.522] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/preview","route":"/admin/invoices/preview"}
+[00:24:26.522] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/preview color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/preview","o":"http://192.168.56.1:3000/admin/invoices/preview","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770391756507}
+[00:24:26.522] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:24:26.946] Browser LOG     [TemplateService] Rewriting CSS: style.css -> https://gdfhhfcdomtpkelvmhui.supabase.co/storage/v1/object/public/invoices-public/templateToclas/style.css
+[00:24:27.185] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:24:27.446] Browser LOG     [TemplateService] Rewriting IMG: images/layer_239.png -> https://gdfhhfcdomtpkelvmhui.supabase.co/storage/v1/object/public/invoices-public/templateToclas/images/layer_239.png
+[00:24:27.447] Browser LOG     [TemplateService] Rewriting IMG: images/layer_239_copy.png -> https://gdfhhfcdomtpkelvmhui.supabase.co/storage/v1/object/public/invoices-public/templateToclas/images/layer_239_copy.png
+[00:24:27.447] Browser LOG     [TemplateService] Rewriting IMG: images/layer_239_copy_2.png -> https://gdfhhfcdomtpkelvmhui.supabase.co/storage/v1/object/public/invoices-public/templateToclas/images/layer_239_copy_2.png
+[00:24:27.447] Browser LOG     [TemplateService] Rewriting IMG: images/layer_242.png -> https://gdfhhfcdomtpkelvmhui.supabase.co/storage/v1/object/public/invoices-public/templateToclas/images/layer_242.png
+[00:24:27.447] Browser LOG     [TemplateService] Rewriting IMG: images/cv_surya_mizu_firuta_indo.png -> https://gdfhhfcdomtpkelvmhui.supabase.co/storage/v1/object/public/invoices-public/templateToclas/images/cv_surya_mizu_firuta_indo.png
+[00:24:27.447] Browser LOG     [TemplateService] Rewriting IMG: images/layer_292.png -> https://gdfhhfcdomtpkelvmhui.supabase.co/storage/v1/object/public/invoices-public/templateToclas/images/layer_292.png
+[00:24:33.331] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:24:33.579] Browser ERROR   uncaughtError: Error: ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:24:33.727] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:24:33.727] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:4:1
+Module not found: Can't resolve './InvoiceTemplate'
+  2 |
+  3 | import React from 'react';
+> 4 | import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | // Page Component
+  7 | export default function MockupInvoicePage() {
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:25:13.660] Server  LOG      ✓ Compiled in 153ms
+[00:25:14.517] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:25:15.299] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:25:15.300] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[00:25:15.300] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770391804987}
+[00:25:16.301] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:25:25.512] Server  LOG      ✓ Compiled in 171ms
+[00:25:32.184] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:26:13.005] Server  LOG      ✓ Compiled in 164ms
+[00:26:18.211] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:26:18.921] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:26:40.746] Server  LOG      ✓ Compiled in 200ms
+[00:26:46.873] Server  LOG      ✓ Compiled in 148ms
+[00:26:50.048] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:26:52.675] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:26:52.886] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:26:52.887] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[00:26:52.887] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770391902919}
+[00:26:53.482] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:27:32.849] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:27:43.213] Server  LOG      ✓ Compiled in 186ms
+[00:27:44.881] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:27:48.676] Server  LOG      ✓ Compiled in 190ms
+[00:27:49.828] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:27:54.025] Server  LOG      ✓ Compiled in 268ms
+[00:27:54.184] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx:291:60
+Parsing ecmascript source code failed
+  289 |               
+  290 |               {/* Signature and Date Section - Absolutely Positioned */}
+> 291 |               <div style={{ position: 'absolute', top: 8700px', right: '120px', textAlign: 'right', zIndex: 254 }}>
+      |                                                            ^^
+  292 |                  <p className="text-14">{data.locationDate}</p>
+  293 |                  <img className="layer-292" src={`${imageBaseUrl}images/layer_292.png`} alt="" width="440" height="328" style={{ display: 'block', margin: '-5px 0 0', position: 'relative', zIndex: 23 }} />
+  294 |               </div>
+
+Expected '</', got 'px'
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+
+[00:27:54.194] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx:291:60
+Parsing ecmascript source code failed
+  289 |               
+  290 |               {/* Signature and Date Section - Absolutely Positioned */}
+> 291 |               <div style={{ position: 'absolute', top: 8700px', right: '120px', textAlign: 'right', zIndex: 254 }}>
+      |                                                            ^^
+  292 |                  <p className="text-14">{data.locationDate}</p>
+  293 |                  <img className="layer-292" src={`${imageBaseUrl}images/layer_292.png`} alt="" width="440" height="328" style={{ display: 'block', margin: '-5px 0 0', position: 'relative', zIndex: 23 }} />
+  294 |               </div>
+
+Expected '</', got 'px'
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+[00:27:54.252] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx:291:60
+Parsing ecmascript source code failed
+  289 |               
+  290 |               {/* Signature and Date Section - Absolutely Positioned */}
+> 291 |               <div style={{ position: 'absolute', top: 8700px', right: '120px', textAlign: 'right', zIndex: 254 }}>
+      |                                                            ^^
+  292 |                  <p className="text-14">{data.locationDate}</p>
+  293 |                  <img className="layer-292" src={`${imageBaseUrl}images/layer_292.png`} alt="" width="440" height="328" style={{ display: 'block', margin: '-5px 0 0', position: 'relative', zIndex: 23 }} />
+  294 |               </div>
+
+Expected '</', got 'px'
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+[00:27:54.252] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx:291:60
+Parsing ecmascript source code failed
+  289 |               
+  290 |               {/* Signature and Date Section - Absolutely Positioned */}
+> 291 |               <div style={{ position: 'absolute', top: 8700px', right: '120px', textAlign: 'right', zIndex: 254 }}>
+      |                                                            ^^
+  292 |                  <p className="text-14">{data.locationDate}</p>
+  293 |                  <img className="layer-292" src={`${imageBaseUrl}images/layer_292.png`} alt="" width="440" height="328" style={{ display: 'block', margin: '-5px 0 0', position: 'relative', zIndex: 23 }} />
+  294 |               </div>
+
+Expected '</', got 'px'
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+[00:27:54.291] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx:291:60
+Parsing ecmascript source code failed
+  289 |               
+  290 |               {/* Signature and Date Section - Absolutely Positioned */}
+> 291 |               <div style={{ position: 'absolute', top: 8700px', right: '120px', textAlign: 'right', zIndex: 254 }}>
+      |                                                            ^^
+  292 |                  <p className="text-14">{data.locationDate}</p>
+  293 |                  <img className="layer-292" src={`${imageBaseUrl}images/layer_292.png`} alt="" width="440" height="328" style={{ display: 'block', margin: '-5px 0 0', position: 'relative', zIndex: 23 }} />
+  294 |               </div>
+
+Expected '</', got 'px'
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+
+[00:27:54.572] Browser ERROR   uncaughtError: Error: ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx:291:60
+Parsing ecmascript source code failed
+  289 |               
+  290 |               {/* Signature and Date Section - Absolutely Positioned */}
+> 291 |               <div style={{ position: 'absolute', top: 8700px', right: '120px', textAlign: 'right', zIndex: 254 }}>
+      |                                                            ^^
+  292 |                  <p className="text-14">{data.locationDate}</p>
+  293 |                  <img className="layer-292" src={`${imageBaseUrl}images/layer_292.png`} alt="" width="440" height="328" style={{ display: 'block', margin: '-5px 0 0', position: 'relative', zIndex: 23 }} />
+  294 |               </div>
+
+Expected '</', got 'px'
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+
+[00:27:54.766] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx:291:60
+Parsing ecmascript source code failed
+  289 |               
+  290 |               {/* Signature and Date Section - Absolutely Positioned */}
+> 291 |               <div style={{ position: 'absolute', top: 8700px', right: '120px', textAlign: 'right', zIndex: 254 }}>
+      |                                                            ^^
+  292 |                  <p className="text-14">{data.locationDate}</p>
+  293 |                  <img className="layer-292" src={`${imageBaseUrl}images/layer_292.png`} alt="" width="440" height="328" style={{ display: 'block', margin: '-5px 0 0', position: 'relative', zIndex: 23 }} />
+  294 |               </div>
+
+Expected '</', got 'px'
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+[00:27:54.766] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx:291:60
+Parsing ecmascript source code failed
+  289 |               
+  290 |               {/* Signature and Date Section - Absolutely Positioned */}
+> 291 |               <div style={{ position: 'absolute', top: 8700px', right: '120px', textAlign: 'right', zIndex: 254 }}>
+      |                                                            ^^
+  292 |                  <p className="text-14">{data.locationDate}</p>
+  293 |                  <img className="layer-292" src={`${imageBaseUrl}images/layer_292.png`} alt="" width="440" height="328" style={{ display: 'block', margin: '-5px 0 0', position: 'relative', zIndex: 23 }} />
+  294 |               </div>
+
+Expected '</', got 'px'
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+[00:27:59.301] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx:291:58
+Parsing ecmascript source code failed
+  289 |               
+  290 |               {/* Signature and Date Section - Absolutely Positioned */}
+> 291 |               <div style={{ position: 'absolute', top: 80px', right: '120px', textAlign: 'right', zIndex: 254 }}>
+      |                                                          ^^
+  292 |                  <p className="text-14">{data.locationDate}</p>
+  293 |                  <img className="layer-292" src={`${imageBaseUrl}images/layer_292.png`} alt="" width="440" height="328" style={{ display: 'block', margin: '-5px 0 0', position: 'relative', zIndex: 23 }} />
+  294 |               </div>
+
+Expected '</', got 'px'
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+[00:28:00.298] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx:291:59
+Parsing ecmascript source code failed
+  289 |               
+  290 |               {/* Signature and Date Section - Absolutely Positioned */}
+> 291 |               <div style={{ position: 'absolute', top: 870px', right: '120px', textAlign: 'right', zIndex: 254 }}>
+      |                                                           ^^
+  292 |                  <p className="text-14">{data.locationDate}</p>
+  293 |                  <img className="layer-292" src={`${imageBaseUrl}images/layer_292.png`} alt="" width="440" height="328" style={{ display: 'block', margin: '-5px 0 0', position: 'relative', zIndex: 23 }} />
+  294 |               </div>
+
+Expected '</', got 'px'
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/InvoiceTemplate.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+[00:28:01.856] Server  LOG      ✓ Compiled in 180ms
+[00:28:02.566] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:28:02.983] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:28:02.983] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[00:28:02.983] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770391973028}
+[00:28:03.606] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:28:04.303] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:28:07.567] Server  LOG      ✓ Compiled in 260ms
+[00:28:07.901] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:28:39.059] Server  LOG      ✓ Compiled in 175ms
+[00:28:40.960] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:28:44.306] Server  LOG      ✓ Compiled in 177ms
+[00:28:45.693] Server  LOG      ✓ Compiled in 190ms
+[00:28:47.141] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:28:49.877] Server  LOG      ✓ Compiled in 151ms
+[00:28:50.842] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:28:54.444] Server  LOG      ✓ Compiled in 149ms
+[00:28:55.667] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:28:59.591] Server  LOG      ✓ Compiled in 149ms
+[00:29:01.304] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:29:03.209] Server  LOG      ✓ Compiled in 260ms
+[00:29:03.862] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:29:06.864] Server  LOG      ✓ Compiled in 223ms
+[00:29:07.648] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:32:33.752] Server  LOG      ✓ Compiled in 1253ms
+[00:33:50.356] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:34:11.443] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:34:40.338] Server  LOG      ✓ Compiled in 181ms
+[00:34:42.898] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:35:10.124] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:35:28.371] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:43:06.676] Server  LOG      ✓ Compiled in 181ms
+[00:43:34.688] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:43:36.689] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:43:37.038] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:43:37.038] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[00:43:37.038] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770392907078}
+[00:43:37.521] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:47:01.582] Server  LOG      ✓ Compiled in 151ms
+[00:47:09.478] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:47:45.381] Server  LOG      ✓ Compiled in 162ms
+[00:47:50.644] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:47:55.802] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:48:11.436] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:58:33.508] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:58:46.715] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:58:47.314] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:58:47.314] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[00:58:47.314] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770393817349}
+[00:58:48.241] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:58:57.508] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:58:57.508] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[00:58:57.508] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770393827539}
+[00:58:58.340] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:59:18.278] Browser LOG     [TemplateService] Rewriting CSS: style.css -> https://gdfhhfcdomtpkelvmhui.supabase.co/storage/v1/object/public/invoices-public/templateToclas/style.css
+[00:59:18.278] Browser LOG     [TemplateService] Rewriting IMG: images/layer_239.png -> https://gdfhhfcdomtpkelvmhui.supabase.co/storage/v1/object/public/invoices-public/templateToclas/images/layer_239.png
+[00:59:18.278] Browser LOG     [TemplateService] Rewriting IMG: images/layer_239_copy.png -> https://gdfhhfcdomtpkelvmhui.supabase.co/storage/v1/object/public/invoices-public/templateToclas/images/layer_239_copy.png
+[00:59:18.278] Browser LOG     [TemplateService] Rewriting IMG: images/layer_239_copy_2.png -> https://gdfhhfcdomtpkelvmhui.supabase.co/storage/v1/object/public/invoices-public/templateToclas/images/layer_239_copy_2.png
+[00:59:18.278] Browser LOG     [TemplateService] Rewriting IMG: images/layer_242.png -> https://gdfhhfcdomtpkelvmhui.supabase.co/storage/v1/object/public/invoices-public/templateToclas/images/layer_242.png
+[00:59:18.278] Browser LOG     [TemplateService] Rewriting IMG: images/cv_surya_mizu_firuta_indo.png -> https://gdfhhfcdomtpkelvmhui.supabase.co/storage/v1/object/public/invoices-public/templateToclas/images/cv_surya_mizu_firuta_indo.png
+[00:59:18.278] Browser LOG     [TemplateService] Rewriting IMG: images/layer_292.png -> https://gdfhhfcdomtpkelvmhui.supabase.co/storage/v1/object/public/invoices-public/templateToclas/images/layer_292.png
+[00:59:18.278] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:59:18.278] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/preview","route":"/admin/invoices/preview"}
+[00:59:18.278] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/preview color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/preview","o":"http://192.168.56.1:3000/admin/invoices/preview","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770393848320}
+[00:59:18.928] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[00:59:23.537] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:59:23.537] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[00:59:23.537] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770393853580}
+[00:59:24.402] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:01:24.924] Server  LOG      ✓ Compiled in 180ms
+[01:03:49.110] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:03:50.614] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:03:50.911] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:03:50.911] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[01:03:50.911] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770394120940}
+[01:03:51.766] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:26:26.388] Server  LOG      ✓ Compiled in 386ms
+[01:26:52.630] Server  LOG      ✓ Compiled in 377ms
+[01:29:24.294] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:29:29.020] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:29:29.371] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:29:29.371] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[01:29:29.371] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770395659409}
+[01:29:30.267] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:29:32.086] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:29:32.320] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:29:32.320] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[01:29:32.320] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770395662360}
+[01:29:32.950] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:30:04.740] Server  LOG      ✓ Compiled in 188ms
+[01:30:07.610] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:32:38.266] Server  LOG      ✓ Compiled in 283ms
+[01:32:39.296] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:59:3
+Parsing ecmascript source code failed
+  57 |   return (
+  58 |   // Scale calculation for "Fit to Screen"
+> 59 |   const previewContainerRef = React.useRef<HTMLDivElement>(null);
+     |   ^^^^^
+  60 |   const [scale, setScale] = React.useState(0.4);
+  61 |
+  62 |   React.useLayoutEffect(() => {
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+[01:33:24.672] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:59:3
+Parsing ecmascript source code failed
+  57 |   return (
+  58 |   // Scale calculation for "Fit to Screen"
+> 59 |   const previewContainerRef = React.useRef<HTMLDivElement>(null);
+     |   ^^^^^
+  60 |   const [scale, setScale] = React.useState(0.4);
+  61 |
+  62 |   React.useLayoutEffect(() => {
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+
+[01:33:24.763] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:59:3
+Parsing ecmascript source code failed
+  57 |   return (
+  58 |   // Scale calculation for "Fit to Screen"
+> 59 |   const previewContainerRef = React.useRef<HTMLDivElement>(null);
+     |   ^^^^^
+  60 |   const [scale, setScale] = React.useState(0.4);
+  61 |
+  62 |   React.useLayoutEffect(() => {
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+[01:33:24.764] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:59:3
+Parsing ecmascript source code failed
+  57 |   return (
+  58 |   // Scale calculation for "Fit to Screen"
+> 59 |   const previewContainerRef = React.useRef<HTMLDivElement>(null);
+     |   ^^^^^
+  60 |   const [scale, setScale] = React.useState(0.4);
+  61 |
+  62 |   React.useLayoutEffect(() => {
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+[01:33:24.815] Server  ERROR    ⨯ ./apps/adminFE/app/admin/invoices/mockup/page.tsx:59:3
+Parsing ecmascript source code failed
+  57 |   return (
+  58 |   // Scale calculation for "Fit to Screen"
+> 59 |   const previewContainerRef = React.useRef<HTMLDivElement>(null);
+     |   ^^^^^
+  60 |   const [scale, setScale] = React.useState(0.4);
+  61 |
+  62 |   React.useLayoutEffect(() => {
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+
+[01:33:25.240] Browser ERROR   uncaughtError: Error: ./apps/adminFE/app/admin/invoices/mockup/page.tsx:59:3
+Parsing ecmascript source code failed
+  57 |   return (
+  58 |   // Scale calculation for "Fit to Screen"
+> 59 |   const previewContainerRef = React.useRef<HTMLDivElement>(null);
+     |   ^^^^^
+  60 |   const [scale, setScale] = React.useState(0.4);
+  61 |
+  62 |   React.useLayoutEffect(() => {
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+
+[01:33:25.388] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:59:3
+Parsing ecmascript source code failed
+  57 |   return (
+  58 |   // Scale calculation for "Fit to Screen"
+> 59 |   const previewContainerRef = React.useRef<HTMLDivElement>(null);
+     |   ^^^^^
+  60 |   const [scale, setScale] = React.useState(0.4);
+  61 |
+  62 |   React.useLayoutEffect(() => {
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+[01:33:25.526] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:59:3
+Parsing ecmascript source code failed
+  57 |   return (
+  58 |   // Scale calculation for "Fit to Screen"
+> 59 |   const previewContainerRef = React.useRef<HTMLDivElement>(null);
+     |   ^^^^^
+  60 |   const [scale, setScale] = React.useState(0.4);
+  61 |
+  62 |   React.useLayoutEffect(() => {
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+[01:35:12.784] Server  LOG      ✓ Compiled in 186ms
+[01:35:13.708] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:35:15.298] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:35:15.298] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[01:35:15.298] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770396004411}
+[01:35:16.299] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:36:30.601] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:36:58.913] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:36:58.913] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[01:36:58.913] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770396108951}
+[01:36:59.685] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:37:03.043] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:37:03.043] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[01:37:03.043] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770396113076}
+[01:37:03.564] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:38:43.485] Server  LOG      ✓ Compiled in 209ms
+[01:40:23.248] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:40:25.291] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:40:25.291] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[01:40:25.291] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770396315323}
+[01:40:25.905] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:40:35.731] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:40:36.067] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:40:36.067] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[01:40:36.067] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770396326108}
+[01:40:36.972] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:41:04.470] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:41:04.470] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[01:41:04.470] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770396354511}
+[01:41:05.229] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:43:21.170] Server  LOG      ✓ Compiled in 162ms
+[01:43:49.294] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:43:51.625] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:43:51.625] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[01:43:51.625] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770396521667}
+[01:43:52.341] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:44:12.719] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:46:35.246] Server  LOG      ✓ Compiled in 152ms
+[01:47:09.482] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:47:11.617] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:47:11.617] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[01:47:11.617] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770396721656}
+[01:47:12.064] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:48:25.147] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:48:25.148] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[01:48:25.148] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770396795188}
+[01:48:26.147] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:48:29.241] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:48:29.241] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[01:48:29.242] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770396799285}
+[01:48:29.638] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:48:31.756] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:48:31.756] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[01:48:31.756] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770396801795}
+[01:48:32.172] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:49:08.465] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:54:31.436] Server  LOG      ✓ Compiled in 196ms
+[01:55:07.988] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:55:21.192] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/chat color: rgb(120, 120, 120) color: inherit {"dp":"/admin/chat","o":"http://192.168.56.1:3000/admin/chat","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770397211228}
+[01:55:25.291] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770397215321}
+[01:55:45.442] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:55:45.443] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[01:55:45.443] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770397235481}
+[01:55:46.266] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:56:33.887] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:58:08.442] Server  LOG      ✓ Compiled in 378ms
+[01:58:08.573] Browser ERROR   The final argument passed to %s changed size between renders. The order and size of this array must remain constant.
+
+Previous: %s
+Incoming: %s useLayoutEffect [false] []
+[01:58:20.068] Server  LOG      ✓ Compiled in 172ms
+[01:59:32.493] Server  LOG      ✓ Compiled in 231ms
+[01:59:45.293] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[01:59:47.522] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:59:48.166] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:59:48.166] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[01:59:48.166] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770397478202}
+[01:59:48.535] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:00:57.233] Server  LOG      ✓ Compiled in 235ms
+[02:01:06.448] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:03:13.287] Server  LOG      ✓ Compiled in 167ms
+[02:03:30.558] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:03:41.167] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:03:41.507] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:03:41.507] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[02:03:41.507] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770397711548}
+[02:03:42.248] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:04:41.031] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:05:42.532] Server  LOG      ✓ Compiled in 193ms
+[02:06:17.027] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:06:30.303] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:06:30.642] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:06:30.642] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[02:06:30.642] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770397880681}
+[02:06:31.206] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:06:45.934] Server  LOG      ✓ Compiled in 205ms
+[02:06:51.051] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:06:52.857] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:06:53.115] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:06:53.115] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[02:06:53.115] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770397903150}
+[02:06:53.662] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:07:08.972] Server  LOG      ✓ Compiled in 192ms
+[02:07:15.938] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:07:33.830] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:07:34.040] Server  LOG      ✓ Compiled in 302ms
+[02:07:34.150] Browser ERROR   ./apps/adminFE/app/admin/invoices/mockup/page.tsx:105:8
+Parsing ecmascript source code failed
+  103 |           ✎ Edit Invoice
+  104 |         </button>
+> 105 |       )}
+      |        ^
+  106 |
+  107 |       {/* Editor Panel */}
+  108 |       <div style={{ 
+
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+
+Import traces:
+  Client Component Browser:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component Browser]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Client Component SSR]
+    ./apps/adminFE/app/admin/invoices/mockup/page.tsx [Server Component]
+[02:08:12.159] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:08:12.420] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:08:12.420] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[02:08:12.420] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770397982461}
+[02:08:13.184] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:08:46.356] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:10:02.938] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:10:03.755] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:10:03.983] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:10:03.983] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[02:10:03.983] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770398094023}
+[02:10:04.797] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:10:06.039] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:10:06.303] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:10:06.303] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[02:10:06.303] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770398096341}
+[02:10:06.840] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:10:17.191] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:10:18.198] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:10:18.421] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:10:18.422] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[02:10:18.422] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770398108462}
+[02:10:19.236] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:11:06.646] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:11:24.104] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:11:26.627] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:11:26.972] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:11:26.972] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/tasks/4ff87f7e-5330-4f30-a414-9cf127bb665d","route":"/admin/tasks/[id]"}
+[02:11:26.972] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/tasks/4ff87f7e-5330-4f30-a414-9cf127bb665d color: rgb(120, 120, 120) color: inherit {"dp":"/admin/tasks/[id]","o":"http://192.168.56.1:3000/admin/tasks/4ff87f7e-5330-4f30-a414-9cf127bb665d","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770398177013}
+[02:11:28.286] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:11:28.303] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:11:31.671] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices","o":"http://192.168.56.1:3000/admin/invoices","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770398181674}
+[02:11:41.860] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://192.168.56.1:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770398191897}
+[02:13:03.694] Server  LOG      ✓ Compiled in 175ms
+[02:13:59.089] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:14:00.295] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:14:02.422] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:14:02.690] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:14:02.690] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin","route":"/admin"}
+[02:14:02.690] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://192.168.56.1:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770398332720}
+[02:14:02.999] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:14:03.250] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:14:03.250] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin/invoices/mockup","route":"/admin/invoices/mockup"}
+[02:14:03.250] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770398333292}
+[02:14:03.298] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:14:04.248] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:14:04.305] Browser LOG     Backend Profile Loaded: {"id":"d9b382f7-44e8-4038-88c7-2502496b192a","name":"New User","role":"admin"}
+[02:14:53.963] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices","o":"http://192.168.56.1:3000/admin/invoices","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770398383824}
+[02:14:55.236] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/invoices/mockup color: rgb(120, 120, 120) color: inherit {"dp":"/admin/invoices/mockup","o":"http://192.168.56.1:3000/admin/invoices/mockup","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770398385274}
+[02:15:01.670] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://192.168.56.1:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770398391463}
+[02:15:08.214] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/reports color: rgb(120, 120, 120) color: inherit {"dp":"/admin/reports","o":"http://192.168.56.1:3000/admin/reports","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770398398145}
+[02:15:17.485] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin/reports/e016f69b-465b-4609-bd8f-eccf657201b7?startDate=2026-02-19&endDate=2026-03-05 color: rgb(120, 120, 120) color: inherit {"dp":"/admin/reports/[technicianId]","o":"http://192.168.56.1:3000/admin/reports/e016f69b-465b-4609-bd8f-eccf657201b7?startDate=2026-02-19&endDate=2026-03-05","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770398407511}
+[02:15:21.748] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.56.1:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://192.168.56.1:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1770398411728}

@@ -249,7 +249,7 @@ export function InvoiceList() {
         </div>
         <div className="flex justify-end">
           <Button
-            onClick={() => router.push("/admin/invoices/new")}
+            onClick={() => router.push("/admin/invoices/mockup")}
             className="bg-[#00C49A] text-white hover:bg-[#00a883] w-full sm:w-auto"
           >
             <Plus className="mr-2 h-4 w-4" />

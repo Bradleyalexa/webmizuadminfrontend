@@ -1,0 +1,3 @@
+{
+  "/api/invoice-pdf/route": "app/api/invoice-pdf/route.js"
+}

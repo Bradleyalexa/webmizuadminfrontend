@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Bell, User, X, Check, Clock, AlertCircle, Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -69,7 +69,12 @@ interface AdminHeaderProps {
 
 export function AdminHeader({ onMenuClick }: AdminHeaderProps) {
   const [notifications, setNotifications] = useState(mockNotifications)
+  const [isMounted, setIsMounted] = useState(false)
   const unreadCount = notifications.filter((n) => !n.read).length
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   const markAsRead = (id: string) => {
     setNotifications((prev) => prev.map((n) => (n.id === id ? { ...n, read: true } : n)))
@@ -85,6 +90,19 @@ export function AdminHeader({ onMenuClick }: AdminHeaderProps) {
 
   const handleMenuClick = () => {
     onMenuClick()
+  }
+
+  if (!isMounted) {
+    return (
+      <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-border bg-white px-4 md:px-6">
+         {/* Static placeholder to prevent layout shift */}
+         <div className="w-10 h-10" />
+         <div className="flex gap-2">
+            <div className="w-10 h-10 bg-slate-100 rounded-full" />
+            <div className="w-10 h-10 bg-slate-100 rounded-full" />
+         </div>
+      </header>
+    )
   }
 
   return (

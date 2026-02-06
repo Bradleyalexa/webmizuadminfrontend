@@ -1213,7 +1213,13 @@ const getNotificationIcon = (type)=>{
 function AdminHeader({ onMenuClick }) {
     _s();
     const [notifications, setNotifications] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(mockNotifications);
+    const [isMounted, setIsMounted] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const unreadCount = notifications.filter((n)=>!n.read).length;
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "AdminHeader.useEffect": ()=>{
+            setIsMounted(true);
+        }
+    }["AdminHeader.useEffect"], []);
     const markAsRead = (id)=>{
         setNotifications((prev)=>prev.map((n)=>n.id === id ? {
                     ...n,
@@ -1232,6 +1238,47 @@ function AdminHeader({ onMenuClick }) {
     const handleMenuClick = ()=>{
         onMenuClick();
     };
+    if (!isMounted) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
+            className: "sticky top-0 z-30 flex h-16 items-center justify-between border-b border-border bg-white px-4 md:px-6",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "w-10 h-10"
+                }, void 0, false, {
+                    fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
+                    lineNumber: 99,
+                    columnNumber: 10
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "flex gap-2",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "w-10 h-10 bg-slate-100 rounded-full"
+                        }, void 0, false, {
+                            fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
+                            lineNumber: 101,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "w-10 h-10 bg-slate-100 rounded-full"
+                        }, void 0, false, {
+                            fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
+                            lineNumber: 102,
+                            columnNumber: 13
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
+                    lineNumber: 100,
+                    columnNumber: 10
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
+            lineNumber: 97,
+            columnNumber: 7
+        }, this);
+    }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
         className: "sticky top-0 z-30 flex h-16 items-center justify-between border-b border-border bg-white px-4 md:px-6",
         children: [
@@ -1249,7 +1296,7 @@ function AdminHeader({ onMenuClick }) {
                         className: "h-6 w-6"
                     }, void 0, false, {
                         fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                        lineNumber: 102,
+                        lineNumber: 120,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1257,20 +1304,20 @@ function AdminHeader({ onMenuClick }) {
                         children: "Open menu"
                     }, void 0, false, {
                         fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                        lineNumber: 103,
+                        lineNumber: 121,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                lineNumber: 92,
+                lineNumber: 110,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "hidden lg:block"
             }, void 0, false, {
                 fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                lineNumber: 106,
+                lineNumber: 124,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1289,7 +1336,7 @@ function AdminHeader({ onMenuClick }) {
                                             className: "h-5 w-5"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                            lineNumber: 116,
+                                            lineNumber: 134,
                                             columnNumber: 15
                                         }, this),
                                         unreadCount > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1297,7 +1344,7 @@ function AdminHeader({ onMenuClick }) {
                                             children: unreadCount
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                            lineNumber: 118,
+                                            lineNumber: 136,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1305,18 +1352,18 @@ function AdminHeader({ onMenuClick }) {
                                             children: "Notifications"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                            lineNumber: 122,
+                                            lineNumber: 140,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                    lineNumber: 111,
+                                    lineNumber: 129,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                lineNumber: 110,
+                                lineNumber: 128,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$sheet$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SheetContent"], {
@@ -1332,7 +1379,7 @@ function AdminHeader({ onMenuClick }) {
                                                     children: "Notifications"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                                    lineNumber: 128,
+                                                    lineNumber: 146,
                                                     columnNumber: 17
                                                 }, this),
                                                 unreadCount > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1343,18 +1390,18 @@ function AdminHeader({ onMenuClick }) {
                                                     children: "Mark all as read"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                                    lineNumber: 130,
+                                                    lineNumber: 148,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                            lineNumber: 127,
+                                            lineNumber: 145,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                        lineNumber: 126,
+                                        lineNumber: 144,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$scroll$2d$area$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ScrollArea"], {
@@ -1366,7 +1413,7 @@ function AdminHeader({ onMenuClick }) {
                                                     className: "h-12 w-12 text-muted-foreground/30"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                                    lineNumber: 144,
+                                                    lineNumber: 162,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1374,13 +1421,13 @@ function AdminHeader({ onMenuClick }) {
                                                     children: "No notifications"
                                                 }, void 0, false, {
                                                     fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                                    lineNumber: 145,
+                                                    lineNumber: 163,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                            lineNumber: 143,
+                                            lineNumber: 161,
                                             columnNumber: 17
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "space-y-2",
@@ -1400,12 +1447,12 @@ function AdminHeader({ onMenuClick }) {
                                                                 className: "h-3 w-3"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                                                lineNumber: 166,
+                                                                lineNumber: 184,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                                            lineNumber: 157,
+                                                            lineNumber: 175,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1416,7 +1463,7 @@ function AdminHeader({ onMenuClick }) {
                                                                     children: getNotificationIcon(notification.type)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                                                    lineNumber: 169,
+                                                                    lineNumber: 187,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1427,7 +1474,7 @@ function AdminHeader({ onMenuClick }) {
                                                                             children: notification.title
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                                                            lineNumber: 173,
+                                                                            lineNumber: 191,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1435,7 +1482,7 @@ function AdminHeader({ onMenuClick }) {
                                                                             children: notification.message
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                                                            lineNumber: 174,
+                                                                            lineNumber: 192,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1443,54 +1490,54 @@ function AdminHeader({ onMenuClick }) {
                                                                             children: notification.time
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                                                            lineNumber: 175,
+                                                                            lineNumber: 193,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                                                    lineNumber: 172,
+                                                                    lineNumber: 190,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                                            lineNumber: 168,
+                                                            lineNumber: 186,
                                                             columnNumber: 23
                                                         }, this),
                                                         !notification.read && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "absolute left-2 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-[#00C49A]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                                            lineNumber: 179,
+                                                            lineNumber: 197,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, notification.id, true, {
                                                     fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                                    lineNumber: 150,
+                                                    lineNumber: 168,
                                                     columnNumber: 21
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                            lineNumber: 148,
+                                            lineNumber: 166,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                        lineNumber: 141,
+                                        lineNumber: 159,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                lineNumber: 125,
+                                lineNumber: 143,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                        lineNumber: 109,
+                        lineNumber: 127,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DropdownMenu"], {
@@ -1506,7 +1553,7 @@ function AdminHeader({ onMenuClick }) {
                                             className: "h-5 w-5"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                            lineNumber: 192,
+                                            lineNumber: 210,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1514,18 +1561,18 @@ function AdminHeader({ onMenuClick }) {
                                             children: "User menu"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                            lineNumber: 193,
+                                            lineNumber: 211,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                    lineNumber: 191,
+                                    lineNumber: 209,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                lineNumber: 190,
+                                lineNumber: 208,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DropdownMenuContent"], {
@@ -1536,12 +1583,12 @@ function AdminHeader({ onMenuClick }) {
                                         children: "My Account"
                                     }, void 0, false, {
                                         fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                        lineNumber: 197,
+                                        lineNumber: 215,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DropdownMenuSeparator"], {}, void 0, false, {
                                         fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                        lineNumber: 198,
+                                        lineNumber: 216,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DropdownMenuItem"], {
@@ -1551,12 +1598,12 @@ function AdminHeader({ onMenuClick }) {
                                             children: "Profile"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                            lineNumber: 200,
+                                            lineNumber: 218,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                        lineNumber: 199,
+                                        lineNumber: 217,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DropdownMenuItem"], {
@@ -1566,17 +1613,17 @@ function AdminHeader({ onMenuClick }) {
                                             children: "Settings"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                            lineNumber: 203,
+                                            lineNumber: 221,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                        lineNumber: 202,
+                                        lineNumber: 220,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DropdownMenuSeparator"], {}, void 0, false, {
                                         fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                        lineNumber: 205,
+                                        lineNumber: 223,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$apps$2f$adminFE$2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DropdownMenuItem"], {
@@ -1587,40 +1634,40 @@ function AdminHeader({ onMenuClick }) {
                                             children: "Sign out"
                                         }, void 0, false, {
                                             fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                            lineNumber: 207,
+                                            lineNumber: 225,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                        lineNumber: 206,
+                                        lineNumber: 224,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                                lineNumber: 196,
+                                lineNumber: 214,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                        lineNumber: 189,
+                        lineNumber: 207,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-                lineNumber: 108,
+                lineNumber: 126,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/apps/adminFE/src/components/layout/admin-header.tsx",
-        lineNumber: 91,
+        lineNumber: 109,
         columnNumber: 5
     }, this);
 }
-_s(AdminHeader, "nvwrGHLCJetL5/B0tX+lzGQcTFw=");
+_s(AdminHeader, "OSwocIk1VbhqUEe0DZFAujV3AMg=");
 _c = AdminHeader;
 var _c;
 __turbopack_context__.k.register(_c, "AdminHeader");

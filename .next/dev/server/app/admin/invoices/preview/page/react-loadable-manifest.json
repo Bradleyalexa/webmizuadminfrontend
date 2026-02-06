@@ -1,0 +1,23 @@
+{
+  "[project]/apps/adminFE/src/features/invoices/templates/modern/modern-template.tsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/apps/adminFE/src/features/invoices/templates/modern/modern-template.tsx [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/apps_adminFE_src_features_invoices_templates_modern_modern-template_tsx_3dacd20c._.js",
+      "static/chunks/apps_adminFE_src_features_invoices_templates_modern_modern-template_tsx_a5181f81._.js"
+    ]
+  },
+  "[project]/apps/adminFE/src/features/invoices/templates/bucket/bucket-template.tsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/apps/adminFE/src/features/invoices/templates/bucket/bucket-template.tsx [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/apps_adminFE_d4ee80b7._.js",
+      "static/chunks/apps_adminFE_src_features_invoices_templates_bucket_bucket-template_tsx_a5181f81._.js"
+    ]
+  },
+  "[project]/apps/adminFE/src/features/invoices/templates/legacy/legacy-template.tsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/apps/adminFE/src/features/invoices/templates/legacy/legacy-template.tsx [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/apps_adminFE_80f7f46e._.js",
+      "static/chunks/apps_adminFE_src_features_invoices_templates_legacy_legacy-template_tsx_a5181f81._.js"
+    ]
+  }
+}
