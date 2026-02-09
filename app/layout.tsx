@@ -4,6 +4,7 @@ import { Poppins, Lato } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { SupabaseProvider } from "@/src/components/providers/supabase-provider"
+import { Toaster } from "sonner"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -48,7 +49,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.variable} ${lato.variable} font-sans antialiased`}>
-        <SupabaseProvider>{children}</SupabaseProvider>
+        <SupabaseProvider>
+          {children}
+          <Toaster />
+        </SupabaseProvider>
         <Analytics />
       </body>
     </html>

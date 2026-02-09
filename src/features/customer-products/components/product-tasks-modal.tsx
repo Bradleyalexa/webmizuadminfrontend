@@ -60,19 +60,19 @@ export function ProductTasksModal({ isOpen, onClose, customerProductId, productN
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="w-[95vw] sm:w-full sm:max-w-3xl max-h-[85vh] flex flex-col p-4 sm:p-6">
+      <DialogContent className="w-[95vw] sm:w-full sm:max-w-3xl h-[85vh] flex flex-col p-4 sm:p-6">
         <DialogHeader>
           <DialogTitle>Service History: {productName}</DialogTitle>
         </DialogHeader>
 
-        <Tabs defaultValue="pending" value={activeTab} onValueChange={setActiveTab} className="flex-1 flex flex-col overflow-hidden">
+        <Tabs defaultValue="pending" value={activeTab} onValueChange={setActiveTab} className="flex-1 flex flex-col overflow-hidden min-h-0">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="pending">Pending</TabsTrigger>
             <TabsTrigger value="completed">Completed</TabsTrigger>
             <TabsTrigger value="canceled">Canceled</TabsTrigger>
           </TabsList>
 
-          <ScrollArea className="flex-1 mt-4 p-1">
+          <ScrollArea className="flex-1 mt-4 p-1 min-h-0">
              {loading ? (
                  <div className="flex justify-center p-8"><Loader2 className="animate-spin" /></div>
              ) : filteredTasks.length === 0 ? (

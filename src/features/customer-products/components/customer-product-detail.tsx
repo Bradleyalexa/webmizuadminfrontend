@@ -31,6 +31,7 @@ export function CustomerProductDetail() {
   const [product, setProduct] = useState<CustomerProduct | null>(null)
   const [loading, setLoading] = useState(true)
   const [isEditOpen, setIsEditOpen] = useState(false)
+  const [isContractOpen, setIsContractOpen] = useState(false)
   const [isTasksModalOpen, setIsTasksModalOpen] = useState(false)
 
   const fetchData = async () => {
@@ -111,7 +112,7 @@ export function CustomerProductDetail() {
                 </DialogContent>
             </Dialog>
 
-            <Dialog>
+            <Dialog open={isContractOpen} onOpenChange={setIsContractOpen}>
                 <DialogTrigger asChild>
                     <Button className="bg-[#00C49A] hover:bg-[#00A07D] text-white flex-1 md:flex-none whitespace-nowrap">
                         <FileText className="mr-2 h-4 w-4" />
@@ -126,7 +127,7 @@ export function CustomerProductDetail() {
                         customerProductId={product.id}
                         onSuccess={() => {
                             fetchData()
-                            // Optionally toast or redirect
+                            setIsContractOpen(false)
                         }}
                     />
                 </DialogContent>
