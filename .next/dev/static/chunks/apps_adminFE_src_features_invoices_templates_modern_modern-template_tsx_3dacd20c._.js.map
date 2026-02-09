@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Alexander/webmizu/apps/adminFE/src/features/invoices/templates/modern/modern-template.tsx"],"sourcesContent":["import React from 'react'\r\nimport { InvoiceTemplateProps } from '../../types'\r\n\r\nexport default function ModernInvoiceTemplate({ data }: InvoiceTemplateProps) {\r\n  return (\r\n    <div className=\"p-8 border rounded\">\r\n      <h1>Modern Template (Placeholder)</h1>\r\n      <pre>{JSON.stringify(data, null, 2)}</pre>\r\n    </div>\r\n  )\r\n}\r\n"],"names":[],"mappings":";;;;;;AAGe,SAAS,sBAAsB,EAAE,IAAI,EAAwB;IAC1E,qBACE,gNAAC;QAAI,WAAU;;0BACb,gNAAC;0BAAG;;;;;;0BACJ,gNAAC;0BAAK,KAAK,SAAS,CAAC,MAAM,MAAM;;;;;;;;;;;;AAGvC;KAPwB"}}]
-}
