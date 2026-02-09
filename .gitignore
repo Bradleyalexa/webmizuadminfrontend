@@ -6,3 +6,10 @@ dist/
 build/
 *.log
 .vscode/
+.env.local
+diagnose-*
+check-images.js
+verify-public.js
+list-bucket.ts
+debug-query.ts
+diagnosis.txt
