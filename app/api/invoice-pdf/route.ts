@@ -21,11 +21,18 @@ export async function POST(req: NextRequest) {
         <head>
           <meta charset="utf-8">
           <style>
+             @import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400&display=swap');
              /* Print-specific layout locks */
              @page {
-                size: A4 landscape; /* Standard A4 landscape */
+                size: A4 portrait; /* Standard A4 portrait */
                 margin: 0;
              }
+             body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
              body {
                 margin: 0;
                 padding: 0;
@@ -38,13 +45,13 @@ export async function POST(req: NextRequest) {
              }
              /* Force specific width to match the template's design logic */
              /* The template uses 2552px width. We need to scale this to fit A4 */
-             /* A4 Landscape is approx 297mm x 210mm */
-             /* 297mm at 96dpi is ~1123px. */
-             /* 2552px is very high res. We will use CSS zoom/transform or Puppeteer scaling */
+             /* A4 Portrait is approx 210mm x 297mm */
           </style>
         </head>
         <body>
-          ${componentHtml}
+          ${renderToStaticMarkup(
+             React.createElement(InvoiceTemplate, { data })
+           )}
         </body>
       </html>
     `;
@@ -59,26 +66,27 @@ export async function POST(req: NextRequest) {
     // Set viewport to the template's native resolution to ensure correct layout calculation
     await page.setViewport({
       width: 2552, 
-      height: 1800, // Enough height for the invoice
+      height: 3610, // A4 Portrait Height (matching InvoiceTemplate)
       deviceScaleFactor: 1,
     });
+    
+    // Emulate screen media to match the browser preview rendering exactly
+    await page.emulateMediaType('screen');
 
     await page.setContent(html, {
       waitUntil: 'networkidle0', // Wait for images to load
     });
 
     // Generate PDF
-    // We scale the 2552px content down to fit A4 Landscape
-    // A4 width (landscape) is appx 11.7 inches. 
+    // We scale the 2552px content down to fit A4 Portrait
+    // A4 width (portrait) is appx 8.27 inches. 
     // 2552px / 96dpi = 26.58 inches.
-    // Scale factor needed: 11.7 / 26.58 = ~0.44
-    // However, it's safer to use 'printBackground' and prefer CSS @page size.
-    // Let's try fitting it via PDF options safely.
+    // Scale factor needed: 8.27 / 26.58 = ~0.31
     
     const pdfBuffer = await page.pdf({
       printBackground: true,
       preferCSSPageSize: true, // Respect @page rules
-      scale: 0.43, // Tweak scale slightly tighter to ensure fit
+      scale: 0.31, // Scale down to fit A4 Portrait width
       pageRanges: '1', // FORCE SINGLE PAGE
       margin: { top: 0, right: 0, bottom: 0, left: 0 }
     });

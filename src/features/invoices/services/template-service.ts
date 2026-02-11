@@ -92,36 +92,68 @@ export class InvoiceTemplateService {
     // 6. Interpolate Data
     this.injectData(doc, data)
 
-    // 7. Responsive Style Injection (Safe Mode)
+    // 7. Inject Google Fonts (Tinos as Times New Roman alternative)
+    const fontLink = doc.createElement('link')
+    fontLink.href = 'https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap'
+    fontLink.rel = 'stylesheet'
+    doc.head.appendChild(fontLink)
+
+    // 8. Inject Responsive Styles & Scripts
     const responsiveStyle = doc.createElement('style')
     responsiveStyle.textContent = `
-        @media screen {
-            /* Make the body fill the iframe */
-            body {
-                margin: 0;
-                padding: 20px;
-                background: #f3f4f6; /* Gray background for contrast */
-                min-height: 100vh;
-                display: flex;
-                justify-content: center;
-            }
-            /* Target common invoice wrappers */
-            .invoice-box, .page, .container {
-                width: 100% !important;
-                max-width: 1000px !important; /* Cap it so it doesn't get ridiculous */
-                margin: 0 auto;
-                background: #fff;
-                box-shadow: 0 0 10px rgba(0,0,0,0.1);
-                box-sizing: border-box;
-            }
-            /* Ensure images scale */
-            img {
-                max-width: 100%;
-                height: auto;
-            }
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Hide horizontal scroll from original width */
+            background-color: #525659; /* Standard viewer bg */
         }
+        #invoice-mockup-root {
+            font-family: 'Tinos', 'Times New Roman', Times, serif !important;
+            transform-origin: top left;
+            height: 3610px !important; /* A4 Portrait Height */
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+        }
+        /* Target the inner container (usually has this class based on InvoiceTemplate.tsx) */
+        .global_container_ {
+            height: 1760px !important; /* Force original content height */
+            flex: 0 0 auto !important; /* Prevent stretching */
+            position: relative !important;
+        }
+        /* Hide scrollbars */
+        ::-webkit-scrollbar { display: none; }
     `
     doc.head.appendChild(responsiveStyle)
+
+    const scalerScript = doc.createElement('script')
+    scalerScript.textContent = `
+        function resizeInvoice() {
+            const root = document.getElementById('invoice-mockup-root');
+            if (!root) return;
+            
+            const originalWidth = 2552;
+            const originalHeight = 3610; /* A4 Portrait Height */
+            
+            // Calculate scale based on viewport width
+            const viewportWidth = window.innerWidth;
+            const scale = viewportWidth / originalWidth;
+            
+            // Apply scale
+            root.style.transform = 'scale(' + scale + ')';
+            
+            // Adjust body height to match scaled content so no excessive scrolling or cutting off
+            document.body.style.height = (originalHeight * scale) + 'px';
+            document.body.style.width = '100vw';
+        }
+
+        window.addEventListener('resize', resizeInvoice);
+        window.addEventListener('DOMContentLoaded', resizeInvoice);
+        window.addEventListener('load', resizeInvoice);
+        // Initial call
+        resizeInvoice();
+    `
+    doc.body.appendChild(scalerScript)
 
     return doc.documentElement.outerHTML
   }

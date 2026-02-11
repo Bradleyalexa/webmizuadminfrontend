@@ -276,7 +276,7 @@ export default function MockupInvoicePage() {
       {/* Preview Panel */}
       <div 
         ref={previewContainerRef}
-        style={{ flex: 1, minWidth: 0, overflow: 'hidden', display: 'flex', justifyContent: 'center', background: '#e5e5e5', position: 'relative' }}
+        style={{ flex: 1, minWidth: 0, overflow: 'auto', display: 'flex', justifyContent: 'center', background: '#e5e5e5', position: 'relative' }}
       >
         <div 
           style={{ 
@@ -284,7 +284,7 @@ export default function MockupInvoicePage() {
             transformOrigin: 'top center',
             marginTop: '20px',
             marginBottom: '20px',
-            height: '1760px', /* Matches InvoiceTemplate fixed height */
+            height: '3610px', /* Matches InvoiceTemplate A4 height */
             width: '2552px',
             boxShadow: '0 0 20px rgba(0,0,0,0.1)' 
           }}

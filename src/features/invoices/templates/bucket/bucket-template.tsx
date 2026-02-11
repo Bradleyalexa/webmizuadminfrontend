@@ -43,12 +43,11 @@ export default function BucketTemplate({ data, templateFolder }: BucketTemplateP
   )
 
   return (
-    <div className="w-[210mm] min-h-[297mm] bg-white relative">
+    <div className="w-full max-w-[210mm] h-[297mm] bg-white relative mx-auto shadow-lg my-8 print:w-full print:max-w-none print:shadow-none print:my-0 print:h-auto">
        <iframe 
          srcDoc={htmlContent}
          title="Invoice"
          className="w-full h-full absolute inset-0 border-none"
-         style={{ height: '297mm' }} 
          sandbox="allow-same-origin allow-scripts" 
        />
     </div>

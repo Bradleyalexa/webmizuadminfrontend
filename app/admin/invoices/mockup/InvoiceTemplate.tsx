@@ -26,6 +26,11 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       box-sizing: border-box;
     }
     
+    #invoice-mockup-root p {
+      margin: 0;
+      padding: 0;
+    }
+
     #invoice-mockup-root {
       line-height: 1;
       color: #1131aa;
@@ -38,10 +43,14 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       letter-spacing: 0;
       text-decoration: none;
       width: 2552px; 
-      height: 1760px; /* FIXED CANVAA HEIGHT for A4 Landscape approx ratio */
+      height: 3508px; /* A4 Portrait Height */
       overflow: hidden; /* STRICTLY PREVENT SPILLOVER */
       margin: 0 auto;
       position: relative;
+      /* CENTERING LOGIC - True Center */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     @media print {
@@ -56,6 +65,8 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
          page-break-inside: avoid;
          page-break-after: avoid;
          page-break-before: avoid;
+         height: 100%; /* Reset for print if needed, or keep fixed? Usually better to fit page */
+         display: block; /* Remove flex for print usually? or keep? */
       }
     }
 
@@ -75,11 +86,13 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
     /* Layout Classes */
     #invoice-mockup-root .global_container_ {
       float: none;
-      height: 100%; /* Fill the fixed root */
+      height: 1760px; /* Fixed height for content to preserve layout */
+      flex: 0 0 auto; /* Prevent stretching */
       margin: 0 auto;
       padding: 40px 36px 0; /* REDUCED TOP PADDING TO LIFT CONTENT */
       position: relative;
       width: 2552px;
+      padding-top: 40px; /* Standardize top padding for both preview and PDF */
       background: url(${imageBaseUrl}images/layer_4.png) no-repeat;
       page-break-inside: avoid; /* PREVENT BREAKS */
     }
@@ -142,7 +155,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       line-height: 50px;
     }
     #invoice-mockup-root .text-7 {
-      margin: 9px 0 0 6px;
+      margin: 0px 0 0 0px;
       font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
       font-size: 2.604167rem;
     }
@@ -234,7 +247,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
   `;
 
   return (
-    <div style={{ padding: 20 }}>
+    <>
       {/* Dynamic Style Injection */}
       <style>{styles}</style>
       
@@ -269,7 +282,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
           </header>
           <div className="wrapper">
             <div className="col-2">
-              {/* Customer Name - Absolutely positioned at the top "Received From" line */}
+              {/* Customer Name - Adjusted Top */}
               <p className="text-15" style={{ position: 'absolute', top: '10px', left: '522px', width: '1800px', textAlign: 'left', zIndex: 999 }}>{data.customerNameAddress}</p>
 
               <p className="text-9">{data.amountInWords}</p>
@@ -318,6 +331,6 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
