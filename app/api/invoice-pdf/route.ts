@@ -47,22 +47,21 @@ export async function POST(req: NextRequest) {
     let browser;
     
     if (process.env.NODE_ENV === 'production') {
-      // Production: Use puppeteer-core + @sparticuz/chromium for serverless compatibility
+      // Production: Use puppeteer-core + @sparticuz/chromium
       const chromium = await import('@sparticuz/chromium').then(mod => mod.default);
       const puppeteerCore = await import('puppeteer-core').then(mod => mod.default);
 
-      // Optimize for serverless environments
-      // chromium.setHeadlessMode = true; // specific properties not needed or causing TS issues
-      // chromium.setGraphicsMode = false;
-
-      // Perform any necessary setup for chromium (e.g. font loading) if needed
-      // await chromium.font('https://.../font.ttf');
+      // Specify the path to the chromium binary (hosted remotely to avoid 50MB limit/bundling issues)
+      // Verify version compatibility with the installed package
+      const executablePath = await chromium.executablePath(
+        "https://github.com/Sparticuz/chromium/releases/download/v131.0.1/chromium-v131.0.1-pack.tar"
+      );
 
       browser = await puppeteerCore.launch({
         args: chromium.args,
         defaultViewport: { width: 2552, height: 3610 },
-        executablePath: await chromium.executablePath(),
-        headless: true, // simplified
+        executablePath,
+        headless: true,
       });
     } else {
       // Development: Use full puppeteer

@@ -36,7 +36,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       color: #1131aa;
       background: white;
       font-size: 16px; 
-      font-family: TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, serif;
+      font-family: Tinos, 'Times New Roman', Times, Baskerville, Georgia, serif;
       font-size: 3.125rem;
       font-style: normal;
       font-weight: normal;
@@ -304,7 +304,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
               </div>
               
               {/* Signature and Date Section - Absolutely Positioned */}
-              <div style={{ position: 'absolute', top: '850px', right: '120px', textAlign: 'right', zIndex: 254 }}>
+              <div style={{ position: 'absolute', top: '850px', right: '80px', textAlign: 'right', zIndex: 254 }}>
                  <p className="text-14">{data.locationDate}</p>
                  <img 
                     className="layer-292" 
