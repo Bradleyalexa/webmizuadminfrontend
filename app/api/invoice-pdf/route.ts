@@ -51,6 +51,10 @@ export async function POST(req: NextRequest) {
       const chromium = await import('@sparticuz/chromium').then(mod => mod.default);
       const puppeteerCore = await import('puppeteer-core').then(mod => mod.default);
 
+      // Optimize for serverless environments
+      // chromium.setHeadlessMode = true; // specific properties not needed or causing TS issues
+      // chromium.setGraphicsMode = false;
+
       // Perform any necessary setup for chromium (e.g. font loading) if needed
       // await chromium.font('https://.../font.ttf');
 
@@ -58,7 +62,7 @@ export async function POST(req: NextRequest) {
         args: chromium.args,
         defaultViewport: { width: 2552, height: 3610 },
         executablePath: await chromium.executablePath(),
-        headless: true,
+        headless: true, // simplified
       });
     } else {
       // Development: Use full puppeteer
@@ -106,6 +110,11 @@ export async function POST(req: NextRequest) {
 
   } catch (error) {
     console.error('PDF Generation Error:', error);
-    return NextResponse.json({ error: 'Failed to generate PDF' }, { status: 500 });
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorStack = error instanceof Error ? error.stack : '';
+    return NextResponse.json(
+      { error: 'Failed to generate PDF', details: errorMessage, stack: errorStack }, 
+      { status: 500 }
+    );
   }
 }
