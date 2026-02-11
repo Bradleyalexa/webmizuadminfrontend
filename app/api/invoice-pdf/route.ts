@@ -1,20 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
-import puppeteer from 'puppeteer';
 import { InvoiceTemplate, InvoiceData } from '../../admin/invoices/mockup/InvoiceTemplate';
 import React from 'react';
 
 export const runtime = 'nodejs';
+// Increase max duration for PDF generation if platform allows (e.g. Vercel)
+export const maxDuration = 60; 
+
 export async function POST(req: NextRequest) {
   try {
     const data: InvoiceData = await req.json();
 
-    // Render the component to static HTML
     const { renderToStaticMarkup } = await import('react-dom/server');
     const componentHtml = renderToStaticMarkup(
       React.createElement(InvoiceTemplate, { data })
     );
 
-    // Full HTML document structure
     const html = `
       <!DOCTYPE html>
       <html>
@@ -22,17 +22,10 @@ export async function POST(req: NextRequest) {
           <meta charset="utf-8">
           <style>
              @import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400&display=swap');
-             /* Print-specific layout locks */
              @page {
-                size: A4 portrait; /* Standard A4 portrait */
+                size: A4 portrait;
                 margin: 0;
              }
-             body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
              body {
                 margin: 0;
                 padding: 0;
@@ -43,30 +36,45 @@ export async function POST(req: NextRequest) {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
              }
-             /* Force specific width to match the template's design logic */
-             /* The template uses 2552px width. We need to scale this to fit A4 */
-             /* A4 Portrait is approx 210mm x 297mm */
           </style>
         </head>
         <body>
-          ${renderToStaticMarkup(
-             React.createElement(InvoiceTemplate, { data })
-           )}
+          ${componentHtml}
         </body>
       </html>
     `;
 
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    });
+    let browser;
+    
+    if (process.env.NODE_ENV === 'production') {
+      // Production: Use puppeteer-core + @sparticuz/chromium for serverless compatibility
+      const chromium = await import('@sparticuz/chromium').then(mod => mod.default);
+      const puppeteerCore = await import('puppeteer-core').then(mod => mod.default);
+
+      // Perform any necessary setup for chromium (e.g. font loading) if needed
+      // await chromium.font('https://.../font.ttf');
+
+      browser = await puppeteerCore.launch({
+        args: chromium.args,
+        defaultViewport: { width: 2552, height: 3610 },
+        executablePath: await chromium.executablePath(),
+        headless: true,
+      });
+    } else {
+      // Development: Use full puppeteer
+      const puppeteer = await import('puppeteer').then(mod => mod.default);
+      browser = await puppeteer.launch({
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      });
+    }
 
     const page = await browser.newPage();
     
-    // Set viewport to the template's native resolution to ensure correct layout calculation
+    // Set viewport to the template's native resolution
     await page.setViewport({
       width: 2552, 
-      height: 3610, // A4 Portrait Height (matching InvoiceTemplate)
+      height: 3610, // A4 Portrait Height
       deviceScaleFactor: 1,
     });
     
@@ -78,16 +86,12 @@ export async function POST(req: NextRequest) {
     });
 
     // Generate PDF
-    // We scale the 2552px content down to fit A4 Portrait
-    // A4 width (portrait) is appx 8.27 inches. 
-    // 2552px / 96dpi = 26.58 inches.
-    // Scale factor needed: 8.27 / 26.58 = ~0.31
-    
+    // Scale: 2552px width -> A4 width (approx 8.27in). 2552/96 = 26.58in. 8.27/26.58 = ~0.31
     const pdfBuffer = await page.pdf({
       printBackground: true,
       preferCSSPageSize: true, // Respect @page rules
-      scale: 0.31, // Scale down to fit A4 Portrait width
-      pageRanges: '1', // FORCE SINGLE PAGE
+      scale: 0.31, 
+      pageRanges: '1', // Force single page
       margin: { top: 0, right: 0, bottom: 0, left: 0 }
     });
 

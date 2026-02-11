@@ -91,7 +91,7 @@ export function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
             <Link href="/admin" className="flex items-center gap-3 group">
                <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-xl bg-white p-0.5 shadow-lg group-hover:scale-105 transition-transform duration-200">
                  <Image 
-                    src="/logo.jpg" 
+                    src="/company logo.png" 
                     alt="Mizu Firuta" 
                     fill
                     className="object-contain" // The white bg of jpg will blend with bg-white container
