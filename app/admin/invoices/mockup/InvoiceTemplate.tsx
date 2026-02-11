@@ -221,6 +221,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
     #invoice-mockup-root .text-13 {
       font-size: 3.645833rem;
       font-style: italic;
+      font-family: Tinos, 'Times New Roman', Times, Baskerville, Georgia, serif;
     }
 
     #invoice-mockup-root .text-14 {
