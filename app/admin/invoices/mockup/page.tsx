@@ -10,9 +10,9 @@ export default function MockupInvoicePage() {
     invoiceNo: '0852/SMFI/XII/25',
     amountInWords: 'Tiga Juta Rupiah',
     description: 'Pelunasan Ganti 1 (satu) Unit Catridge Filter air Toclas TW 200 / 1 Tbg',
-    optRow1: 'row 2',
-    optRow2: 'row 3',
-    optRow3: 'row 4',
+    optRow1: 'baris 2',
+    optRow2: 'baris 3',
+    optRow3: 'baris 4',
     footerNote: 'Ket: Harga Sudah Termasuk Ongkos Kerja Team Teknisi di Lapangan',
     paymentDetails: 'Transfer Rekening BCA : 6275256998 - CV Surya Mizu Firuta Indowater',
     amountNumeric: '5.000.000,-',
@@ -190,6 +190,18 @@ export default function MockupInvoicePage() {
               style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }}
             />
           </div>
+          
+          <div>
+            <label style={{ display: 'block', marginBottom: '5px', fontSize: '0.875rem', fontWeight: 500 }}>Customer Name & Address</label>
+            <textarea 
+              name="customerNameAddress"
+              value={data.customerNameAddress}
+              onChange={handleChange}
+              rows={3}
+              style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }}
+            />
+          </div>
+          
           <div>
             <label style={{ display: 'block', marginBottom: '5px', fontSize: '0.875rem', fontWeight: 500 }}>Amount (Words)</label>
             <input 
@@ -288,16 +300,6 @@ export default function MockupInvoicePage() {
             />
           </div>
 
-          <div>
-            <label style={{ display: 'block', marginBottom: '5px', fontSize: '0.875rem', fontWeight: 500 }}>Customer Name & Address</label>
-            <textarea 
-              name="customerNameAddress"
-              value={data.customerNameAddress}
-              onChange={handleChange}
-              rows={3}
-              style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }}
-            />
-          </div>
         </div>
       </div>
 
