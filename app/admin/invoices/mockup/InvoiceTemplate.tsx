@@ -21,6 +21,8 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
   const imageBaseUrl = 'https://gdfhhfcdomtpkelvmhui.supabase.co/storage/v1/object/public/invoices-public/templateToclas/';
 
   const styles = `
+    @import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400&display=swap');
+
     /* Reset and Global Overrides for #invoice-mockup-root */
     #invoice-mockup-root * {
       box-sizing: border-box;
@@ -36,7 +38,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       color: #1131aa;
       background: white;
       font-size: 16px; 
-      font-family: Tinos, 'Times New Roman', Times, Baskerville, Georgia, serif;
+      font-family: 'Times New Roman', Tinos, Times, Baskerville, Georgia, serif;
       font-size: 3.125rem;
       font-style: normal;
       font-weight: normal;
@@ -51,6 +53,14 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       display: flex;
       flex-direction: column;
       justify-content: center;
+    }
+    
+    /* ... rest of styles ... */
+
+    #invoice-mockup-root .text-13 {
+      font-size: 3.645833rem;
+      font-style: italic;
+      font-family: 'Times New Roman', Times, serif;
     }
 
     @media print {
@@ -221,7 +231,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
     #invoice-mockup-root .text-13 {
       font-size: 3.645833rem;
       font-style: italic;
-      font-family: Tinos, 'Times New Roman', Times, Baskerville, Georgia, serif;
+      font-family: 'Times New Roman', Times, serif;
     }
 
     #invoice-mockup-root .text-14 {
