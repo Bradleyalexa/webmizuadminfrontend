@@ -1,9 +1,10 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useForm, Controller } from "react-hook-form"
+import { createBrowserClient } from "@supabase/ssr"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
@@ -45,7 +46,14 @@ export function LoginPage() {
 
   const [errorDetails, setErrorDetails] = useState<{ title: string; message: string } | null>(null)
 
-  const { supabase } = useSupabase()
+  const { supabase, session, isLoading } = useSupabase()
+
+  // Redirect if already logged in
+  useEffect(() => {
+    if (!isLoading && session) {
+      router.push("/admin")
+    }
+  }, [isLoading, session, router])
   
   // Need to import createApiClient to use it directly
   const createApiClient = (session: any) => {
@@ -64,7 +72,17 @@ export function LoginPage() {
 
   const onSubmit = async (data: LoginFormData) => {
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      const loginSupabase = createBrowserClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        {
+          cookieOptions: {
+            maxAge: data.rememberMe ? 60 * 60 * 24 * 365 : undefined,
+          }
+        }
+      )
+
+      const { error } = await loginSupabase.auth.signInWithPassword({
         email: data.email,
         password: data.password,
       })
@@ -208,12 +226,6 @@ export function LoginPage() {
             </LoadingButton>
             </form>
 
-            <div className="mt-6 text-center text-xs md:text-sm">
-              <span className="text-muted-foreground">Don&apos;t have an account? </span>
-              <Link href="/signup" className="font-medium text-[#00C49A] hover:underline">
-                Sign up
-              </Link>
-            </div>
           </CardContent>
         </Card>
       </div>

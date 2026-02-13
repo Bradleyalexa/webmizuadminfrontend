@@ -93,8 +93,8 @@ export default function MockupInvoicePage() {
         // Use contentRect for precise content box measurement
         const containerWidth = entry.contentRect.width;
         // Invoice width is 2552px. Add some padding (e.g. 20px)
-        const newScale = Math.min((containerWidth - 20) / 2552, 1);
-        setScale(newScale);
+        const calculatedScale = Math.min((containerWidth - 20) / 2552, 1);
+        setScale(calculatedScale);
       }
     });
 
@@ -306,20 +306,27 @@ export default function MockupInvoicePage() {
       {/* Preview Panel */}
       <div 
         ref={previewContainerRef}
-        style={{ flex: 1, minWidth: 0, overflow: 'auto', display: 'flex', justifyContent: 'center', background: '#e5e5e5', position: 'relative' }}
+        style={{ flex: 1, minWidth: 0, overflow: 'auto', background: '#e5e5e5', position: 'relative' }}
       >
-        <div 
-          style={{ 
-            transform: `scale(${scale})`, 
-            transformOrigin: 'top center',
-            marginTop: '20px',
-            marginBottom: '20px',
-            height: '3610px', /* Matches InvoiceTemplate A4 height */
-            width: '2552px',
-            boxShadow: '0 0 20px rgba(0,0,0,0.1)' 
-          }}
-        >
-          <InvoiceTemplate data={data} />
+        <div style={{
+          position: 'relative',
+          width: `${2552 * scale}px`,
+          height: `${3610 * scale}px`,
+          margin: '20px auto', // Center if smaller, scroll if larger
+          overflow: 'hidden'
+        }}>
+          <div 
+            style={{ 
+              transform: `scale(${scale})`, 
+              transformOrigin: 'top left',
+              height: '3610px', 
+              width: '2552px',
+              boxShadow: '0 0 20px rgba(0,0,0,0.1)',
+              background: 'white'
+            }}
+          >
+            <InvoiceTemplate data={data} />
+          </div>
         </div>
       </div>
       {/* Export Dialog Modal */}

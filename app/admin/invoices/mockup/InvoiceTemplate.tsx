@@ -39,7 +39,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       background: white;
       font-size: 16px; 
       font-family: 'Times New Roman', Tinos, Times, Baskerville, Georgia, serif;
-      font-size: 3.125rem;
+      font-size: 50px;
       font-style: normal;
       font-weight: normal;
       letter-spacing: 0;
@@ -58,7 +58,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
     /* ... rest of styles ... */
 
     #invoice-mockup-root .text-13 {
-      font-size: 3.645833rem;
+      font-size: 58.33px;
       font-style: italic;
       font-family: 'Times New Roman', Times, serif;
     }
@@ -130,7 +130,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
     
     #invoice-mockup-root .text {
       margin: 1px 119px 0 69px;
-      font-size: 3.645833rem;
+      font-size: 58.33px;
       line-height: 50px;
       text-align: center;
     }
@@ -156,18 +156,18 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
     #invoice-mockup-root .col-10 { float: left; position: relative; width: 1299px; }
     #invoice-mockup-root .text-5 {
       font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
-      font-size: 2.604167rem;
+      font-size: 41.67px;
     }
     #invoice-mockup-root .text-6 {
       margin: 2px 0 0 7px;
       font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
-      font-size: 2.604167rem;
+      font-size: 41.67px;
       line-height: 50px;
     }
     #invoice-mockup-root .text-7 {
       margin: 0px 0 0 0px;
       font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
-      font-size: 2.604167rem;
+      font-size: 41.67px;
     }
     #invoice-mockup-root .text-8 {
       float: right;
@@ -217,7 +217,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       font-weight: bold;
       /* Reset line-height to be tighter */
       line-height: 1.2; 
-      font-size: 3.125rem;
+      font-size: 50px;
     }
     
     /* Footer styling handled by inline absolute positioning to ensure stability */
@@ -229,7 +229,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
     }
     
     #invoice-mockup-root .text-13 {
-      font-size: 3.645833rem;
+      font-size: 58.33px;
       font-style: italic;
       font-family: 'Times New Roman', Tinos, Times, serif;
     }
