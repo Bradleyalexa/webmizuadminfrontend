@@ -97,10 +97,10 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
     #invoice-mockup-root .global_container_ {
       float: none;
       height: 1760px; /* Fixed height for content to preserve layout */
-      flex: 0 0 auto; /* Prevent stretching */
       margin: 0 auto;
       padding: 40px 36px 0; /* REDUCED TOP PADDING TO LIFT CONTENT */
       position: relative;
+      left: -25px;
       width: 2552px;
       padding-top: 40px; /* Standardize top padding for both preview and PDF */
       background: url(${imageBaseUrl}images/layer_4.png) no-repeat;

@@ -83,7 +83,7 @@ export default function MockupInvoicePage() {
 
   // Scale calculation for "Fit to Screen"
   const previewContainerRef = React.useRef<HTMLDivElement>(null);
-  const [scale, setScale] = React.useState(0.4);
+  const [scale, setScale] = React.useState(0.5);
 
   React.useLayoutEffect(() => {
     if (!previewContainerRef.current) return;
