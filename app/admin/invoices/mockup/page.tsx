@@ -97,6 +97,7 @@ export default function MockupInvoicePage() {
         setScale(calculatedScale);
       }
     });
+    //t
 
     observer.observe(previewContainerRef.current);
 
