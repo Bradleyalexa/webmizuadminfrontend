@@ -100,7 +100,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       margin: 0 auto;
       padding: 40px 36px 0; /* REDUCED TOP PADDING TO LIFT CONTENT */
       position: relative;
-      left: -25px;
+      left: -50px;
       width: 2552px;
       padding-top: 40px; /* Standardize top padding for both preview and PDF */
       background: url(${imageBaseUrl}images/layer_4.png) no-repeat;
