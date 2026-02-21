@@ -6,6 +6,7 @@ import { Search, Plus, Send, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { DataTable } from "@/src/components/ui/data-table"
 import { StatusBadge } from "@/src/components/ui/status-badge"
 import type { Invoice } from "@/src/types"
@@ -197,6 +198,7 @@ export function InvoiceList() {
   const [searchQuery, setSearchQuery] = useState("")
   const [statusFilter, setStatusFilter] = useState<string>("all")
   const [typeFilter, setTypeFilter] = useState<string>("all")
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const filteredInvoices = mockInvoices.filter((invoice) => {
     const matchesSearch =
@@ -248,13 +250,68 @@ export function InvoiceList() {
           </div>
         </div>
         <div className="flex justify-end">
-          <Button
-            onClick={() => router.push("/admin/invoices/mockup")}
-            className="bg-[#00C49A] text-white hover:bg-[#00a883] w-full sm:w-auto"
-          >
-            <Plus className="mr-2 h-4 w-4" />
-            Create Invoice
-          </Button>
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <DialogTrigger asChild>
+              <Button
+                className="bg-[#00C49A] text-white hover:bg-[#00a883] w-full sm:w-auto"
+              >
+                <Plus className="mr-2 h-4 w-4" />
+                Create Invoice
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle>Select Invoice Template</DialogTitle>
+                <DialogDescription>
+                  Choose a template to create a new invoice.
+                </DialogDescription>
+              </DialogHeader>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 py-4">
+                <button 
+                  onClick={() => router.push("/admin/invoices/mockup")}
+                  className="flex flex-col items-center justify-center gap-1 p-4 rounded-xl border border-border bg-white text-center transition-all duration-200 hover:border-[#00C49A] hover:bg-[#00C49A]/5 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-[#00C49A]/20"
+                >
+                  <span className="font-semibold text-[#0A2540]">Service / Lain2 / Cat Toclas</span>
+                  
+                </button>
+                <button 
+                  onClick={() => router.push("/admin/invoices/mockup2")}
+                  className="flex flex-col items-center justify-center gap-1 p-4 rounded-xl border border-border bg-white text-center transition-all duration-200 hover:border-[#00C49A] hover:bg-[#00C49A]/5 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-[#00C49A]/20"
+                >
+                  <span className="font-semibold text-[#0A2540]">Pasang Mizu 300</span>
+          
+                </button>
+                <button 
+                  onClick={() => router.push("/admin/invoices/mockup3")}
+                  className="flex flex-col items-center justify-center gap-1 p-4 rounded-xl border border-border bg-white text-center transition-all duration-200 hover:border-[#00C49A] hover:bg-[#00C49A]/5 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-[#00C49A]/20"
+                >
+                  <span className="font-semibold text-[#0A2540]">Pasang Toclas</span>
+                  
+                </button>
+                <button 
+                  onClick={() => router.push("/admin/invoices/mockup4")}
+                  className="flex flex-col items-center justify-center gap-1 p-4 rounded-xl border border-border bg-white text-center transition-all duration-200 hover:border-[#00C49A] hover:bg-[#00C49A]/5 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-[#00C49A]/20"
+                >
+                  <span className="font-semibold text-[#0A2540]">Pasang MFS</span>
+                
+                </button>
+                <button 
+                  onClick={() => router.push("/admin/invoices/mockup5")}
+                  className="flex flex-col items-center justify-center gap-1 p-4 rounded-xl border border-border bg-white text-center transition-all duration-200 hover:border-[#00C49A] hover:bg-[#00C49A]/5 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-[#00C49A]/20"
+                >
+                  <span className="font-semibold text-[#0A2540]">Kontrak Service</span>
+                
+                </button>
+                <button 
+                  onClick={() => router.push("/admin/invoices/mockup6")}
+                  className="flex flex-col items-center justify-center gap-1 p-4 rounded-xl border border-border bg-white text-center transition-all duration-200 hover:border-[#00C49A] hover:bg-[#00C49A]/5 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-[#00C49A]/20"
+                >
+                  <span className="font-semibold text-[#0A2540]">Ganti Media</span>
+                
+                </button>
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
 

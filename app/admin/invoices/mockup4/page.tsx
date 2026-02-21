@@ -4,19 +4,19 @@ import React from 'react';
 import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
 
 // Page Component
-export default function MockupInvoicePage() {
+export default function Mockup4InvoicePage() {
   const [isFormOpen, setIsFormOpen] = React.useState(true);
   const [data, setData] = React.useState<InvoiceData>({
     invoiceNo: '0852/SMFI/II/26',
-    amountInWords: 'Tiga Juta Rupiah',
-    row1: 'Pelunasan Ganti 1 (satu) Unit Catridge Filter air Toclas TW 200 / 1 Tbg',
-    row2: 'baris 2',
-    row3: 'baris 3',
-    row4: 'baris 4',
-    row5: 'Ket: Harga Sudah Termasuk Ongkos Kerja Team Teknisi di Lapangan',
-    row6: 'Transfer Rekening BCA : 6275256998 - CV Surya Mizu Firuta Indowater',
-    row7: 'boleh diisi boleh dihapus/kosongin',
-    amountNumeric: '5.000.000,-',
+    amountInWords: 'Tujuh Belas Juta Rupiah',
+    row1: 'Pelunasan Pasang 1 (satu) Unit Filter air Mizu Firuta Type MFS 1T Tabung Full',
+    row2: 'Stainless Steel + 1 (satu) Bh Spare part WRV + Instalasi Pipa Induk Apartemen',
+    row3: 'Ket: 3 (Tiga) Tahun Garansi Tabung Filter air Mizu Firuta MFS 1T',
+    row4: '1 (Satu) Tahun Garansi Spare Part Filter air Mizu Firuta MFS 1T',
+    row5: '2 (Dua) kali Free Maintenance untuk Tahun Pertama Periode 6 Bulan Sekali',
+    row6: 'Kunjungan Service, Ganti Media Multi Catridge',
+    row7: 'Transfer Rekening BCA : 6275256998 - CV Surya Mizu Firuta Indowater',
+    amountNumeric: '17.000.000,-',
     locationDate: 'Jakarta, 13 Desember 2025',
     customerNameAddress: 'Mr Jiye Lim / Amala 2508 Apartemen Pondok Indah Residence - Jakarta Selatan'
   });
@@ -48,7 +48,7 @@ export default function MockupInvoicePage() {
   const processExport = async (dataToExport: InvoiceData, filename: string) => {
     setIsExporting(true);
     try {
-      const response = await fetch('/api/invoice-pdf', {
+      const response = await fetch('/api/invoice-pdf4', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

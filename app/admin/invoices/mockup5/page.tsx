@@ -4,19 +4,19 @@ import React from 'react';
 import { InvoiceTemplate, InvoiceData } from './InvoiceTemplate';
 
 // Page Component
-export default function MockupInvoicePage() {
+export default function Mockup5InvoicePage() {
   const [isFormOpen, setIsFormOpen] = React.useState(true);
   const [data, setData] = React.useState<InvoiceData>({
     invoiceNo: '0852/SMFI/II/26',
-    amountInWords: 'Tiga Juta Rupiah',
-    row1: 'Pelunasan Ganti 1 (satu) Unit Catridge Filter air Toclas TW 200 / 1 Tbg',
-    row2: 'baris 2',
-    row3: 'baris 3',
-    row4: 'baris 4',
-    row5: 'Ket: Harga Sudah Termasuk Ongkos Kerja Team Teknisi di Lapangan',
+    amountInWords: 'Dua  Juta  Dua  Ratus  Lima  Puluh  Ribu  Rupiah',
+    row1: 'Pelunasan Kontrak Service 1 (satu) Unit Filter air Yamaha OH 300 SC = 1 Tahun',
+    row2: 'I   : Bulan Mei 2025						II  : Bulan September 2025					III: Bulan January 2026',
+    row3: 'IV  : Bulan Mei 2026						V  : Bulan September 2026					VI: Bulan January 2027',
+    row4: 'Ket : Jika dalam masa kontrak service terjadi trouble, tidak dikenakan biaya opera ',
+    row5: 'sional Kecuali terjadi kerusakan yang mengakibatkan penggantian Spare part.',
     row6: 'Transfer Rekening BCA : 6275256998 - CV Surya Mizu Firuta Indowater',
     row7: 'boleh diisi boleh dihapus/kosongin',
-    amountNumeric: '5.000.000,-',
+    amountNumeric: '2.500.000,-',
     locationDate: 'Jakarta, 13 Desember 2025',
     customerNameAddress: 'Mr Jiye Lim / Amala 2508 Apartemen Pondok Indah Residence - Jakarta Selatan'
   });
@@ -48,7 +48,7 @@ export default function MockupInvoicePage() {
   const processExport = async (dataToExport: InvoiceData, filename: string) => {
     setIsExporting(true);
     try {
-      const response = await fetch('/api/invoice-pdf', {
+      const response = await fetch('/api/invoice-pdf5', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

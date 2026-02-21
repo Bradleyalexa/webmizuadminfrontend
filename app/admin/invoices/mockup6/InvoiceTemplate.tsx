@@ -23,17 +23,17 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
   const styles = `
     @import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400&display=swap');
 
-    /* Reset and Global Overrides for #invoice-mockup-root */
-    #invoice-mockup-root * {
+    /* Reset and Global Overrides for #invoice-mockup6-root */
+    #invoice-mockup6-root * {
       box-sizing: border-box;
     }
     
-    #invoice-mockup-root p {
+    #invoice-mockup6-root p {
       margin: 0;
       padding: 0;
     }
 
-    #invoice-mockup-root {
+    #invoice-mockup6-root {
       line-height: 1;
       color: #1131aa;
       background: white;
@@ -57,7 +57,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
     
     /* ... rest of styles ... */
 
-    #invoice-mockup-root .text-13 {
+    #invoice-mockup6-root .text-13 {
       font-size: 58.33px;
       font-style: italic;
       font-family: 'Times New Roman', Times, serif;
@@ -71,7 +71,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
         width: 100%;
         overflow: hidden;
       }
-      #invoice-mockup-root {
+      #invoice-mockup6-root {
          page-break-inside: avoid;
          page-break-after: avoid;
          page-break-before: avoid;
@@ -80,21 +80,21 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       }
     }
 
-    #invoice-mockup-root a { color: inherit; text-decoration: none; }
-    #invoice-mockup-root ol, #invoice-mockup-root ul { list-style: none; }
-    #invoice-mockup-root table { border-collapse: collapse; border-spacing: 0; }
-    #invoice-mockup-root h1, #invoice-mockup-root h2, #invoice-mockup-root h3, 
-    #invoice-mockup-root h4, #invoice-mockup-root h5, #invoice-mockup-root h6 { font-weight: bold; margin-top: 0; margin-bottom: 0; }
+    #invoice-mockup6-root a { color: inherit; text-decoration: none; }
+    #invoice-mockup6-root ol, #invoice-mockup6-root ul { list-style: none; }
+    #invoice-mockup6-root table { border-collapse: collapse; border-spacing: 0; }
+    #invoice-mockup6-root h1, #invoice-mockup6-root h2, #invoice-mockup6-root h3, 
+    #invoice-mockup6-root h4, #invoice-mockup6-root h5, #invoice-mockup6-root h6 { font-weight: bold; margin-top: 0; margin-bottom: 0; }
     
-    #invoice-mockup-root .group:before,
-    #invoice-mockup-root .group:after { content: " "; display: table; }
-    #invoice-mockup-root .group:after { clear: both; }
-    #invoice-mockup-root .group { zoom: 1; }
+    #invoice-mockup6-root .group:before,
+    #invoice-mockup6-root .group:after { content: " "; display: table; }
+    #invoice-mockup6-root .group:after { clear: both; }
+    #invoice-mockup6-root .group { zoom: 1; }
     
-    #invoice-mockup-root embed, #invoice-mockup-root img, #invoice-mockup-root object { max-width: 100%; }
+    #invoice-mockup6-root embed, #invoice-mockup6-root img, #invoice-mockup6-root object { max-width: 100%; }
     
     /* Layout Classes */
-    #invoice-mockup-root .global_container_ {
+    #invoice-mockup6-root .global_container_ {
       float: none;
       height: 1760px; /* Fixed height for content to preserve layout */
       margin: 0 auto;
@@ -106,77 +106,77 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       background: url(${imageBaseUrl}images/layer_4.png) no-repeat;
       page-break-inside: avoid; /* PREVENT BREAKS */
     }
-    #invoice-mockup-root .header {
+    #invoice-mockup6-root .header {
       left: 66px;
       margin: 0 auto;
       position: relative;
       width: 2330px;
     }
-    #invoice-mockup-root .col-3 {
+    #invoice-mockup6-root .col-3 {
       float: left;
       margin: 15px 0 0;
       position: relative;
       width: 337px;
     }
-    #invoice-mockup-root .wrapper-6 {
+    #invoice-mockup6-root .wrapper-6 {
       height: 307px;
       position: relative;
       width: 337px;
     }
-    #invoice-mockup-root .layer-239 { left: 50%; position: absolute; top: 201px; margin-left: -117.5px; }
-    #invoice-mockup-root .layer-239-copy { left: 50%; position: absolute; top: 142px; margin-left: -168.5px; }
-    #invoice-mockup-root .layer-239-copy-2 { left: 50%; position: absolute; top: 173px; margin-left: -141.5px; }
-    #invoice-mockup-root .layer-242 { left: 50%; position: absolute; top: 0; margin-left: -136.5px; }
+    #invoice-mockup6-root .layer-239 { left: 50%; position: absolute; top: 201px; margin-left: -117.5px; }
+    #invoice-mockup6-root .layer-239-copy { left: 50%; position: absolute; top: 142px; margin-left: -168.5px; }
+    #invoice-mockup6-root .layer-239-copy-2 { left: 50%; position: absolute; top: 173px; margin-left: -141.5px; }
+    #invoice-mockup6-root .layer-242 { left: 50%; position: absolute; top: 0; margin-left: -136.5px; }
     
-    #invoice-mockup-root .text {
+    #invoice-mockup6-root .text {
       margin: 1px 119px 0 69px;
       font-size: 58.33px;
       line-height: 50px;
       text-align: center;
     }
-    #invoice-mockup-root .col-8 {
+    #invoice-mockup6-root .col-8 {
       float: right;
       position: relative;
       width: 1981px;
     }
-    #invoice-mockup-root .text-2 { display: block; margin: 0 0 0 4px; position: relative; }
-    #invoice-mockup-root .text-3 {
+    #invoice-mockup6-root .text-2 { display: block; margin: 0 0 0 4px; position: relative; }
+    #invoice-mockup6-root .text-3 {
       margin: 34px 0 0 5px;
       position: relative;
       font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
       font-weight: bold;
     }
-    #invoice-mockup-root .text-4 {
+    #invoice-mockup6-root .text-4 {
       margin: -4px 0 0 7px;
       position: relative;
       font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
       font-weight: bold;
     }
-    #invoice-mockup-root .row-2 { margin: 10px 0 0; position: relative; }
-    #invoice-mockup-root .col-10 { float: left; position: relative; width: 1299px; }
-    #invoice-mockup-root .text-5 {
+    #invoice-mockup6-root .row-2 { margin: 10px 0 0; position: relative; }
+    #invoice-mockup6-root .col-10 { float: left; position: relative; width: 1299px; }
+    #invoice-mockup6-root .text-5 {
       font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
       font-size: 41.67px;
     }
-    #invoice-mockup-root .text-6 {
+    #invoice-mockup6-root .text-6 {
       margin: 2px 0 0 7px;
       font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
       font-size: 41.67px;
       line-height: 50px;
     }
-    #invoice-mockup-root .text-7 {
+    #invoice-mockup6-root .text-7 {
       margin: 0px 0 0 0px;
       font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
       font-size: 41.67px;
     }
-    #invoice-mockup-root .text-8 {
+    #invoice-mockup6-root .text-8 {
       float: right;
       margin: 163px -2px 0 0;
       width: 404px;
       color: #000000;
       font-weight: bold;
     }
-    #invoice-mockup-root .wrapper {
+    #invoice-mockup6-root .wrapper {
       height: 1290px;
       left: 32.5px;
       margin: 39px auto 0;
@@ -184,7 +184,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       width: 2415px;
     }
     
-    #invoice-mockup-root .col-2 {
+    #invoice-mockup6-root .col-2 {
       left: 50%;
       min-height: 1284px;
       padding: 225px 67px 71px; /* padding-top 225px, padding-left 67px */
@@ -195,13 +195,13 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       margin-left: -1196.5px;
     }
     
-    #invoice-mockup-root .text-9 {
+    #invoice-mockup6-root .text-9 {
       margin: 0 489px;
       color: #000000;
       font-weight: bold;
     }
     
-    #invoice-mockup-root .text-10 {
+    #invoice-mockup6-root .text-10 {
       margin: 99px 0 0 455px; /* relative to text-9 */
       color: #000000;
       font-weight: bold;
@@ -211,7 +211,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       overflow: hidden;  /* Hide overflow */
     }
 
-    #invoice-mockup-root .text-10-extra {
+    #invoice-mockup6-root .text-10-extra {
       /* margins handled by container styles */
       color: #000000;
       font-weight: bold;
@@ -221,32 +221,32 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
     }
     
     /* Footer styling handled by inline absolute positioning to ensure stability */
-    #invoice-mockup-root .text-11,
-    #invoice-mockup-root .text-12,
-    #invoice-mockup-root .text-13 {
+    #invoice-mockup6-root .text-11,
+    #invoice-mockup6-root .text-12,
+    #invoice-mockup6-root .text-13 {
         color: #000000;
         font-weight: bold;
     }
     
-    #invoice-mockup-root .text-13 {
+    #invoice-mockup6-root .text-13 {
       font-size: 58.33px;
       font-style: italic;
       font-family: 'Times New Roman', Tinos, Times, serif;
     }
 
-    #invoice-mockup-root .text-14 {
+    #invoice-mockup6-root .text-14 {
       /* positioned by container */
       color: #000000;
       font-weight: bold;
       text-align: right;
     }
     
-    #invoice-mockup-root .text-15 {
+    #invoice-mockup6-root .text-15 {
       color: #000000;
       font-weight: bold;
       text-align: right;
     }
-    #invoice-mockup-root .shape-8 {
+    #invoice-mockup6-root .shape-8 {
       height: 5px;
       left: 50%;
       position: absolute;
@@ -262,7 +262,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       {/* Dynamic Style Injection */}
       <style>{styles}</style>
       
-      <div id="invoice-mockup-root">
+      <div id="invoice-mockup6-root">
         <div className="global_container_">
           <header className="header group">
             <div className="col-3">
