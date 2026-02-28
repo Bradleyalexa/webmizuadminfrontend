@@ -53,6 +53,8 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      
+      /* Essential for consistent mobile rendering of fixed-width content */
       -webkit-text-size-adjust: none;
       text-size-adjust: none;
     }
@@ -80,15 +82,6 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
          height: 100%;
          display: block;
       }
-    }
-
-    /* Mobile-specific manual adjustments to fix text overlap */
-    @media screen and (max-width: 1200px) {
-       #invoice-mockup4-root .text-10 {
-          line-height: 1.5 !important;
-          white-space: pre-wrap;
-          font-size: 50px !important; /* Force size to be consistent */
-       }
     }
 
     #invoice-mockup4-root a { color: inherit; text-decoration: none; }
@@ -217,10 +210,12 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       color: #000000;
       font-weight: bold;
       /* Ensure description line height aligns with grid if needed */
-      line-height: 1.5; /* Relaxed line height for mobile readability */
+      line-height: normal;
       max-height: 350px; /* Constrain growth */
-      overflow: visible;  /* Allow overflow to be seen */
-      white-space: pre-wrap; /* Wrap long lines naturally */
+      overflow: visible;  
+      white-space: pre-wrap; 
+      position: relative;
+      z-index: 10;
     }
 
     #invoice-mockup4-root .text-10-extra {
