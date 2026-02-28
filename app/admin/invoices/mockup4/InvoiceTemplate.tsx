@@ -318,7 +318,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
               <p className="text-10">{data.row1}</p>
 
               {/* Optional Rows - Absolutely positioned to snap to grid lines */}
-              {data.row2 && <p className="text-10-extra" style={{ position: 'absolute', top: '430px', left: '522px', maxWidth: '1800px',whiteSpace: 'normal', wordBreak: 'keep-all' }}>{data.row2}</p>}
+              {data.row2 && <p className="text-10-extra" style={{ position: 'absolute', top: '430px', left: '522px', whiteSpace: 'nowrap' }}>{data.row2}</p>}
               {data.row3 && <p className="text-10-extra" style={{ position: 'absolute', top: '500px', left: '522px', whiteSpace: 'nowrap' }}>{data.row3}</p>}
               {data.row4 && <p className="text-10-extra" style={{ position: 'absolute', top: '570px', left: '630px', whiteSpace: 'nowrap' }}>{data.row4}</p>}
 
