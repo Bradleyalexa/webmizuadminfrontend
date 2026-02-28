@@ -216,6 +216,9 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       max-height: 350px; /* Constrain growth */
       overflow: visible;  
       white-space: pre-wrap;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      hyphens: none; 
       position: relative;
       z-index: 10;
       width: 1900px;
