@@ -211,12 +211,14 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       color: #000000;
       font-weight: bold;
       /* Ensure description line height aligns with grid if needed */
-      line-height: 1.4;
+      line-height: 1.5 !important;
+      font-size: 50px !important;
       max-height: 350px; /* Constrain growth */
       overflow: visible;  
       white-space: pre-wrap;
       position: relative;
       z-index: 10;
+      width: 1900px;
     }
 
     #invoice-mockup4-root .text-10-extra {
@@ -284,7 +286,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
             </div>
             <div className="col-8">
               <img className="text-2" src={`${imageBaseUrl}images/cv_surya_mizu_firuta_indo.png`} alt="CV. SURYA MIZU FIRUTA INDOWATER" width="1583" height="88" title="CV. SURYA MIZU FIRUTA INDOWATER" />
-              <p className="text-3">Spesialistt : Solar Water Heater - Water Purifirer - Pompa Air</p>
+              <p className="text-3">Spesialist : Solar Water Heater - Water Purifirer - Pompa Air</p>
               <p className="text-4">Pantek Sumur - Bleaching Pipe - Hot &amp; Cold Water Instalation</p>
               <div className="row-2 group">
                 <div className="col-10">
