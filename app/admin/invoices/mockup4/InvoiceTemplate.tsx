@@ -273,24 +273,6 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       margin-left: -673.5px;
     }
 
-    @media (max-width: 768px) {
-      #invoice-mockup4-root {
-        transform: scale(0.32);
-        transform-origin: top left;
-        width: 2552px;
-        height: 3508px;
-      }
-
-      #invoice-mockup4-root .text-10,
-      #invoice-mockup4-root .text-10-extra,
-      #invoice-mockup4-root .text-11,
-      #invoice-mockup4-root .text-12 {
-        white-space: normal !important;
-        word-break: normal !important;
-        overflow-wrap: normal !important;
-      }
-    }
-
     .invoice-mobile-wrapper {
       width: 100%;
       overflow-x: auto;
