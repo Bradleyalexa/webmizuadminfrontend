@@ -272,6 +272,24 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       background: #2168c2;
       margin-left: -673.5px;
     }
+
+    @media (max-width: 768px) {
+      #invoice-mockup4-root {
+        transform: scale(0.32);
+        transform-origin: top left;
+        width: 2552px;
+        height: 3508px;
+      }
+
+      #invoice-mockup4-root .text-10,
+      #invoice-mockup4-root .text-10-extra,
+      #invoice-mockup4-root .text-11,
+      #invoice-mockup4-root .text-12 {
+        white-space: normal !important;
+        word-break: normal !important;
+        overflow-wrap: normal !important;
+      }
+    }
   `;
 
   return (
@@ -318,7 +336,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
               <p className="text-10">{data.row1}</p>
 
               {/* Optional Rows - Absolutely positioned to snap to grid lines */}
-              {data.row2 && <p className="text-10-extra" style={{ position: 'absolute', top: '430px', left: '522px', whiteSpace: 'nowrap' }}>{data.row2}</p>}
+              {data.row2 && <p className="text-10-extra" style={{ position: 'absolute', top: '430px', left: '522px', maxWidth: '1800px', whiteSpace: 'normal', wordBreak: 'keep-all' }}>{data.row2}</p>}
               {data.row3 && <p className="text-10-extra" style={{ position: 'absolute', top: '500px', left: '522px', whiteSpace: 'nowrap' }}>{data.row3}</p>}
               {data.row4 && <p className="text-10-extra" style={{ position: 'absolute', top: '570px', left: '630px', whiteSpace: 'nowrap' }}>{data.row4}</p>}
 
