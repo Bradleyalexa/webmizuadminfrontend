@@ -34,7 +34,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
     }
 
     #invoice-mockup4-root {
-      line-height: normal; 
+      line-height: 1;
       color: #1131aa;
       background: white;
       font-size: 16px; 
@@ -53,11 +53,8 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       display: flex;
       flex-direction: column;
       justify-content: center;
-
-      text-size-adjust: 100%;
-      -webkit-text-size-adjust: 100%;
-      -moz-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
+      -webkit-text-size-adjust: none;
+      text-size-adjust: none;
     }
     
     /* ... rest of styles ... */
@@ -211,14 +208,9 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       color: #000000;
       font-weight: bold;
       /* Ensure description line height aligns with grid if needed */
-      line-height: 1.5 !important;
-      font-size: 50px !important;
+      line-height: 1.2;
       max-height: 350px; /* Constrain growth */
-      overflow: visible;  
-      white-space: pre-wrap;
-      position: relative;
-      z-index: 10;
-      width: 1900px;
+      overflow: hidden;
     }
 
     #invoice-mockup4-root .text-10-extra {
