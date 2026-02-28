@@ -8,4 +8,4 @@ export default function ChatPage() {
       <ChatLayout />
     </div>
   )
-}
+} {/* trigger build */}
