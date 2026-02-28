@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // Define the interface for the dynamic data
 export interface InvoiceData {
@@ -19,6 +19,21 @@ export interface InvoiceData {
 // Reusable Component
 export function InvoiceTemplate({ data }: { data: InvoiceData }) {
   const imageBaseUrl = 'https://gdfhhfcdomtpkelvmhui.supabase.co/storage/v1/object/public/invoices-public/templateToclas/';
+
+  useEffect(() => {
+    let meta = document.querySelector('meta[name="viewport"]');
+
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.setAttribute('name', 'viewport');
+      document.head.appendChild(meta);
+    }
+
+    meta.setAttribute(
+      'content',
+      'width=device-width, initial-scale=1, viewport-fit=cover'
+    );
+  }, []);
 
   const styles = `
     @import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400&display=swap');
@@ -278,7 +293,6 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
   #invoice-mockup4-root {
     transform: scale(calc(100vw / 2552));
     transform-origin: top left;
-    margin-bottom: calc(3508px * (100vw / 2552));
   }
 }
   `;
