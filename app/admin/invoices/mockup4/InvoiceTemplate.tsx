@@ -23,36 +23,6 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
   const styles = `
     @import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400&display=swap');
 
-    .invoice-scale-wrapper {
-      width: 100%;
-      overflow: auto;
-    }
-    
-    @media screen and (max-width: 768px) {
-      .invoice-scale-wrapper {
-        width: 100vw;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-      #invoice-mockup4-root {
-        transform: scale(0.15);
-        transform-origin: top left;
-        margin-bottom: -2950px;
-      }
-    }
-    
-    @media screen and (min-width: 769px) and (max-width: 1200px) {
-      .invoice-scale-wrapper {
-        width: 100%;
-        overflow-x: auto;
-      }
-      #invoice-mockup4-root {
-        transform: scale(0.4);
-        transform-origin: top left;
-        margin-bottom: -2100px;
-      }
-    }
-
     /* Reset and Global Overrides for #invoice-mockup4-root */
     #invoice-mockup4-root * {
       box-sizing: border-box;
@@ -94,14 +64,6 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
     }
 
     @media print {
-      .invoice-scale-wrapper {
-        width: auto;
-        overflow: visible;
-      }
-      #invoice-mockup4-root {
-        transform: none !important;
-        margin-bottom: 0 !important;
-      }
       body, html {
         margin: 0;
         padding: 0;
@@ -113,8 +75,8 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
          page-break-inside: avoid;
          page-break-after: avoid;
          page-break-before: avoid;
-         height: 100%; /* Reset for print if needed, or keep fixed? Usually better to fit page */
-         display: block; /* Remove flex for print usually? or keep? */
+         height: 100%;
+         display: block;
       }
     }
 
@@ -300,7 +262,6 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       {/* Dynamic Style Injection */}
       <style>{styles}</style>
       
-      <div className="invoice-scale-wrapper">
       <div id="invoice-mockup4-root">
         <div className="global_container_">
           <header className="header group">
@@ -386,7 +347,6 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
             <div className="shape-8"></div>
           </div>
         </div>
-      </div>
       </div>
     </>
   );
