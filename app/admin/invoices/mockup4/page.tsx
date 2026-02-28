@@ -85,6 +85,18 @@ export default function Mockup4InvoicePage() {
   // Scale calculation for "Fit to Screen"
   const previewContainerRef = React.useRef<HTMLDivElement>(null);
   const [scale, setScale] = React.useState(0.5);
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const mediaQuery = window.matchMedia('(max-width: 1024px)');
+    const updateMatch = () => setIsMobile(mediaQuery.matches);
+
+    updateMatch();
+    mediaQuery.addEventListener('change', updateMatch);
+    return () => mediaQuery.removeEventListener('change', updateMatch);
+  }, []);
 
   React.useLayoutEffect(() => {
     if (!previewContainerRef.current) return;
@@ -108,7 +120,18 @@ export default function Mockup4InvoicePage() {
   }, []); // Empty dependency array as observer handles changes
 
   return (
-    <div style={{ display: 'flex', height: 'calc(100vh - 64px)', width: '100vw', overflow: 'hidden', background: '#f0f0f0', position: 'relative' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: isMobile ? 'column' : 'row',
+        height: isMobile ? 'auto' : 'calc(100vh - 64px)',
+        width: '100%',
+        maxWidth: '100vw',
+        overflow: isMobile ? 'visible' : 'hidden',
+        background: '#f0f0f0',
+        position: 'relative'
+      }}
+    >
       {/* Toggle Button - Show only when closed */}
       {!isFormOpen && (
         <button 
@@ -136,15 +159,16 @@ export default function Mockup4InvoicePage() {
 
       {/* Editor Panel */}
       <div style={{ 
-        width: isFormOpen ? '400px' : '0px', 
+        width: isMobile ? '100%' : isFormOpen ? '400px' : '0px', 
         padding: isFormOpen ? '20px' : '0px', 
         background: 'white', 
-        borderRight: '1px solid #ddd', 
-        overflowY: 'auto',
+        borderRight: isMobile ? 'none' : '1px solid #ddd', 
+        borderBottom: isMobile ? '1px solid #ddd' : 'none',
+        overflowY: isMobile ? 'visible' : 'auto',
         transition: 'width 0.3s ease, padding 0.3s ease',
         overflowX: 'hidden',
-        whiteSpace: 'nowrap',
-        flexShrink: 0 // Prevent shrinking
+        flexShrink: 0,
+        display: isMobile && !isFormOpen ? 'none' : 'block'
       }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
              <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -317,7 +341,16 @@ export default function Mockup4InvoicePage() {
       {/* Preview Panel */}
       <div 
         ref={previewContainerRef}
-        style={{ flex: 1, minWidth: 0, overflow: 'auto', background: '#e5e5e5', position: 'relative' }}
+        style={{
+          flexGrow: isMobile ? 0 : 1,
+          flexShrink: isMobile ? 0 : 1,
+          flexBasis: isMobile ? 'auto' : '0%',
+          width: '100%',
+          minWidth: 0,
+          overflow: isMobile ? 'visible' : 'auto',
+          background: '#e5e5e5',
+          position: 'relative'
+        }}
       >
         <div style={{
           position: 'relative',
