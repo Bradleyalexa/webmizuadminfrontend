@@ -290,6 +290,19 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
         overflow-wrap: normal !important;
       }
     }
+
+    .invoice-mobile-wrapper {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    @media screen and (max-width: 768px) {
+      .invoice-mobile-wrapper {
+        transform: scale(0.32);
+        transform-origin: top left;
+        width: 2552px;
+      }
+    }
   `;
 
   return (
@@ -297,89 +310,91 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       {/* Dynamic Style Injection */}
       <style>{styles}</style>
       
-      <div id="invoice-mockup4-root">
-        <div className="global_container_">
-          <header className="header group">
-            <div className="col-3">
-              <div className="wrapper-6">
-                <img className="layer-239" src={`${imageBaseUrl}images/layer_239.png`} alt="" width="190" height="106" />
-                <img className="layer-239-copy" src={`${imageBaseUrl}images/layer_239_copy.png`} alt="" width="194" height="102" />
-                <img className="layer-239-copy-2" src={`${imageBaseUrl}images/layer_239_copy_2.png`} alt="" width="194" height="101" />
-                <img className="layer-242" src={`${imageBaseUrl}images/layer_242.png`} alt="" width="305" height="213" />
-              </div>
-              <p className="text">Mizu<br />Firuta</p>
-            </div>
-            <div className="col-8">
-              <img className="text-2" src={`${imageBaseUrl}images/cv_surya_mizu_firuta_indo.png`} alt="CV. SURYA MIZU FIRUTA INDOWATER" width="1583" height="88" title="CV. SURYA MIZU FIRUTA INDOWATER" />
-              <p className="text-3">Spesialistt : Solar Water Heater - Water Purifirer - Pompa Air</p>
-              <p className="text-4">Pantek Sumur - Bleaching Pipe - Hot &amp; Cold Water Instalation</p>
-              <div className="row-2 group">
-                <div className="col-10">
-                  <p className="text-5">JL Waru Raya Ujung No. 25 A, Kapuk - Jakarta Barat 11720</p>
-                  <p className="text-6">
-                    Telp : 021 - 54360371, 021 - 29430479, 081584719898, 085287479898<br />
-                    082124111778&nbsp;&nbsp;&nbsp;&nbsp;Fax : 021 - 54360371 Website : www.mizufiruta.com
-                  </p>
-                  <p className="text-7">E-mail : go.mizuindowater@gmail.com, go.mizu9898@gmail.com</p>
+      <div className="invoice-mobile-wrapper">
+        <div id="invoice-mockup4-root">
+          <div className="global_container_">
+            <header className="header group">
+              <div className="col-3">
+                <div className="wrapper-6">
+                  <img className="layer-239" src={`${imageBaseUrl}images/layer_239.png`} alt="" width="190" height="106" />
+                  <img className="layer-239-copy" src={`${imageBaseUrl}images/layer_239_copy.png`} alt="" width="194" height="102" />
+                  <img className="layer-239-copy-2" src={`${imageBaseUrl}images/layer_239_copy_2.png`} alt="" width="194" height="101" />
+                  <img className="layer-242" src={`${imageBaseUrl}images/layer_242.png`} alt="" width="305" height="213" />
                 </div>
-                <p className="text-8">{data.invoiceNo}</p>
+                <p className="text">Mizu<br />Firuta</p>
               </div>
+              <div className="col-8">
+                <img className="text-2" src={`${imageBaseUrl}images/cv_surya_mizu_firuta_indo.png`} alt="CV. SURYA MIZU FIRUTA INDOWATER" width="1583" height="88" title="CV. SURYA MIZU FIRUTA INDOWATER" />
+                <p className="text-3">Spesialistt : Solar Water Heater - Water Purifirer - Pompa Air</p>
+                <p className="text-4">Pantek Sumur - Bleaching Pipe - Hot &amp; Cold Water Instalation</p>
+                <div className="row-2 group">
+                  <div className="col-10">
+                    <p className="text-5">JL Waru Raya Ujung No. 25 A, Kapuk - Jakarta Barat 11720</p>
+                    <p className="text-6">
+                      Telp : 021 - 54360371, 021 - 29430479, 081584719898, 085287479898<br />
+                      082124111778&nbsp;&nbsp;&nbsp;&nbsp;Fax : 021 - 54360371 Website : www.mizufiruta.com
+                    </p>
+                    <p className="text-7">E-mail : go.mizuindowater@gmail.com, go.mizu9898@gmail.com</p>
+                  </div>
+                  <p className="text-8">{data.invoiceNo}</p>
+                </div>
+              </div>
+            </header>
+            <div className="wrapper">
+              <div className="col-2">
+                {/* Customer Name - Adjusted Top */}
+                <p className="text-15" style={{ position: 'absolute', top: '10px', left: '522px', width: '1800px', textAlign: 'left', zIndex: 999 }}>{data.customerNameAddress}</p>
+
+                <p className="text-9">{data.amountInWords}</p>
+                
+                <p className="text-10">{data.row1}</p>
+
+                {/* Optional Rows - Absolutely positioned to snap to grid lines */}
+                {data.row2 && <p className="text-10-extra" style={{ position: 'absolute', top: '430px', left: '522px', maxWidth: '1800px', whiteSpace: 'normal', wordBreak: 'keep-all' }}>{data.row2}</p>}
+                {data.row3 && <p className="text-10-extra" style={{ position: 'absolute', top: '500px', left: '522px', whiteSpace: 'nowrap' }}>{data.row3}</p>}
+                {data.row4 && <p className="text-10-extra" style={{ position: 'absolute', top: '570px', left: '630px', whiteSpace: 'nowrap' }}>{data.row4}</p>}
+
+                {/* Anchored Footer Sections */}
+                <p className="text-11" style={{ position: 'absolute', top: '645px', left: '630px', width: '2000px', whiteSpace: 'nowrap' }}>{data.row5}</p>
+                
+                {/* Payment Details */}
+                <div style={{ position: 'absolute', top: '715px', left: '630px', width: '2000px', maxHeight: '100px', overflow: 'hidden' }}>
+                  <p className="text-12" style={{ margin: 0 }}>{data.row6}</p>
+                </div>
+
+                {/* Extra Note Below Payment Details */}
+                {data.row7 && (
+                  <p className="text-12" style={{ position: 'absolute', top: '785px', left: '630px', width: '2000px', margin: 0, whiteSpace: 'nowrap' }}>
+                    {data.row7}
+                  </p>
+                )}
+                
+                {/* Signature and Date Section */}
+                <div style={{ position: 'absolute', top: '850px', right: '80px', textAlign: 'right', zIndex: 254 }}>
+                  <p className="text-14">{data.locationDate}</p>
+                  <img 
+                      className="layer-292" 
+                      src={`${imageBaseUrl}images/layer_292.png`} 
+                      alt="" 
+                      width="440" 
+                      height="328" 
+                      style={{ 
+                        display: 'block', 
+                        margin: '-5px 0 0', 
+                        position: 'relative', 
+                        zIndex: 23,
+                        printColorAdjust: 'exact',
+                        WebkitPrintColorAdjust: 'exact'
+                      }} 
+                  />
+                </div>
+
+                {/* Amount Numeric */}
+                <p className="text-13" style={{ position: 'absolute', top: '1020px', left: '566px', width: '500px', margin: 0, whiteSpace: 'nowrap' }}>Rp. &nbsp;{data.amountNumeric}</p>
+              </div>
+              
+              <div className="shape-8"></div>
             </div>
-          </header>
-          <div className="wrapper">
-            <div className="col-2">
-              {/* Customer Name - Adjusted Top */}
-              <p className="text-15" style={{ position: 'absolute', top: '10px', left: '522px', width: '1800px', textAlign: 'left', zIndex: 999 }}>{data.customerNameAddress}</p>
-
-              <p className="text-9">{data.amountInWords}</p>
-              
-              <p className="text-10">{data.row1}</p>
-
-              {/* Optional Rows - Absolutely positioned to snap to grid lines */}
-              {data.row2 && <p className="text-10-extra" style={{ position: 'absolute', top: '430px', left: '522px', maxWidth: '1800px', whiteSpace: 'normal', wordBreak: 'keep-all' }}>{data.row2}</p>}
-              {data.row3 && <p className="text-10-extra" style={{ position: 'absolute', top: '500px', left: '522px', whiteSpace: 'nowrap' }}>{data.row3}</p>}
-              {data.row4 && <p className="text-10-extra" style={{ position: 'absolute', top: '570px', left: '630px', whiteSpace: 'nowrap' }}>{data.row4}</p>}
-
-              {/* Anchored Footer Sections */}
-              <p className="text-11" style={{ position: 'absolute', top: '645px', left: '630px', width: '2000px', whiteSpace: 'nowrap' }}>{data.row5}</p>
-              
-              {/* Payment Details */}
-              <div style={{ position: 'absolute', top: '715px', left: '630px', width: '2000px', maxHeight: '100px', overflow: 'hidden' }}>
-                 <p className="text-12" style={{ margin: 0 }}>{data.row6}</p>
-              </div>
-
-              {/* Extra Note Below Payment Details */}
-              {data.row7 && (
-                 <p className="text-12" style={{ position: 'absolute', top: '785px', left: '630px', width: '2000px', margin: 0, whiteSpace: 'nowrap' }}>
-                   {data.row7}
-                 </p>
-              )}
-              
-              {/* Signature and Date Section */}
-              <div style={{ position: 'absolute', top: '850px', right: '80px', textAlign: 'right', zIndex: 254 }}>
-                 <p className="text-14">{data.locationDate}</p>
-                 <img 
-                    className="layer-292" 
-                    src={`${imageBaseUrl}images/layer_292.png`} 
-                    alt="" 
-                    width="440" 
-                    height="328" 
-                    style={{ 
-                      display: 'block', 
-                      margin: '-5px 0 0', 
-                      position: 'relative', 
-                      zIndex: 23,
-                      printColorAdjust: 'exact',
-                      WebkitPrintColorAdjust: 'exact'
-                    }} 
-                 />
-              </div>
-
-               {/* Amount Numeric */}
-               <p className="text-13" style={{ position: 'absolute', top: '1020px', left: '566px', width: '500px', margin: 0, whiteSpace: 'nowrap' }}>Rp. &nbsp;{data.amountNumeric}</p>
-            </div>
-            
-            <div className="shape-8"></div>
           </div>
         </div>
       </div>
