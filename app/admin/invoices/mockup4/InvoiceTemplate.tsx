@@ -23,6 +23,36 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
   const styles = `
     @import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400&display=swap');
 
+    .invoice-scale-wrapper {
+      width: 100%;
+      overflow: auto;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .invoice-scale-wrapper {
+        width: 100vw;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #invoice-mockup4-root {
+        transform: scale(0.15);
+        transform-origin: top left;
+        margin-bottom: -2950px;
+      }
+    }
+    
+    @media screen and (min-width: 769px) and (max-width: 1200px) {
+      .invoice-scale-wrapper {
+        width: 100%;
+        overflow-x: auto;
+      }
+      #invoice-mockup4-root {
+        transform: scale(0.4);
+        transform-origin: top left;
+        margin-bottom: -2100px;
+      }
+    }
+
     /* Reset and Global Overrides for #invoice-mockup4-root */
     #invoice-mockup4-root * {
       box-sizing: border-box;
@@ -64,6 +94,14 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
     }
 
     @media print {
+      .invoice-scale-wrapper {
+        width: auto;
+        overflow: visible;
+      }
+      #invoice-mockup4-root {
+        transform: none !important;
+        margin-bottom: 0 !important;
+      }
       body, html {
         margin: 0;
         padding: 0;
@@ -262,6 +300,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       {/* Dynamic Style Injection */}
       <style>{styles}</style>
       
+      <div className="invoice-scale-wrapper">
       <div id="invoice-mockup4-root">
         <div className="global_container_">
           <header className="header group">
@@ -301,15 +340,14 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
               <p className="text-10">{data.row1}</p>
 
               {/* Optional Rows - Absolutely positioned to snap to grid lines */}
-              {/* Description is within normal flow, but optional rows are fixed overlays */}
               {data.row2 && <p className="text-10-extra" style={{ position: 'absolute', top: '430px', left: '522px', whiteSpace: 'nowrap' }}>{data.row2}</p>}
               {data.row3 && <p className="text-10-extra" style={{ position: 'absolute', top: '500px', left: '522px', whiteSpace: 'nowrap' }}>{data.row3}</p>}
               {data.row4 && <p className="text-10-extra" style={{ position: 'absolute', top: '570px', left: '630px', whiteSpace: 'nowrap' }}>{data.row4}</p>}
 
-              {/* Anchored Footer Sections - STRICTLY FIXED POSITIONS */}
+              {/* Anchored Footer Sections */}
               <p className="text-11" style={{ position: 'absolute', top: '645px', left: '630px', width: '2000px', whiteSpace: 'nowrap' }}>{data.row5}</p>
               
-              {/* Payment Details with Overflow Control */}
+              {/* Payment Details */}
               <div style={{ position: 'absolute', top: '715px', left: '630px', width: '2000px', maxHeight: '100px', overflow: 'hidden' }}>
                  <p className="text-12" style={{ margin: 0 }}>{data.row6}</p>
               </div>
@@ -321,7 +359,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
                  </p>
               )}
               
-              {/* Signature and Date Section - Absolutely Positioned */}
+              {/* Signature and Date Section */}
               <div style={{ position: 'absolute', top: '850px', right: '80px', textAlign: 'right', zIndex: 254 }}>
                  <p className="text-14">{data.locationDate}</p>
                  <img 
@@ -341,13 +379,14 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
                  />
               </div>
 
-               {/* Amount Numeric - Absolutely Positioned at bottom */}
+               {/* Amount Numeric */}
                <p className="text-13" style={{ position: 'absolute', top: '1020px', left: '566px', width: '500px', margin: 0, whiteSpace: 'nowrap' }}>Rp. &nbsp;{data.amountNumeric}</p>
             </div>
             
             <div className="shape-8"></div>
           </div>
         </div>
+      </div>
       </div>
     </>
   );
