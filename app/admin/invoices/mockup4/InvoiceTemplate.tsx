@@ -210,12 +210,9 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       color: #000000;
       font-weight: bold;
       /* Ensure description line height aligns with grid if needed */
-      line-height: normal;
+      line-height: 1.2;
       max-height: 350px; /* Constrain growth */
-      overflow: visible;  
-      white-space: pre-wrap; 
-      position: relative;
-      z-index: 10;
+      overflow: hidden;  /* Hide overflow */
     }
 
     #invoice-mockup4-root .text-10-extra {
