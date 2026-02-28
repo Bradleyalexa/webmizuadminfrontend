@@ -34,7 +34,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
     }
 
     #invoice-mockup4-root {
-      line-height: 1;
+      line-height: normal; 
       color: #1131aa;
       background: white;
       font-size: 16px; 
@@ -53,6 +53,11 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       display: flex;
       flex-direction: column;
       justify-content: center;
+
+      text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+      -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
     }
     
     /* ... rest of styles ... */
@@ -206,9 +211,12 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       color: #000000;
       font-weight: bold;
       /* Ensure description line height aligns with grid if needed */
-      line-height: 1.2;
+      line-height: 1.4;
       max-height: 350px; /* Constrain growth */
-      overflow: hidden;  /* Hide overflow */
+      overflow: visible;  
+      white-space: pre-wrap;
+      position: relative;
+      z-index: 10;
     }
 
     #invoice-mockup4-root .text-10-extra {
@@ -276,7 +284,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
             </div>
             <div className="col-8">
               <img className="text-2" src={`${imageBaseUrl}images/cv_surya_mizu_firuta_indo.png`} alt="CV. SURYA MIZU FIRUTA INDOWATER" width="1583" height="88" title="CV. SURYA MIZU FIRUTA INDOWATER" />
-              <p className="text-3">Spesialist : Solar Water Heater - Water Purifirer - Pompa Air</p>
+              <p className="text-3">Spesialistt : Solar Water Heater - Water Purifirer - Pompa Air</p>
               <p className="text-4">Pantek Sumur - Bleaching Pipe - Hot &amp; Cold Water Instalation</p>
               <div className="row-2 group">
                 <div className="col-10">
