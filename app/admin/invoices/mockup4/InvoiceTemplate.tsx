@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Define the interface for the dynamic data
 export interface InvoiceData {
@@ -19,6 +19,25 @@ export interface InvoiceData {
 // Reusable Component
 export function InvoiceTemplate({ data }: { data: InvoiceData }) {
   const imageBaseUrl = 'https://gdfhhfcdomtpkelvmhui.supabase.co/storage/v1/object/public/invoices-public/templateToclas/';
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const updateScale = () => {
+      const viewportWidth = window.innerWidth;
+      const invoiceWidth = 2552;
+
+      if (viewportWidth < invoiceWidth) {
+        setScale(viewportWidth / invoiceWidth);
+      } else {
+        setScale(1);
+      }
+    };
+
+    updateScale();
+    window.addEventListener('resize', updateScale);
+
+    return () => window.removeEventListener('resize', updateScale);
+  }, []);
 
   const styles = `
     @import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400&display=swap');
@@ -272,19 +291,6 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       background: #2168c2;
       margin-left: -673.5px;
     }
-
-    .invoice-mobile-wrapper {
-      width: 100%;
-      overflow-x: auto;
-    }
-
-    @media screen and (max-width: 768px) {
-      .invoice-mobile-wrapper {
-        transform: scale(0.32);
-        transform-origin: top left;
-        width: 2552px;
-      }
-    }
   `;
 
   return (
@@ -292,7 +298,11 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       {/* Dynamic Style Injection */}
       <style>{styles}</style>
       
-      <div className="invoice-mobile-wrapper">
+      <div className="invoice-mobile-wrapper"  style={{
+    transform: `scale(${scale})`,
+    transformOrigin: 'top left',
+    width: '2552px'
+  }}>
         <div id="invoice-mockup4-root">
           <div className="global_container_">
             <header className="header group">
