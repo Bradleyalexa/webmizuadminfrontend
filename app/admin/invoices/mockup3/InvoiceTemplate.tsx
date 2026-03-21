@@ -62,7 +62,7 @@ export function InvoiceTemplate({ data }: { data: InvoiceData }) {
       font-style: italic;
       font-family: 'Times New Roman', Times, serif;
     }
-
+   
     @media print {
       body, html {
         margin: 0;

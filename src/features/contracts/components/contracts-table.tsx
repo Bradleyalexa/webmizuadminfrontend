@@ -27,10 +27,10 @@ export function ContractsTable({ data, isLoading }: ContractsTableProps) {
     },
     {
       key: "currentService",
-      header: "Current Service",
+      header: "Services Used",
       render: (item: Contract) => (
         <span className="font-medium">
-          {item.servicesUsed + 1} <span className="text-muted-foreground text-xs">/ {item.totalService}</span>
+          {item.servicesUsed ?? 0} <span className="text-muted-foreground text-xs">/ {item.totalService}</span>
         </span>
       ),
     },

@@ -1,6 +1,15 @@
 // Core Types for Admin Panel
 
 
+export interface Address {
+  id: string
+  customerId: string
+  custAddress: string
+  addressType: "apartment" | "rumah" | "company"
+  isPrimary: boolean
+  createdAt: string
+}
+
 export interface Category {
   id: string
   name: string
@@ -13,19 +22,25 @@ export interface Customer {
   name: string
   email: string
   phone: string
-  address: string
-  addressType?: "apartment" | "rumah" | "company"
+  addressId?: string | null
+  address?: string // Legacy or joined
+  addressType?: "apartment" | "rumah" | "company" // Legacy or joined
   status: "active" | "inactive" | "blacklisted"
   createdAt: string
-  updatedAt?: string // Backend might not return this always if it's not setup
+  updatedAt?: string
+  addresses?: Address[]
 }
 
 export interface CreateCustomerDTO {
   name: string
   email: string
   phone: string
-  address: string
-  addressType?: "apartment" | "rumah" | "company"
+  addresses: {
+    id?: string
+    custAddress: string
+    addressType: "apartment" | "rumah" | "company"
+    isPrimary?: boolean
+  }[]
   status?: "active" | "inactive" | "blacklisted"
   password?: string
 }
@@ -62,6 +77,7 @@ export interface CustomerProduct {
   product_catalog_id: string
   order_product_id?: string | null
   installation_technician_id?: string | null
+  installation_address_id?: string | null
   status: string
   quantity_owned: number
   cust_product_price?: number | null
@@ -77,12 +93,14 @@ export interface CustomerProduct {
   product_model?: string
   technician_name?: string
   contract_status?: string
+  installation_address?: Address
 }
 
 export interface CreateCustomerProductDTO {
   customer_id: string;
   product_catalog_id: string;
   installation_technician_id?: string;
+  installation_address_id?: string;
   installation_date?: string;
   installation_location?: string;
   cust_product_price?: number;
@@ -153,13 +171,21 @@ export interface ScheduleExpected {
 
 export interface ServiceLog {
   id: string
-  serviceRequestId: string
+  serviceRequestId?: string
   serviceRequest?: ServiceRequest
   technicianId: string
   technician?: Technician
   notes: string
-  evidenceUrls: string[]
+  evidenceUrls?: string[]
   completedAt: string
+  
+  // Enriched fields from Repository
+  technicianName?: string
+  customerName?: string
+  productName?: string
+  productModel?: string
+  serviceDate?: string
+  serviceType?: string
 }
 
 export interface Task {

@@ -19,7 +19,6 @@ export default function ContractsPage() {
   const [productSearch, setProductSearch] = useState("")
   const [statusFilter, setStatusFilter] = useState("all")
 
-  // Debounce search could be better, but for now simple effect
   useEffect(() => {
     if (!session) return
 
@@ -27,13 +26,6 @@ export default function ContractsPage() {
       try {
         setIsLoading(true)
         const api = createApiClient(session)
-        // Pass filters to backend
-        // Note: api client currently doesn't accept args for list(). Fixing client first.
-        // Wait, I forgot to update Client for contracts.list to accept params!
-        // Step 841: Client only has list() for contracts without arguments.
-        // I must update client.ts first.
-        
-        // Assuming client is updated:
         const res = await (api.contracts as any).list({ 
             status: statusFilter,
             productName: productSearch
@@ -46,18 +38,18 @@ export default function ContractsPage() {
         }
       } catch (error) {
         console.error("Failed to fetch contracts", error)
+        setContracts([])
       } finally {
         setIsLoading(false)
       }
     }
 
-    // Debounce to avoid too many requests
-    const timer = setTimeout(() => {
-        fetchContracts()
-    }, 300)
-
+    // Debounce only search input; filter changes fire immediately
+    const delay = productSearch ? 350 : 0
+    const timer = setTimeout(fetchContracts, delay)
     return () => clearTimeout(timer)
   }, [session, statusFilter, productSearch])
+
 
   return (
     <div className="space-y-4 md:space-y-6">

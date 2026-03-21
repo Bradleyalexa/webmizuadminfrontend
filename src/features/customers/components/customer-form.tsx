@@ -1,9 +1,10 @@
 "use client"
 
-import { useForm, Controller } from "react-hook-form"
+import { useForm, Controller, useFieldArray } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
 import { useState, useEffect } from "react"
+import { Trash2, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -32,6 +33,12 @@ export function CustomerForm({ customer, mode }: CustomerFormProps) {
     })
   }, [supabase])
 
+  const [primaryIndex, setPrimaryIndex] = useState(() => {
+    if (!customer?.addresses) return 0;
+    const idx = customer.addresses.findIndex((a) => a.isPrimary);
+    return idx === -1 ? 0 : idx;
+  });
+
   const {
     register,
     handleSubmit,
@@ -44,22 +51,33 @@ export function CustomerForm({ customer, mode }: CustomerFormProps) {
           name: customer.name,
           email: customer.email,
           phone: customer.phone,
-          address: customer.address,
-          addressType: customer.addressType ?? "rumah",
+          addresses: customer.addresses && customer.addresses.length > 0 
+           ? customer.addresses.map(a => ({ id: a.id, custAddress: a.custAddress, addressType: a.addressType || "rumah", isPrimary: a.isPrimary }))
+           : [{ custAddress: customer.address || "", addressType: customer.addressType || "rumah", isPrimary: true }],
           status: customer.status ?? "active",
         }
       : {
           name: "",
           email: "",
           phone: "",
-          address: "",
-          addressType: "rumah",
+          addresses: [{ custAddress: "", addressType: "rumah", isPrimary: true }],
           status: "active"
       }) as any,
   })
 
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "addresses"
+  })
+
   const onSubmit = async (data: CustomerFormData) => {
     if (!session) return
+
+    // Ensure only one primary address is set based on UI state
+    data.addresses = data.addresses.map((addr, index) => ({
+      ...addr,
+      isPrimary: index === primaryIndex
+    }));
 
     try {
       const api = createApiClient(session)
@@ -132,40 +150,87 @@ export function CustomerForm({ customer, mode }: CustomerFormProps) {
               {errors.phone && <p className="text-sm text-destructive">{errors.phone.message as string}</p>}
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="address" className="text-[#333333]">
-                Address
-              </Label>
-              <Input
-                id="address"
-                {...register("address")}
-                placeholder="123 Main St, City, State 12345"
-                className="border-border bg-white focus:border-[#00C49A] focus:ring-[#00C49A]"
-              />
-              {errors.address && <p className="text-sm text-destructive">{errors.address.message as string}</p>}
-            </div>
+            <div className="sm:col-span-2 space-y-4">
+              <div className="flex items-center justify-between">
+                <Label className="text-lg font-semibold text-[#0A2540]">Addresses</Label>
+                <Button 
+                   type="button" 
+                   variant="outline" 
+                   size="sm" 
+                   onClick={() => append({ custAddress: "", addressType: "rumah", isPrimary: false })}
+                   className="text-[#00C49A] border-[#00C49A] hover:bg-[#00C49A] hover:text-white"
+                >
+                  <Plus className="mr-2 w-4 h-4"/> Add Address
+                </Button>
+              </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="addressType" className="text-[#333333]">
-                Address Type
-              </Label>
-              <Controller
-                control={control}
-                name="addressType"
-                render={({ field }) => (
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <SelectTrigger className="bg-white border-border focus:ring-[#00C49A]">
-                      <SelectValue placeholder="Select type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="rumah">House (Rumah)</SelectItem>
-                      <SelectItem value="apartment">Apartment</SelectItem>
-                      <SelectItem value="company">Company</SelectItem>
-                    </SelectContent>
-                  </Select>
-                )}
-              />
-              {errors.addressType && <p className="text-sm text-destructive">{errors.addressType.message as string}</p>}
+              {fields.map((field, index) => (
+                <Card key={field.id} className="relative border-border shadow-sm">
+                  {fields.length > 1 && (
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="icon"
+                      className="absolute top-2 right-2 text-destructive hover:bg-destructive/10"
+                      onClick={() => {
+                        remove(index)
+                        if (primaryIndex === index) setPrimaryIndex(0)
+                        else if (primaryIndex > index) setPrimaryIndex(primaryIndex - 1)
+                      }}
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  )}
+                  <CardContent className="pt-6 space-y-4">
+                    <div className="space-y-2">
+                       <Label htmlFor={`addresses.${index}.custAddress`} className="text-[#333333]">Location specifics</Label>
+                       <Input
+                         id={`addresses.${index}.custAddress`}
+                         {...register(`addresses.${index}.custAddress`)}
+                         placeholder="123 Main St, City, State 12345"
+                         className="border-border bg-white focus:border-[#00C49A] focus:ring-[#00C49A]"
+                       />
+                       {errors.addresses?.[index]?.custAddress && (
+                         <p className="text-sm text-destructive">{errors.addresses[index]?.custAddress?.message as string}</p>
+                       )}
+                    </div>
+                    
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                         <Label htmlFor={`addresses.${index}.addressType`} className="text-[#333333]">Type</Label>
+                         <Controller
+                           control={control}
+                           name={`addresses.${index}.addressType`}
+                           render={({ field }) => (
+                             <Select onValueChange={field.onChange} defaultValue={field.value}>
+                               <SelectTrigger className="bg-white border-border focus:ring-[#00C49A]">
+                                 <SelectValue placeholder="Select type" />
+                               </SelectTrigger>
+                               <SelectContent>
+                                 <SelectItem value="rumah">House (Rumah)</SelectItem>
+                                 <SelectItem value="apartment">Apartment</SelectItem>
+                                 <SelectItem value="company">Company</SelectItem>
+                               </SelectContent>
+                             </Select>
+                           )}
+                         />
+                      </div>
+                      <div className="space-y-2 flex flex-col justify-end pb-[10px]">
+                         <label className="flex items-center space-x-2 cursor-pointer">
+                           <input
+                             type="radio"
+                             name="primaryAddress"
+                             checked={primaryIndex === index}
+                             onChange={() => setPrimaryIndex(index)}
+                             className="text-[#00C49A] focus:ring-[#00C49A] h-4 w-4"
+                           />
+                           <span className="text-sm font-medium text-[#333333]">Set as Primary Address</span>
+                         </label>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
 
             <div className="space-y-2">

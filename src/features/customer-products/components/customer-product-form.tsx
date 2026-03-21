@@ -43,10 +43,11 @@ type CustomerProductFormValues = z.infer<typeof customerProductSchema>
 interface CustomerProductFormProps {
   initialData?: CustomerProduct
   customerId: string
+  addressId?: string
   onSuccess?: () => void
 }
 
-export function CustomerProductForm({ initialData, customerId, onSuccess }: CustomerProductFormProps) {
+export function CustomerProductForm({ initialData, customerId, addressId, onSuccess }: CustomerProductFormProps) {
   const router = useRouter()
   const { session, supabase } = useSupabase()
   const [isLoading, setIsLoading] = useState(false)
@@ -165,6 +166,7 @@ export function CustomerProductForm({ initialData, customerId, onSuccess }: Cust
       const payload: CreateCustomerProductDTO = {
         ...data,
         customer_id: customerId,
+        ...(addressId ? { installation_address_id: addressId } : {}),
         // Only include photo_url if it's strictly defined (changed or removed)
         ...(photoUrl !== undefined ? { photo_url: photoUrl } : {}),
       }

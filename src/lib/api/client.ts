@@ -174,10 +174,18 @@ export const createApiClient = (session: Session | null) => {
         }
     },
     contracts: {
-        list: async (params?: { status?: string, productName?: string }) => {
+        findAll: async (params?: { status?: string, productName?: string, customerId?: string }) => {
             const searchParams = new URLSearchParams();
             if (params?.status) searchParams.append("status", params.status);
             if (params?.productName) searchParams.append("productName", params.productName);
+            if (params?.customerId) searchParams.append("customerId", params.customerId);
+            return fetchApi<any[]>(`/contracts?${searchParams.toString()}`, { token });
+        },
+        list: async (params?: { status?: string, productName?: string, customerId?: string }) => {
+            const searchParams = new URLSearchParams();
+            if (params?.status) searchParams.append("status", params.status);
+            if (params?.productName) searchParams.append("productName", params.productName);
+            if (params?.customerId) searchParams.append("customerId", params.customerId);
             return fetchApi<any[]>(`/contracts?${searchParams.toString()}`, { token });
         },
         getOne: async (id: string) => {
@@ -314,6 +322,17 @@ export const createApiClient = (session: Session | null) => {
         }
     },
     serviceLogs: {
+        findAll: async (params?: { customerId?: string }) => {
+            const searchParams = new URLSearchParams();
+            if (params?.customerId) searchParams.append("customerId", params.customerId);
+            return fetchApi<any[]>(`/service-logs?${searchParams.toString()}`, { token });
+        },
+        // Alias for consistency
+        list: async (params?: { customerId?: string }) => {
+            const searchParams = new URLSearchParams();
+            if (params?.customerId) searchParams.append("customerId", params.customerId);
+            return fetchApi<any[]>(`/service-logs?${searchParams.toString()}`, { token });
+        },
         update: async (id: string, data: any) => {
             return fetchApi<any>(`/service-logs/${id}`, {
                 method: "PUT",
