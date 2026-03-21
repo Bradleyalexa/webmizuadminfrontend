@@ -10,16 +10,16 @@ interface SupabaseContextType {
   supabase: SupabaseClient;
   session: Session | null;
   isLoading: boolean;
-  profile: any | null; 
+  profile: any | null;
 }
 
 const SupabaseContext = createContext<SupabaseContextType | undefined>(undefined);
 
 export const SupabaseProvider = ({ children }: { children: React.ReactNode }) => {
-  const [supabase] = useState(() => 
+  const [supabase] = useState(() =>
     createBrowserClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+      process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
     )
   );
   const [session, setSession] = useState<Session | null>(null);
@@ -43,7 +43,7 @@ export const SupabaseProvider = ({ children }: { children: React.ReactNode }) =>
       try {
           const client = createApiClient(currentSession);
           // @ts-ignore - method exists in our new client
-          const res = await client.auth.getMe() as any; 
+          const res = await client.auth.getMe() as any;
           if (res.success) {
               setProfile(res.data);
               console.log("Backend Profile Loaded:", res.data);
@@ -59,7 +59,7 @@ export const SupabaseProvider = ({ children }: { children: React.ReactNode }) =>
     } = supabase.auth.onAuthStateChange(async (event: string, session: Session | null) => {
       setSession(session);
       setIsLoading(false);
-      
+
       if (event === "SIGNED_IN" && session) {
          fetchProfile(session);
          router.refresh();

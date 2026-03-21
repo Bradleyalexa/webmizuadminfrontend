@@ -73,8 +73,8 @@ export function LoginPage() {
   const onSubmit = async (data: LoginFormData) => {
     try {
       const loginSupabase = createBrowserClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '',
         {
           cookieOptions: {
             maxAge: data.rememberMe ? 60 * 60 * 24 * 365 : undefined,
